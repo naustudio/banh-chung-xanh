@@ -1,0 +1,31 @@
+# .scss-lint.yml
+
+# inherit_from: ''
+# exclude: ''
+
+linters:
+    Comment:
+        enabled: false
+    PropertySortOrder:
+        enabled: false
+    UrlQuotes:
+        enabled: false
+    Indentation:
+        exclude:
+            - 'plugins/**'
+        severity: warning
+        character: tab
+        width: 1
+    LeadingZero:
+        style: include_zero
+    VendorPrefixes:
+        enabled: false
+    HexNotation:
+        style: lowercase
+    ImportPath:
+        leading_underscore: false
+        filename_extension: false
+    Shorthand:
+        enabled: true
+    StringQuotes:
+        style: single_quotes
