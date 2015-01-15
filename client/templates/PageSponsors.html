@@ -1,5 +1,25 @@
 <template name="PageSponsors">
 	<section>
-		Sponsors list here
+		<h2>Danh sách nhà hảo tâm đóng góp:</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Quý danh</th>
+					<th>Số tiền</th>
+					<th>Ngày đóng góp</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each sponsors}}
+				<tr>
+					<td>{{ name }}</td>
+					<td>{{ amount }}</td>
+					<td>{{ createDate }}</td>
+				</tr>
+				{{else}}
+					<td colspan="3">Chưa có nhà tài trợ.</td>
+				{{/each}}
+			</tbody>
+		</table>
 	</section>
 </template>

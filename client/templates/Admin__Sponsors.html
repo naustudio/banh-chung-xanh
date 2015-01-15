@@ -1,0 +1,24 @@
+<template name="Admin__Sponsors">
+	<section>
+		<h3>Cập nhật nhà tài trợ</h3>
+		<form id="add-sponsor-form" action="javascript:;">
+			<label for="sponsor-name">Tên</label>
+			<input type="text" id="sponsor-name" name="name" required>
+			<br>
+			<label for="sponsor-amount">Số tiền</label>
+			<input type="text" id="sponsor-amount" name="amount" required>
+			<br>
+			<input type="date" id="sponsor-date" name="date" required>
+			<br>
+			<button class="btn" id="add-sponsor-btn">Thêm</button>
+		</form>
+		<ul>
+			{{#each sponsors}}
+				<li>{{ name }} - {{ amount }} - {{ date }}</li>
+			{{else}}
+				<li>Chưa có nhà tài trợ.</li>
+			{{/each}}
+		</ul>
+
+	</section>
+</template>
