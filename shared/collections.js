@@ -1,2 +1,9 @@
+/* © 2014 NauStud.io
+ * @author
+ */
+/* global Players:true, Sponsors: true */
 // make collections here
-Lists = new Meteor.Collection('lists');
+Players = new Meteor.Collection('players');
+Sponsors = new Meteor.Collection('sponsors');
+
+
