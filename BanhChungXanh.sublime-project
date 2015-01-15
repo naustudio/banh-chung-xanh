@@ -1,0 +1,19 @@
+{
+	"folders":
+	[
+		{
+			"folder_exclude_patterns":
+			[
+				".grunt",
+				".idea",
+				".sass-cache",
+				".tmp",
+				"~build-*",
+				"node_modules",
+				".meteor/local"
+			],
+			"follow_symlinks": true,
+			"path": "."
+		}
+	]
+}

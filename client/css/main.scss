@@ -1,0 +1,28 @@
+/**
+ * Master file to merge all styles
+ */
+@import 'variables';
+
+@import 'inuitcss/settings.defaults';
+// other settings here
+@import 'inuitcss/settings.responsive';
+
+@import 'inuitcss/tools.functions';
+@import 'inuitcss/tools.mixins';
+@import 'inuitcss/tools.responsive';
+
+@import 'inuitcss/generic.normalize';
+@import 'inuitcss/generic.box-sizing';
+@import 'inuitcss/generic.shared';
+
+@import 'inuitcss/base.page';
+@import 'inuitcss/base.headings';
+
+@import 'inuitcss/objects.buttons';
+@import 'inuitcss/objects.layout';
+@import 'inuitcss/objects.media';
+
+// components here
+
+@import 'inuitcss/trumps.widths';
+@import 'inuitcss/trumps.spacing';

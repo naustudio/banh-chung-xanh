@@ -1,15 +1,16 @@
 # .scss-lint.yml
 
 # inherit_from: ''
-# exclude: ''
+exclude: 'client/css/inuitcss/**'
 
 linters:
     Comment:
         enabled: false
-    PropertySortOrder:
-        enabled: false
-    UrlQuotes:
-        enabled: false
+    HexNotation:
+        style: lowercase
+    ImportPath:
+        leading_underscore: false
+        filename_extension: false
     Indentation:
         exclude:
             - 'plugins/**'
@@ -18,14 +19,21 @@ linters:
         width: 1
     LeadingZero:
         style: include_zero
-    VendorPrefixes:
+    NameFormat:
+        convention: BEM
+    PropertySortOrder:
         enabled: false
-    HexNotation:
-        style: lowercase
-    ImportPath:
-        leading_underscore: false
-        filename_extension: false
+    SelectorFormat:
+        convention: BEM
     Shorthand:
         enabled: true
+    SpaceAfterPropertyColon:
+        style: at_least_one_space
+    SpaceBeforeBrace:
+        allow_single_line_padding: true
     StringQuotes:
         style: single_quotes
+    UrlQuotes:
+        enabled: false
+    VendorPrefixes:
+        enabled: false

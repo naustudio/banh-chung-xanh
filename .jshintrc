@@ -15,5 +15,6 @@
 	"sub": true,
 	"trailing": true,
 	"undef": true,
-	"unused": true
+	"unused": true,
+	"predef": ["Template", "Session", "Meteor", "HTTP", "Npm", "Router"]
 }
