@@ -9,7 +9,7 @@
  * @class
  */
 Model = function(data) {
-	this.validate(data);
+	this.set(data);
 };
 
 /**
@@ -25,28 +25,39 @@ var OBJECT = Model.OBJECT = 'Object'; /* jshint ignore:line */
 Model.prototype = {
 	constructor: Model,
 
-	validate: function(obj) {
-		// The validator object is set to the class constructor to avoid being saved to DB
+	set: function(data) {
+		var value;
+		for (var prop in data) {
+			value = data[prop];
+			if (typeof value !== 'function') {
+				this[prop] = value;
+			}
+		}
+		this.validate();
+	},
+
+	validate: function() {
+		// The validator property is expected
 		// it is done automatically if use Model.extend()
 		var validator = this.constructor.validator;
 		if (!this.checkType(validator, OBJECT)) {
 			throw new Error('No validator object set at this model constructor');
 		}
 
-		for (var prop in obj) {
-			if (this.checkType(obj[prop], validator[prop])) {
-				// correct data
-				this[prop] = obj[prop];
-				continue;
-			} else {
-				// incorrect data or not existed
-				throw new Error('Data type for \'' + prop + '\' is mismatched or not existed');
+		for (var prop in this) {
+			if (this.hasOwnProperty(prop)) {
+				if (this.checkType(this[prop], validator[prop])) {
+					continue;
+				} else {
+					// incorrect data or not existed
+					throw new Error('Data type for \'' + prop + '\' is mismatched or not existed');
+				}
 			}
 		}
 
 		// check for missing fields
 		for (prop in validator) {
-			if (obj[prop] === undefined) {
+			if (this[prop] === undefined) {
 				console.warn('\'' + prop + '\' is missing when setting data for model of', validator);
 			}
 		}
@@ -61,16 +72,17 @@ Model.prototype = {
 
 /**
  * Very simple and naive class extend sugar
- * @return {[type]} [description]
  * @param {Object} validator The validator object
+ * @param {Object} proto The prototype object, should contain functions only
+ * @return {Function} Class constructor
  */
-Model.extend = function(validator) {
+Model.extend = function(validator, proto) {
 	var ModelClass = function() {
 		Model.apply(this, arguments);
 	};
 
 	ModelClass.validator = validator;
-	ModelClass.prototype = Object.create(this.prototype);
+	ModelClass.prototype = _.extend(Object.create(this.prototype), proto || {});
 	ModelClass.prototype.constructor = ModelClass;
 	return ModelClass;
 };
@@ -83,15 +95,14 @@ Sponsor = Model.extend({
 	name: STRING,
 	amount: NUMBER,
 	date: DATE,
-	entryDate: DATE,
-	test: BOOLEAN
+	entryDate: DATE
 });
 
 /**
  * Player object model
  * @class
  */
-Player = Model.extend({
+Player = Model.extend({}, {
 	name: STRING,
 	avatar: STRING,
 	duration: NUMBER,
