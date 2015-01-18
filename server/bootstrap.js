@@ -1,4 +1,5 @@
 // Bootstrap the app when server start here
-Meteor.startup(function () {
+
+Meteor.startup(function() {
 
 });
