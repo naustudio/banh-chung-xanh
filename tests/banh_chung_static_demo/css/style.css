@@ -1,0 +1,54 @@
+.clearfix {
+  clear: both;
+}
+h1{
+	text-align: center;
+}
+#container{
+	position: relative;
+	margin: 0 auto;
+	border: 1px solid #000;
+}
+.square{
+	border: 1px solid #000;
+	float: left;
+}
+.space {
+
+}
+.wall {
+	background: #000000;
+}
+.pusher{
+	background: #FFB6C1;
+	position: absolute;
+	-webkit-transition: all 100ms ease-out 0.5s;
+	-moz-transition: all 100ms ease-out 0.5s;
+	-o-transition: all 100ms ease-out 0.5s;
+	transition: all 100ms ease-out 0.5s;
+}
+.user {
+	/*background: #FFB6C1;*/
+}
+.chung {
+	/*background: #008000;*/
+}
+.chungCloned {
+	background: #008000;
+	-webkit-transition: all 100ms ease-out 0.5s;
+	-moz-transition: all 100ms ease-out 0.5s;
+	-o-transition: all 100ms ease-out 0.5s;
+	transition: all 100ms ease-out 0.5s;
+}
+.disk {
+	background: #333333;
+}
+.tree {
+	background: #006400;
+}
+.rock {
+	background: #FF0000;
+}
+.userclone {
+	background: #FFB6C1;
+}
