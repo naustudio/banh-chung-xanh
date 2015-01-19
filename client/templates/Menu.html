@@ -1,8 +1,15 @@
 <template name="Menu">
 	<nav>
-		<a href="/">{{t "nav_home"}}</a>
-		<a href="/intro">{{t "nav_instructions"}}</a>
-		<a href="/sponsors">{{t "nav_sponsors"}}</a>
-		<a href="/players">{{t "nav_players"}}</a>
+		<a href="/{{ lc }}">{{t "nav_home"}}</a>
+		<a href="/{{ lc }}/intro">{{t "nav_instructions"}}</a>
+		<a href="/{{ lc }}/sponsors">{{t "nav_sponsors"}}</a>
+		<a href="/{{ lc }}/players">{{t "nav_players"}}</a>
+		|
+		{{#if isEnglishLanguage }}
+		<a href="/vi/{{ currentPath }}">Tiếng Việt</a>
+		{{/if}}
+		{{#unless isEnglishLanguage }}
+		<a href="/en/{{ currentPath }}">English</a>
+		{{/unless}}
 	</nav>
 </template>
