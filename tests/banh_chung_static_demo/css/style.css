@@ -4,7 +4,7 @@
 h1{
 	text-align: center;
 }
-#container{
+#arena{
 	position: relative;
 	margin: 0 auto;
 	border: 1px solid #000;
@@ -51,4 +51,27 @@ h1{
 }
 .userclone {
 	background: #FFB6C1;
+}
+.panel{
+	text-align: center;
+	margin: 20px 0;
+}
+.panel-control{
+	border-radius: 50%;
+	background: #000000;
+	position: relative;
+	width: 80px;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	color: #ffffff;
+	display: inline-block;
+	text-transform: uppercase;
+	font-weight: bold;
+	cursor: pointer;
+	border: 2px solid #000000;
+}
+.panel-control:hover{
+	background: #ffffff;
+	color: #000000;
 }

@@ -60,7 +60,22 @@
 		'played': [],
 		'lastPlay' : 5
 	};*/
-
+	function Step(chungStatus) {
+		this.chungStatus = [];
+		if (chungStatus && chungStatus.length > 0) {
+			for (var i = 0; i < chungStatus.length; i++) {
+				this.chungStatus.push({
+					index : chungStatus[i].index,
+					indexChung : chungStatus[i].indexChung,
+					x : chungStatus[i].x,
+					y : chungStatus[i].y
+				});
+			}
+		}
+	}
+	Step.prototype.clone = function() {
+		return new Step(this.chungStatus);
+	};
 	Array.prototype.clone = function() {
 		return this.slice(0);
 	};
@@ -74,32 +89,31 @@
 	function renderSteps() {
 		var lastStep = steps[steps.length - 1];
 		var user = lastStep.user;
-		var chungSteps = lastStep.chung;
-		var userPosition = $('.square[data-index="' + user + '"]').position();
+		var lastChungStep = lastStep.chung;
+		var userPosition = $('.square[data-index="' + user.index + '"]').position();
 		var chungCursor = null,
 			chungPosition = null;
 		$('.pusher').css({
 			'top':userPosition.top + 'px',
 			'left':userPosition.left + 'px'
 		});
-		var lastChungStep = chungSteps[ chungSteps.length - 1 ];
-		for (var i = 0; i < lastChungStep.length; i++) {
-			chungCursor = $('.square[data-index="' + lastChungStep[i].index + '"]');
+		for (var i = 0; i < lastChungStep.chungStatus.length; i++) {
+			chungCursor = $('.square[data-index="' + lastChungStep.chungStatus[i].index + '"]');
 			if (chungCursor.length > 0) {
 				chungPosition = chungCursor.position();
-				$('.square[data-chung-move="' + lastChungStep[i].indexChung + '"]').css({
+				$('.square[data-chung-move="' + lastChungStep.chungStatus[i].indexChung + '"]').css({
 					'top':chungPosition.top + 'px',
 					'left':chungPosition.left + 'px'
 				});
 			}
 		}
-		winningCheck(lastChungStep);
+		winningCheck(lastChungStep.chungStatus);
 	}
-	function winningCheck(lastChungStep) {
+	function winningCheck(chungStatus) {
 		var checkDisks = 0;
 		for (var i = 0; i < disks.length; i++) {
-			for (var j = 0; j < lastChungStep.length; j++) {
-				if (disks[i].index === lastChungStep[j].index) {
+			for (var j = 0; j < chungStatus.length; j++) {
+				if (disks[i].index === chungStatus[j].index) {
 					checkDisks++;
 				}
 			}
@@ -109,7 +123,7 @@
 				alert('You win');
 			},700);
 		}
-		console.log(disks);
+		console.log(chungSteps);
 	}
 	function prepareChungSteps() {
 		var chungStep = [];
@@ -121,7 +135,7 @@
 				y: chung[i].mapPosition.y
 			};
 		}
-		chungSteps.push(chungStep);
+		chungSteps.push(new Step(chungStep));
 	}
 	function Chung(chungInfo) {
 		Player.call(this, chungInfo);
@@ -170,9 +184,9 @@
 					mapGenerated[nextOfNextPosition.y][nextOfNextPosition.x].indexChung = mapGenerated[nextPosition.y][nextPosition.x].indexChung;
 
 					// Save information into lastChungStep before changing indexChung in nextPosition
-					lastChungStep[nextPosition.indexChung - 1].index = nextOfNextPosition.index;
-					lastChungStep[nextPosition.indexChung - 1].x = nextOfNextPosition.x;
-					lastChungStep[nextPosition.indexChung - 1].y = nextOfNextPosition.y;
+					lastChungStep.chungStatus[nextPosition.indexChung - 1].index = nextOfNextPosition.index;
+					lastChungStep.chungStatus[nextPosition.indexChung - 1].x = nextOfNextPosition.x;
+					lastChungStep.chungStatus[nextPosition.indexChung - 1].y = nextOfNextPosition.y;
 
 					mapGenerated[this.mapPosition.y][this.mapPosition.x].shape = '-2';
 					mapGenerated[this.mapPosition.y][this.mapPosition.x].isUser = false;
@@ -184,26 +198,34 @@
 					mapGenerated[nextPosition.y][nextPosition.x].isChung = false;
 					mapGenerated[nextPosition.y][nextPosition.x].indexChung = null;
 
+					this.mapPosition.index = nextPosition.index;
 					this.mapPosition.x = nextPosition.x;
 					this.mapPosition.y = nextPosition.y;
 
 
 					chungSteps.push(lastChungStep);
 					steps.push({
-						user : nextPosition.index,
-						chung : chungSteps.clone()
+						user : new Player(nextPosition),
+						chung : lastChungStep
 					});
 					renderSteps();
 				}
 			} else {
+
 				mapGenerated[this.mapPosition.y][this.mapPosition.x].shape = '-2';
 				mapGenerated[nextPosition.y][nextPosition.x].shape = '0';
+
+				this.mapPosition.index = nextPosition.index;
 				this.mapPosition.x = nextPosition.x;
 				this.mapPosition.y = nextPosition.y;
+
+				chungSteps.push(lastChungStep);
+
 				steps.push({
-					user : nextPosition.index,
-					chung : chungSteps.clone()
+					user : new Player(nextPosition),
+					chung : lastChungStep
 				});
+
 				renderSteps();
 			}
 		}
@@ -248,8 +270,44 @@
 
 	};
 	Player.prototype.undo = function() {
-		steps.pop();
-		renderSteps();
+		if (steps.length > 1) {
+			steps.pop();
+			chungSteps.pop();
+			var squareCursor = null;
+			for (var y = 0; y < mapGenerated.length; y++) {
+				for (var x = 0; x < mapGenerated[y].length; x++) {
+					squareCursor = mapGenerated[y][x];
+					if( squareCursor.shape !== '-1' &&
+						squareCursor.shape !== '2' &&
+						squareCursor.shape !== '3' &&
+						squareCursor.shape !== '4') {
+						squareCursor.shape = '-2';
+						squareCursor.isChung = false;
+						squareCursor.isUser = false;
+						squareCursor.indexChung = null;
+					}
+				}
+			}
+			var lastStep = steps[steps.length - 1];
+			var user = lastStep.user;
+			var lastChungStep = lastStep.chung;
+			mapGenerated[user.mapPosition.y][user.mapPosition.x].shape  = '0';
+			mapGenerated[user.mapPosition.y][user.mapPosition.x].isUser = true;
+
+			config.user.index = mapGenerated[user.mapPosition.y][user.mapPosition.x].index;
+			config.user.mapPosition.x = user.mapPosition.x;
+			config.user.mapPosition.y = user.mapPosition.y;
+
+			for (var i = 0; i < lastChungStep.chungStatus.length; i++) {
+				squareCursor = mapGenerated[lastChungStep.chungStatus[i].y][lastChungStep.chungStatus[i].x];
+				squareCursor.shape = '1';
+				squareCursor.isChung = true;
+				squareCursor.indexChung = lastChungStep.chungStatus[i].indexChung;
+			}
+			renderSteps();
+
+			console.log(chungSteps);
+		}
 	};
 	function Square(shapeInfo) {
 		this.index = 0;
@@ -285,7 +343,7 @@
 		this.map = map;
 		this.layoutData = null;
 	}
-	Grid.prototype.create = function() {
+	Grid.prototype.create = function () {
 		var mapTemp = [];
 		var chungN = 0;
 		var index = 0;
@@ -350,17 +408,20 @@
 	function init() {
 		var layout = new Grid(map);
 		layout.create();
-		var container = $('#container');
+		var container = $('#arena');
 		container.css('width', map.length * ( config.squareWidth + 2 ) + 'px');
 		container.append(layout.render());
 		container.append(config.user.render());
 		container.append(htmlChung());
 		prepareChungSteps();
 		steps.push({
-			user : config.user.index,
-			chung: chungSteps.clone()
+			user : new Player({
+				index: config.user.index,
+				x: config.user.mapPosition.x,
+				y: config.user.mapPosition.y
+			}),
+			chung: chungSteps[chungSteps.length-1].clone()
 		});
-		console.log(steps);
 	}
 
 	// Events :
@@ -385,10 +446,24 @@
 			default:
 				console.log(event.keyCode);
 		}
-		console.log(config.user);
 	}, false);
+	$(doc).on('click','.panel-control.left', function() {
+		config.user.moveLeft();
+	});
+	$(doc).on('click','.panel-control.right', function() {
+		config.user.moveRight();
+	});
+	$(doc).on('click','.panel-control.up', function() {
+		config.user.moveUp();
+	});
+	$(doc).on('click','.panel-control.down', function() {
+		config.user.moveDown();
+	});
+	$(doc).on('click','.panel-control.undo', function() {
+		config.user.undo();
+	});
 	init();
-	console.log(chungSteps);
+	//console.log(chungSteps);
 	/*console.log(doc);
 	console.log(chung);*/
 	//console.log(config.user);
