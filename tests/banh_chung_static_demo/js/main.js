@@ -1,5 +1,5 @@
 (function($, doc) {
-
+	'use strict';
 	/**
 	 * [config description]
 	 * @type {Object}
@@ -23,12 +23,12 @@
 		'horizol': 12,
 		'mapConfig':{
 			'-2': 'space',
-	 		'-1': 'wall',
-	 		'0' : 'user',
-	 		'1' : 'chung',
-	 		'2' : 'disk',
-	 		'3' : 'tree',
-	 		'4' : 'rock'
+			'-1': 'wall',
+			'0' : 'user',
+			'1' : 'chung',
+			'2' : 'disk',
+			'3' : 'tree',
+			'4' : 'rock'
 		},
 		user : {}
 	};
@@ -104,8 +104,8 @@
 				}
 			}
 		}
-		if(checkDisks === 3) {
-			setTimeout(function(){
+		if (checkDisks === 3) {
+			setTimeout(function() {
 				alert('You win');
 			},700);
 		}
@@ -129,7 +129,7 @@
 			this.indexChung = chungInfo.indexChung;
 		}
 	}
-	Chung.prototype.getPosition = function(){
+	Chung.prototype.getPosition = function() {
 		this.cssPosition.y = $('[data-chung="' + this.indexChung + '"]').position().top;
 		this.cssPosition.x = $('[data-chung="' + this.indexChung + '"]').position().left;
 	};
@@ -140,7 +140,7 @@
 	function Player(mapPosition) {
 		this.cssPosition = {
 			x : -1,
-			y : -1,
+			y : -1
 		};
 		this.mapPosition = {
 			x : mapPosition.x,
@@ -152,7 +152,7 @@
 		this.cssPosition.y = $('.user').position().top;
 		this.cssPosition.x = $('.user').position().left;
 	};
-	Player.prototype.render = function (){
+	Player.prototype.render = function() {
 		this.getPosition();
 		return '<div class="square pusher" style="width: ' + config.squareWidth + 'px; height: ' + config.squareWidth + 'px; left:' + this.cssPosition.x + 'px; top:' + this.cssPosition.y + 'px;"></div>';
 	};
@@ -244,7 +244,13 @@
 		}
 		this.validate(currentPosition,nextPosition,nextOfNextPosition);
 	};
+	Player.prototype.update = function() {
 
+	};
+	Player.prototype.undo = function() {
+		steps.pop();
+		renderSteps();
+	};
 	function Square(shapeInfo) {
 		this.index = 0;
 		this.x = -1;
@@ -264,8 +270,7 @@
 		}
 	}
 	Square.prototype.shapeClass = function() {
-		//console.log(this.shape + '');
-		return config.mapConfig[this.shape + ''];
+		return config.mapConfig[this.shape.toString()];
 	};
 
 	Square.prototype.render = function() {
@@ -337,7 +342,7 @@
 			layoutHtml += '<div class="clearfix"></div>';
 		}
 		mapGenerated = this.layoutData;
-		if(typeof callback === 'function'){
+		if (typeof callback === 'function') {
 			callback.call(this);
 		}
 		return layoutHtml;
@@ -359,7 +364,7 @@
 	}
 
 	// Events :
-	doc.addEventListener('keydown', function (event) {
+	doc.addEventListener('keydown', function(event) {
 		switch (event.keyCode) {
 			case 38:
 				config.user.moveUp();
