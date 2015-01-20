@@ -267,46 +267,51 @@
 		this.validate(currentPosition,nextPosition,nextOfNextPosition);
 	};
 	Player.prototype.update = function() {
+		var squareCursor = null;
+		for (var y = 0; y < mapGenerated.length; y++) {
+			for (var x = 0; x < mapGenerated[y].length; x++) {
+				squareCursor = mapGenerated[y][x];
+				if( squareCursor.shape !== '-1' &&
+					squareCursor.shape !== '2' &&
+					squareCursor.shape !== '3' &&
+					squareCursor.shape !== '4') {
+					squareCursor.shape = '-2';
+					squareCursor.isChung = false;
+					squareCursor.isUser = false;
+					squareCursor.indexChung = null;
+				}
+			}
+		}
+		var lastStep = steps[steps.length - 1];
+		var user = lastStep.user;
+		var lastChungStep = lastStep.chung;
+		mapGenerated[user.mapPosition.y][user.mapPosition.x].shape  = '0';
+		mapGenerated[user.mapPosition.y][user.mapPosition.x].isUser = true;
 
+		config.user.index = mapGenerated[user.mapPosition.y][user.mapPosition.x].index;
+		config.user.mapPosition.x = user.mapPosition.x;
+		config.user.mapPosition.y = user.mapPosition.y;
+
+		for (var i = 0; i < lastChungStep.chungStatus.length; i++) {
+			squareCursor = mapGenerated[lastChungStep.chungStatus[i].y][lastChungStep.chungStatus[i].x];
+			squareCursor.shape = '1';
+			squareCursor.isChung = true;
+			squareCursor.indexChung = lastChungStep.chungStatus[i].indexChung;
+		}
+		renderSteps();
 	};
 	Player.prototype.undo = function() {
 		if (steps.length > 1) {
 			steps.pop();
 			chungSteps.pop();
-			var squareCursor = null;
-			for (var y = 0; y < mapGenerated.length; y++) {
-				for (var x = 0; x < mapGenerated[y].length; x++) {
-					squareCursor = mapGenerated[y][x];
-					if( squareCursor.shape !== '-1' &&
-						squareCursor.shape !== '2' &&
-						squareCursor.shape !== '3' &&
-						squareCursor.shape !== '4') {
-						squareCursor.shape = '-2';
-						squareCursor.isChung = false;
-						squareCursor.isUser = false;
-						squareCursor.indexChung = null;
-					}
-				}
-			}
-			var lastStep = steps[steps.length - 1];
-			var user = lastStep.user;
-			var lastChungStep = lastStep.chung;
-			mapGenerated[user.mapPosition.y][user.mapPosition.x].shape  = '0';
-			mapGenerated[user.mapPosition.y][user.mapPosition.x].isUser = true;
-
-			config.user.index = mapGenerated[user.mapPosition.y][user.mapPosition.x].index;
-			config.user.mapPosition.x = user.mapPosition.x;
-			config.user.mapPosition.y = user.mapPosition.y;
-
-			for (var i = 0; i < lastChungStep.chungStatus.length; i++) {
-				squareCursor = mapGenerated[lastChungStep.chungStatus[i].y][lastChungStep.chungStatus[i].x];
-				squareCursor.shape = '1';
-				squareCursor.isChung = true;
-				squareCursor.indexChung = lastChungStep.chungStatus[i].indexChung;
-			}
-			renderSteps();
-
-			console.log(chungSteps);
+			this.update();
+		}
+	};
+	Player.prototype.reset = function() {
+		if (steps.length > 1) {
+			steps.length = 1;
+			chungSteps.length = 1;
+			this.update();
 		}
 	};
 	function Square(shapeInfo) {
@@ -461,6 +466,9 @@
 	});
 	$(doc).on('click','.panel-control.undo', function() {
 		config.user.undo();
+	});
+	$(doc).on('click','.panel-control.reset', function() {
+		config.user.reset();
 	});
 	init();
 	//console.log(chungSteps);
