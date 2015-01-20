@@ -49,6 +49,7 @@
 	];
 
 	var chung = [];
+	var disks = [];
 	var steps = [];
 	var chungSteps = [];
 
@@ -92,6 +93,23 @@
 				});
 			}
 		}
+		winningCheck(lastChungStep);
+	}
+	function winningCheck(lastChungStep) {
+		var checkDisks = 0;
+		for (var i = 0; i < disks.length; i++) {
+			for (var j = 0; j < lastChungStep.length; j++) {
+				if (disks[i].index === lastChungStep[j].index) {
+					checkDisks++;
+				}
+			}
+		}
+		if(checkDisks === 3) {
+			setTimeout(function(){
+				alert('You win');
+			},700);
+		}
+		console.log(disks);
 	}
 	function prepareChungSteps() {
 		var chungStep = [];
@@ -144,13 +162,31 @@
 			nextPosition.shape !== '3'  &&
 			nextPosition.shape !== '4') {
 			if (nextPosition.shape === '1') {
-				if (nextOfNextPosition.shape === '-2'){
-					this.mapPosition.x = nextPosition.x;
-					this.mapPosition.y = nextPosition.y;
+				if (nextOfNextPosition.shape === '-2' || nextOfNextPosition.shape === '2'){
+					//console.log(mapGenerated[this.mapPosition.y][this.mapPosition.x]);
+					mapGenerated[nextOfNextPosition.y][nextOfNextPosition.x].shape = '1';
+					mapGenerated[nextOfNextPosition.y][nextOfNextPosition.x].isUser = false;
+					mapGenerated[nextOfNextPosition.y][nextOfNextPosition.x].isChung = true;
+					mapGenerated[nextOfNextPosition.y][nextOfNextPosition.x].indexChung = mapGenerated[nextPosition.y][nextPosition.x].indexChung;
 
+					// Save information into lastChungStep before changing indexChung in nextPosition
 					lastChungStep[nextPosition.indexChung - 1].index = nextOfNextPosition.index;
 					lastChungStep[nextPosition.indexChung - 1].x = nextOfNextPosition.x;
 					lastChungStep[nextPosition.indexChung - 1].y = nextOfNextPosition.y;
+
+					mapGenerated[this.mapPosition.y][this.mapPosition.x].shape = '-2';
+					mapGenerated[this.mapPosition.y][this.mapPosition.x].isUser = false;
+					mapGenerated[this.mapPosition.y][this.mapPosition.x].isChung = false;
+					mapGenerated[this.mapPosition.y][this.mapPosition.x].indexChung = null;
+
+					mapGenerated[nextPosition.y][nextPosition.x].shape = '0';
+					mapGenerated[nextPosition.y][nextPosition.x].isUser = true;
+					mapGenerated[nextPosition.y][nextPosition.x].isChung = false;
+					mapGenerated[nextPosition.y][nextPosition.x].indexChung = null;
+
+					this.mapPosition.x = nextPosition.x;
+					this.mapPosition.y = nextPosition.y;
+
 
 					chungSteps.push(lastChungStep);
 					steps.push({
@@ -160,6 +196,8 @@
 					renderSteps();
 				}
 			} else {
+				mapGenerated[this.mapPosition.y][this.mapPosition.x].shape = '-2';
+				mapGenerated[nextPosition.y][nextPosition.x].shape = '0';
 				this.mapPosition.x = nextPosition.x;
 				this.mapPosition.y = nextPosition.y;
 				steps.push({
@@ -267,6 +305,12 @@
 						x: x,
 						y: y
 					}));
+				} else if (this.map[y][x] === 2) {
+					disks.push(new Square({
+						index : index,
+						x : x,
+						y : y
+					}));
 				}
 				mapTemp[y][x] = new Square({
 					index: index,
@@ -319,19 +363,19 @@
 		switch (event.keyCode) {
 			case 38:
 				config.user.moveUp();
-				console.log("up!");
+				//console.log("up!");
 				break;
 			case 40:
 				config.user.moveDown();
-				console.log("down!");
+				//console.log("down!");
 				break;
 			case 37:
 				config.user.moveLeft();
-				console.log("left!");
+				//console.log("left!");
 				break;
 			case 39:
 				config.user.moveRight();
-				console.log("right!");
+				//console.log("right!");
 				break;
 			default:
 				console.log(event.keyCode);
