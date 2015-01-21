@@ -24,9 +24,11 @@ render = chungapp.render || {};
 		initDefaultValue: function() {
 			this.mapData = new chungapp.data.Map();
 			this.mapRender = new chungapp.render.MapRender();
+			this.mapRender.render(this.mapData);
 		},
 
 		goUp: function() {
+			console.log(this.mapData);
 			if (this.mapData.canGoUp()) {
 				var action = this.mapData.goUp();
 				console.log('==action === ' + action);
