@@ -3,13 +3,19 @@
  * Thang Kieu
  */
 Template.Header.helpers({
-	menu: function() {
+	isActive: function() {
+		var isActive = '';
 
+		if (Session.get('show-menu')) {
+			isActive = 'active';
+		}
+
+		return isActive;
 	}
 });
 
 Template.Header.events({
 	'click .header__menu-btn': function() {
-		Session.set('show-menu', true);
+		Session.set('show-menu', !Session.get('show-menu'));
 	}
 });
