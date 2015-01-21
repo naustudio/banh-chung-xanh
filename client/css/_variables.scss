@@ -8,12 +8,16 @@ $inuit-base-line-height:        24px !default;
 $inuit-base-text-color:         #333 !default;
 $inuit-base-background-color:   #fff !default;
 
+
 // color variables
+$color-theme: #e24071;
+
 $color-menu-list: rgb(255, 255, 255);
+$color-hamguger-icon: rgb(226, 64, 113);
 
 // text color variables
-$bg-menu-list-fallback: rgb(226, 64, 113);
-$bg-menu-list: rgba(226, 64, 113, 0.95);
+$bg-menu-list-fallback: $color-theme;
+$bg-menu-list: rgba($color-theme, 0.95); //226, 64, 113, 0.95);
 $bg-menu-item-border-fallback: rgb(255, 90, 128);
 $bg-menu-item-border: rgba(255, 255, 255, 0.1);
 

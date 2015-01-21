@@ -36,7 +36,7 @@
 	position: relative;
 }
 
-.menu-item {
+.menu-list__item {
 	display: block;
 	text-decoration: none;
 	color: $color-menu-list;
@@ -55,7 +55,7 @@
 	}
 }
 
-.menu-close-btn {
+.menu-list__close-btn {
 	position: absolute;
 	top: -40px;
 	left: -40px;
