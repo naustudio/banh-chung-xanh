@@ -5,8 +5,8 @@
  * It contain:
  * 		1/ the map data and
  * It provide
- * 		1/some method to check whether we can go left, right, up or down
- * 		2/Method to move left, right, up or down
+ * 		1/some methods to check whether we can go left, right, up or down
+ * 		2/Methods to move left, right, up or down
  * 		3/Method to check whether user win or not
  * 		4/The history of user moving
  * 		5/The solution for each map
