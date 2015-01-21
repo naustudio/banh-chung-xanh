@@ -13,3 +13,19 @@ $inuit-base-grey-color: #ababab !default;
 $inuit-base-grey-2-color: #959595;
 $inuit-base-purple-color: #9966ff !default;
 
+
+// color variables
+$color-theme: #e24071;
+
+$color-menu-list: rgb(255, 255, 255);
+$color-hamguger-icon: rgb(226, 64, 113);
+
+// text color variables
+$bg-menu-list-fallback: $color-theme;
+$bg-menu-list: rgba($color-theme, 0.95); //226, 64, 113, 0.95);
+$bg-menu-item-border-fallback: rgb(255, 90, 128);
+$bg-menu-item-border: rgba(255, 255, 255, 0.1);
+
+// font-size
+$fz-menu-list: 30px;
+
