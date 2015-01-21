@@ -14,6 +14,21 @@ Template.Menu.helpers({
 
 	isEnglishLanguage: function() {
 		return (Session.get('language') === 'en');
+	},
+
+	isShow: function() {
+		var isShow = '';
+
+		if (Session.get('show-menu')) {
+			isShow = 'show';
+		}
+		return isShow;
 	}
 
+});
+
+Template.Menu.events({
+	'click .menu-list__close-btn': function() {
+		Session.set('show-menu', false);
+	}
 });
