@@ -20,11 +20,12 @@ render = chungapp.render || {};
 
 		mapData: null,
 		mapRender: null,
+		mapRenderedHTML: null,
 
 		initDefaultValue: function() {
 			this.mapData = new chungapp.data.Map();
 			this.mapRender = new chungapp.render.MapRender();
-			this.mapRender.render(this.mapData);
+			this.mapRenderedHTML = this.mapRender.renderStatic(this.mapData);
 		},
 
 		goUp: function() {
