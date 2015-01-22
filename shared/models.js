@@ -102,7 +102,7 @@ Sponsor = Model.extend({
  * Player object model
  * @class
  */
-Player = Model.extend({}, {
+Player = Model.extend({
 	name: STRING,
 	avatar: STRING,
 	duration: NUMBER,

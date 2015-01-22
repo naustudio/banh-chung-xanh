@@ -2,7 +2,6 @@
  * Master file to merge all styles
  */
 @import 'variables';
-@import 'modal';
 
 @import 'inuitcss/settings.defaults';
 // other settings here
@@ -31,3 +30,8 @@
 // custom components
 @import 'components/menu-list';
 @import 'components/header';
+@import 'components/names-list';
+@import 'components/modal';
+
+// page here
+@import 'pages/base-page';

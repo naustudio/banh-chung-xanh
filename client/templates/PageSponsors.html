@@ -1,23 +1,23 @@
 <template name="PageSponsors">
-	<section>
-		<h2>Danh sách nhà hảo tâm đóng góp:</h2>
-		<table>
+	<section class="page">
+		<h2 class="names-list__title">{{t "sponsors_title"}}</h2>
+		<table class="names-list">
 			<thead>
-				<tr>
-					<th>Quý danh</th>
-					<th>Số tiền</th>
-					<th>Ngày đóng góp</th>
+				<tr class="names-list__header">
+					<th class="item col-one">{{t "sponsors_name" }}</th>
+					<th class="item col-two">{{t "sponsors_amount" }}</th>
+					<th class="item col-three">{{t "sponsors_date" }}</th>
 				</tr>
 			</thead>
 			<tbody>
 				{{#each sponsors}}
-				<tr>
-					<td>{{ name }}</td>
-					<td>{{ amount }}</td>
-					<td>{{ createDate }}</td>
+				<tr class="names-list__record">
+					<td class="item">{{ name }}</td>
+					<td class="item">{{ amount }}</td>
+					<td class="item">{{ date }}</td>
 				</tr>
 				{{else}}
-					<td colspan="3">Chưa có nhà tài trợ.</td>
+					<td colspan="3" class="empty">Chưa có nhà tài trợ.</td>
 				{{/each}}
 			</tbody>
 		</table>

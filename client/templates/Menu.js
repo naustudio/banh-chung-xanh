@@ -21,6 +21,7 @@ Template.Menu.helpers({
 
 		if (Session.get('show-menu')) {
 			isShow = 'show';
+
 		}
 		return isShow;
 	}
@@ -29,6 +30,10 @@ Template.Menu.helpers({
 
 Template.Menu.events({
 	'click .menu-list__close-btn': function() {
+		Session.set('show-menu', false);
+	},
+
+	'click .menu-list__item': function() {
 		Session.set('show-menu', false);
 	}
 });
