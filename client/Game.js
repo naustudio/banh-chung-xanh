@@ -28,22 +28,65 @@ render = chungapp.render || {};
 			this.mapRenderedHTML = this.mapRender.renderStatic(this.mapData);
 		},
 
+		setMapData: function(mapData) {
+			this.mapData.setMapData(mapData);
+			//this.mapRender.render
+		},
+
+		//public method
 		goUp: function() {
 			console.log(this.mapData);
 			if (this.mapData.canGoUp()) {
 				var action = this.mapData.goUp();
-				console.log('==action === ' + action);
 				if (action === chungapp.data.Map.ACTION_NOTHING) {
-					this.mapRender.render(this.mapData);
+					this.mapRender.render(this.mapData, action);
+				}
+
+				if (this.mapData.isWin()) {
+					console.log('==win==');
+				}
+			}
+		},
+
+		goDown: function() {
+			if (this.mapData.canGoDown()) {
+				var action = this.mapData.goDown();
+				if (action === chungapp.data.Map.ACTION_NOTHING) {
+					this.mapRender.render(this.mapData, action);
+				}
+
+				if (this.mapData.isWin()) {
+					console.log('==win');
+				}
+			}
+		},
+
+		goLeft: function() {
+			if (this.mapData.canGoLeft()) {
+				var action = this.mapData.goLeft();
+				if (action === chungapp.data.Map.ACTION_NOTHING) {
+					this.mapRender.render(this.mapData, action);
+				}
+
+				if (this.mapData.isWin()) {
+					console.log('==win');
+				}
+			}
+		},
+
+		goRight: function() {
+			if (this.mapData.canGoRight()) {
+				var action = this.mapData.goRight();
+				if (action === chungapp.data.Map.ACTION_NOTHING) {
+					this.mapRender.render(this.mapData, action);
+				}
+
+				if (this.mapData.isWin()) {
+					console.log('==win');
 				}
 			}
 		}
 	};
 
 	chungapp.Game = Game;
-
-	window.game = new Game();
-	window.game.goUp();
-
-
 }(chungapp));

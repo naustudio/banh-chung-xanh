@@ -1,15 +1,18 @@
 <template name="Menu">
-	<nav>
-		<a href="/{{ lc }}">{{t "nav_home"}}</a>
-		<a href="/{{ lc }}/intro">{{t "nav_instructions"}}</a>
-		<a href="/{{ lc }}/sponsors">{{t "nav_sponsors"}}</a>
-		<a href="/{{ lc }}/players">{{t "nav_players"}}</a>
-		|
-		{{#if isEnglishLanguage }}
-		<a href="/vi/{{ currentPath }}">Tiếng Việt</a>
-		{{/if}}
-		{{#unless isEnglishLanguage }}
-		<a href="/en/{{ currentPath }}">English</a>
-		{{/unless}}
+	<nav class="menu-list-wrap {{isShow}}">
+		<div class="menu-list">
+			<a href="/{{ lc }}" class="menu-list__item">{{t "nav_home"}}</a>
+			<a href="/{{ lc }}/intro" class="menu-list__item">{{t "nav_instructions"}}</a>
+			<a href="/{{ lc }}/sponsors" class="menu-list__item">{{t "nav_sponsors"}}</a>
+			<a href="/{{ lc }}/players" class="menu-list__item">{{t "nav_players"}}</a>
+			<!-- | -->
+			{{#if isEnglishLanguage }}
+			<a href="/vi/{{ currentPath }}" class="menu-list__item">Tiếng Việt</a>
+			{{/if}}
+			{{#unless isEnglishLanguage }}
+			<a href="/en/{{ currentPath }}" class="menu-list__item">English</a>
+			{{/unless}}
+			<!-- <span class="menu-list__close-btn"></span> -->
+		</div>
 	</nav>
 </template>

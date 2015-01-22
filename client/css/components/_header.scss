@@ -1,0 +1,90 @@
+// -------------
+// Menu button style
+// -------------
+
+.header {
+	position: relative;
+}
+
+.header__menu-btn {
+	// width: 40px;
+	height: 40px;
+	padding: 0;
+	position: absolute;
+	left: 20px;
+	border: 0;
+	background: transparent;
+	outline: none;
+
+	&:before {
+		content: 'menu';
+		display: inline-block;
+		vertical-align: middle;
+		padding-left: 37px;
+		font-size: 18px;
+		text-transform: uppercase;
+		margin-top: 4px;
+	}
+
+	&:after {
+		content: '';
+		display: inline-block;
+		vertical-align: middle;
+		height: 100%;
+	}
+}
+
+.header__menu-icon {
+	top: 50%;
+	margin-top: -3px;
+	z-index: 2;
+
+	&,
+	&:before,
+	&:after {
+		cursor: pointer;
+		border-radius: 1px;
+		height: 6px;
+		width: 27px;
+		background: $color-hamguger-icon;
+		position: absolute;
+		display: block;
+		content: '';
+		transition: all 0.3s ease-in-out;
+	}
+
+	&:before {
+		top: -10px;
+	}
+
+	&:after {
+		bottom: -10px;
+	}
+
+	&.active {
+		background: transparent;
+
+		&:before,
+		&:after {
+			background: #fff;
+		}
+		&:before {
+			top: 0;
+			transform: rotate(45deg);
+		}
+
+		&:after {
+			transform: rotate(-45deg);
+			transform-origin: 2px -2px;
+		}
+	}
+}
+
+.header__page-title {
+	font-family: Helvetica;
+	color: $color-theme;
+	text-align: center;
+	font-size: 38px;
+	text-transform: uppercase;
+}
+

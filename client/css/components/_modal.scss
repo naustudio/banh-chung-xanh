@@ -1,0 +1,217 @@
+
+button.close {
+	-webkit-appearance: none;
+	cursor: pointer;
+	background: #ffffff;
+	position: absolute;
+	top: -25px;
+	right: -25px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: 1px solid transparent;
+	outline: 0;
+}
+
+.modal-open {
+	overflow: hidden;
+}
+.modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1050;
+	display: none;
+	overflow: auto;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	outline: 0;
+}
+.modal.fade .modal-dialog {
+	-webkit-transition: all 0.25s ease-out;
+	 -moz-transition:   all 0.25s ease-out;
+	   -o-transition:      all 0.25s ease-out;
+	      transition:        all 0.25s ease-out;
+	-webkit-transform: translate(0, -25%);
+	  -ms-transform: translate(0, -25%);
+	      transform: translate(0, -25%);
+	      opacity: 0;
+}
+.modal.in .modal-dialog {
+	-webkit-transform: translate(0, 0);
+	  -ms-transform: translate(0, 0);
+	      transform: translate(0, 0);
+	      opacity: 1;
+}
+.modal-dialog {
+	position: relative;
+	width: auto;
+	margin: 10px;
+}
+.modal-content {
+	position: relative;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #999;
+	outline: none;
+}
+.modal-backdrop {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1040;
+	background-color: #000;
+}
+.modal-backdrop.fade {
+	filter: alpha(opacity=0);
+	opacity: 0;
+}
+.modal-backdrop.in {
+	filter: alpha(opacity=50);
+	opacity: .5;
+}
+.modal-header {
+	min-height: 16.42857143px;
+	padding: 20px 35px 10px 70px ;
+}
+.modal-header .close {
+	margin-top: -2px;
+}
+.modal-body {
+	position: relative;
+	padding: 10px 70px ;
+}
+.modal-footer {
+	padding: 19px 70px 20px;
+
+}
+
+.modal-dialog {
+	width: 665px;
+	margin: auto;
+}
+
+////modal custom----------modal introduction--------------
+
+.modal-introduction{
+	.modal-dialog{
+		margin-top: 87px;
+	}
+
+}
+.hello{
+	display: inline-block;
+	font-size: 52px;
+	color: $inuit-base-green-color;
+	font-weight: normal;
+}
+.title-paragraph{
+	font-size: 18px;
+	color: $inuit-base-green-color;
+}
+.paragraph{
+	font-size: 14px;
+	margin-top: 7px;
+	margin-bottom: 30px;
+}
+.logo-modal{
+	float: right;
+	height: 60px;
+	width: 90px;
+}
+.button-modal{
+	padding: 12px 23px;
+	font-size: 14px;
+	background: $inuit-base-green-2-color;
+	border: 0;
+	margin-right: 10px;
+	color: $inuit-base-background-color;
+	margin-bottom: 60px;
+	&:hover{
+
+		background: $inuit-base-grey-color;
+	}
+}
+///modal login------------------
+.modal-login{
+	color: $inuit-base-grey-color;
+	text-align: center;
+	font-size: 14px;
+	.modal-dialog{
+		width: 500px;
+		margin-top: 200px;
+	}
+	.modal-content{
+		padding: 30px;
+		padding-top: 10px;
+		padding-bottom: 40px;
+	}
+	.modal-header, .modal-body{
+		padding: 0;
+	}
+}
+.title-login {
+	position: relative;
+	text-align: center;
+	span{
+		z-index: 1;
+		position: relative;
+		background: $inuit-base-background-color;
+		padding: 10px;
+		font-size: 24px;
+	}
+}
+.login-border {
+	height: 1px;
+	width: 100%;
+	background: black;
+	position: absolute;
+	top: 60%;
+}
+.description-login{
+	font-size: 14px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+
+}
+.facebook-login {
+	background: $inuit-base-purple-color;
+	color: $inuit-base-background-color;
+	padding: 10px 100px;
+	font-size: 33px;
+	border: 0;
+	border-radius: 10px;
+}
+.login-email{
+	height: 45px;
+	border: 3px solid $inuit-base-grey-2-color;
+	width: 333px;
+	padding-left: 30px;
+}
+.login-or{
+	position: relative;
+	padding-top: 27px;
+	padding-bottom: 15px;
+	span{
+		z-index: 1;
+		position: relative;
+		background: $inuit-base-background-color;
+		padding: 0 20px;
+	}
+}
+.button-login {
+	position: absolute;
+	top: 11px;
+	left: 130px;
+	cursor: pointer;
+}
+
+
+
+
+
+
