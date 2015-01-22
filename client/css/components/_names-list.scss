@@ -1,0 +1,76 @@
+// ---------
+// Style of Names List
+// e.g. Players List, Sponsor List
+// ---------
+
+.names-list {
+	width: 100%;
+	text-align: left;
+
+	.col-one {
+		width: 70%;
+	}
+
+	.col-two {
+		width: 18%;
+	}
+
+	.col-three {
+		width: 12%;
+	}
+
+	.empty {
+		text-align: center;
+		padding: 20px 0;
+	}
+}
+
+.names-list__record {
+	border-bottom: 1px solid $bg-name-list--border;
+
+	&:last-child {
+		border-bottom-color: transparent;
+	}
+
+	.item {
+		padding: 30px 0;
+		vertical-align: middle;
+	}
+}
+
+.names-list__header .item {
+	font-weight: normal;
+	font-size: 14px;
+}
+
+.names-list__title {
+	color: $color-names-list--title;
+	font-size: 32px;
+	font-weight: normal;
+}
+
+// temp style for ađ players
+
+.add-player-form {
+	// margin: 20px;
+
+	input {
+		padding: 10px;
+		border: 1px solid #ccc;
+		border-radius: 2px;
+		// display: block;
+		margin: 10px 0;
+		outline: none;
+	}
+
+	.btn {
+		padding: 10px;
+		line-height: 1;
+		outline: none;
+		border-radius: 2px;
+
+		&:active {
+			background: #ababab;
+		}
+	}
+}
