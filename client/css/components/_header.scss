@@ -18,12 +18,16 @@
 
 	&:before {
 		content: 'menu';
-		display: inline-block;
+		display: none; //inline-block;
 		vertical-align: middle;
 		padding-left: 37px;
 		font-size: 18px;
 		text-transform: uppercase;
 		margin-top: 4px;
+
+		@include media-query(lap-and-up) {
+			display: inline-block;
+		}
 	}
 
 	&:after {

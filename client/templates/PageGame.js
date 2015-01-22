@@ -1,5 +1,12 @@
 Template.PageGame.rendered = function() {
+	console.log('===page render');
+	Meteor.call('map', 0, function(error, result) {
+		//we parse the game and init the game
+		var game = new window.chungapp.Game();
+		game.setMapData(result.data);
 
+		Session.set('game', game);
+	});
 };
 
 Template.PageGame.helpers({
