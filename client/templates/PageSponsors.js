@@ -4,6 +4,20 @@
 /*global Sponsors*/
 Template.PageSponsors.helpers({
 	sponsors: function() {
-		return Sponsors.find({});
+		var sponsors = Sponsors.find({});
+
+		// re-format date
+		var sponsorsObj = sponsors.fetch();
+		var date = null;
+
+		for (var i = 0; i < sponsorsObj.length; i++) {
+			date = sponsorsObj[i].date;
+
+			date = date.toLocaleDateString();
+
+			sponsorsObj[i].date = date;
+		}
+
+		return sponsorsObj;
 	}
 });
