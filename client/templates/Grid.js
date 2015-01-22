@@ -4,7 +4,8 @@ Template.gridMap.rendered = function() {
 
 Template.gridMap.helpers({
 	squares: function() {
-		return window.game.mapRenderedHTML;
+		var game = Session.get('game');
+		return game ? game.mapRenderedHTML : [];
 	}
 });
 
