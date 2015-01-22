@@ -22,7 +22,11 @@ Template.Menu.helpers({
 		if (Session.get('show-menu')) {
 			isShow = 'show';
 
+			$('.menu-list-wrap').eq(0).fadeIn(300);
+		} else {
+			$('.menu-list-wrap').eq(0).fadeOut(300);
 		}
+
 		return isShow;
 	}
 
