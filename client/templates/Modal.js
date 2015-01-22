@@ -4,20 +4,6 @@
  * Modal template
  */
 
-Template.Modal.helpers({
-
-});
-
-Template.Modal.events({
-
-	'click .button-modal': function(e) {
-		var target = $(e.target).attr('data-target');
-		$(target).modal('show');
-	},
-	'click button.close': function() {
-
-	}
-});
 
 
 
@@ -100,6 +86,25 @@ Template.Modal.events({
     })
   }
 
+
+  Modal.prototype.whichTransitionEvent= function() {
+    var t,
+        el = document.createElement("fakeelement");
+
+    var transitions = {
+      "transition"      : "transitionend",
+      "OTransition"     : "oTransitionEnd",
+      "MozTransition"   : "transitionend",
+      "WebkitTransition": "webkitTransitionEnd"
+    }
+
+    for (t in transitions){
+      if (el.style[t] !== undefined){
+        return transitions[t];
+      }
+    }
+  }
+
   Modal.prototype.hide = function (e) {
     if (e) e.preventDefault()
 
@@ -120,11 +125,15 @@ Template.Modal.events({
       .attr('aria-hidden', true)
       .off('click.dismiss.bs.modal')
 
-    $.support.transition && this.$element.hasClass('fade') ?
-      this.$element
-        .one($.support.transition.end, $.proxy(this.hideModal, this))
-        .emulateTransitionEnd(300) :
-      this.hideModal()
+      var transitionEvent = this.whichTransitionEvent();
+      var self = this;
+
+     this.$element.one(transitionEvent,
+                    function() {
+          		  self.hideModal()
+        });
+
+
   }
 
   Modal.prototype.enforceFocus = function () {

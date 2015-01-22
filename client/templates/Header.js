@@ -17,5 +17,10 @@ Template.Header.helpers({
 Template.Header.events({
 	'click .header__menu-btn': function() {
 		Session.set('show-menu', !Session.get('show-menu'));
+	},
+
+	'click .button-login': function(e) {
+		var target = $(e.target).attr('data-target');
+		$(target).modal('show');
 	}
 });
