@@ -1,32 +1,26 @@
 <template name="PageGame">
 	<article class="game-play">
-	gridMap
 		{{> gridMap}}
 	</article>
 
 	<article class="game-intro">
 		<div class="game-intro-wrap">
-			<div class="">
-				Số tiền đang được NAU đóng góp
-				<button class="button-rule">Quy tắc</button>
+			<div class="total-sponsor">10,100,000</div>
+			<div>Được đóng góp trên tổng <span>50,000,000</span>VND</div>
+			<div class="progress"><div class="progress-current"></div></div>
+			<div class="description-progress">
+				2%
+				<span class="time-left"><i class="icon-lock"></i>15 ngày còn lại</span>
 			</div>
-			<div class="total-sponsor">10,100,000<sup>Vnd</sup></div>
-			<div class="participant">100<a href="#">Người tham gia</a></div>
-			<button class="sponsor-fund"> sponsor fund <i class="icon-heart"></i></button>
-			<div class="list-sponsor"><a href="#">Danh sách nhà tài trợ</a></div>
 
 			<div class="block-control">
 				<div class="round">
 					Round <br/>
 					<span class="current-round">3<span class="total-round">/10</span></span>
 				</div>
-				<div class="back">
-					Lùi lại<br/>
-					<i class="icon-foot"></i>
-					<div class="foot-number">222</div>
-				</div>
-				<div class="play-again">
-					Chơi lại <br/> <i class="icon-arrow"></i>
+				<div class="round back">
+					Số bước <br/>
+					<span class="current-round number-foot">222</span>
 				</div>
 
 			</div>
