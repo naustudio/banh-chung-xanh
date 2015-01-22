@@ -11,9 +11,13 @@ Template.PagePlayers.helpers({
 Template.PagePlayers.events({
 	'submit #add-player-form': function(event, el) {
 		// get value
-		var name = el.$('.name').val();
-		var maxRound = el.$('.max-round').val();
-		var duration = el.$('.duration').val();
+		var $name = el.$('.name');
+		var $maxRound = el.$('.max-round');
+		var $duration = el.$('.duration');
+
+		var name = $name.val();
+		var maxRound = $maxRound.val();
+		var duration = $duration.val();
 
 		var player = new Player({
 			name: name,
@@ -24,5 +28,10 @@ Template.PagePlayers.events({
 		});
 
 		Players.insert(player);
+
+		// reset value
+		$name.val('');
+		$maxRound.val('');
+		$duration.val('');
 	}
 });

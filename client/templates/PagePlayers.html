@@ -2,7 +2,7 @@
 	<section class="page">
 		<h2 class="names-list__title">{{t "players_title"}}</h2>
 
-		<form action="" class="add-player-form" id="add-player-form">
+		<form action="javascript:;" class="add-player-form" id="add-player-form">
 			<label for="">Add players</label>
 			<input type="text" class="name" placeholder="Tên">
 			<input type="text" class="duration" placeholder="Số bước">
@@ -11,40 +11,24 @@
 		</form>
 
 		<table class="names-list players">
-			<tr class="names-list__header">
-				<th class="item col-one">{{t "players_name" }}</th>
-				<th class="item col-two">{{t "players_level" }}</th>
-				<th class="item col-three">{{t "players_step" }}</th>
-			</tr>
-			<tr class="names-list__record">
-				<td class="item">Thang</td>
-				<td class="item">123</td>
-				<td class="item">5</td>
-			</tr>
-			<tr class="names-list__record">
-				<td class="item">Thang</td>
-				<td class="item">123</td>
-				<td class="item">5</td>
-			</tr>
-			<tr class="names-list__record">
-				<td class="item">Thang</td>
-				<td class="item">123</td>
-				<td class="item">5</td>
-			</tr>
-			<tr class="names-list__record">
-				<td class="item">Thang</td>
-				<td class="item">123</td>
-				<td class="item">5</td>
-			</tr>
-			{{#each players}}
-				<tr>
-					<td>{{ name }}</td>
-					<td>{{ level }}</td>
-					<td>{{ step }}</td>
+			<thead>
+				<tr class="names-list__header">
+					<th class="item col-one">{{t "players_name" }}</th>
+					<th class="item col-two">{{t "players_max_roud" }}</th>
+					<th class="item col-three">{{t "players_duration" }}</th>
 				</tr>
-			{{else}}
-				<!-- <td colspan="3" class="names-list__empty">{{t "players_empty" }}</td> -->
-			{{/each}}
+			</thead>
+			<tbody>
+				{{#each players}}
+				<tr class="names-list__record">
+					<td class="item">{{ name }}</td>
+					<td class="item">{{ duration }}</td>
+					<td class="item">{{ maxRound }}</td>
+				</tr>
+				{{else}}
+					<td colspan="3" class="names-list__empty">{{t "players_empty" }}</td>
+				{{/each}}
+			</tbody>
 		</table>
 	</section>
 </template>

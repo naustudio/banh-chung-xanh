@@ -9,7 +9,11 @@ i18n.map('vi', {
 	'nav_players': 'Danh Sách Người Chơi',
 	'players_title': 'Danh sách người chơi',
 	'players_name': 'Quý danh',
-	'players_level': 'Chơi đến vòng',
-	'players_step': 'Số bước kỷ lục',
-	'players_empty': 'Trở thành người đầu tiên trải nghiệm Chưng Nhi'
+	'players_max_roud': 'Chơi đến vòng',
+	'players_duration': 'Số bước kỷ lục',
+	'players_empty': 'Trở thành người đầu tiên trải nghiệm Chưng Nhi',
+	'sponsors_title': 'Danh sách nhà hảo tâm',
+	'sponsors_name': 'Quý danh',
+	'sponsors_amount': 'Số tiền',
+	'sponsors_date': 'Ngày đóng góp'
 });
