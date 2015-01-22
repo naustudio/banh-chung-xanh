@@ -1,5 +1,50 @@
 <template name="PagePlayers">
-	<section>
-		Players list here
+	<section class="page">
+		<h2 class="names-list__title">{{t "players_title"}}</h2>
+
+		<form action="" class="add-player-form" id="add-player-form">
+			<label for="">Add players</label>
+			<input type="text" class="name" placeholder="Tên">
+			<input type="text" class="duration" placeholder="Số bước">
+			<input type="text" class="max-round" placeholder="Số vòng">
+			<button class="btn" id="submit">Submit</button>
+		</form>
+
+		<table class="names-list players">
+			<tr class="names-list__header">
+				<th class="item col-one">{{t "players_name" }}</th>
+				<th class="item col-two">{{t "players_level" }}</th>
+				<th class="item col-three">{{t "players_step" }}</th>
+			</tr>
+			<tr class="names-list__record">
+				<td class="item">Thang</td>
+				<td class="item">123</td>
+				<td class="item">5</td>
+			</tr>
+			<tr class="names-list__record">
+				<td class="item">Thang</td>
+				<td class="item">123</td>
+				<td class="item">5</td>
+			</tr>
+			<tr class="names-list__record">
+				<td class="item">Thang</td>
+				<td class="item">123</td>
+				<td class="item">5</td>
+			</tr>
+			<tr class="names-list__record">
+				<td class="item">Thang</td>
+				<td class="item">123</td>
+				<td class="item">5</td>
+			</tr>
+			{{#each players}}
+				<tr>
+					<td>{{ name }}</td>
+					<td>{{ level }}</td>
+					<td>{{ step }}</td>
+				</tr>
+			{{else}}
+				<!-- <td colspan="3" class="names-list__empty">{{t "players_empty" }}</td> -->
+			{{/each}}
+		</table>
 	</section>
 </template>
