@@ -3,3 +3,15 @@ body {
 	font-weight: normal;
 	font-size: 14px;
 }
+
+button {
+	outline: 0;
+}
+
+a{
+	text-decoration: none;
+	color: $color-blue;
+	&:hover{
+		text-decoration: underline;
+	 }
+}

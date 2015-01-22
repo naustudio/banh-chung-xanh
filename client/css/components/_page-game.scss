@@ -1,0 +1,174 @@
+.game-play{
+	width: 60%;
+	float: left;
+}
+.game-intro{
+	width: 40%;
+	float: left;
+}
+.game-intro-wrap {
+	max-width: 300px;
+	margin: auto;
+	font-size: 13px;
+	position: relative;
+}
+.button-rule {
+	background: $inuit-base-blue-color;
+	width: 62px;
+	height: 25px;
+	border-radius: 5px;
+	color: $inuit-base-white-color;
+	font-size: 13px;
+	border: 1px solid $inuit-base-blue-color;
+	position: absolute;
+	right: 0;
+	top:-4px;
+}
+.total-sponsor{
+	font-size: 32px;
+	color: $inuit-base-green-color;
+	font-weight: bold;
+	border-bottom: 1px solid $color-border;
+}
+.participant{
+	font-weight: bold;
+	font-size: 24px;
+	padding-top: 17px;
+	padding-bottom: 23px;
+	color: $inuit-base-grey-3-color;
+	a{
+		font-size: 13px;
+		font-weight: normal;
+		margin-left: 7px;
+	}
+}
+.sponsor-fund{
+	width: 100%;
+	font-size: 18px;
+	text-transform: uppercase;
+	background: $inuit-base-green-color;
+	border: 1px solid $inuit-base-green-color;;
+	color: $inuit-base-white-color;
+	height: 53px;
+	text-align: left;
+	padding-left: 20px;
+	line-height: 2;
+	i{
+		font-size: 34px;
+		float: right;
+	}
+}
+
+.list-sponsor {
+	border-bottom: 1px solid $color-border;
+	text-align: right;
+	padding-top: 10px;
+	padding-bottom: 18px;
+}
+
+.button-controler{
+
+	width: 170px;
+	height: 170px;
+	position: relative;
+	margin: auto;
+	-webkit-transform: rotate(45deg);
+	   -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	     -o-transform: rotate(45deg);
+	        transform: rotate(45deg);
+}
+.control-top, .control-left, .control-bottom, .control-right {
+	height: 80px;
+	width: 80px;
+	border-radius: 50%;
+	border: 0;
+
+	-webkit-transform: rotate(-45deg);
+	   -moz-transform: rotate(-45deg);
+	    -ms-transform: rotate(-45deg);
+	     -o-transform: rotate(-45deg);
+	        transform: rotate(-45deg);
+	i{
+		color: $inuit-base-white-color;
+		font-size: 60px;
+	}
+}
+
+.control-top {
+	background: $color-button-top;
+}
+
+.control-bottom {
+	background: $color-button-bottom;
+}
+
+.control-left {
+	background: $color-button-left;
+	margin-bottom: 4px;
+}
+
+.control-right {
+	background: $color-button-right;
+	margin-bottom: 4px;
+}
+
+.round{
+	font-size: 16px;
+	display: inline-block;
+	font-weight: bold;
+	color: $inuit-base-grey-3-color;
+	.current-round {
+		font-size: 47px;
+	}
+	.total-round {
+		font-size: 12px;
+	}
+}
+
+.back {
+	float: right;
+	display: inline-block;
+	font-size: 14px;
+	position: relative;
+	i{
+		color: $inuit-base-red-color;
+		font-size: 35px;
+		display: inline-block;
+		cursor: pointer;
+		margin-top: 23px;
+	}
+	.foot-number{
+		position: absolute;
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		background: $inuit-base-purple-2-color;
+		font-size: 11px;
+		text-align: center;
+		color: $inuit-base-white-color;
+		line-height: 25px;
+		bottom: -2px;
+		left: -11px;
+	}
+}
+
+.block-control {
+	margin-bottom: 50px;
+	padding-top: 15px;
+}
+
+.play-again {
+	float: right;
+	display: inline-block;
+	font-size: 14px;
+	margin-right: 20px;
+	i{
+		color: $inuit-base-red-color;
+		font-size: 35px;
+		display: inline-block;
+		cursor: pointer;
+		margin-top: 23px;
+	}
+}
+

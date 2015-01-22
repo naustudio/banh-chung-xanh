@@ -7,12 +7,24 @@ $inuit-base-font-size:          16px;
 $inuit-base-line-height:        24px !default;
 $inuit-base-text-color:         #333 !default;
 $inuit-base-background-color:   #fff !default;
+
+$inuit-base-white-color:   #fff;
+
 $inuit-base-green-color: #5dd16d !default;
 $inuit-base-green-2-color: #4aa757 !default;
+
+
 $inuit-base-grey-color: #ababab !default;
 $inuit-base-grey-2-color: #959595;
-$inuit-base-purple-color: #9966ff !default;
+$inuit-base-grey-3-color: #636363;
 
+$inuit-base-purple-color: #9966ff !default;
+$inuit-base-purple-2-color: #8393ca;
+
+$inuit-base-blue-color: #6dcff6;
+$inuit-base-red-color: #d32121;
+
+$color-blue: #006699;
 
 // color variables
 $color-theme: #e24071;
@@ -28,4 +40,12 @@ $bg-menu-item-border: rgba(255, 255, 255, 0.1);
 
 // font-size
 $fz-menu-list: 30px;
+
+//
+$color-button-top: #38ae5b;
+$color-button-bottom: #e23833;
+$color-button-left: #f2d523;
+$color-button-right: #0d75b8;
+
+$color-border: #fcecf1;
 
