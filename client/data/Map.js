@@ -112,7 +112,7 @@ window.chungapp.data = window.chungapp.data || {};
 								//		direction : Map.DIRECTION_UP,
 								//		action: ACTION_MOVING,
 								//		userPosition: Position
-								//		disksPosition: [
+								//		chungPosition: [
 								//			Position,
 								//			Position,
 								//			Position
@@ -428,16 +428,16 @@ window.chungapp.data = window.chungapp.data || {};
 
 		//for user history
 		_createTheHistoryData: function(direction, action) {
-			var disksPosition = [];
-			for (var i = 0; i < this.diskItems.length; i++) {
-				disksPosition.push(this.diskItems[i].clone());
+			var chungPosition = [];
+			for (var i = 0; i < this.chungItems.length; i++) {
+				chungPosition.push(this.chungItems[i].clone());
 			}
 
 			return {
 				'direction': direction,
 				'action' : action,
 				'userPosition' : this.getUserPosition().clone(),
-				'disksPosition' : disksPosition
+				'chungPosition' : chungPosition
 			};
 		},
 
@@ -459,7 +459,7 @@ window.chungapp.data = window.chungapp.data || {};
 				this._setUserPosition(userPos.x, userPos.y);
 
 				//restore diskItems list
-				this.diskItems = historyItem.disksPosition;
+				this.chungItems = historyItem.chungPosition;
 
 				return historyItem.action;
 			}

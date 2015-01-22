@@ -10,8 +10,8 @@ render = chungapp.render || {};
 (function(chungapp) {
 	'use strict';
 
-	function Game() {
-		this.initDefaultValue();
+	function Game(map) {
+		this.initData(map);
 	}
 
 	//define method, property here
@@ -22,15 +22,19 @@ render = chungapp.render || {};
 		mapRender: null,
 		mapRenderedHTML: null,
 
-		initDefaultValue: function() {
-			this.mapData = new chungapp.data.Map();
+		initData: function(map) {
+			this.mapData = new chungapp.data.Map(map);
 			this.mapRender = new chungapp.render.MapRender();
-			this.mapRenderedHTML = this.mapRender.renderStatic(this.mapData);
+			if (map) {
+				this.mapRenderedHTML = this.mapRender.renderStatic(this.mapData.getMapData(),
+					this.mapData.getUserPosition(), this.mapData.getChungList(), this.mapData.getDiskList());
+			}
 		},
 
-		setMapData: function(mapData) {
-			this.mapData.setMapData(mapData);
-			//this.mapRender.render
+		setMapData: function(map) {
+			this.mapData.setMapData(map);
+			this.mapRenderedHTML = this.mapRender.renderStatic(this.mapData.getMapData(),
+					this.mapData.getUserPosition(), this.mapData.getChungList(), this.mapData.getDiskList());
 		},
 
 		//public method
@@ -39,7 +43,8 @@ render = chungapp.render || {};
 			if (this.mapData.canGoUp()) {
 				var action = this.mapData.goUp();
 				if (action === chungapp.data.Map.ACTION_NOTHING) {
-					this.mapRender.render(this.mapData, action);
+					this.mapRender.renderSteps(Map.DIRECTION_UP, this.mapData.getUserPosition(),
+						this.mapData.getChungList());
 				}
 
 				if (this.mapData.isWin()) {
@@ -52,7 +57,8 @@ render = chungapp.render || {};
 			if (this.mapData.canGoDown()) {
 				var action = this.mapData.goDown();
 				if (action === chungapp.data.Map.ACTION_NOTHING) {
-					this.mapRender.render(this.mapData, action);
+					this.mapRender.renderSteps(Map.DIRECTION_DOWN, this.mapData.getUserPosition(),
+						this.mapData.getChungList());
 				}
 
 				if (this.mapData.isWin()) {
@@ -65,7 +71,8 @@ render = chungapp.render || {};
 			if (this.mapData.canGoLeft()) {
 				var action = this.mapData.goLeft();
 				if (action === chungapp.data.Map.ACTION_NOTHING) {
-					this.mapRender.render(this.mapData, action);
+					this.mapRender.renderSteps(Map.DIRECTION_LEFT, this.mapData.getUserPosition(),
+						this.mapData.getChungList());
 				}
 
 				if (this.mapData.isWin()) {
@@ -78,7 +85,8 @@ render = chungapp.render || {};
 			if (this.mapData.canGoRight()) {
 				var action = this.mapData.goRight();
 				if (action === chungapp.data.Map.ACTION_NOTHING) {
-					this.mapRender.render(this.mapData, action);
+					this.mapRender.renderSteps(Map.DIRECTION_RIGHT, this.mapData.getUserPosition(),
+						this.mapData.getChungList());
 				}
 
 				if (this.mapData.isWin()) {

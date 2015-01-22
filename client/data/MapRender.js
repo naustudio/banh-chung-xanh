@@ -24,7 +24,7 @@ window.chungapp.render = window.chungapp.render || {};
 		if (x !== undefined && y !== undefined && shape !== undefined) {
 			this.x = x;
 			this.y = y;
-			if ( shape !== 1 && shape != 0 ) {
+			if ( shape !== 1 && shape !== 0 ) {
 				this.shape = shape;
 			} else {
 				this.shape = -2;
@@ -38,10 +38,9 @@ window.chungapp.render = window.chungapp.render || {};
 	Square.prototype = {
 		constructor : Square,
 		shapeClass: function() {
-			//console.log(this.shape);
-			return Square.OBJECT_CONFIG[this.shape + ''];
+			return Square.OBJECT_CONFIG[this.shape.toString()];
 		}
-	}
+	};
 
 	function Grid(){
 		this.mapView = [];
@@ -49,7 +48,7 @@ window.chungapp.render = window.chungapp.render || {};
 	Grid.prototype = {
 		constructor : Grid,
 		reMap : function(map) {
-			var mapData = map.mapRectangleData;
+			var mapData = map;
 			var mapGenerated = [];
 			for (var y = 0; y < mapData.length; y++) {
 				mapGenerated[y] = [];
@@ -62,7 +61,7 @@ window.chungapp.render = window.chungapp.render || {};
 			//console.log(mapGenerated);
 			return mapGenerated;
 		}
-	}
+	};
 
 	function MapRender() {
 		this.mapGenerated = [];
@@ -71,9 +70,8 @@ window.chungapp.render = window.chungapp.render || {};
 	//define method, property here
 	MapRender.prototype = {
 		constructor: MapRender,
-		renderStatic: function(mapData) {
+		renderStatic: function(mapData, userPostion, chungPosition, diskPosition) {
 			var staticHTML = '';
-			console.log('==mapData' + mapData);
 			this.mapGenerated = new Grid().reMap(mapData);
 			for (var y = 0; y < this.mapGenerated.length; y++) {
 				for (var x = 0; x < this.mapGenerated[y].length; x++) {
@@ -82,12 +80,8 @@ window.chungapp.render = window.chungapp.render || {};
 			}
 			return staticHTML;
 		},
-		renderSteps: function(mapStep) {
-			var direction = mapStep.direction;
-			var userPosition = mapStep.userPosition;
-			var chungPositions = mapStep.chungPositions;
-
-
+		renderSteps: function(direction, userPosition, chungPositions) {
+			console.log("==renderSteps");
 		}
 	};
 
