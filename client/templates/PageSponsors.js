@@ -13,9 +13,10 @@ Template.PageSponsors.helpers({
 		for (var i = 0; i < sponsorsObj.length; i++) {
 			date = sponsorsObj[i].date;
 
-			date = date.toLocaleDateString();
+			sponsorsObj[i].date = date.toLocaleDateString();
 
-			sponsorsObj[i].date = date;
+			// index
+			sponsorsObj[i].index = i + 1;
 		}
 
 		return sponsorsObj;
