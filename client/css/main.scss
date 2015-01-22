@@ -32,9 +32,13 @@
 @import 'components/header';
 @import 'components/names-list';
 @import 'components/modal';
+@import 'components/page-game';
 
 // page here
 @import 'pages/base-page';
 
 // custom style here
 @import 'custom/page.game.scss';
+///////
+@import 'components/default';
+@import 'icons';
