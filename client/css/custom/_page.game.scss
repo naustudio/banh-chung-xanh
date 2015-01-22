@@ -1,0 +1,15 @@
+.map-grid{
+	background: transparent;
+	width: 100%;
+	max-width: 520px;
+	margin: 20px auto;
+	.square{
+		background: #333;
+		width: 8.33333%;
+		padding-bottom: 8.33333%;
+		float: left;
+		&.wall{
+			background: green;
+		}
+	}
+}
