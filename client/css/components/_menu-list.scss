@@ -13,9 +13,8 @@
 	background: $bg-menu-list-fallback;
 	background: $bg-menu-list;
 	// scss-lint:enable DuplicateProperty
-	opacity: 0;
-	visibility: hidden;
-	transition: all 0.5s ease-in-out;
+	transition: top 0.5s ease-in-out;
+	display: none;
 
 	&:after {
 		content: '';
@@ -27,8 +26,6 @@
 
 	&.show {
 		top: 0;
-		opacity: 1;
-		visibility: visible;
 	}
 }
 
