@@ -77,19 +77,30 @@
 		background-image: url(img/button-border-gray.png);
 		background-repeat: repeat-x;
 
+		@include media-query(retina) {
+			background-image: url(img/button-border-gray-2x.png);
+		}
+
 		&:hover {
 			text-decoration: none;
 		}
 
 		&:after {
 			content: '';
-			width: 100%;
-			height: 5px;
-			background: #c5c4c3;
+			width: 33px;
+			height: 4px;
+			background-image: url(img/icon-button-shadow.png);
+			background-repeat: no-repeat;
+			background-size: 100%;
+			// background: #c5c4c3;
 			position: absolute;
-			left: 2px;
-			bottom: -5px;
-			transform: skewX(30deg);
+			left: 0;
+			bottom: -4px;
+
+			@include media-query(retina) {
+				background-image: url(img/icon-button-shadow-2x.png);
+			}
+			// transform: skewX(30deg);
 		}
 	}
 }
