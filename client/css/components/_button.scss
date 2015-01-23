@@ -67,7 +67,7 @@
 	.icon {
 		position: relative;
 		background: #fff;
-		padding: 10px 0 5px;
+		padding: 10px 0 7px;
 		display: inline-block;
 		color: #6d6e71;
 		text-align: center;
@@ -81,13 +81,15 @@
 			background-image: url(img/button-border-gray-2x.png);
 		}
 
+		&:active,
 		&:hover {
 			text-decoration: none;
+			background-image: url(img/button-border-gray-hover.png);
 		}
 
 		&:after {
 			content: '';
-			width: 33px;
+			width: 113%;
 			height: 4px;
 			background-image: url(img/icon-button-shadow.png);
 			background-repeat: no-repeat;
@@ -103,4 +105,53 @@
 			// transform: skewX(30deg);
 		}
 	}
+
+	.icon-google {
+		&:active,
+		&:hover {
+			background-color: $googleplus;
+			color: #fff;
+		}
+	}
+
+	.icon-facebook {
+		&:active,
+		&:hover {
+			background-color: $facebook;
+			color: #fff;
+		}
+	}
+
+	.icon-twitter {
+		&:active,
+		&:hover {
+			background-color: $twitter;
+			color: #fff;
+		}
+	}
+
+	.icon-round {
+		&:active,
+		&:hover {
+			background-color: $bg-active-state;
+			color: #fff;
+		}
+	}
+
+	.icon-arrow {
+		&:active,
+		&:hover {
+			background-color: $bg-active-state;
+			color: #fff;
+		}
+	}
+
+	.icon-back {
+		&:active,
+		&:hover {
+			background-color: $bg-active-state;
+			color: #fff;
+		}
+	}
 }
+

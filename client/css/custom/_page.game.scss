@@ -1,15 +1,128 @@
-.map-grid{
-	background: transparent;
+
+.map-grid {
+	background-image: url(img/map-bg.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
 	width: 100%;
 	max-width: 520px;
 	margin: 20px auto;
-	.square{
-		background: #333;
+	position: relative;
+
+	@extend %clearfix;
+
+	.square {
 		width: 8.33333%;
 		padding-bottom: 8.33333%;
 		float: left;
-		&.wall{
-			background: green;
+
+		&.wall {
+			background-image: url(img/characters/wall.png);
+			background-repeat: no-repeat;
+			background-size: 100%;
+
+			@include media-query(retina) {
+				background-image: url(img/characters2x/wall.png);
+			}
+		}
+
+		&.user {
+			background-image: url(img/characters/main-character.png);
+			background-size: 100%;
+
+			@include media-query(retina) {
+				background-image: url(img/characters2x/main-character.png);
+			}
+		}
+
+		&.rock {
+			background-image: url(img/characters/rock.png);
+			background-size: 100%;
+
+			@include media-query(retina) {
+				background-image: url(img/characters2x/rock.png);
+			}
+		}
+
+		&.goal {
+			background-image: url(img/characters/goal.png);
+			background-size: 100%;
+
+			@include media-query(retina) {
+				background-image: url(img/characters2x/goal.png);
+			}
+		}
+
+		&.banh-chung {
+			background-image: url(img/characters/banh-chung.png);
+			background-size: 100%;
+
+			@include media-query(retina) {
+				background-image: url(img/characters2x/banh-chung.png);
+			}
+		}
+
+		&.ground {
+			background-image: url(img/characters/ground.png);
+			background-size: 100%;
+
+			@include media-query(retina) {
+				background-image: url(img/characters2x/ground.png);
+			}
+		}
+	}
+
+	.decorator {
+		position: relative;
+
+		&:before {
+			content: '';
+			background-position: left bottom;
+			background-repeat: no-repeat;
+			overflow: visible;
+			position: absolute;
+			bottom: -20px;
+			left: 50%;
+		}
+
+		@include character-icon(decorator-1, 73px, 103px);
+		@include character-icon(decorator-2, 63px, 94px);
+		@include character-icon(decorator-3, 73px, 109px);
+		@include character-icon(decorator-4, 51px, 95px);
+		@include character-icon(decorator-5, 47px, 103px);
+		@include character-icon(decorator-6, 71px, 132px);
+		@include character-icon(decorator-7, 62px, 104px);
+		@include character-icon(decorator-8, 70px, 175px);
+	}
+
+	.action,
+	.social {
+		position: absolute;
+		right: 8.33333%;
+		bottom: 9.33333%;
+		width: 25%;
+
+		.icon {
+			width: 30%;
+			max-width: 30px;
+			height: 30%;
+			margin-left: -4px;
+		}
+	}
+
+	.action {
+		top: 15px;
+		bottom: auto;
+	}
+}
+
+// Temp
+.sample-character {
+	.item {
+		@extend %clearfix;
+		padding-top: 50px;
+
+		&:first-child {
+			padding: 0;
 		}
 	}
 }
