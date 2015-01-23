@@ -475,7 +475,7 @@ window.chungapp.data = window.chungapp.data || {};
 		},
 
 		getHistoryNum : function() {
-			return this.historyItem.length();
+			return this.histories.length;
 		},
 
 		setMapData: function(mapData) {
