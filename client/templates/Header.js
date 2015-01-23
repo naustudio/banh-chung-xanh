@@ -22,5 +22,16 @@ Template.Header.events({
 	'click .button-login': function(e) {
 		var target = $(e.target).attr('data-target');
 		$(target).modal('show');
+	},
+
+	'click .logout': function(e) {
+		e.stopPropagation();
+		e.preventDefault();
+
+		Meteor.logout(function(err) {
+			if (err) {
+				throw new Meteor.Error("Logout failed");
+			}
+		});
 	}
 });

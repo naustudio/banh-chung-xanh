@@ -48,10 +48,18 @@ Router.route('/:lang/players', function() {
 	name: 'players'
 });
 
+Router.route('/:lang/login', function() {
+	applyLanguage(this);
+	this.render('FBLogin');
+}, {
+	name: 'login'
+});
+
 Router.route('/admin', function() {
 	// no localization for admin section
 	this.render('Admin');
 });
+
 
 function applyLanguage(route) {
 	console.log('Route', route);
