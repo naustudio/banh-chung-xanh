@@ -24,8 +24,12 @@
 
 // components here
 
+@import 'inuitcss/trumps.clearfix';
 @import 'inuitcss/trumps.widths';
 @import 'inuitcss/trumps.spacing';
+
+// custom mixin
+@import 'components/mixins';
 
 // custom components
 @import 'components/button';
@@ -41,7 +45,7 @@
 @import 'pages/base-page';
 
 // custom style here
-@import 'custom/page.game.scss';
+@import 'custom/page.game';
 ///////
 @import 'components/default';
 @import 'icons';
