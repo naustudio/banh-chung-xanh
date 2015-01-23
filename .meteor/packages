@@ -11,3 +11,5 @@ fourseven:scss
 iron:router
 jquery
 http
+service-configuration
+accounts-facebook
