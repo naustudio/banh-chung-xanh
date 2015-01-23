@@ -8,6 +8,10 @@
 	margin: 20px auto;
 	position: relative;
 
+	@include media-query(retina) {
+		background-image: url(img/map-bg-2x.png);
+	}
+
 	@extend %clearfix;
 
 	.square {
@@ -78,6 +82,7 @@
 			content: '';
 			background-position: left bottom;
 			background-repeat: no-repeat;
+			background-size: 100%;
 			overflow: visible;
 			position: absolute;
 			bottom: -20px;
