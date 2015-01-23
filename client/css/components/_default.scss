@@ -8,10 +8,17 @@ button {
 	outline: 0;
 }
 
-a{
+a {
 	text-decoration: none;
 	color: $color-blue;
-	&:hover{
+
+	&:hover {
 		text-decoration: underline;
 	 }
+}
+
+* {
+	user-select: none;
+	// tap-highlight-color: rgb(0, 0, 0, 0);
+	-webkit-tap-highlight-color: transparent;
 }

@@ -18,10 +18,15 @@
 		background-image: url(img/button-border.png);
 		background-repeat: repeat-x;
 		background-position: left top;
+		background-size: auto 100%;
 		position: absolute;
 		left: 0;
 		width: 100%;
 		height: 11px;
+
+		@include media-query(retina) {
+			background-image: url(img/button-border-2x.png);
+		}
 	}
 
 	&:before {
@@ -64,30 +69,35 @@
 .icon-button {
 	text-align: center;
 
+	.top-row {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 9px;
+		background-image: url(img/button-border-gray.png);
+		background-repeat: repeat-x;
+		background-size: auto 100%;
+
+		@include media-query(retina) {
+			background-image: url(img/button-border-gray-2x.png);
+		}
+	}
+
 	.icon {
 		position: relative;
 		background: #fff;
-		padding: 10px 0 5px;
+		padding: 10px 0 7px;
 		display: inline-block;
 		color: #6d6e71;
 		text-align: center;
 		border-radius: 2px;
 		width: 30px;
 		height: 30px;
-		background-image: url(img/button-border-gray.png);
-		background-repeat: repeat-x;
-
-		@include media-query(retina) {
-			background-image: url(img/button-border-gray-2x.png);
-		}
-
-		&:hover {
-			text-decoration: none;
-		}
 
 		&:after {
 			content: '';
-			width: 33px;
+			width: 113%;
 			height: 4px;
 			background-image: url(img/icon-button-shadow.png);
 			background-repeat: no-repeat;
@@ -102,5 +112,70 @@
 			}
 			// transform: skewX(30deg);
 		}
+	}
+
+	.icon-google {
+		&:active,
+		&:hover {
+			background-color: $googleplus;
+			color: #fff;
+		}
+	}
+
+	.icon-facebook {
+		&:active,
+		&:hover {
+			background-color: $facebook;
+			color: #fff;
+		}
+	}
+
+	.icon-twitter {
+		&:active,
+		&:hover {
+			background-color: $twitter;
+			color: #fff;
+		}
+	}
+
+	.icon-round {
+		&:active,
+		&:hover {
+			background-color: $bg-active-state;
+			color: #fff;
+		}
+	}
+
+	.icon-arrow {
+		&:active,
+		&:hover {
+			background-color: $bg-active-state;
+			color: #fff;
+		}
+	}
+
+	.icon-back {
+		&:active,
+		&:hover {
+			background-color: $bg-active-state;
+			color: #fff;
+		}
+	}
+}
+
+.icon {
+	&:active,
+	&:hover {
+		text-decoration: none;
+
+		.top-row {
+			background-image: url(img/button-border-gray-hover.png);
+
+			@include media-query(retina) {
+				background-image: url(img/button-border-gray-hover-2x.png);
+			}
+		}
+
+
 	}
 }
