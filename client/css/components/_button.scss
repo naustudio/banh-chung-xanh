@@ -104,3 +104,46 @@
 		}
 	}
 }
+
+.icon-button-container {
+	width: 467px;
+	height: 510px;
+	margin: auto;
+	position: relative;
+}
+
+.icon-button-top {
+	position: absolute;
+	top: 20px;
+	right: 0;
+}
+
+.icon-button-bottom {
+	position: absolute;
+	bottom: 20px;
+	right: 0;
+}
+
+@media (max-width: 1000px) {
+	.button__challenge {
+		font-size: 9px;
+		min-width: 140px;
+		padding: 0;
+	}
+	.challenge {
+		height: 36px;
+		line-height: 36px;
+		&:before, &:after {
+			background-size: contain;
+		}
+
+	}
+	.icon-button-top {
+		display: none;
+	}
+	.icon-button-bottom {
+		left: 20px;
+		right: inherit;
+		bottom: 0;
+	}
+}

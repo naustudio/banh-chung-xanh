@@ -17,5 +17,16 @@ i18n.map('en', {
 	'sponsors_name': 'Name',
 	'sponsors_amount': 'Amount',
 	'sponsors_date': 'Date',
-	'challenge_friend': 'Challenge your friend'
+	'challenge_friend': 'Challenge your friend',
+	'login': 'Login',
+	'cancel': 'Cancel',
+	'register': 'Register',
+	'or': 'Or',
+	'shareAndSavePoints' :'Share and save points',
+	'fillEmail': 'Fill in email',
+	'hello': 'Hello',
+	'project_purpose': 'The purpose of Project',
+	'guide': 'Guide',
+	'play': 'Play',
+	'round': 'Round'
 });

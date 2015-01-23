@@ -11,6 +11,7 @@ button.close {
 	border-radius: 50%;
 	border: 1px solid transparent;
 	outline: 0;
+	padding: 0;
 }
 
 .modal-open {
@@ -133,7 +134,7 @@ button.close {
 	font-size: 14px;
 	background: $inuit-base-green-2-color;
 	border: 0;
-	margin-left: 10px;
+	margin-right: 10px;
 	color: $inuit-base-background-color;
 	margin-bottom: 45px;
 	position: relative;
@@ -240,6 +241,63 @@ button.close {
 .button-login-footer{
 	text-align: right;
 	margin-top: 20px;
+}
+
+
+
+
+@media(max-width: 1000px) {
+	.modal {
+		height: 100%;
+	}
+	.modal-dialog {
+		width: 100%;
+	}
+	.modal-header, .modal-footer {
+		padding: 20px;
+	}
+	.modal-body {
+		padding: 20px;
+		padding-top: 0;
+	}
+
+	button.close {
+		right: 46px;
+		width: 40px;
+		height: 40px;
+		text-align: center;
+		.icon-cross{
+			font-size: 15px;
+		}
+	}
+	.modal-introduction .modal-dialog {
+		margin-top: 30px;
+	}
+	.modal-login .modal-dialog {
+		width: 100%;
+		margin-top: 60px;
+	}
+	.hello {
+		font-size: 36px;
+	}
+	.button-modal {
+		padding: 12px 5px;
+		min-width: 100px;
+	}
+	.logo-modal {
+		margin-top: 40px;
+	}
+	.button-login {
+		left: 70px;
+	}
+	.modal-login .modal-content{
+		padding: 20px;
+		margin-top: 0;
+		.button-modal {
+			padding: 12px 23px;
+		}
+	}
+
 }
 
 

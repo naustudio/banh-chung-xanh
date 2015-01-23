@@ -1,6 +1,7 @@
 <template name="PageGame">
 	<article class="game-play">
-		{{> gridMap}}
+		{{> MapList}}
+		<!--{{> gridMap}}-->
 	</article>
 
 	<article class="game-intro">
@@ -15,7 +16,7 @@
 
 			<div class="block-control">
 				<div class="round">
-					Round <br/>
+					{{t "round"}} <br/>
 					<span class="current-round">3<span class="total-round">/10</span></span>
 				</div>
 				<div class="round back">

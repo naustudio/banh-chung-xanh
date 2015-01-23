@@ -1,6 +1,7 @@
 .game-play{
 	width: 65%;
 	float: left;
+	position: relative;
 }
 .game-intro{
 	width: 35%;
@@ -97,6 +98,7 @@
 	border: 0;
 	background: $inuit-base-white-color;
 	position: absolute;
+	padding: 0;
 	/*
 	-webkit-transform: rotate(-45deg);
 	   -moz-transform: rotate(-45deg);
@@ -104,7 +106,7 @@
 	     -o-transform: rotate(-45deg);
 	        transform: rotate(-45deg);*/
 	i{
-		font-size: 73px;
+		font-size: 80px;
 	}
 	&:active{
 		i{
@@ -209,5 +211,42 @@
 		i{
 			margin-right: 7px;
 		}
+	}
+}
+
+@media(max-width: 1000px) {
+	.game-play {
+		width: 100%;
+	}
+	.current-sponsor, .total-sponsor, .progress, .description-progress, .block-control {
+		display: none;
+	}
+	.game-intro {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+	.game-intro-wrap {
+		width: 0;
+	}
+	.button-controler {
+		position: absolute;
+		bottom: 20px;
+		right: -40px;
+		width: 150px;
+		height: 140px;
+	}
+	.control-top, .control-left, .control-bottom, .control-right {
+		width: 56px;
+		height: 56px;
+		i{
+			font-size: 56px;
+		}
+	}
+	.control-top, .control-bottom {
+		left: 46px;
+	}
+	.control-left, .control-right {
+		top: 43px;
 	}
 }

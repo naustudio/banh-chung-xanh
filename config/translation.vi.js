@@ -17,5 +17,16 @@ i18n.map('vi', {
 	'sponsors_name': 'Quý danh',
 	'sponsors_amount': 'Số tiền',
 	'sponsors_date': 'Ngày đóng góp',
-	'challenge_friend': 'Thách thức bạn bè'
+	'challenge_friend': 'Thách thức bạn bè',
+	'login': 'Đăng nhập',
+	'cancel': 'Hủy',
+	'register': 'Đăng ký',
+	'or': 'Hoặc',
+	'shareAndSavePoints' :'Để chia sẻ là lưu điểm',
+	'fillEmail': 'Điền email',
+	'hello': 'Xin chào',
+	'project_purpose': 'Mục đích dự án',
+	'guide': 'Xem hướng dẫn',
+	'play': 'Không cần, chơi luôn!',
+	'round': 'Vòng'
 });

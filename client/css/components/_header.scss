@@ -92,3 +92,10 @@
 	text-transform: uppercase;
 }
 
+@media(max-width: 1000px) {
+	.header__page-title {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
