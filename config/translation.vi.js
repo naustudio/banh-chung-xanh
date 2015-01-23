@@ -3,17 +3,19 @@
  */
 /*global i18n*/
 i18n.map('vi', {
-	'nav_home': 'Trang Chính',
-	'nav_instructions': 'Hướng Dẫn Chơi',
-	'nav_sponsors': 'Các Nhà Tài Trợ',
-	'nav_players': 'Danh Sách Người Chơi',
+	'nav_home': 'Giới thiệu campaign',
+	'nav_instructions': 'Hướng dẫn cách chơi',
+	'nav_sponsors': 'Danh sách nhà hảo tâm',
+	'nav_donate': 'Hướng dẫn cách đóng góp',
+	'nav_players': 'Danh sách người tham gia',
 	'players_title': 'Danh sách người chơi',
 	'players_name': 'Quý danh',
 	'players_max_roud': 'Chơi đến vòng',
 	'players_duration': 'Số bước kỷ lục',
 	'players_empty': 'Trở thành người đầu tiên trải nghiệm Chưng Nhi',
-	'sponsors_title': 'Danh sách nhà hảo tâm',
+	'sponsors_title': 'Danh sách nhà hảo tâm đóng góp',
 	'sponsors_name': 'Quý danh',
 	'sponsors_amount': 'Số tiền',
-	'sponsors_date': 'Ngày đóng góp'
+	'sponsors_date': 'Ngày đóng góp',
+	'challenge_friend': 'Thách thức bạn bè'
 });

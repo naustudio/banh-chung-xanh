@@ -1,9 +1,9 @@
 .game-play{
-	width: 60%;
+	width: 65%;
 	float: left;
 }
 .game-intro{
-	width: 40%;
+	width: 35%;
 	float: left;
 }
 .game-intro-wrap {
@@ -31,7 +31,7 @@
 	font-size: 32px;
 	color: $inuit-base-green-color;
 	font-weight: bold;
-	border-bottom: 1px solid $color-border;
+
 }
 .participant{
 	font-weight: bold;
@@ -74,58 +74,76 @@
 
 .button-controler{
 
-	width: 170px;
-	height: 170px;
+	width: 210px;
+	height: 190px;
 	position: relative;
 	margin: auto;
+	/*
 	-webkit-transform: rotate(45deg);
 	   -moz-transform: rotate(45deg);
 	    -ms-transform: rotate(45deg);
 	     -o-transform: rotate(45deg);
-	        transform: rotate(45deg);
+	        transform: rotate(45deg);*/
 }
 .control-top, .control-left, .control-bottom, .control-right {
 	height: 80px;
 	width: 80px;
 	border-radius: 50%;
 	border: 0;
-
+	background: $inuit-base-white-color;
+	position: absolute;
+	/*
 	-webkit-transform: rotate(-45deg);
 	   -moz-transform: rotate(-45deg);
 	    -ms-transform: rotate(-45deg);
 	     -o-transform: rotate(-45deg);
-	        transform: rotate(-45deg);
+	        transform: rotate(-45deg);*/
 	i{
-		color: $inuit-base-white-color;
-		font-size: 60px;
+		font-size: 73px;
 	}
 	&:active{
-		background: $inuit-base-grey-color;
+		i{
+			color: $inuit-base-grey-color;
+		}
 	}
 }
 
 .control-top {
-	background: $color-button-top;
+	left: 64px;
+	i{
+		color: $color-button-top;
+	}
 }
 
 .control-bottom {
-	background: $color-button-bottom;
+	left: 64px;
+	bottom: 0;
+	i{
+		color: $color-button-bottom;
+	}
 }
 
 .control-left {
-	background: $color-button-left;
+	left: 0;
+	top: 56px;
+	i{
+		color: $color-button-left;
+	}
 	margin-bottom: 4px;
 }
 
 .control-right {
-	background: $color-button-right;
+	right: 3px;
+	top: 56px;
+	i{
+		color: $color-button-right;
+	}
 	margin-bottom: 4px;
 }
 
 .round{
 	font-size: 16px;
 	display: inline-block;
-	font-weight: bold;
 	color: $inuit-base-grey-3-color;
 	.current-round {
 		font-size: 47px;
@@ -136,29 +154,10 @@
 }
 
 .back {
+
 	float: right;
-	display: inline-block;
-	font-size: 14px;
-	position: relative;
-	i{
-		color: $inuit-base-red-color;
-		font-size: 35px;
-		display: inline-block;
-		cursor: pointer;
-		margin-top: 23px;
-	}
-	.foot-number{
-		position: absolute;
-		width: 25px;
-		height: 25px;
-		border-radius: 50%;
-		background: $inuit-base-purple-2-color;
-		font-size: 11px;
-		text-align: center;
-		color: $inuit-base-white-color;
-		line-height: 25px;
-		bottom: -2px;
-		left: -11px;
+	.number-foot {
+		font-weight: bold;
 	}
 }
 
@@ -180,4 +179,30 @@
 		margin-top: 23px;
 	}
 }
+.progress{
+	height: 28px;
+	background: $inuit-base-white-2-color;
+	position: relative;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
 
+.progress-current {
+	position: absolute;
+	left: 0;
+	height: 100%;
+	width: 20px;
+	background: $inuit-base-green-color;
+
+}
+
+.description-progress {
+	border-bottom: 1px solid $color-border;
+	padding-bottom: 15px;
+	.time-left{
+		float: right;
+		i{
+			margin-right: 7px;
+		}
+	}
+}

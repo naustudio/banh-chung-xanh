@@ -4,7 +4,14 @@
 /*global Players, Player*/
 Template.PagePlayers.helpers({
 	players: function() {
-		return Players.find({});
+		var players = Players.find({});
+		var playersObj = players.fetch();
+
+		for (var i = 0; i < playersObj.length; i++) {
+			playersObj[i].index = i + 1;
+		}
+
+		return playersObj;
 	}
 });
 

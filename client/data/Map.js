@@ -450,6 +450,7 @@ window.chungapp.data = window.chungapp.data || {};
 			return this.histories.length > 0;
 		},
 
+		//undo return action/ direction
 		undo: function() {
 			if (this.canUndo()) {
 				var historyItem = this.histories.pop();
@@ -461,12 +462,21 @@ window.chungapp.data = window.chungapp.data || {};
 				//restore diskItems list
 				this.chungItems = historyItem.chungPosition;
 
-				return historyItem.action;
+				return {
+					'action' : historyItem.action,
+					'direction' : historyItem.direction
+				};
 			}
 
-			return Map.ACTION_NOTHING;
+			return {
+				'action' : Map.ACTION_NOTHING,
+				'direction' : null
+			};
 		},
 
+		getHistoryNum : function() {
+			return this.histories.length;
+		},
 
 		setMapData: function(mapData) {
 			this._initData(mapData);

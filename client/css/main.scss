@@ -28,11 +28,14 @@
 @import 'inuitcss/trumps.spacing';
 
 // custom components
+@import 'components/button';
 @import 'components/menu-list';
 @import 'components/header';
 @import 'components/names-list';
 @import 'components/modal';
 @import 'components/page-game';
+@import 'components/social';
+@import 'components/map-chosing';
 
 // page here
 @import 'pages/base-page';

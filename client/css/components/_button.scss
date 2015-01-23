@@ -1,0 +1,95 @@
+// -------
+// Style of Button
+// --------
+
+.button {
+	position: relative;
+	border: 0;
+	padding: 10px;
+	text-transform: uppercase;
+	color: $color-button;
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+
+	&:before,
+	&:after {
+		content: '';
+		background-image: url(img/button-border.png);
+		background-repeat: repeat-x;
+		background-position: left top;
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 11px;
+	}
+
+	&:before {
+		top: 0;
+	}
+
+	&:after {
+		bottom: 0;
+	}
+
+	&:hover {
+		text-decoration: none;
+	}
+
+	&.orange {
+		background-color: $bg-button-orange;
+	}
+
+	&.gray {
+		&:before,
+		&:after {
+			background-image: url(img/button-border-white.png);
+		}
+	}
+}
+
+.button__challenge {
+	$line-height: 48px;
+
+	padding: 0 10px;
+	font-size: 14px;
+	min-width: 191px;
+	line-height: $line-height;
+}
+
+// --------
+// Style of icon button
+// --------
+
+.icon-button {
+	text-align: center;
+
+	.icon {
+		position: relative;
+		background: #fff;
+		padding: 10px 0 5px;
+		display: inline-block;
+		color: #6d6e71;
+		text-align: center;
+		border-radius: 2px;
+		width: 30px;
+		height: 30px;
+		background-image: url(img/button-border-gray.png);
+		background-repeat: repeat-x;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		&:after {
+			content: '';
+			width: 100%;
+			height: 5px;
+			background: #c5c4c3;
+			position: absolute;
+			left: 2px;
+			bottom: -5px;
+			transform: skewX(30deg);
+		}
+	}
+}

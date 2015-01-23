@@ -6,6 +6,7 @@ i18n.map('en', {
 	'nav_home': 'Home',
 	'nav_instructions': 'Instructions',
 	'nav_sponsors': 'Sponsors',
+	'nav_donate': 'Donate',
 	'nav_players': 'Players',
 	'players_title': 'Players List',
 	'players_name': 'Name',
@@ -15,5 +16,6 @@ i18n.map('en', {
 	'sponsors_title': 'Sponsors List',
 	'sponsors_name': 'Name',
 	'sponsors_amount': 'Amount',
-	'sponsors_date': 'Date'
+	'sponsors_date': 'Date',
+	'challenge_friend': 'Challenge your friend'
 });
