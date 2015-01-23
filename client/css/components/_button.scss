@@ -94,26 +94,6 @@
 		border-radius: 2px;
 		width: 30px;
 		height: 30px;
-		// background-image: url(img/button-border-gray.png);
-		// background-repeat: repeat-x;
-		//
-
-		&:active,
-		&:hover {
-			text-decoration: none;
-
-			.top-row {
-				background-image: url(img/button-border-gray-hover.png);
-
-			}
-
-			@include media-query(retina) {
-				.top-row {
-					background-image: url(img/button-border-gray-hover-2x.png);
-				}
-			}
-
-		}
 
 		&:after {
 			content: '';
@@ -183,3 +163,19 @@
 	}
 }
 
+.icon {
+	&:active,
+	&:hover {
+		text-decoration: none;
+
+		.top-row {
+			background-image: url(img/button-border-gray-hover.png);
+
+			@include media-query(retina) {
+				background-image: url(img/button-border-gray-hover-2x.png);
+			}
+		}
+
+
+	}
+}

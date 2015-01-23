@@ -1,5 +1,7 @@
 
 .map-grid {
+	@extend %clearfix;
+
 	background-image: url(img/map-bg.png);
 	background-repeat: no-repeat;
 	background-size: 100%;
@@ -11,8 +13,6 @@
 	@include media-query(retina) {
 		background-image: url(img/map-bg-2x.png);
 	}
-
-	@extend %clearfix;
 
 	.square {
 		width: 8.33333%;
@@ -76,6 +76,14 @@
 	}
 
 	.decorator {
+		@include character-icon(decorator-1, 73px, 103px);
+		@include character-icon(decorator-2, 63px, 94px);
+		@include character-icon(decorator-3, 73px, 109px);
+		@include character-icon(decorator-4, 51px, 95px);
+		@include character-icon(decorator-5, 47px, 103px);
+		@include character-icon(decorator-6, 71px, 132px);
+		@include character-icon(decorator-7, 62px, 104px);
+		@include character-icon(decorator-8, 70px, 175px);
 		position: relative;
 
 		&:before {
@@ -88,15 +96,6 @@
 			bottom: -20px;
 			left: 50%;
 		}
-
-		@include character-icon(decorator-1, 73px, 103px);
-		@include character-icon(decorator-2, 63px, 94px);
-		@include character-icon(decorator-3, 73px, 109px);
-		@include character-icon(decorator-4, 51px, 95px);
-		@include character-icon(decorator-5, 47px, 103px);
-		@include character-icon(decorator-6, 71px, 132px);
-		@include character-icon(decorator-7, 62px, 104px);
-		@include character-icon(decorator-8, 70px, 175px);
 	}
 
 	.action,
