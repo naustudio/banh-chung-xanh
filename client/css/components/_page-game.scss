@@ -27,11 +27,16 @@
 		background: $inuit-base-grey-color;
 	}
 }
-.total-sponsor{
+.current-sponsor{
 	font-size: 32px;
 	color: $inuit-base-green-color;
 	font-weight: bold;
 
+}
+.total-sponsor {
+	span {
+		font-weight: bold;
+	}
 }
 .participant{
 	font-weight: bold;
