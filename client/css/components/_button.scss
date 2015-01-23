@@ -40,8 +40,11 @@
 		background-color: $bg-button-orange;
 	}
 
-	&.green {
-
+	&.gray {
+		&:before,
+		&:after {
+			background-image: url(img/button-border-white.png);
+		}
 	}
 }
 
@@ -52,4 +55,41 @@
 	font-size: 14px;
 	min-width: 191px;
 	line-height: $line-height;
+}
+
+// --------
+// Style of icon button
+// --------
+
+.icon-button {
+	text-align: center;
+
+	.icon {
+		position: relative;
+		background: #fff;
+		padding: 10px 0 5px;
+		display: inline-block;
+		color: #6d6e71;
+		text-align: center;
+		border-radius: 2px;
+		width: 30px;
+		height: 30px;
+		background-image: url(img/button-border-gray.png);
+		background-repeat: repeat-x;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		&:after {
+			content: '';
+			width: 100%;
+			height: 5px;
+			background: #c5c4c3;
+			position: absolute;
+			left: 2px;
+			bottom: -5px;
+			transform: skewX(30deg);
+		}
+	}
 }
