@@ -19,6 +19,7 @@ Router.route('/:lang', function() {
 	}
 	applyLanguage(this);
 	this.render('PageLanding');
+	this.render(null, {to: 'intro'});
 }, {
 	name: 'landing'
 });
@@ -26,7 +27,7 @@ Router.route('/:lang', function() {
 Router.route('/:lang/intro', function() {
 	applyLanguage(this);
 	this.render('PageLanding');
-	this.render('Intro', {to: 'intro'});
+	this.render('Introduction', {to: 'intro'});
 }, {
 	name: 'intro',
 	data: function() {
