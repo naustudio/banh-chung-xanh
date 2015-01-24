@@ -29,6 +29,10 @@
 			}
 		}
 		&.user {
+			-webkit-transition: all 100ms ease-out 0.5s;
+			-moz-transition: all 100ms ease-out 0.5s;
+			-o-transition: all 100ms ease-out 0.5s;
+			transition: all 100ms ease-out 0.5s;
 			position: absolute;
 		}
 		&.user-down {
@@ -60,6 +64,10 @@
 		}
 
 		&.banh-chung {
+			-webkit-transition: all 100ms ease-out 0.5s;
+			-moz-transition: all 100ms ease-out 0.5s;
+			-o-transition: all 100ms ease-out 0.5s;
+			transition: all 100ms ease-out 0.5s;
 			position: absolute;
 			background-image: url(img/characters/banh-chung.png);
 			background-size: 100%;

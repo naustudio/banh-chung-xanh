@@ -106,6 +106,7 @@ window.chungapp.render = window.chungapp.render || {};
 			return dynamicHTML;
 		},
 		renderSteps: function(direction, userPosition, chungPositions) {
+
 			console.log("==renderSteps");
 			console.log(direction, userPosition, chungPositions);
 
@@ -114,7 +115,7 @@ window.chungapp.render = window.chungapp.render || {};
 
 			var chungPosition;
 
-			$('.user').css({
+			$('.user').addClass('moving').css({
 				'left': ( dataX / 12 ) * 100 + '%',
 				'top': ( dataY / 12 ) * 100 + '%',
 			});
@@ -132,7 +133,13 @@ window.chungapp.render = window.chungapp.render || {};
 					});
 				}
 			}
+			var el = document.getElementsByClassName('user')[0];
+			el.addEventListener("transitionend", function() {
+				$(this).removeClass('moving');
+			}, true);
+
 		},
+
 		renderMapFromDoms: function() {
 
 		}
