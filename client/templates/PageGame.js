@@ -1,3 +1,6 @@
+/* © 2014 nau.com
+ * @author Phuong Vo
+ */
 var game = null;
 
 Template.PageGame.rendered = function() {

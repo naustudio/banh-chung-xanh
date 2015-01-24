@@ -81,7 +81,11 @@ window.chungapp.render = window.chungapp.render || {};
 	//define method, property here
 	MapRender.prototype = {
 		constructor: MapRender,
-		renderStatic: function(mapData, userPosition, chungPositions, diskPositions) {
+		renderStatic: function(mapDataObj) {
+			var mapData = mapDataObj.getStaticObjData();
+			var userPosition = mapDataObj.getUserPosition();
+			var chungPositions = mapDataObj.getChungList();
+			var diskPositions = mapDataObj.getDiskList();
 			var staticHTML = '';
 			this.mapGenerated = new Grid().reMap(mapData);
 			for (var y = 0; y < this.mapGenerated.length; y++) {
@@ -105,18 +109,19 @@ window.chungapp.render = window.chungapp.render || {};
 			}
 			return dynamicHTML;
 		},
-		renderSteps: function(direction, userPosition, chungPositions) {
-			console.log("==renderSteps");
+		renderSteps: function(direction, mapData) {
+			var userPosition = mapData.getUserPosition();
+			var chungPositions = mapData.getChungList();
+
+			console.log('==renderSteps');
 			console.log(direction, userPosition, chungPositions);
 
 			var dataX = userPosition.x;
 			var dataY = userPosition.y;
 
-			var chungPosition;
-
 			$('.user').css({
 				'left': ( dataX / 12 ) * 100 + '%',
-				'top': ( dataY / 12 ) * 100 + '%',
+				'top': ( dataY / 12 ) * 100 + '%'
 			});
 
 			var banhChungArray = $('.banh-chung');
@@ -128,7 +133,7 @@ window.chungapp.render = window.chungapp.render || {};
 
 					$(banhChungArray[i]).css({
 						'left': ( dataX / 12 ) * 100 + '%',
-						'top': ( dataY / 12 ) * 100 + '%',
+						'top': ( dataY / 12 ) * 100 + '%'
 					});
 				}
 			}
