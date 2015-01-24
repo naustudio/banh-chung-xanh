@@ -9,7 +9,7 @@
 }
 .game-intro-wrap {
 	max-width: 300px;
-	margin: auto;
+	margin: 20px auto;
 	font-size: 13px;
 	position: relative;
 }
@@ -152,6 +152,7 @@
 	font-size: 16px;
 	display: inline-block;
 	color: $inuit-base-grey-3-color;
+	line-height: 1;
 	.current-round {
 		font-size: 47px;
 	}
@@ -213,12 +214,15 @@
 		}
 	}
 }
+.intro-block-smartphone{
+	display: none;
+}
 
 @media(max-width: 1000px) {
 	.game-play {
 		width: 100%;
 	}
-	.current-sponsor, .total-sponsor, .progress, .description-progress, .block-control {
+	.intro-donate-pc{
 		display: none;
 	}
 	.game-intro {
@@ -248,5 +252,29 @@
 	}
 	.control-left, .control-right {
 		top: 43px;
+	}
+	.block-control {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+	}
+	.button-contron-top{
+		display: inline-block;
+		vertical-align: top;
+		margin-top: 7px;
+	}
+	.round {
+		margin-left: 70px;
+		font-size: 14px;
+	}
+	.back{
+		margin-right: 20px;
+	}
+	.round .current-round {
+		font-size: 34px;
+	}
+	.intro-block-smartphone{
+		display: block;
 	}
 }

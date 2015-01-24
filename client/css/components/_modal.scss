@@ -245,6 +245,20 @@ button.close {
 	margin-top: 20px;
 }
 
+.modal-status {
+	.modal-dialog{
+		margin-top: 100px;
+	}
+}
+
+.button-status {
+	position: absolute;
+	top: 30px;
+	left: 120px;
+	display: none;
+	cursor: pointer;
+}
+
 .error-block {
 	display: block;
 	margin-bottom: 5px;
@@ -271,9 +285,6 @@ button.close {
 		left: 0;
 	}
 }
-
-
-
 @media(max-width: 1000px) {
 	.modal {
 		height: 100%;
@@ -317,6 +328,7 @@ button.close {
 	}
 	.button-login {
 		left: 70px;
+		z-index: 1;
 	}
 	.modal-login .modal-content{
 		padding: 20px;
@@ -324,6 +336,11 @@ button.close {
 		.button-modal {
 			padding: 12px 23px;
 		}
+	}
+	.button-status {
+		display: block;
+		z-index: 1;
+
 	}
 
 }

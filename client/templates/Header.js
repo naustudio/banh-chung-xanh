@@ -24,6 +24,11 @@ Template.Header.events({
 		$(target).modal('show');
 	},
 
+	'click .button-status': function(e) {
+		var target = $(e.target).attr('data-target');
+		$(target).modal('show');
+	},
+
 	'click .logout': function(e) {
 		e.stopPropagation();
 		e.preventDefault();

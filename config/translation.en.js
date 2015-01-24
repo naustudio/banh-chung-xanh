@@ -30,6 +30,7 @@ i18n.map('en', {
 	'guide': 'Guide',
 	'play': 'Play',
 	'round': 'Round',
+	'status': 'Status',
 	'acceptedPrivacy': 'Accept our privacy policy and customer agreement'
 
 });
