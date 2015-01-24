@@ -24,9 +24,11 @@ i18n.map('vi', {
 	'or': 'Hoặc',
 	'shareAndSavePoints' :'Để chia sẻ là lưu điểm',
 	'fillEmail': 'Điền email',
+	'fill': 'Điền tên',
 	'hello': 'Xin chào',
 	'project_purpose': 'Mục đích dự án',
 	'guide': 'Xem hướng dẫn',
 	'play': 'Không cần, chơi luôn!',
-	'round': 'Vòng'
+	'round': 'Vòng',
+	'acceptedPrivacy': 'Bằng việc click vào các nút Đăng ký bạn đã đồng ý Điều khoản sử dụng'
 });
