@@ -64,6 +64,7 @@ MapData.DIRECTION_UP = 'up';
 MapData.DIRECTION_DOWN = 'down';
 MapData.DIRECTION_LEFT = 'left';
 MapData.DIRECTION_RIGHT = 'right';
+MapData.DIRECTION_DEFAULT = MapData.DIRECTION_DOWN;
 
 //type moving
 MapData.ACTION_NOTHING = 'action_nothing';
@@ -80,14 +81,14 @@ MapData.OBJECT_CONFIG = {
 	'3' : 'tree',
 	'4' : 'rock',
 	'5' : 'ground',
-	'6' : 'decorator-1',
-	'7' : 'decorator-2',
-	'8' : 'decorator-3',
-	'9' : 'decorator-4',
-	'10' : 'decorator-5',
-	'11' : 'decorator-6',
-	'12' : 'decorator-7',
-	'13' : 'decorator-8'
+	'6' : 'decorator decorator-1',
+	'7' : 'decorator decorator-2',
+	'8' : 'decorator decorator-3',
+	'9' : 'decorator decorator-4',
+	'10' : 'decorator decorator-5',
+	'11' : 'decorator decorator-6',
+	'12' : 'decorator decorator-7',
+	'13' : 'decorator decorator-8'
 };
 
 
