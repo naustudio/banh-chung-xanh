@@ -1,5 +1,5 @@
-Nau Studio's Tet 2015 Campaign
-==============================
+Bánh Chưng Xanh - Tet 2015 Campaign
+===================================
 
 __Code Name "Chưng Nhi"__
 
@@ -31,13 +31,15 @@ VERSIONING
 [TBD]
 
 TECHNICAL AND DEVELOPMENT SOLUTIONS
--------------------
+-----------------------------------
 - [NodeJS][]: Backbone for Meteor
 - [MeteorJS][]: Full stack application framework for writing JavaScript from backend to frontend
 - Meteor packages:
+	+ Meteor's built-in account management
 	+ fourseven:scss
 	+ iron:router
 	+ anti:i18n
+	+ themeteorchef:jquery-validation
 
 FOLDER STRUCTURE
 ----------------
@@ -80,6 +82,10 @@ Refer to documentation site of these components:
 KNOWLEDGE BASE:
 ---------------
 [TBC]
+
+---
+Copyright 2015 Nau Studio. 
+Licensed under MIT license
 
 [anti:i18n]: https://github.com/anticoders/meteor-i18n
 [iron:router]: https://github.com/EventedMind/iron-router/blob/devel/Guide.md
