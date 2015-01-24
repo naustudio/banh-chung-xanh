@@ -44,8 +44,8 @@ Game.prototype = {
 		console.log(this.mapResolver);
 		if (this.mapResolver.canGoUp()) {
 			var action = this.mapResolver.goUp();
-			if (action === chungapp.data.Map.ACTION_NOTHING) {
-				this.mapRender.renderSteps(Map.DIRECTION_UP, this.mapResolver.getUserPosition(),
+			if (action === chungapp.data.MapData.ACTION_NOTHING) {
+				this.mapRender.renderSteps(chungapp.data.MapData.DIRECTION_UP, this.mapResolver.getUserPosition(),
 					this.mapResolver.getChungList());
 			}
 
@@ -60,8 +60,8 @@ Game.prototype = {
 	goDown: function() {
 		if (this.mapResolver.canGoDown()) {
 			var action = this.mapResolver.goDown();
-			if (action === chungapp.data.Map.ACTION_NOTHING) {
-				this.mapRender.renderSteps(Map.DIRECTION_DOWN, this.mapResolver.getUserPosition(),
+			if (action === chungapp.data.MapData.ACTION_NOTHING) {
+				this.mapRender.renderSteps(chungapp.data.MapData.DIRECTION_DOWN, this.mapResolver.getUserPosition(),
 					this.mapResolver.getChungList());
 			}
 
@@ -76,8 +76,8 @@ Game.prototype = {
 	goLeft: function() {
 		if (this.mapResolver.canGoLeft()) {
 			var action = this.mapResolver.goLeft();
-			if (action === chungapp.data.Map.ACTION_NOTHING) {
-				this.mapRender.renderSteps(Map.DIRECTION_LEFT, this.mapResolver.getUserPosition(),
+			if (action === chungapp.data.MapData.ACTION_NOTHING) {
+				this.mapRender.renderSteps(chungapp.data.MapData.DIRECTION_LEFT, this.mapResolver.getUserPosition(),
 					this.mapResolver.getChungList());
 			}
 
@@ -92,8 +92,8 @@ Game.prototype = {
 	goRight: function() {
 		if (this.mapResolver.canGoRight()) {
 			var action = this.mapResolver.goRight();
-			if (action === chungapp.data.Map.ACTION_NOTHING) {
-				this.mapRender.renderSteps(Map.DIRECTION_RIGHT, this.mapResolver.getUserPosition(),
+			if (action === chungapp.data.MapData.ACTION_NOTHING) {
+				this.mapRender.renderSteps(chungapp.data.MapData.DIRECTION_RIGHT, this.mapResolver.getUserPosition(),
 					this.mapResolver.getChungList());
 			}
 
@@ -113,7 +113,7 @@ Game.prototype = {
 		if (this.mapResolver.canUndo()) {
 			var direction = this.mapResolver.undo().direction;
 			if (direction) {
-				this.mapRender.renderSteps(Map.DIRECTION_LEFT, this.mapResolver.getUserPosition(),
+				this.mapRender.renderSteps(MapData.DIRECTION_LEFT, this.mapResolver.getUserPosition(),
 					this.mapResolver.getChungList());
 			} else {
 				console.log('can not find direction');
