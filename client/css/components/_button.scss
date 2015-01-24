@@ -46,9 +46,15 @@
 	}
 
 	&.gray {
+		background: $bg-active-state;
+
 		&:before,
 		&:after {
 			background-image: url(img/button-border-white.png);
+
+			@include media-query(retina) {
+				background-image: url(img/button-border-white-2x.png);
+			}
 		}
 	}
 }
