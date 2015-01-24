@@ -5,6 +5,7 @@
 .header {
 	position: relative;
 	padding-top: 20px;
+	margin-bottom: 40px;
 }
 
 .header__menu-btn {
@@ -72,6 +73,7 @@
 		&:after {
 			background: #fff;
 		}
+
 		&:before {
 			top: 0;
 			transform: rotate(45deg);

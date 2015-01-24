@@ -1,9 +1,8 @@
-
 /* © 2014 nau.com
  * @author Phuong Vo
- * This class is represented for Map obj
+ * This class is represented for Map resolver
  * It contain:
- * 		1/ the map data and
+ * 		1/ the map data object ( MapData instance)
  * It provide
  * 		1/some methods to check whether we can go left, right, up or down
  * 		2/Methods to move left, right, up or down
@@ -74,11 +73,11 @@ window.chungapp.data = window.chungapp.data || {};
 		},
 
 		_getMapWidth: function() {
-			return this.mapRectangleData[0].length;
+			return this.mapData.getMapWidth();
 		},
 
 		_getMapHeight: function() {
-			return this.mapRectangleData.length;
+			return this.mapData.getMapHeight();
 		},
 
 		_getChungAtPosition: function(position) {
@@ -198,7 +197,7 @@ window.chungapp.data = window.chungapp.data || {};
 
 			this.log('goUp == action = ' + resultAction);
 
-			return window.chungapp.data.MapData.ACTION_NOTHING;
+			return resultAction;
 		},
 
 		canGoUp: function() {
@@ -242,7 +241,7 @@ window.chungapp.data = window.chungapp.data || {};
 
 			this.log('goDown == action = ' + resultAction);
 
-			return window.chungapp.data.MapData.ACTION_NOTHING;
+			return resultAction;
 		},
 
 		canGoDown: function() {
@@ -286,7 +285,7 @@ window.chungapp.data = window.chungapp.data || {};
 
 			this.log('goLeft == action = ' + resultAction);
 
-			return window.chungapp.data.MapData.ACTION_NOTHING;
+			return resultAction;
 		},
 
 		canGoLeft: function() {
@@ -330,7 +329,7 @@ window.chungapp.data = window.chungapp.data || {};
 
 			this.log('goRight == action = ' + resultAction);
 
-			return window.chungapp.data.MapData.ACTION_NOTHING;
+			return resultAction;
 		},
 
 		canGoRight: function() {

@@ -19,6 +19,7 @@ i18n.map('vi', {
 	'sponsors_date': 'Ngày đóng góp',
 	'challenge_friend': 'Thách thức bạn bè',
 	'login': 'Đăng nhập',
+	'logout': 'Đăng xuất',
 	'cancel': 'Hủy',
 	'register': 'Đăng ký',
 	'or': 'Hoặc',

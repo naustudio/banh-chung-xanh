@@ -1,6 +1,10 @@
 /* © 2014 nau.com
  * @author Phuong Vo
- *
+ *  This class represent the Map object
+ *  It provide functionalities:
+ *        	+It parse data from map01.json
+ *        	+provide constant data like which data is Chung object, Disk Object
+ *        	+provide some method to get the nessary object
  */
 window.chungapp = window.chungapp || {};
 window.chungapp.data = window.chungapp.data || {};
@@ -161,6 +165,15 @@ MapData.prototype = {
 
 	setDiskList: function(newDiskList) {
 		this._diskItems = newDiskList;
+	},
+
+	//map information
+	getMapWidth: function() {
+		return this._staticObj[0].length;
+	},
+
+	getMapHeight: function() {
+		return this._staticObj.length;
 	},
 
 	clone: function() {

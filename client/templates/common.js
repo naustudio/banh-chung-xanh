@@ -1,7 +1,7 @@
 Template.ApplicationLayout.rendered = function() {
 	$(document).ready(function() {
-		$('.modal-introduction').modal('show');
 
+		//TODO: move this into introdonate helper
 		//render progress bar sponsor in intro page
 		var percentageSponsor;
 		var currentSponsor = $('#currentSponsor').text();
