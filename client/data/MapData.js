@@ -53,6 +53,7 @@ MapData.WALL_OBJ = -1;
 MapData.USER_OBJ = 0;
 MapData.CHUNG_OBJ = 1;
 MapData.DISK_OBJ = 2;
+MapData.GROUND_OBJ = 5;
 
 //direction
 MapData.DIRECTION_UP = 'up';
@@ -66,14 +67,23 @@ MapData.ACTION_MOVING = 'action_moving';
 MapData.ACTION_PUSHING_CHUNG = 'action_pushing_chung';
 
 //constant-static for class here
-Map.OBJECT_CONFIG = {
+MapData.OBJECT_CONFIG = {
 	'-2': 'space',
 	'-1': 'wall',
 	'0' : 'user',
-	'1' : 'chung',
-	'2' : 'disk',
+	'1' : 'banh-chung',
+	'2' : 'goal',
 	'3' : 'tree',
-	'4' : 'rock'
+	'4' : 'rock',
+	'5' : 'ground',
+	'6' : 'decorator-1',
+	'7' : 'decorator-2',
+	'8' : 'decorator-3',
+	'9' : 'decorator-4',
+	'10' : 'decorator-5',
+	'11' : 'decorator-6',
+	'12' : 'decorator-7',
+	'13' : 'decorator-8'
 };
 
 

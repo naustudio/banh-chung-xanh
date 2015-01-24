@@ -93,13 +93,16 @@ window.chungapp.data = window.chungapp.data || {};
 
 		//validate move or push
 		_validateMove: function(nextPosition) {
-			var isSpaceAtNextPosition = nextPosition && this.mapRectangleData[nextPosition.y][nextPosition.x] === window.chungapp.data.MapData.SPACE_OBJ;
+			var isSpaceAtNextPosition = nextPosition &&
+				(this.mapRectangleData[nextPosition.y][nextPosition.x] === window.chungapp.data.MapData.SPACE_OBJ ||
+					this.mapRectangleData[nextPosition.y][nextPosition.x] === window.chungapp.data.MapData.GROUND_OBJ);
 
 			return isSpaceAtNextPosition;
 		},
 
 		_validatePush: function(nextPosition, nextOfNextPosition) {
-			var isNextOfNextAvailable = nextOfNextPosition && this.mapRectangleData[nextOfNextPosition.y][nextOfNextPosition.x] === window.chungapp.data.MapData.SPACE_OBJ;
+			var isNextOfNextAvailable = nextOfNextPosition && (this.mapRectangleData[nextOfNextPosition.y][nextOfNextPosition.x] === window.chungapp.data.MapData.SPACE_OBJ ||
+						this.mapRectangleData[nextOfNextPosition.y][nextOfNextPosition.x] === window.chungapp.data.MapData.GROUND_OBJ);
 			var isChungAtNextPosition = nextPosition && this.mapRectangleData[nextPosition.y][nextPosition.x] === window.chungapp.data.MapData.CHUNG_OBJ;
 
 			return isNextOfNextAvailable && isChungAtNextPosition;
@@ -160,7 +163,8 @@ window.chungapp.data = window.chungapp.data || {};
 			if (this.canGoUp()) {
 				//if can go up => do action : move user or move chung
 				var upPosition = this._getPostionByAction(this.getUserPosition(), window.chungapp.data.MapData.DIRECTION_UP);
-				var isSpaceAtUpPosition = upPosition && this.mapRectangleData[upPosition.y][upPosition.x] === window.chungapp.data.MapData.SPACE_OBJ;
+				var isSpaceAtUpPosition = upPosition && (this.mapRectangleData[upPosition.y][upPosition.x] === window.chungapp.data.MapData.SPACE_OBJ ||
+															this.mapRectangleData[upPosition.y][upPosition.x] === window.chungapp.data.MapData.GROUND_OBJ);
 				if (isSpaceAtUpPosition) {
 					//only move user
 					this._setUserPosition(upPosition.x, upPosition.y);
@@ -201,7 +205,8 @@ window.chungapp.data = window.chungapp.data || {};
 			if (this.canGoDown()) {
 				//if can go down => do action : move user or move chung
 				var downPosition = this._getPostionByAction(this.getUserPosition(), window.chungapp.data.MapData.DIRECTION_UP);
-				var isSpaceAtDownPosition = downPosition && this.mapRectangleData[downPosition.y][downPosition.x] === window.chungapp.data.MapData.SPACE_OBJ;
+				var isSpaceAtDownPosition = downPosition && (this.mapRectangleData[downPosition.y][downPosition.x] === window.chungapp.data.MapData.SPACE_OBJ ||
+																	this.mapRectangleData[downPosition.y][downPosition.x] === window.chungapp.data.MapData.GROUND_OBJ);
 				if (isSpaceAtDownPosition) {
 					//only move user
 					this._setUserPosition(downPosition.x, downPosition.y);
@@ -242,7 +247,8 @@ window.chungapp.data = window.chungapp.data || {};
 			if (this.canGoLeft()) {
 				//if can go down => do action : move user or move chung
 				var leftPosition = this._getPostionByAction(this.getUserPosition(), window.chungapp.data.MapData.DIRECTION_LEFT);
-				var isSpaceALeftPosition = leftPosition && this.mapRectangleData[leftPosition.y][leftPosition.x] === window.chungapp.data.MapData.SPACE_OBJ;
+				var isSpaceALeftPosition = leftPosition && (this.mapRectangleData[leftPosition.y][leftPosition.x] === window.chungapp.data.MapData.SPACE_OBJ ||
+														this.mapRectangleData[leftPosition.y][leftPosition.x] === window.chungapp.data.MapData.GROUND_OBJ);
 				if (isSpaceALeftPosition) {
 					//only move user
 					this._setUserPosition(leftPosition.x, leftPosition.y);
@@ -283,7 +289,8 @@ window.chungapp.data = window.chungapp.data || {};
 			if (this.canGoRight()) {
 				//if can go down => do action : move user or move chung
 				var rightPosition = this._getPostionByAction(this.getUserPosition(), window.chungapp.data.MapData.DIRECTION_RIGHT);
-				var isSpaceARightPosition = rightPosition && this.mapRectangleData[rightPosition.y][rightPosition.x] === window.chungapp.data.MapData.SPACE_OBJ;
+				var isSpaceARightPosition = rightPosition && (this.mapRectangleData[rightPosition.y][rightPosition.x] === window.chungapp.data.MapData.SPACE_OBJ ||
+															this.mapRectangleData[rightPosition.y][rightPosition.x] === window.chungapp.data.MapData.GROUND_OBJ);
 				if (isSpaceARightPosition) {
 					//only move user
 					this._setUserPosition(rightPosition.x, rightPosition.y);
