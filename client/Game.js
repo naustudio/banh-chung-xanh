@@ -25,18 +25,22 @@ Game.prototype = {
 	mapData: null,
 	mapRender: null,
 
+	originalMapData: null,		//store the old data for restart
+
 	initialize : function() {
 		this.mapResolver = new chungapp.data.Map();
 		this.mapRender = new chungapp.render.MapRender();
-		this.mapData = new chungapp.data.MapData();
+		this.originalMapData = new chungapp.data.MapData();
 	},
 
 	setJSONMapData: function(mapJSONData) {
-		this.mapData.setJSONData(mapJSONData);
-		this.mapResolver.setMapData(this.mapData);
+		this.originalMapData.setJSONData(mapJSONData);
+
 	},
 
 	startGame: function() {
+		this.mapData = this.originalMapData.clone();
+		this.mapResolver.setMapData(this.mapData);
 		this.mapRenderedHTML = this.mapRender.renderStatic(this.mapData);
 	},
 
@@ -103,7 +107,7 @@ Game.prototype = {
 	},
 
 	restart: function() {
-		console.log('in progress');
+		this.startGame();
 	},
 
 	undo: function() {

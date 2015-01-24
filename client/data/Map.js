@@ -37,11 +37,11 @@ window.chungapp.data = window.chungapp.data || {};
 								//	{
 								//		direction : MapData.DIRECTION_UP,
 								//		action: MapData.ACTION_MOVING,
-								//		userPosition: Position
+								//		userPosition: MapData.Position
 								//		chungPosition: [
-								//			Position,
-								//			Position,
-								//			Position
+								//			MapData.Position,
+								//			MapData.Position,
+								//			MapData.Position
 								//		]
 								//	}
 		solutions: null,			//it is array of MapData.DIRECTION_UP, MapData.DIRECTION_DOWN, MapData.DIRECTION_LEFT
@@ -416,7 +416,7 @@ window.chungapp.data = window.chungapp.data || {};
 			this._initData(mapData);
 		},
 
-		log: function (msg) {
+		log: function(msg) {
 			if (this.isDebug) {
 				console.log(msg);
 			}

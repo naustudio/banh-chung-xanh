@@ -143,6 +143,10 @@ MapData.prototype = {
 		return this._staticObj;
 	},
 
+	setStaticObjData: function(newObj) {
+		this._staticObj = newObj;
+	},
+
 	getUserPosition: function() {
 		return this._userPosition;
 	},
@@ -178,6 +182,39 @@ MapData.prototype = {
 
 	clone: function() {
 		var newMapData = new MapData();
+
+		//set static objec
+		var newStaticObj = [];
+		for (var i = 0; i < this._staticObj.length; i++) {
+			var heightItems = this._staticObj[i];
+			var newHeightData = [];
+			for (var j = 0; j < heightItems.length; j++) {
+				newHeightData.push(heightItems[j]);
+			}
+
+			newStaticObj.push(newHeightData);
+		}
+		newMapData.setStaticObjData(newStaticObj);
+
+		//set user position
+		newMapData.setUserPosition(this._userPosition.clone());
+
+		//set chung list
+		var newChungList = [];
+		for (i = 0; i < this._chungItems.length; i++) {
+			var chungItemObj = this._chungItems[i];
+			newChungList.push(chungItemObj.clone());
+		}
+		newMapData.setChungList(newChungList);
+
+		//set disk list
+		var newDiskList = [];
+		for (i = 0; i < this._diskItems.length; i++) {
+			var diskItemObj = this._diskItems[i];
+			newDiskList.push(diskItemObj.clone());
+		}
+		newMapData.setDiskList(newDiskList);
+
 		return newMapData;
 	}
 };
