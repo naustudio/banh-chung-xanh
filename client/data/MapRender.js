@@ -9,47 +9,27 @@ window.chungapp.render = window.chungapp.render || {};
 (function(render) {
 	'use strict';
 
-	//constant-static for class here
-	Square.OBJECT_CONFIG = {
-		'-2': 'space',
-		'-1': 'wall',
-		'0' : 'user',
-		'1' : 'banh-chung',
-		'2' : 'goal',
-		'3' : 'tree',
-		'4' : 'rock',
-		'5' : 'ground',
-		'6' : 'decorator-1',
-		'7' : 'decorator-2',
-		'8' : 'decorator-3',
-		'9' : 'decorator-4',
-		'10' : 'decorator-5',
-		'11' : 'decorator-6',
-		'12' : 'decorator-7',
-		'13' : 'decorator-8'
-	};
-
 	function Square(x, y, shape) {
 		if (x !== undefined && y !== undefined && shape !== undefined) {
 			this.x = x;
 			this.y = y;
-			if ( shape !== 1 && shape !== 0 ) {
+			if ( shape !== window.chungapp.data.MapData.CHUNG_OBJ && shape !== window.chungapp.data.MapData.USER_OBJ ) {
 				this.shape = shape;
-			} else if ( shape === 1 || shape === 0 || shape === 2) {
-				this.shape = 5;
+			} else if ( shape === window.chungapp.data.MapData.CHUNG_OBJ || shape === window.chungapp.data.MapData.USER_OBJ || shape === window.chungapp.data.MapData.DISK_OBJ) {
+				this.shape = window.chungapp.data.MapData.GROUND_OBJ;
 			} else {
-				this.shape = -2;
+				this.shape = window.chungapp.data.MapData.SPACE_OBJ;
 			}
 		} else {
 			this.x = -1;
 			this.y = -1;
-			this.shape = -2;
+			this.shape = window.chungapp.data.MapData.SPACE_OBJ;
 		}
 	}
 	Square.prototype = {
 		constructor : Square,
 		shapeClass: function() {
-			return Square.OBJECT_CONFIG[this.shape.toString()];
+			return window.chungapp.data.MapData.OBJECT_CONFIG[this.shape.toString()];
 		}
 	};
 
@@ -87,6 +67,7 @@ window.chungapp.render = window.chungapp.render || {};
 			var chungPositions = mapDataObj.getChungList();
 			var diskPositions = mapDataObj.getDiskList();
 			var staticHTML = '';
+
 			this.mapGenerated = new Grid().reMap(mapData);
 			for (var y = 0; y < this.mapGenerated.length; y++) {
 				for (var x = 0; x < this.mapGenerated[y].length; x++) {
@@ -94,18 +75,22 @@ window.chungapp.render = window.chungapp.render || {};
 				}
 			}
 			for (var i = 0; i < diskPositions.length; i++) {
-				staticHTML += '<div style="left:' + ( diskPositions[i].x / 12 ) * 100 + '%; top: ' + ( diskPositions[i].y / 12 ) * 100 + '%;" data-x="' + x + '" data-y="' + y + '" class="square goal"></div>';
+				staticHTML += '<div style="left:' + ( diskPositions[i].x / mapDataObj.getMapWidth() ) * 100 + '%; top: ' + ( diskPositions[i].y / mapDataObj.getMapHeight() ) * 100 + '%;" data-x="' + x + '" data-y="' + y + '" class="square goal"></div>';
 			}
-			var dynamicHTML = this.renderDynamic('down', userPosition, chungPositions);
+			var dynamicHTML = this.renderDynamic(window.chungapp.data.MapData.DIRECTION_DEFAULT, mapDataObj);
 			staticHTML += dynamicHTML;
 			// TODO : Render HTML to append to grid the user, disks and chung
 			return staticHTML;
 		},
-		renderDynamic: function(direction, userPosition, chungPositions) {
+		renderDynamic: function(direction, mapDataObj) {
 			var dynamicHTML = '';
-			dynamicHTML += '<div style="left:' + ( userPosition.x / 12 ) * 100 + '%; top: ' + ( userPosition.y / 12 ) * 100 + '%;" data-x="' + userPosition.x + '" data-y="' + userPosition.y + '" class="square user user-' + direction + '"></div>';
+
+			var userPosition = mapDataObj.getUserPosition();
+			var chungPositions = mapDataObj.getChungList();
+
+			dynamicHTML += '<div style="left:' + ( userPosition.x / mapDataObj.getMapWidth() ) * 100 + '%; top: ' + ( userPosition.y / mapDataObj.getMapHeight() ) * 100 + '%;" data-x="' + userPosition.x + '" data-y="' + userPosition.y + '" class="square user user-' + direction + '"></div>';
 			for (var i = 0; i < chungPositions.length; i++) {
-				dynamicHTML += '<div style="left:' + ( chungPositions[i].x / 12 ) * 100 + '%; top: ' + ( chungPositions[i].y / 12 ) * 100 + '%;" data-x="' + chungPositions[i].x + '" data-y="' + chungPositions[i].y + '" class="square banh-chung"></div>';
+				dynamicHTML += '<div style="left:' + ( chungPositions[i].x / mapDataObj.getMapWidth() ) * 100 + '%; top: ' + ( chungPositions[i].y / mapDataObj.getMapHeight() ) * 100 + '%;" data-x="' + chungPositions[i].x + '" data-y="' + chungPositions[i].y + '" class="square banh-chung"></div>';
 			}
 			return dynamicHTML;
 		},
@@ -119,7 +104,7 @@ window.chungapp.render = window.chungapp.render || {};
 			var dataX = userPosition.x;
 			var dataY = userPosition.y;
 
-			$('.user').css({
+			$('.user').addClass('moving').css({
 				'left': ( dataX / 12 ) * 100 + '%',
 				'top': ( dataY / 12 ) * 100 + '%'
 			});
@@ -137,7 +122,13 @@ window.chungapp.render = window.chungapp.render || {};
 					});
 				}
 			}
+			var el = document.getElementsByClassName('user')[0];
+			el.addEventListener("transitionend", function() {
+				$(this).removeClass('moving');
+			}, true);
+
 		},
+
 		renderMapFromDoms: function() {
 
 		}

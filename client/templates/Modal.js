@@ -186,6 +186,11 @@
           : this.hide.call(this)
       }, this))
 
+      this.$element.on('click', '.modal-dialog',  $.proxy(function (e) {
+          if (e.target !== e.currentTarget) return
+          this.hide.call(this);
+      }, this))
+
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
 
       this.$backdrop.addClass('in')

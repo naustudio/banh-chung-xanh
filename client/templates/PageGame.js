@@ -49,15 +49,15 @@ Template.PageGame.events({
 		game.goDown();
 	},
 
-	'click .play-again .icon-arrow' : function(/*event*/) {
+	'click .icon-arrow' : function(/*event*/) {
 		console.log('==restart');
 		//var game = Session.get('game');
 		game.restart();
 	},
 
-	'click .icon-foot' : function(/*event*/) {
+	'click .icon-back' : function(/*event*/) {
 		console.log('==undo');
 		//var game = Session.get('game');
-		game.restart();
+		game.undo();
 	}
 });
