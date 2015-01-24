@@ -50,6 +50,7 @@
 		}
 
 		&.goal {
+			position: absolute;
 			background-image: url(img/characters/goal.png);
 			background-size: 100%;
 
@@ -119,6 +120,27 @@
 	.action {
 		top: 15px;
 		bottom: auto;
+	}
+}
+
+// user animation
+.user-down.moving {
+	position: relative;
+	overflow: hidden;
+
+	&:before {
+		content: '';
+		width: 595%;
+		height: 100%;
+		background-image: url(/img/animation/user-down.png);
+		display: block;
+		position: absolute;
+		background-size: auto 100%;
+		animation: moving $timing-character steps(6, end) infinite;
+
+		@include media-query(retina) {
+			width: 600%;
+		}
 	}
 }
 

@@ -89,6 +89,9 @@ window.chungapp.render = window.chungapp.render || {};
 					staticHTML += '<div data-x="' + x + '" data-y="' + y + '" class="square '+ this.mapGenerated[y][x].shapeClass() + '"></div>';
 				}
 			}
+			for (var i = 0; i < diskPositions.length; i++) {
+				staticHTML += '<div style="left:' + ( diskPositions[i].x / 12 ) * 100 + '%; top: ' + ( diskPositions[i].y / 12 ) * 100 + '%;" data-x="' + x + '" data-y="' + y + '" class="square goal"></div>';
+			}
 			var dynamicHTML = this.renderDynamic('down', userPosition, chungPositions);
 			staticHTML += dynamicHTML;
 			// TODO : Render HTML to append to grid the user, disks and chung
