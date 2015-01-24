@@ -14,10 +14,19 @@ window.chungapp.render = window.chungapp.render || {};
 		'-2': 'space',
 		'-1': 'wall',
 		'0' : 'user',
-		'1' : 'chung',
-		'2' : 'disk',
+		'1' : 'banh-chung',
+		'2' : 'goal',
 		'3' : 'tree',
-		'4' : 'rock'
+		'4' : 'rock',
+		'5' : 'ground',
+		'6' : 'decorator-1',
+		'7' : 'decorator-2',
+		'8' : 'decorator-3',
+		'9' : 'decorator-4',
+		'10' : 'decorator-5',
+		'11' : 'decorator-6',
+		'12' : 'decorator-7',
+		'13' : 'decorator-8'
 	};
 
 	function Square(x, y, shape) {
@@ -26,6 +35,8 @@ window.chungapp.render = window.chungapp.render || {};
 			this.y = y;
 			if ( shape !== 1 && shape !== 0 ) {
 				this.shape = shape;
+			} else if ( shape === 1 || shape === 0 || shape === 2) {
+				this.shape = 5;
 			} else {
 				this.shape = -2;
 			}
@@ -70,7 +81,7 @@ window.chungapp.render = window.chungapp.render || {};
 	//define method, property here
 	MapRender.prototype = {
 		constructor: MapRender,
-		renderStatic: function(mapData, userPostion, chungPosition, diskPosition) {
+		renderStatic: function(mapData, userPosition, chungPositions, diskPositions) {
 			var staticHTML = '';
 			this.mapGenerated = new Grid().reMap(mapData);
 			for (var y = 0; y < this.mapGenerated.length; y++) {
@@ -78,10 +89,49 @@ window.chungapp.render = window.chungapp.render || {};
 					staticHTML += '<div data-x="' + x + '" data-y="' + y + '" class="square '+ this.mapGenerated[y][x].shapeClass() + '"></div>';
 				}
 			}
+			var dynamicHTML = this.renderDynamic('down', userPosition, chungPositions);
+			staticHTML += dynamicHTML;
+			// TODO : Render HTML to append to grid the user, disks and chung
 			return staticHTML;
+		},
+		renderDynamic: function(direction, userPosition, chungPositions) {
+			var dynamicHTML = '';
+			dynamicHTML += '<div style="left:' + ( userPosition.x / 12 ) * 100 + '%; top: ' + ( userPosition.y / 12 ) * 100 + '%;" data-x="' + userPosition.x + '" data-y="' + userPosition.y + '" class="square user user-' + direction + '"></div>';
+			for (var i = 0; i < chungPositions.length; i++) {
+				dynamicHTML += '<div style="left:' + ( chungPositions[i].x / 12 ) * 100 + '%; top: ' + ( chungPositions[i].y / 12 ) * 100 + '%;" data-x="' + chungPositions[i].x + '" data-y="' + chungPositions[i].y + '" class="square banh-chung"></div>';
+			}
+			return dynamicHTML;
 		},
 		renderSteps: function(direction, userPosition, chungPositions) {
 			console.log("==renderSteps");
+			console.log(direction, userPosition, chungPositions);
+
+			var dataX = userPosition.x;
+			var dataY = userPosition.y;
+
+			var chungPosition;
+
+			$('.user').css({
+				'left': ( dataX / 12 ) * 100 + '%',
+				'top': ( dataY / 12 ) * 100 + '%',
+			});
+
+			var banhChungArray = $('.banh-chung');
+
+			if (banhChungArray) {
+				for (var i = 0; i < banhChungArray.length; i++) {
+					dataX = chungPositions[i].x;
+					dataY = chungPositions[i].y;
+
+					$(banhChungArray[i]).css({
+						'left': ( dataX / 12 ) * 100 + '%',
+						'top': ( dataY / 12 ) * 100 + '%',
+					});
+				}
+			}
+		},
+		renderMapFromDoms: function() {
+
 		}
 	};
 

@@ -7,63 +7,49 @@ chungapp = chungapp || {};
 data = chungapp.data || {};
 render = chungapp.render || {};
 
-function Game(map) {
-	this.initData(map);
+function Game() {
+	this.initialize();
 }
 
 //define method, property here
 Game.prototype = {
 	constructor: Game,
 
+	mapRenderedHTML: null,
+
+	mapResolver: null,
 	mapData: null,
 	mapRender: null,
-	mapRenderedHTML: null,
-	map: null,
 
-	initData: function(map) {
-		this.mapData = new chungapp.data.Map(map);
+	initialize : function() {
+		this.mapResolver = new chungapp.data.Map();
 		this.mapRender = new chungapp.render.MapRender();
-		if (map) {
-			this.map = this._cloneMap(map);
-
-			this.mapRenderedHTML = this.mapRender.renderStatic(this.mapData.getMapData(),
-				this.mapData.getUserPosition(), this.mapData.getChungList(), this.mapData.getDiskList());
-		}
+		this.mapData = new chungapp.data.MapData();
 	},
 
-	_cloneMap : function(map) {
-		var newMap = [];
-		for (var i = 0; i < map.length; i++) {
-			var row = map[i];
-			var newRow = [];
-			for (var j = 0; j < row.length; j++) {
-				newRow.push(row[j]);
-			}
-
-			newMap.push(newRow);
-		}
-
-		return newMap;
+	setJSONMapData: function(mapJSONData) {
+		this.mapData.setJSONData(mapJSONData);
+		this.mapResolver.setMapData(this.mapData);
+		this.mapRenderedHTML = this.mapRender.renderStatic(this.mapResolver.getMapData(),
+				this.mapResolver.getUserPosition(), this.mapResolver.getChungList(), this.mapResolver.getDiskList());
 	},
 
-	setMapData: function(map) {
-		this.map = this._cloneMap(map);
-		this.mapData.setMapData(map);
-		this.mapRenderedHTML = this.mapRender.renderStatic(this.mapData.getMapData(),
-				this.mapData.getUserPosition(), this.mapData.getChungList(), this.mapData.getDiskList());
+	startGame: function() {
+		this.mapRenderedHTML = this.mapRender.renderStatic(this.mapResolver.getMapData(),
+				this.mapResolver.getUserPosition(), this.mapResolver.getChungList(), this.mapResolver.getDiskList());
 	},
 
 	//public method
 	goUp: function() {
-		console.log(this.mapData);
-		if (this.mapData.canGoUp()) {
-			var action = this.mapData.goUp();
+		console.log(this.mapResolver);
+		if (this.mapResolver.canGoUp()) {
+			var action = this.mapResolver.goUp();
 			if (action === chungapp.data.Map.ACTION_NOTHING) {
-				this.mapRender.renderSteps(Map.DIRECTION_UP, this.mapData.getUserPosition(),
-					this.mapData.getChungList());
+				this.mapRender.renderSteps(Map.DIRECTION_UP, this.mapResolver.getUserPosition(),
+					this.mapResolver.getChungList());
 			}
 
-			if (this.mapData.isWin()) {
+			if (this.mapResolver.isWin()) {
 				console.log('==win==');
 			}
 		} else {
@@ -72,14 +58,14 @@ Game.prototype = {
 	},
 
 	goDown: function() {
-		if (this.mapData.canGoDown()) {
-			var action = this.mapData.goDown();
+		if (this.mapResolver.canGoDown()) {
+			var action = this.mapResolver.goDown();
 			if (action === chungapp.data.Map.ACTION_NOTHING) {
-				this.mapRender.renderSteps(Map.DIRECTION_DOWN, this.mapData.getUserPosition(),
-					this.mapData.getChungList());
+				this.mapRender.renderSteps(Map.DIRECTION_DOWN, this.mapResolver.getUserPosition(),
+					this.mapResolver.getChungList());
 			}
 
-			if (this.mapData.isWin()) {
+			if (this.mapResolver.isWin()) {
 				console.log('==win');
 			}
 		} else {
@@ -88,14 +74,14 @@ Game.prototype = {
 	},
 
 	goLeft: function() {
-		if (this.mapData.canGoLeft()) {
-			var action = this.mapData.goLeft();
+		if (this.mapResolver.canGoLeft()) {
+			var action = this.mapResolver.goLeft();
 			if (action === chungapp.data.Map.ACTION_NOTHING) {
-				this.mapRender.renderSteps(Map.DIRECTION_LEFT, this.mapData.getUserPosition(),
-					this.mapData.getChungList());
+				this.mapRender.renderSteps(Map.DIRECTION_LEFT, this.mapResolver.getUserPosition(),
+					this.mapResolver.getChungList());
 			}
 
-			if (this.mapData.isWin()) {
+			if (this.mapResolver.isWin()) {
 				console.log('==win');
 			}
 		} else {
@@ -104,14 +90,14 @@ Game.prototype = {
 	},
 
 	goRight: function() {
-		if (this.mapData.canGoRight()) {
-			var action = this.mapData.goRight();
+		if (this.mapResolver.canGoRight()) {
+			var action = this.mapResolver.goRight();
 			if (action === chungapp.data.Map.ACTION_NOTHING) {
-				this.mapRender.renderSteps(Map.DIRECTION_RIGHT, this.mapData.getUserPosition(),
-					this.mapData.getChungList());
+				this.mapRender.renderSteps(Map.DIRECTION_RIGHT, this.mapResolver.getUserPosition(),
+					this.mapResolver.getChungList());
 			}
 
-			if (this.mapData.isWin()) {
+			if (this.mapResolver.isWin()) {
 				console.log('==win');
 			}
 		} else {
@@ -120,15 +106,15 @@ Game.prototype = {
 	},
 
 	restart: function() {
-		this.setMapData(this.map);
+		console.log('in progress');
 	},
 
 	undo: function() {
-		if (this.mapData.canUndo()) {
-			var direction = this.mapData.undo().direction;
+		if (this.mapResolver.canUndo()) {
+			var direction = this.mapResolver.undo().direction;
 			if (direction) {
-				this.mapRender.renderSteps(Map.DIRECTION_LEFT, this.mapData.getUserPosition(),
-					this.mapData.getChungList());
+				this.mapRender.renderSteps(Map.DIRECTION_LEFT, this.mapResolver.getUserPosition(),
+					this.mapResolver.getChungList());
 			} else {
 				console.log('can not find direction');
 			}
@@ -138,7 +124,7 @@ Game.prototype = {
 	},
 
 	getNumStep: function() {
-		return this.mapData.getHistoryNum();
+		return this.mapResolver.getHistoryNum();
 	}
 };
 
