@@ -19,10 +19,17 @@ Template.Menu.helpers({
 	isShow: function() {
 		var isShow = '';
 
+		var $menuWrap = $('.menu-list-wrap');
+
 		if (Session.get('show-menu')) {
 			isShow = 'show';
 
-			$('.menu-list-wrap').eq(0).fadeIn(300);
+
+			$menuWrap
+				.eq(0).fadeIn(300)
+				.on('touchmove', function(e) {
+					e.preventDefault();
+				});
 		} else {
 			$('.menu-list-wrap').eq(0).fadeOut(300);
 		}
