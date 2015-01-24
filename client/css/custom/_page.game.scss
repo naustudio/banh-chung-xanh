@@ -31,14 +31,14 @@
 		&.user {
 			position: absolute;
 		}
-		&.user-down {
-			background-image: url(img/characters/main-character.png);
-			background-size: 100%;
+		// &.user-down {
+		// 	background-image: url(img/characters/main-character.png);
+		// 	background-size: 100%;
 
-			@include media-query(retina) {
-				background-image: url(img/characters2x/main-character.png);
-			}
-		}
+		// 	@include media-query(retina) {
+		// 		background-image: url(img/characters2x/main-character.png);
+		// 	}
+		// }
 
 		&.rock {
 			background-image: url(img/characters/rock.png);
@@ -122,6 +122,27 @@
 	}
 }
 
+// user animation
+.user-down.moving {
+	position: relative;
+	overflow: hidden;
+
+	&:before {
+		content: '';
+		width: 595%;
+		height: 100%;
+		background-image: url(/img/animation/user-down.png);
+		display: block;
+		position: absolute;
+		background-size: auto 100%;
+		animation: moving $timing-character steps(6, end) infinite;
+
+		@include media-query(retina) {
+			width: 600%;
+		}
+	}
+}
+
 // Temp
 .sample-character {
 	.item {
@@ -133,3 +154,4 @@
 		}
 	}
 }
+

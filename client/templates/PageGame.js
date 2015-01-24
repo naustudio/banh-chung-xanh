@@ -4,7 +4,8 @@ Template.PageGame.rendered = function() {
 	Meteor.call('map', 0, function(error, result) {
 		//we parse the game and init the game
 		game = new window.chungapp.Game();
-		game.setMapData(result.data);
+		game.setJSONMapData(result);
+		game.startGame();
 
 		Session.set('game', game);
 	});

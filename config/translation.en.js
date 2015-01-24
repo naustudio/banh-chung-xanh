@@ -24,9 +24,13 @@ i18n.map('en', {
 	'or': 'Or',
 	'shareAndSavePoints' :'Share and save points',
 	'fillEmail': 'Fill in email',
+	'fillName': 'Fill in name',
 	'hello': 'Hello',
 	'project_purpose': 'The purpose of Project',
 	'guide': 'Guide',
 	'play': 'Play',
-	'round': 'Round'
+	'round': 'Round',
+	'status': 'Status',
+	'acceptedPrivacy': 'Accept our privacy policy and customer agreement'
+
 });

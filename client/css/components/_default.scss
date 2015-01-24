@@ -1,4 +1,6 @@
 body {
+	@extend %clearfix;
+
 	font-family: 'Open Sans';
 	font-weight: normal;
 	font-size: 14px;
@@ -24,8 +26,6 @@ a {
 }
 
 * {
-	user-select: none;
-	// tap-highlight-color: rgb(0, 0, 0, 0);
 	-webkit-tap-highlight-color: transparent;
 }
 
