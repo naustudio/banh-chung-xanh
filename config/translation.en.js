@@ -28,5 +28,6 @@ i18n.map('en', {
 	'project_purpose': 'The purpose of Project',
 	'guide': 'Guide',
 	'play': 'Play',
-	'round': 'Round'
+	'round': 'Round',
+	'status': 'Status'
 });

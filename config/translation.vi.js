@@ -28,5 +28,6 @@ i18n.map('vi', {
 	'project_purpose': 'Mục đích dự án',
 	'guide': 'Xem hướng dẫn',
 	'play': 'Không cần, chơi luôn!',
-	'round': 'Vòng'
+	'round': 'Vòng',
+	'status': 'Tình trạng'
 });

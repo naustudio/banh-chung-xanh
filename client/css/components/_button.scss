@@ -208,14 +208,21 @@
 	.challenge {
 		height: 36px;
 		line-height: 36px;
+
+		.button__challenge {
+			margin-right: -10px;
+		}
+
 		&:before, &:after {
 			background-size: contain;
 		}
 
 	}
+
 	.icon-button-top {
 		display: none;
 	}
+
 	.icon-button-bottom {
 		left: 20px;
 		right: inherit;
