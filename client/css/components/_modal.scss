@@ -211,16 +211,18 @@ button.close {
 	border-radius: 10px;
 	line-height: 1;
 }
-.login-email{
+.login-form-input{
 	height: 45px;
 	border: 1px solid $inuit-base-grey-2-color;
 	width: 100%;
 	padding-left: 30px;
+	margin-top: 5px;
 }
 .login-or{
 	position: relative;
 	padding-top: 27px;
 	padding-bottom: 15px;
+
 	span{
 		z-index: 1;
 		position: relative;
@@ -238,7 +240,7 @@ button.close {
 	font-size: 20px;
 	color: $inuit-base-grey-color;
 }
-.button-login-footer{
+.button-login-footer {
 	text-align: right;
 	margin-top: 20px;
 }
@@ -248,6 +250,7 @@ button.close {
 		margin-top: 100px;
 	}
 }
+
 .button-status {
 	position: absolute;
 	top: 30px;
@@ -256,7 +259,32 @@ button.close {
 	cursor: pointer;
 }
 
+.error-block {
+	display: block;
+	margin-bottom: 5px;
+	text-align: left;
+}
 
+.error {
+	color: #f00;
+}
+
+.privacy-block {
+	position: relative;
+	margin-top: 5px;
+
+	label {
+		float: left;
+		text-align: left;
+		padding-left: 25px;
+	}
+
+	input {
+		position: absolute;
+		top: 6px;
+		left: 0;
+	}
+}
 @media(max-width: 1000px) {
 	.modal {
 		height: 100%;
