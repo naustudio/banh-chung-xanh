@@ -48,6 +48,7 @@ window.chungapp.data = window.chungapp.data || {};
 		solutions: null,			//it is array of MapData.DIRECTION_UP, MapData.DIRECTION_DOWN, MapData.DIRECTION_LEFT
 								//MapData.DIRECTION_RIGHT
 
+		isDebug : true,
 
 		//private
 		_initData: function(mapData) {
@@ -91,19 +92,24 @@ window.chungapp.data = window.chungapp.data || {};
 			return null;
 		},
 
+		_isSpaceAtPosition: function(position) {
+			var isSpaceAtNextPosition = position &&
+				(this.mapRectangleData[position.y][position.x] === window.chungapp.data.MapData.SPACE_OBJ ||
+					this.mapRectangleData[position.y][position.x] === window.chungapp.data.MapData.GROUND_OBJ);
+
+			return isSpaceAtNextPosition && !this._getChungAtPosition(position);
+		},
+
 		//validate move or push
 		_validateMove: function(nextPosition) {
-			var isSpaceAtNextPosition = nextPosition &&
-				(this.mapRectangleData[nextPosition.y][nextPosition.x] === window.chungapp.data.MapData.SPACE_OBJ ||
-					this.mapRectangleData[nextPosition.y][nextPosition.x] === window.chungapp.data.MapData.GROUND_OBJ);
-
-			return isSpaceAtNextPosition;
+			//nextPosition = space && dont have Chung at nextPosition
+			return this._isSpaceAtPosition(nextPosition);
 		},
 
 		_validatePush: function(nextPosition, nextOfNextPosition) {
-			var isNextOfNextAvailable = nextOfNextPosition && (this.mapRectangleData[nextOfNextPosition.y][nextOfNextPosition.x] === window.chungapp.data.MapData.SPACE_OBJ ||
-						this.mapRectangleData[nextOfNextPosition.y][nextOfNextPosition.x] === window.chungapp.data.MapData.GROUND_OBJ);
-			var isChungAtNextPosition = nextPosition && this.mapRectangleData[nextPosition.y][nextPosition.x] === window.chungapp.data.MapData.CHUNG_OBJ;
+			//nextOfNextPosition = space && dont have Chung at nextOfNextPosition && chung at NextPosition
+			var isNextOfNextAvailable = this._isSpaceAtPosition(nextOfNextPosition);
+			var isChungAtNextPosition = nextPosition && this._getChungAtPosition(nextPosition);
 
 			return isNextOfNextAvailable && isChungAtNextPosition;
 		},
@@ -163,8 +169,8 @@ window.chungapp.data = window.chungapp.data || {};
 			if (this.canGoUp()) {
 				//if can go up => do action : move user or move chung
 				var upPosition = this._getPostionByAction(this.getUserPosition(), window.chungapp.data.MapData.DIRECTION_UP);
-				var isSpaceAtUpPosition = upPosition && (this.mapRectangleData[upPosition.y][upPosition.x] === window.chungapp.data.MapData.SPACE_OBJ ||
-															this.mapRectangleData[upPosition.y][upPosition.x] === window.chungapp.data.MapData.GROUND_OBJ);
+				var isSpaceAtUpPosition = this._isSpaceAtPosition(upPosition);
+
 				if (isSpaceAtUpPosition) {
 					//only move user
 					this._setUserPosition(upPosition.x, upPosition.y);
@@ -180,7 +186,7 @@ window.chungapp.data = window.chungapp.data || {};
 
 						resultAction = window.chungapp.data.MapData.ACTION_PUSHING_CHUNG;
 					} else {
-						console.log('===can goUp && up position is not space but can not find the Chung ==> check again the logic');
+						this.log('===can goUp && up position is not space but can not find the Chung ==> check again the logic');
 					}
 				}
 			}
@@ -189,6 +195,8 @@ window.chungapp.data = window.chungapp.data || {};
 				//add to history
 				this._addToHistory(window.chungapp.data.MapData.DIRECTION_UP, resultAction);
 			}
+
+			this.log('goUp == action = ' + resultAction);
 
 			return window.chungapp.data.MapData.ACTION_NOTHING;
 		},
@@ -204,9 +212,9 @@ window.chungapp.data = window.chungapp.data || {};
 
 			if (this.canGoDown()) {
 				//if can go down => do action : move user or move chung
-				var downPosition = this._getPostionByAction(this.getUserPosition(), window.chungapp.data.MapData.DIRECTION_UP);
-				var isSpaceAtDownPosition = downPosition && (this.mapRectangleData[downPosition.y][downPosition.x] === window.chungapp.data.MapData.SPACE_OBJ ||
-																	this.mapRectangleData[downPosition.y][downPosition.x] === window.chungapp.data.MapData.GROUND_OBJ);
+				var downPosition = this._getPostionByAction(this.getUserPosition(), window.chungapp.data.MapData.DIRECTION_DOWN);
+				var isSpaceAtDownPosition = this._isSpaceAtPosition(downPosition);
+
 				if (isSpaceAtDownPosition) {
 					//only move user
 					this._setUserPosition(downPosition.x, downPosition.y);
@@ -216,13 +224,13 @@ window.chungapp.data = window.chungapp.data || {};
 					//move the chung and move user
 					this._setUserPosition(downPosition.x, downPosition.y);
 					var chungObj = this._getChungAtPosition(downPosition);
-					var downDownPosition = this._getPostionByAction(downPosition, window.chungapp.data.MapData.DIRECTION_UP);
+					var downDownPosition = this._getPostionByAction(downPosition, window.chungapp.data.MapData.DIRECTION_DOWN);
 					if (chungObj && downDownPosition) {
 						chungObj.setData(downDownPosition.x, downDownPosition.y);
 
 						resultAction = window.chungapp.data.MapData.ACTION_PUSHING_CHUNG;
 					} else {
-						console.log('===can goUp && up position is not space but can not find the Chung ==> check again the logic');
+						this.log('===can goUp && up position is not space but can not find the Chung ==> check again the logic');
 					}
 				}
 			}
@@ -231,6 +239,8 @@ window.chungapp.data = window.chungapp.data || {};
 				//add to history
 				this._addToHistory(window.chungapp.data.MapData.DIRECTION_DOWN, resultAction);
 			}
+
+			this.log('goDown == action = ' + resultAction);
 
 			return window.chungapp.data.MapData.ACTION_NOTHING;
 		},
@@ -247,8 +257,8 @@ window.chungapp.data = window.chungapp.data || {};
 			if (this.canGoLeft()) {
 				//if can go down => do action : move user or move chung
 				var leftPosition = this._getPostionByAction(this.getUserPosition(), window.chungapp.data.MapData.DIRECTION_LEFT);
-				var isSpaceALeftPosition = leftPosition && (this.mapRectangleData[leftPosition.y][leftPosition.x] === window.chungapp.data.MapData.SPACE_OBJ ||
-														this.mapRectangleData[leftPosition.y][leftPosition.x] === window.chungapp.data.MapData.GROUND_OBJ);
+				var isSpaceALeftPosition = this._isSpaceAtPosition(leftPosition);
+
 				if (isSpaceALeftPosition) {
 					//only move user
 					this._setUserPosition(leftPosition.x, leftPosition.y);
@@ -264,7 +274,7 @@ window.chungapp.data = window.chungapp.data || {};
 
 						resultAction = window.chungapp.data.MapData.ACTION_PUSHING_CHUNG;
 					} else {
-						console.log('===can goUp && up position is not space but can not find the Chung ==> check again the logic');
+						this.log('===can goUp && up position is not space but can not find the Chung ==> check again the logic');
 					}
 				}
 			}
@@ -273,6 +283,8 @@ window.chungapp.data = window.chungapp.data || {};
 				//add to history
 				this._addToHistory(window.chungapp.data.MapData.DIRECTION_LEFT, resultAction);
 			}
+
+			this.log('goLeft == action = ' + resultAction);
 
 			return window.chungapp.data.MapData.ACTION_NOTHING;
 		},
@@ -289,8 +301,8 @@ window.chungapp.data = window.chungapp.data || {};
 			if (this.canGoRight()) {
 				//if can go down => do action : move user or move chung
 				var rightPosition = this._getPostionByAction(this.getUserPosition(), window.chungapp.data.MapData.DIRECTION_RIGHT);
-				var isSpaceARightPosition = rightPosition && (this.mapRectangleData[rightPosition.y][rightPosition.x] === window.chungapp.data.MapData.SPACE_OBJ ||
-															this.mapRectangleData[rightPosition.y][rightPosition.x] === window.chungapp.data.MapData.GROUND_OBJ);
+				var isSpaceARightPosition = this._isSpaceAtPosition(rightPosition);
+
 				if (isSpaceARightPosition) {
 					//only move user
 					this._setUserPosition(rightPosition.x, rightPosition.y);
@@ -306,7 +318,7 @@ window.chungapp.data = window.chungapp.data || {};
 
 						resultAction = window.chungapp.data.MapData.ACTION_PUSHING_CHUNG;
 					} else {
-						console.log('===can goUp && up position is not space but can not find the Chung ==> check again the logic');
+						this.log('===can goUp && up position is not space but can not find the Chung ==> check again the logic');
 					}
 				}
 			}
@@ -315,6 +327,8 @@ window.chungapp.data = window.chungapp.data || {};
 				//add to history
 				this._addToHistory(window.chungapp.data.MapData.DIRECTION_RIGHT, resultAction);
 			}
+
+			this.log('goRight == action = ' + resultAction);
 
 			return window.chungapp.data.MapData.ACTION_NOTHING;
 		},
@@ -401,6 +415,12 @@ window.chungapp.data = window.chungapp.data || {};
 
 		setMapData: function(mapData) {
 			this._initData(mapData);
+		},
+
+		log: function (msg) {
+			if (this.isDebug) {
+				console.log(msg);
+			}
 		}
 
 	};
