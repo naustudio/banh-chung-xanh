@@ -28,15 +28,17 @@
 				background-image: url(img/characters2x/wall.png);
 			}
 		}
+		&.user {
+			position: absolute;
+		}
+		&.user-down {
+			background-image: url(img/characters/main-character.png);
+			background-size: 100%;
 
-		// &.user-down {
-		// 	background-image: url(img/characters/main-character.png);
-		// 	background-size: 100%;
-
-		// 	@include media-query(retina) {
-		// 		background-image: url(img/characters2x/main-character.png);
-		// 	}
-		// }
+			@include media-query(retina) {
+				background-image: url(img/characters2x/main-character.png);
+			}
+		}
 
 		&.rock {
 			background-image: url(img/characters/rock.png);
@@ -48,6 +50,7 @@
 		}
 
 		&.goal {
+			position: absolute;
 			background-image: url(img/characters/goal.png);
 			background-size: 100%;
 
@@ -57,6 +60,7 @@
 		}
 
 		&.banh-chung {
+			position: absolute;
 			background-image: url(img/characters/banh-chung.png);
 			background-size: 100%;
 
@@ -151,4 +155,3 @@
 		}
 	}
 }
-

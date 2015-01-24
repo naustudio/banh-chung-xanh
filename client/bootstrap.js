@@ -6,7 +6,7 @@
 /*global i18n*/
 
 // default fallback language
-i18n.setDefaultLanguage('en');
+i18n.setDefaultLanguage('vi');
 // debug
 i18n.showMissing(true);
 

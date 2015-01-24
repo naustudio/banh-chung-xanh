@@ -1,6 +1,10 @@
 /* © 2014 nau.com
  * @author Phuong Vo
- *
+ *  This class represent the Map object
+ *  It provide functionalities:
+ *        	+It parse data from map01.json
+ *        	+provide constant data like which data is Chung object, Disk Object
+ *        	+provide some method to get the nessary object
  */
 window.chungapp = window.chungapp || {};
 window.chungapp.data = window.chungapp.data || {};
@@ -53,6 +57,7 @@ MapData.WALL_OBJ = -1;
 MapData.USER_OBJ = 0;
 MapData.CHUNG_OBJ = 1;
 MapData.DISK_OBJ = 2;
+MapData.GROUND_OBJ = 5;
 
 //direction
 MapData.DIRECTION_UP = 'up';
@@ -66,14 +71,23 @@ MapData.ACTION_MOVING = 'action_moving';
 MapData.ACTION_PUSHING_CHUNG = 'action_pushing_chung';
 
 //constant-static for class here
-Map.OBJECT_CONFIG = {
+MapData.OBJECT_CONFIG = {
 	'-2': 'space',
 	'-1': 'wall',
 	'0' : 'user',
-	'1' : 'chung',
-	'2' : 'disk',
+	'1' : 'banh-chung',
+	'2' : 'goal',
 	'3' : 'tree',
-	'4' : 'rock'
+	'4' : 'rock',
+	'5' : 'ground',
+	'6' : 'decorator-1',
+	'7' : 'decorator-2',
+	'8' : 'decorator-3',
+	'9' : 'decorator-4',
+	'10' : 'decorator-5',
+	'11' : 'decorator-6',
+	'12' : 'decorator-7',
+	'13' : 'decorator-8'
 };
 
 
@@ -151,6 +165,15 @@ MapData.prototype = {
 
 	setDiskList: function(newDiskList) {
 		this._diskItems = newDiskList;
+	},
+
+	//map information
+	getMapWidth: function() {
+		return this._staticObj[0].length;
+	},
+
+	getMapHeight: function() {
+		return this._staticObj.length;
 	},
 
 	clone: function() {
