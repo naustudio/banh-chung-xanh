@@ -16,26 +16,26 @@
 }
 .chose-round{
 	position: absolute;
-	background-image: url(img/round.png);
 	height: 80px;
 	width: 16%;
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
 	cursor: pointer;
+	background-image: url(img/round_level1.png);
 	&:active{
 		margin-top: 1px;
 	}
 }
 
 .round-1 {
-	left: 63%;
+	left: 65%;
 	top: 0;
-
 }
 .round-2 {
 	left: 40%;
 	top: 10%;
+	background-image: url(img/round_level2.png);
 }
 .round-3 {
 	left: 10%;
@@ -44,6 +44,7 @@
 .round-4 {
 	left: 15%;
 	top: 42%;
+	background-image: url(img/round_level3.png);
 
 }
 .round-5 {
@@ -53,10 +54,12 @@
 .round-6 {
 	left: 58%;
 	top: 37%;
+	background-image: url(img/round_level2.png);
 }
 .round-7 {
 	left: 45%;
 	top: 26%;
+	background-image: url(img/round_level3.png);
 }
 .round-8 {
 	left: 78%;
@@ -69,6 +72,20 @@
 .round-10 {
 	left: 17%;
 	top: 72%;
+	background-image: url(img/round_level3.png);
+}
+
+.unlock {
+	background-position: bottom;
+	width: 13%;
+}
+
+.unlock.round-10 {
+	background-image: url(img/unlock3.png);
+}
+
+.unlock.round-5 {
+	background-image: url(img/unlock1.png);
 }
 
 .no-margin-right {
@@ -81,6 +98,9 @@
 	}
 	.map-list-bg {
 		margin-top: 20px;
+	}
+	.chose-round {
+
 	}
 }
 
