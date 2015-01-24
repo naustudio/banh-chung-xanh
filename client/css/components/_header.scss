@@ -98,5 +98,10 @@
 		opacity: 0;
 		visibility: hidden;
 	}
+	.header__menu-btn {
+		&:before {
+			content: '';
+		}
+	}
 }
 

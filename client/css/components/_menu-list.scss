@@ -4,7 +4,7 @@
 .menu-list-wrap {
 	width: 100%;
 	height: 100%;
-	position: absolute;
+	position: fixed;
 	top: -50px;
 	left: 0;
 	z-index: 2;
@@ -15,6 +15,7 @@
 	// scss-lint:enable DuplicateProperty
 	transition: top 0.5s ease-in-out;
 	display: none;
+	overflow: hidden;
 
 	&:after {
 		content: '';

@@ -13,3 +13,5 @@ jquery
 http
 service-configuration
 accounts-facebook
+themeteorchef:jquery-validation
+accounts-password
