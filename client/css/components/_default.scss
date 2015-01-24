@@ -1,4 +1,6 @@
 body {
+	@extend %clearfix;
+
 	font-family: 'Open Sans';
 	font-weight: normal;
 	font-size: 14px;
