@@ -1,7 +1,7 @@
 /* © 2014 NauStud.io
  * @author Thanh Tran
  */
-/*global Model:true, Sponsor:true, Player:true*/
+/*global Model:true, Sponsor:true, User:true*/
 /**
  * Prototype for new model object
  * These models are for data validation only,
@@ -99,10 +99,10 @@ Sponsor = Model.extend({
 });
 
 /**
- * Player object model
+ * User / Player object model
  * @class
  */
-Player = Model.extend({
+User = Model.extend({
 	name: STRING,
 	avatar: STRING,
 	duration: NUMBER,

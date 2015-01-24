@@ -18,20 +18,28 @@ Router.route('/:lang', function() {
 		return;
 	}
 	applyLanguage(this);
-	this.render('PageGame');
+	this.render('PageLanding');
+	this.render(null, {to: 'intro'});
 }, {
-	name: 'home'
+	name: 'landing'
 });
 
 Router.route('/:lang/intro', function() {
 	applyLanguage(this);
-	this.render('PageGame');
-	this.render('Intro', {to: 'intro'});
+	this.render('PageLanding');
+	this.render('Introduction', {to: 'intro'});
 }, {
 	name: 'intro',
 	data: function() {
 		return {lang: Session.get('languge') };
 	}
+});
+
+Router.route('/:lang/game/:mapId', function() {
+	applyLanguage(this);
+	this.render('PageGame');
+}, {
+	name: 'game'
 });
 
 Router.route('/:lang/sponsors', function() {
@@ -89,11 +97,13 @@ function applyLanguage(route) {
 }
 
 function getPreferredLanguage() {
-	//normalize language
-	var preferredLanguage = window.navigator.userLanguage || window.navigator.language;
+	// get browser's prefered language
+	// var preferredLanguage = window.navigator.userLanguage || window.navigator.language;
+	// we prefer Vietnamese language for now
+	var preferredLanguage = 'vi';
 	console.log('preferredLanguage:', preferredLanguage);
 
-	//normalize to get just language code
+	// normalize to get just language code
 	if (preferredLanguage.indexOf('vi') >= 0) {
 		preferredLanguage = 'vi';
 	} else if (preferredLanguage.indexOf('en') >= 0) {
@@ -101,6 +111,7 @@ function getPreferredLanguage() {
 	} else {
 		preferredLanguage = Session.get('language');
 	}
+
 	return preferredLanguage;
 }
 

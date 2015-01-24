@@ -17,41 +17,45 @@ Template.PageGame.rendered = function() {
 Template.PageGame.helpers({
 	userStep: function() {
 		return game ? game.getNumStep() : 0;
+	},
+
+	mapId: function() {
+		return Router.current().params.mapId;
 	}
 });
 
 Template.PageGame.events({
-	'click .control-top' : function(event) {
+	'click .control-top' : function(/*event*/) {
 		console.log('==move top');
 		//var game = Session.get('game');
 		game.goUp();
 	},
 
-	'click .control-left' : function(event) {
+	'click .control-left' : function(/*event*/) {
 		console.log('==move left');
 		//var game = Session.get('game');
 		game.goLeft();
 	},
 
-	'click .control-right' : function(event) {
+	'click .control-right' : function(/*event*/) {
 		console.log('==move right');
 		//var game = Session.get('game');
 		game.goRight();
 	},
 
-	'click .control-bottom' : function(event) {
+	'click .control-bottom' : function(/*event*/) {
 		console.log('==move bottom');
 		//var game = Session.get('game');
 		game.goDown();
 	},
 
-	'click .play-again .icon-arrow' : function(event) {
+	'click .play-again .icon-arrow' : function(/*event*/) {
 		console.log('==restart');
 		//var game = Session.get('game');
 		game.restart();
 	},
 
-	'click .icon-foot' : function(event) {
+	'click .icon-foot' : function(/*event*/) {
 		console.log('==undo');
 		//var game = Session.get('game');
 		game.restart();
