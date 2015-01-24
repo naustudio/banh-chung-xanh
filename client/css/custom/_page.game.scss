@@ -28,7 +28,9 @@
 				background-image: url(img/characters2x/wall.png);
 			}
 		}
-
+		&.user {
+			position: absolute;
+		}
 		&.user-down {
 			background-image: url(img/characters/main-character.png);
 			background-size: 100%;
@@ -57,6 +59,7 @@
 		}
 
 		&.banh-chung {
+			position: absolute;
 			background-image: url(img/characters/banh-chung.png);
 			background-size: 100%;
 
