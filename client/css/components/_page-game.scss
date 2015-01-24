@@ -110,15 +110,19 @@
 	}
 	&:active{
 		i{
-			color: $inuit-base-grey-color;
+			color: $inuit-base-white-color;
 		}
 	}
+
 }
 
 .control-top {
 	left: 64px;
 	i{
 		color: $color-button-top;
+	}
+	&:active{
+		background: $color-button-top;
 	}
 }
 
@@ -127,6 +131,9 @@
 	bottom: 0;
 	i{
 		color: $color-button-bottom;
+	}
+	&:active{
+		background: $color-button-bottom;
 	}
 }
 
@@ -137,6 +144,9 @@
 		color: $color-button-left;
 	}
 	margin-bottom: 4px;
+	&:active{
+		background: $color-button-left;
+	}
 }
 
 .control-right {
@@ -146,6 +156,9 @@
 		color: $color-button-right;
 	}
 	margin-bottom: 4px;
+	&:active{
+		background: $color-button-right;
+	}
 }
 
 .round{
