@@ -2,12 +2,12 @@
 	<header class="header">
 		<button class="header__menu-btn"><span class="header__menu-icon {{isActive}}"></span></button>
 		{{#if currentUser}}
-			<span class="button-login logout" >Log out</span>
+			<span class="button-login logout" >{{t "logout"}}</span>
 		{{else}}
-			<span class="button-login" data-target=".modal-login" >Log in</span>
+			<span class="button-login" data-target=".modal-login" >{{t "login"}}</span>
 		{{/if}}
 		<span class="button-status" data-target=".modal-status" >{{t "status"}}</span>
-		<h1 class="header__page-title">Chưng Nhi</h1>
+		<h1 class="header__page-title">Bánh Chưng Xanh</h1>
 		<!--<div class="intro-block-smartphone"> {{> IntroBlockControl}}</div>-->
 	</header>
 </template>
