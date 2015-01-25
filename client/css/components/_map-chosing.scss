@@ -1,7 +1,7 @@
 .map-wrap{
-	//background-image: url(img/bg_chooser.png);
-	height: 42.86em;
-	width: 42.86em;
+	background-image: url(img/bg_chooser.jpg);
+	height: 562px;
+	max-width: 564px;
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -94,10 +94,6 @@
 @media (max-width: 1000px) {
 	.map-wrap {
 		width: 100%;
-		height: auto;
-	}
-	.map-list-bg {
-		margin-top: 20px;
 	}
 	.chose-round {
 
