@@ -13,3 +13,13 @@
 		}
 	}
 }
+
+@mixin map-list-item($name) {
+
+	background-image: url(img/#{$name}.png);
+
+	@include media-query(retina) {
+		background-image: url(img/#{$name}-2x.png);
+	}
+
+}

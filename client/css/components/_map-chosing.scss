@@ -1,8 +1,8 @@
 .map-wrap{
-	background-image: url(img/bg_chooser.jpg);
-	height: 562px;
+	//background-image: url(img/bg_chooser.jpg);
+	//height: 40.14em;
 	max-width: 564px;
-	background-position: center;
+	background-position: top;
 	background-size: contain;
 	background-repeat: no-repeat;
 	position: relative;
@@ -14,6 +14,25 @@
 	width: 100%;
 	max-width: 42.86em;
 }
+
+.img-no-retina {
+	display: block;
+}
+
+.img-retina {
+	display: none;
+}
+
+@include media-query(retina) {
+	.img-no-retina {
+		display: none;
+	}
+
+	.img-retina {
+		display: block;
+	}
+}
+
 .chose-round{
 	position: absolute;
 	height: 80px;
@@ -22,7 +41,7 @@
 	background-size: contain;
 	background-repeat: no-repeat;
 	cursor: pointer;
-	background-image: url(img/round_level1.png);
+	@include map-list-item(round1);
 	&:active{
 		margin-top: 1px;
 	}
@@ -34,8 +53,8 @@
 }
 .round-2 {
 	left: 40%;
-	top: 10%;
-	background-image: url(img/round_level2.png);
+	top: 12%;
+	@include map-list-item(round2);
 }
 .round-3 {
 	left: 10%;
@@ -44,7 +63,7 @@
 .round-4 {
 	left: 15%;
 	top: 42%;
-	background-image: url(img/round_level3.png);
+	@include map-list-item(round3);
 
 }
 .round-5 {
@@ -54,12 +73,12 @@
 .round-6 {
 	left: 58%;
 	top: 37%;
-	background-image: url(img/round_level2.png);
+	@include map-list-item(round3);
 }
 .round-7 {
 	left: 45%;
 	top: 26%;
-	background-image: url(img/round_level3.png);
+	@include map-list-item(round2);
 }
 .round-8 {
 	left: 78%;
@@ -72,7 +91,7 @@
 .round-10 {
 	left: 17%;
 	top: 72%;
-	background-image: url(img/round_level3.png);
+	@include map-list-item(round3);
 }
 
 .unlock {
@@ -81,22 +100,29 @@
 }
 
 .unlock.round-10 {
-	background-image: url(img/unlock3.png);
+	@include map-list-item(unlock3);
 }
 
 .unlock.round-5 {
-	background-image: url(img/unlock1.png);
+	@include map-list-item(unlock1);
 }
 
 .no-margin-right {
 	margin-right: 0 !important;
 }
-@media (max-width: 1000px) {
+@include media-query (portable) {
 	.map-wrap {
 		width: 100%;
+		margin-top: 0;
 	}
 	.chose-round {
-
+		width: 12%;
+		background-position: top;
+	}
+	.map-list-bg {
+		margin-top: 40px;
+	}
+	.unlock {
+		background-position: center;
 	}
 }
-

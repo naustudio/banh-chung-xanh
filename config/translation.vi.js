@@ -32,5 +32,6 @@ i18n.map('vi', {
 	'play': 'Không cần, chơi luôn!',
 	'round': 'Vòng',
 	'status': 'Tình trạng',
-	'acceptedPrivacy': 'Bằng việc click vào các nút Đăng ký bạn đã đồng ý Điều khoản sử dụng'
+	'acceptedPrivacy': 'Bằng việc click vào các nút Đăng ký bạn đã đồng ý Điều khoản sử dụng',
+	'project_guide': 'Hướng dẫn'
 });

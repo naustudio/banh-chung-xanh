@@ -32,6 +32,7 @@ i18n.map('en', {
 	'play': 'Play',
 	'round': 'Round',
 	'status': 'Status',
-	'acceptedPrivacy': 'Accept our privacy policy and customer agreement'
+	'acceptedPrivacy': 'Accept our privacy policy and customer agreement',
+	'project_guide': 'Guide'
 
 });
