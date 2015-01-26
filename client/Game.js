@@ -107,13 +107,19 @@ Game.prototype = {
 	},
 
 	restart: function() {
-		this.startGame();
+		this.mapData = this.originalMapData.clone();
+		this.mapResolver.setMapData(this.mapData);
+		this.mapRender.renderSteps(chungapp.data.MapData.DIRECTION_RIGHT, this.mapData);
 	},
 
 	undo: function() {
 		if (this.mapResolver.canUndo()) {
-			var direction = this.mapResolver.undo().direction;
-			if (direction) {
+			var action = this.mapResolver.undo().action;
+			if (action !== chungapp.data.MapData.ACTION_NOTHING) {
+				console.log('==== userPosition = ' + this.mapData.getUserPosition());
+				window.userPos = this.mapData.getUserPosition();
+				console.log('==== chungList = ' + this.mapData.getChungList());
+				window.chungList = this.mapData.getChungList();
 				this.mapRender.renderSteps(chungapp.data.MapData.DIRECTION_LEFT, this.mapData);
 			} else {
 				console.log('can not find direction');

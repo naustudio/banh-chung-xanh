@@ -171,6 +171,7 @@ window.chungapp.data = window.chungapp.data || {};
 				var isSpaceAtUpPosition = this._isSpaceAtPosition(upPosition);
 
 				if (isSpaceAtUpPosition) {
+					this._addToHistory(window.chungapp.data.MapData.DIRECTION_UP, window.chungapp.data.MapData.ACTION_MOVING);
 					//only move user
 					this._setUserPosition(upPosition.x, upPosition.y);
 
@@ -181,6 +182,8 @@ window.chungapp.data = window.chungapp.data || {};
 					var chungObj = this._getChungAtPosition(upPosition);
 					var upUpPosition = this._getPostionByAction(upPosition, window.chungapp.data.MapData.DIRECTION_UP);
 					if (chungObj && upUpPosition) {
+						this._addToHistory(window.chungapp.data.MapData.DIRECTION_UP, window.chungapp.data.MapData.ACTION_PUSHING_CHUNG);
+
 						chungObj.setData(upUpPosition.x, upUpPosition.y);
 
 						resultAction = window.chungapp.data.MapData.ACTION_PUSHING_CHUNG;
@@ -190,10 +193,12 @@ window.chungapp.data = window.chungapp.data || {};
 				}
 			}
 
+			/*
 			if (resultAction !== window.chungapp.data.MapData.ACTION_NOTHING) {
 				//add to history
 				this._addToHistory(window.chungapp.data.MapData.DIRECTION_UP, resultAction);
 			}
+			*/
 
 			this.log('goUp == action = ' + resultAction);
 
@@ -215,17 +220,21 @@ window.chungapp.data = window.chungapp.data || {};
 				var isSpaceAtDownPosition = this._isSpaceAtPosition(downPosition);
 
 				if (isSpaceAtDownPosition) {
+					this._addToHistory(window.chungapp.data.MapData.DIRECTION_DOWN, window.chungapp.data.MapData.ACTION_MOVING);
 					//only move user
 					this._setUserPosition(downPosition.x, downPosition.y);
 
 					resultAction = window.chungapp.data.MapData.ACTION_MOVING;
 				} else {
-					//move the chung and move user
-					this._setUserPosition(downPosition.x, downPosition.y);
 					var chungObj = this._getChungAtPosition(downPosition);
 					var downDownPosition = this._getPostionByAction(downPosition, window.chungapp.data.MapData.DIRECTION_DOWN);
 					if (chungObj && downDownPosition) {
+						this._addToHistory(window.chungapp.data.MapData.DIRECTION_DOWN, window.chungapp.data.MapData.ACTION_PUSHING_CHUNG);
+
+						//move the chung items
 						chungObj.setData(downDownPosition.x, downDownPosition.y);
+						//move the chung and move user
+						this._setUserPosition(downPosition.x, downPosition.y);
 
 						resultAction = window.chungapp.data.MapData.ACTION_PUSHING_CHUNG;
 					} else {
@@ -233,11 +242,12 @@ window.chungapp.data = window.chungapp.data || {};
 					}
 				}
 			}
-
+			/*
 			if (resultAction !== window.chungapp.data.MapData.ACTION_NOTHING) {
 				//add to history
 				this._addToHistory(window.chungapp.data.MapData.DIRECTION_DOWN, resultAction);
 			}
+			*/
 
 			this.log('goDown == action = ' + resultAction);
 
@@ -259,17 +269,21 @@ window.chungapp.data = window.chungapp.data || {};
 				var isSpaceALeftPosition = this._isSpaceAtPosition(leftPosition);
 
 				if (isSpaceALeftPosition) {
+					this._addToHistory(window.chungapp.data.MapData.DIRECTION_LEFT, window.chungapp.data.MapData.ACTION_MOVING);
 					//only move user
 					this._setUserPosition(leftPosition.x, leftPosition.y);
 
 					resultAction = window.chungapp.data.MapData.ACTION_MOVING;
 				} else {
-					//move the chung and move user
-					this._setUserPosition(leftPosition.x, leftPosition.y);
 					var chungObj = this._getChungAtPosition(leftPosition);
 					var leftLeftPosition = this._getPostionByAction(leftPosition, window.chungapp.data.MapData.DIRECTION_LEFT);
 					if (chungObj && leftLeftPosition) {
+						this._addToHistory(window.chungapp.data.MapData.DIRECTION_LEFT, window.chungapp.data.MapData.ACTION_PUSHING_CHUNG);
+
+						//move chung items
 						chungObj.setData(leftLeftPosition.x, leftLeftPosition.y);
+						//move the chung and move user
+						this._setUserPosition(leftPosition.x, leftPosition.y);
 
 						resultAction = window.chungapp.data.MapData.ACTION_PUSHING_CHUNG;
 					} else {
@@ -277,11 +291,11 @@ window.chungapp.data = window.chungapp.data || {};
 					}
 				}
 			}
-
+			/*
 			if (resultAction !== window.chungapp.data.MapData.ACTION_NOTHING) {
 				//add to history
 				this._addToHistory(window.chungapp.data.MapData.DIRECTION_LEFT, resultAction);
-			}
+			}*/
 
 			this.log('goLeft == action = ' + resultAction);
 
@@ -303,17 +317,22 @@ window.chungapp.data = window.chungapp.data || {};
 				var isSpaceARightPosition = this._isSpaceAtPosition(rightPosition);
 
 				if (isSpaceARightPosition) {
+					this._addToHistory(window.chungapp.data.MapData.DIRECTION_RIGHT, window.chungapp.data.MapData.ACTION_MOVING);
+
 					//only move user
 					this._setUserPosition(rightPosition.x, rightPosition.y);
 
 					resultAction = window.chungapp.data.MapData.ACTION_MOVING;
 				} else {
-					//move the chung and move user
-					this._setUserPosition(rightPosition.x, rightPosition.y);
 					var chungObj = this._getChungAtPosition(rightPosition);
 					var rightRightPosition = this._getPostionByAction(rightPosition, window.chungapp.data.MapData.DIRECTION_RIGHT);
 					if (chungObj && rightRightPosition) {
+						this._addToHistory(window.chungapp.data.MapData.DIRECTION_RIGHT, window.chungapp.data.MapData.ACTION_PUSHING_CHUNG);
+
+						//move chung items
 						chungObj.setData(rightRightPosition.x, rightRightPosition.y);
+						//move the chung and move user
+						this._setUserPosition(rightPosition.x, rightPosition.y);
 
 						resultAction = window.chungapp.data.MapData.ACTION_PUSHING_CHUNG;
 					} else {
@@ -321,11 +340,11 @@ window.chungapp.data = window.chungapp.data || {};
 					}
 				}
 			}
-
+			/*
 			if (resultAction !== window.chungapp.data.MapData.ACTION_NOTHING) {
 				//add to history
 				this._addToHistory(window.chungapp.data.MapData.DIRECTION_RIGHT, resultAction);
-			}
+			}*/
 
 			this.log('goRight == action = ' + resultAction);
 
@@ -390,6 +409,7 @@ window.chungapp.data = window.chungapp.data || {};
 
 				//restore diskItems list
 				this.chungItems = historyItem.chungPosition;
+				this.mapData.setChungList(this.chungItems);
 
 				return {
 					'action' : historyItem.action,
