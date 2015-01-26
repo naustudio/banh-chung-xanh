@@ -14,102 +14,6 @@
 		background-image: url(img/map-bg-2x.png);
 	}
 
-	.square {
-		width: 8.33333%;
-		padding-bottom: 8.33333%;
-		float: left;
-
-		&.wall {
-			background-image: url(img/characters/wall.png);
-			background-repeat: no-repeat;
-			background-size: 100%;
-
-			@include media-query(retina) {
-				background-image: url(img/characters2x/wall.png);
-			}
-		}
-		&.user {
-			-webkit-transition: all linear 0.5s;
-			-moz-transition: all linear 0.5s;
-			-o-transition: all linear 0.5s;
-			transition: all linear 0.5s;
-			position: absolute;
-		}
-		&.user-down {
-			background-image: url(img/characters/main-character.png);
-			background-size: 100%;
-
-			@include media-query(retina) {
-				background-image: url(img/characters2x/main-character.png);
-			}
-		}
-
-		&.rock {
-			background-image: url(img/characters/rock.png);
-			background-size: 100%;
-
-			@include media-query(retina) {
-				background-image: url(img/characters2x/rock.png);
-			}
-		}
-
-		&.goal {
-			position: absolute;
-			background-image: url(img/characters/goal.png);
-			background-size: 100%;
-
-			@include media-query(retina) {
-				background-image: url(img/characters2x/goal.png);
-			}
-		}
-
-		&.banh-chung {
-			-webkit-transition: all linear 0.5s;
-			-moz-transition: all linear 0.5s;
-			-o-transition: all linear 0.5s;
-			transition: all linear 0.5s;
-			position: absolute;
-			background-image: url(img/characters/banh-chung.png);
-			background-size: 100%;
-
-			@include media-query(retina) {
-				background-image: url(img/characters2x/banh-chung.png);
-			}
-		}
-
-		&.ground {
-			background-image: url(img/characters/ground.png);
-			background-size: 100%;
-
-			@include media-query(retina) {
-				background-image: url(img/characters2x/ground.png);
-			}
-		}
-	}
-
-	.decorator {
-		@include character-icon(decorator-1, 73px, 103px);
-		@include character-icon(decorator-2, 63px, 94px);
-		@include character-icon(decorator-3, 73px, 109px);
-		@include character-icon(decorator-4, 51px, 95px);
-		@include character-icon(decorator-5, 47px, 103px);
-		@include character-icon(decorator-6, 71px, 132px);
-		@include character-icon(decorator-7, 62px, 104px);
-		@include character-icon(decorator-8, 70px, 175px);
-		position: relative;
-
-		&:before {
-			content: '';
-			background-position: left bottom;
-			background-repeat: no-repeat;
-			background-size: 100%;
-			overflow: visible;
-			position: absolute;
-			bottom: -20px;
-			left: 50%;
-		}
-	}
-
 	.action,
 	.social {
 		position: absolute;
@@ -128,27 +32,6 @@
 	.action {
 		top: 15px;
 		bottom: auto;
-	}
-}
-
-// user animation
-.user-down.moving {
-	position: relative;
-	overflow: hidden;
-
-	&:before {
-		content: '';
-		width: 595%;
-		height: 100%;
-		background-image: url(/img/animation/user-down.png);
-		display: block;
-		position: absolute;
-		background-size: auto 100%;
-		animation: moving $timing-character steps(6, end) infinite;
-
-		@include media-query(retina) {
-			width: 600%;
-		}
 	}
 }
 
