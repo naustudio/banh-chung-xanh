@@ -25,7 +25,7 @@ i18n.map('vi', {
 	'or': 'Hoặc',
 	'shareAndSavePoints' :'Để chia sẻ là lưu điểm',
 	'fillEmail': 'Điền email',
-	'fill': 'Điền tên',
+	'fillName': 'Điền tên',
 	'hello': 'Xin chào',
 	'project_purpose': 'Mục đích dự án',
 	'guide': 'Xem hướng dẫn',
@@ -33,5 +33,8 @@ i18n.map('vi', {
 	'round': 'Vòng',
 	'status': 'Tình trạng',
 	'acceptedPrivacy': 'Bằng việc click vào các nút Đăng ký bạn đã đồng ý Điều khoản sử dụng',
-	'project_guide': 'Hướng dẫn'
+	'project_guide': 'Hướng dẫn',
+	'emailError': 'Vui lòng nhập email',
+	'requiredError': 'Thông tin này bắt buộc nhập',
+	'privacyRequiredError': 'Vui lòng chọn đồng ý điều khoản sử dụng'
 });

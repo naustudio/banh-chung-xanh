@@ -1,4 +1,4 @@
-/*global Accounts*/
+/*global Accounts, i18n*/
 Template.Login.events({
 	'submit form': function (e) {
 		e.stopPropagation();
@@ -57,8 +57,14 @@ Template.Login.rendered = function () {
 		},
 		messages: {
 			email : {
-				required: "Please enter your email address to login.",
-        		email: "Please enter a valid email address."
+				required: i18n('requiredError'),
+        		email: i18n('emailError')
+			},
+			name: {
+				required: i18n('requiredError')
+			},
+			privacy: {
+				required: i18n('privacyRequiredError')
 			}
 		},
 		submitButtons: 'button[type="submit"]',

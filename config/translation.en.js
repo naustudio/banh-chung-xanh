@@ -33,6 +33,9 @@ i18n.map('en', {
 	'round': 'Round',
 	'status': 'Status',
 	'acceptedPrivacy': 'Accept our privacy policy and customer agreement',
-	'project_guide': 'Guide'
+	'project_guide': 'Guide',
+	'emailError': 'Please enter your email address',
+	'requiredError': 'This is requried',
+	'privacyRequiredError': 'Please accept terms & condition.'
 
 });
