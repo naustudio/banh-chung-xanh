@@ -13,7 +13,8 @@ Sponsors = new Meteor.Collection('sponsors');
 Settings = new Meteor.Collection('settings');
 
 Settings.getItem = function(key) {
-	return this.findOne({key: key}).value;
+	var item = this.findOne({key: key});
+	return (item ? item.value : null);
 };
 
 Settings.setItem = function(key, value) {
