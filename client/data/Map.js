@@ -177,14 +177,15 @@ window.chungapp.data = window.chungapp.data || {};
 
 					resultAction = window.chungapp.data.MapData.ACTION_MOVING;
 				} else {
-					//move the chung and move user
-					this._setUserPosition(upPosition.x, upPosition.y);
 					var chungObj = this._getChungAtPosition(upPosition);
 					var upUpPosition = this._getPostionByAction(upPosition, window.chungapp.data.MapData.DIRECTION_UP);
 					if (chungObj && upUpPosition) {
 						this._addToHistory(window.chungapp.data.MapData.DIRECTION_UP, window.chungapp.data.MapData.ACTION_PUSHING_CHUNG);
-
+						//move chung items
 						chungObj.setData(upUpPosition.x, upUpPosition.y);
+
+						//move the chung and move user
+						this._setUserPosition(upPosition.x, upPosition.y);
 
 						resultAction = window.chungapp.data.MapData.ACTION_PUSHING_CHUNG;
 					} else {
