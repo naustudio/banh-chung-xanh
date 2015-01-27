@@ -9,6 +9,7 @@ Template.PageGame.rendered = function() {
 		//we parse the game and init the game
 		game = new window.chungapp.Game();
 		game.setJSONMapData(result);
+		console.log("result", result);
 		game.startGame();
 
 		Session.set('game', game);
