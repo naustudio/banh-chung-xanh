@@ -1,9 +1,9 @@
-
+/*global FB*/
 Template.Challenge.events ({
 	'click .button__challenge': function() {
 		FB.ui({
 			method: 'share',
-			href: Meteor.absoluteUrl(''), //share from the root of the app
+			href: Router.current().url, //share from current URL of the app
 			// link: 'https://developers.facebook.com/docs/dialogs/',
 			// caption: 'Reference Documentation',
 			// description: 'Lorem ipsum dolor sit amet, consectetur arum aliquam reprehenderit laudantium disti. Dicta.'
