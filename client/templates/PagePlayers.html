@@ -16,6 +16,7 @@
 					<th class="item col-one">{{t "players_name" }}</th>
 					<th class="item col-two">{{t "players_max_roud" }}</th>
 					<th class="item col-three">{{t "players_duration" }}</th>
+					<th class="item col-four">{{t "players_last_login" }}</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -24,9 +25,10 @@
 					<td class="item">{{ index }}. {{ name }}</td>
 					<td class="item">{{ duration }}</td>
 					<td class="item">{{ maxRound }}</td>
+					<td class="item">{{ lastAccess }}</td>
 				</tr>
 				{{else}}
-					<td colspan="3" class="names-list__empty">{{t "players_empty" }}</td>
+					<td colspan="4" class="names-list__empty">{{t "players_empty" }}</td>
 				{{/each}}
 			</tbody>
 		</table>

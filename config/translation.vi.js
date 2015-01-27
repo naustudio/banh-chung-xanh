@@ -12,6 +12,7 @@ i18n.map('vi', {
 	'players_name': 'Quý danh',
 	'players_max_roud': 'Chơi đến vòng',
 	'players_duration': 'Số bước kỷ lục',
+	'players_last_login': 'Ngày đăng nhập',
 	'players_empty': 'Trở thành người đầu tiên trải nghiệm Chưng Nhi',
 	'sponsors_title': 'Danh sách nhà hảo tâm đóng góp',
 	'sponsors_name': 'Quý danh',

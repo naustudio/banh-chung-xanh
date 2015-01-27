@@ -49,6 +49,31 @@
 	font-weight: normal;
 }
 
+.names-list__empty {
+	text-align: center;
+	padding: 20px 0;
+}
+
+// Players list
+.players {
+	.col-one {
+		width: 55%;
+	}
+
+	.col-two {
+		width: 15%;
+	}
+
+	.col-three {
+		width: 15%;
+	}
+
+	.col-four {
+		width: 15%;
+	}
+
+}
+
 // temp style for ađ players
 
 .add-player-form {

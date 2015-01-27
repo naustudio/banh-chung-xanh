@@ -12,6 +12,7 @@ i18n.map('en', {
 	'players_name': 'Name',
 	'players_max_roud': 'Max Round',
 	'players_duration': 'Duration',
+	'players_last_login': 'Last login',
 	'players_empty': 'Become first player of this game',
 	'sponsors_title': 'Sponsors List',
 	'sponsors_name': 'Name',

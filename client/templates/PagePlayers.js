@@ -1,10 +1,10 @@
 /**
  * Players list
  */
-/*global Players, Player*/
+/*global User*/
 Template.PagePlayers.helpers({
 	players: function() {
-		var players = Players.find({});
+		var players = Meteor.users.find({});
 		var playersObj = players.fetch();
 
 		for (var i = 0; i < playersObj.length; i++) {
@@ -26,7 +26,7 @@ Template.PagePlayers.events({
 		var maxRound = $maxRound.val();
 		var duration = $duration.val();
 
-		var player = new Player({
+		var player = new User({
 			name: name,
 			avatar: '',
 			duration: parseInt(duration, 10),
@@ -34,7 +34,7 @@ Template.PagePlayers.events({
 			lastAccess: new Date()
 		});
 
-		Players.insert(player);
+		Meteor.users.insert(player);
 
 		// reset value
 		$name.val('');
