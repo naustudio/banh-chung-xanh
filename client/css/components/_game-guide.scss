@@ -1,0 +1,107 @@
+.guide-slider {
+	width: 100%;
+	position: relative;
+	padding: 0;
+}
+
+#slider {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	border-radius: 4px;
+	height: 400px;
+	width: 70%;
+}
+
+#slider ul {
+	position: relative;
+	margin: 0 auto;
+	padding: 0;
+	height: 100%;
+	list-style: none;
+	width: 100%;
+	text-align: center;
+}
+
+#slider ul li{
+	position: relative;
+	display: block;
+	float: left;
+	margin: 0 auto;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+a.control_prev, a.control_next {
+	position: absolute;
+	top: 40%;
+	z-index: 999;
+	display: block;
+	padding: 5px 12px;
+	width: auto;
+	height: auto;
+	background: rgba(42,42,42, 0.6);
+	color: #fff;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+a.control_prev:hover, a.control_next:hover {
+	opacity: 1;
+	-webkit-transition: all 0.2s ease;
+	text-decoration: none;
+}
+
+a.control_prev {
+	border-radius: 0 2px 2px 0;
+}
+
+a.control_next {
+	right: 0;
+	border-radius: 2px 0 0 2px;
+}
+
+.modal-game-guide {
+	.modal-content {
+		max-width: 90%;
+	}
+}
+
+.description-step {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding-left: 10%;
+	padding-right: 10%;
+	display: inline-block;
+	left: 0;
+	text-align: center;
+	line-height: 1.5;
+	font-size: 14px;
+	color: white;
+	background: rgba(42,42,42, 0.3);
+}
+
+@include media-query (portable) {
+	#slider {
+		height: 250px;
+		width: 100%;
+	}
+
+	.hello {
+		font-size: 18px;
+	}
+
+	#slider ul li img{
+		width: 100% !important;
+		height: auto !important;
+	}
+
+	a.control_prev, a.control_next {
+		font-size: 13px;
+	}
+}

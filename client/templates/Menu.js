@@ -46,5 +46,9 @@ Template.Menu.events({
 
 	'click .menu-list__item': function() {
 		Session.set('show-menu', false);
+	},
+
+	'click .button-modal-guide': function() {
+		$('.modal-game-guide').modal('show');
 	}
 });
