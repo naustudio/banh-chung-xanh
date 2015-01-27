@@ -9,7 +9,7 @@ Router.configure({
 });
 
 Router.route('/', function() {
-	this.redirect('/' + getPreferredLanguage());
+	this.redirect('/' + getPreferredLanguage() + '/intro');
 });
 
 Router.route('/:lang', function() {
