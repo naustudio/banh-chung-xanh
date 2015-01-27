@@ -4,16 +4,16 @@
 
 .header {
 	position: relative;
-	padding-top: 20px;
-	margin-bottom: 40px;
+	padding-top: 1.25em; /* 20/16 */
+	margin-bottom: 2em; /* 32/16 */
 }
 
 .header__menu-btn {
 	// width: 40px;
-	height: 40px;
+	height: 2.5em; /* 40/16 */
 	padding: 0;
 	position: absolute;
-	left: 20px;
+	left: 1.25em; /* 20/16 */
 	border: 0;
 	background: transparent;
 	outline: none;
