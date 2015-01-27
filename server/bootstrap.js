@@ -1,24 +1,14 @@
 // Bootstrap the app when server start here
-/*global Assets, Settings*/
+/*global Assets, Settings, InitialSettings*/
 Meteor.startup(function() {
-	if (Settings.find().count() === 0) {
-		var defaultSettings = [
-			{
-				key: 'totalAmount',
-				value: 50000000
-			},
-			{
-				key: 'endDate',
-				// note: it's GMT time
-				value: new Date('2015-02-24T7:00:00.000Z')
-			}
-		];
 
-		_.each(defaultSettings, function(item) {
+	InitialSettings.forEach(function(item) {
+		if (Settings.findOne({key: item.key}) === undefined) {
+			// insert settings that are not available in the collection yet
+			console.log('Setting item', item.key, 'not set. Adding to DB');
 			Settings.insert(item);
-		});
-
-	}
+		}
+	}, this);
 
 	Meteor.methods({
 		map : function(mapNumber) {
