@@ -1,0 +1,25 @@
+.congratulation-container {
+	width: 480px;
+	height: 510px;
+	background-image: url('img/congratulation_bg.png');
+	background-size: cover;
+	background-position: center;
+	text-align: center;
+	padding: 30px;
+}
+
+.congratulation-img-text {
+	margin: 20px 0;
+}
+
+.congratulation-button {
+	margin: 20px;
+	text-transform: none;
+	min-width: 100px;
+	font-size: 14px;
+	background-color: $inuit-base-green-color;
+	cursor: pointer;
+	&:active {
+		background-color: $inuit-base-grey-2-color;
+	}
+}

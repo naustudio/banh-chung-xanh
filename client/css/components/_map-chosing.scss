@@ -41,7 +41,6 @@
 	background-size: contain;
 	background-repeat: no-repeat;
 	cursor: pointer;
-	@include map-list-item(round1);
 	&:active{
 		margin-top: 1px;
 	}
@@ -50,30 +49,33 @@
 .round-1 {
 	left: 65%;
 	top: 0;
+	@include map-list-item(round1);
 }
 .round-2 {
 	left: 40%;
 	top: 12%;
-	@include map-list-item(round2);
+	@include map-list-item(round1);
 }
 .round-3 {
 	left: 10%;
 	top: 22%;
+	@include map-list-item(round1);
 }
 .round-4 {
 	left: 15%;
 	top: 42%;
-	@include map-list-item(round3);
+	@include map-list-item(round1);
 
 }
 .round-5 {
 	left: 32%;
 	top: 43%;
+	@include map-list-item(round2);
 }
 .round-6 {
 	left: 58%;
 	top: 37%;
-	@include map-list-item(round3);
+	@include map-list-item(round2);
 }
 .round-7 {
 	left: 45%;
@@ -83,10 +85,12 @@
 .round-8 {
 	left: 78%;
 	top: 47%;
+	@include map-list-item(round3);
 }
 .round-9 {
 	left: 55%;
 	top: 53%;
+	@include map-list-item(round3);
 }
 .round-10 {
 	left: 17%;
@@ -94,17 +98,18 @@
 	@include map-list-item(round3);
 }
 
-.unlock {
+.unlock-1 {
 	background-position: bottom;
-	width: 13%;
-}
-
-.unlock.round-10 {
-	@include map-list-item(unlock3);
-}
-
-.unlock.round-5 {
 	@include map-list-item(unlock1);
+}
+
+.unlock-2 {
+	background-position: bottom;
+	@include map-list-item(unlock2);
+}
+.unlock-3 {
+	background-position: bottom;
+	@include map-list-item(unlock3);
 }
 
 .no-margin-right {
@@ -116,13 +121,13 @@
 		margin-top: 0;
 	}
 	.chose-round {
-		width: 12%;
+		width: 14%;
 		background-position: top;
 	}
 	.map-list-bg {
 		margin-top: 40px;
 	}
-	.unlock {
-		background-position: center;
+	.unlock-1, .unlock-2, .unlock-3 {
+		background-position: bottom;
 	}
 }

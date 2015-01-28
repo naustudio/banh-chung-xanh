@@ -55,6 +55,7 @@ Game.prototype = {
 
 			if (this.mapResolver.isWin()) {
 				console.log('==win==');
+				$('.modal-congratulation').modal('show');
 			}
 		} else {
 			console.log('=can not go up');
@@ -70,6 +71,7 @@ Game.prototype = {
 
 			if (this.mapResolver.isWin()) {
 				console.log('==win');
+				$('.modal-congratulation').modal('show');
 			}
 		} else {
 			console.log('=can not go down');
@@ -85,6 +87,7 @@ Game.prototype = {
 
 			if (this.mapResolver.isWin()) {
 				console.log('==win');
+				$('.modal-congratulation').modal('show');
 			}
 		} else {
 			console.log('=can not go left');
