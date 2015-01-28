@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?-wm4jr3');
-	src:url('fonts/icomoon.eot?#iefix-wm4jr3') format('embedded-opentype'),
-		url('fonts/icomoon.woff?-wm4jr3') format('woff'),
-		url('fonts/icomoon.ttf?-wm4jr3') format('truetype'),
-		url('fonts/icomoon.svg?-wm4jr3#icomoon') format('svg');
+	src:url('fonts/icomoon.eot?23jzop');
+	src:url('fonts/icomoon.eot?#iefix23jzop') format('embedded-opentype'),
+		url('fonts/icomoon.woff?23jzop') format('woff'),
+		url('fonts/icomoon.ttf?23jzop') format('truetype'),
+		url('fonts/icomoon.svg?23jzop#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -16,8 +16,8 @@
 	font-weight: normal;
 	font-variant: normal;
 	text-transform: none;
-	vertical-align: middle;
 	line-height: 1;
+	vertical-align: middle;
 
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
@@ -68,19 +68,27 @@
 	content: "\e60a";
 }
 
-.icon-right:before {
+.icon-nau:before {
 	content: "\e60b";
 }
 
-.icon-round:before {
+.icon-right:before {
 	content: "\e60c";
 }
 
-.icon-top:before {
+.icon-round:before {
 	content: "\e60d";
 }
 
-.icon-twitter:before {
+.icon-top:before {
 	content: "\e60e";
+}
+
+.icon-twitter:before {
+	content: "\e60f";
+}
+
+.icon-undo:before {
+	content: "\e610";
 }
 
