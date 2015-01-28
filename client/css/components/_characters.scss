@@ -1,43 +1,45 @@
 
-.map-grid .square {
-	width: 8.33333%;
-	padding-bottom: 8.33333%;
-	float: left;
+.map-grid {
 
-	&.wall {
-		background-image: url(img/characters/wall.png);
-		background-repeat: no-repeat;
-		background-size: 100%;
+	.square {
+		width: 8.33333%;
+		padding-bottom: 8.33333%;
+		float: left;
 
-		@include media-query(retina) {
-			background-image: url(img/characters2x/wall.png);
+		&.wall {
+			background-image: url(img/characters/wall.png);
+			background-repeat: no-repeat;
+			background-size: 100%;
+
+			@include media-query(retina) {
+				background-image: url(img/characters2x/wall.png);
+			}
+		}
+
+		&.rock {
+			background-image: url(img/characters/rock.png);
+			background-size: 100%;
+
+			@include media-query(retina) {
+				background-image: url(img/characters2x/rock.png);
+			}
+		}
+
+		&.ground {
+			background-image: url(img/characters/ground.png);
+			background-size: 100%;
+
+			@include media-query(retina) {
+				background-image: url(img/characters2x/ground.png);
+			}
 		}
 	}
 
-	&.user {
-		transition: all linear 0.5s;
+	.user {
 		position: absolute;
 	}
 
-	// &.user-down {
-	// 	background-image: url(img/characters/main-character.png);
-	// 	background-size: 100%;
-
-	// 	@include media-query(retina) {
-	// 		background-image: url(img/characters2x/main-character.png);
-	// 	}
-	// }
-
-	&.rock {
-		background-image: url(img/characters/rock.png);
-		background-size: 100%;
-
-		@include media-query(retina) {
-			background-image: url(img/characters2x/rock.png);
-		}
-	}
-
-	&.goal {
+	.goal {
 		position: absolute;
 		background-image: url(img/characters/goal.png);
 		background-size: 100%;
@@ -47,11 +49,7 @@
 		}
 	}
 
-	&.banh-chung {
-		-webkit-transition: all linear 0.5s;
-		-moz-transition: all linear 0.5s;
-		-o-transition: all linear 0.5s;
-		transition: all linear 0.5s;
+	.banh-chung {
 		position: absolute;
 		background-image: url(img/characters/banh-chung.png);
 		background-size: 100%;
@@ -61,38 +59,39 @@
 		}
 	}
 
-	&.ground {
-		background-image: url(img/characters/ground.png);
-		background-size: 100%;
+	.user,
+	.banh-chung {
+		// define movement animation
+		transition-property: top, left;
+		transition-timing-function: linear;
+		transition-duration: $character-movement-duration;
+	}
 
-		@include media-query(retina) {
-			background-image: url(img/characters2x/ground.png);
+	.decorator {
+		@include character-icon(decorator-1, 73px, 103px);
+		@include character-icon(decorator-2, 63px, 94px);
+		@include character-icon(decorator-3, 73px, 109px);
+		@include character-icon(decorator-4, 51px, 95px);
+		@include character-icon(decorator-5, 47px, 103px);
+		@include character-icon(decorator-6, 71px, 132px);
+		@include character-icon(decorator-7, 62px, 104px);
+		@include character-icon(decorator-8, 70px, 175px);
+		position: relative;
+
+		&:before {
+			content: '';
+			background-position: left bottom;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			overflow: visible;
+			position: absolute;
+			bottom: -20px;
+			left: 50%;
 		}
 	}
 }
 
-.map-grid .decorator {
-	@include character-icon(decorator-1, 73px, 103px);
-	@include character-icon(decorator-2, 63px, 94px);
-	@include character-icon(decorator-3, 73px, 109px);
-	@include character-icon(decorator-4, 51px, 95px);
-	@include character-icon(decorator-5, 47px, 103px);
-	@include character-icon(decorator-6, 71px, 132px);
-	@include character-icon(decorator-7, 62px, 104px);
-	@include character-icon(decorator-8, 70px, 175px);
-	position: relative;
 
-	&:before {
-		content: '';
-		background-position: left bottom;
-		background-repeat: no-repeat;
-		background-size: 100%;
-		overflow: visible;
-		position: absolute;
-		bottom: -20px;
-		left: 50%;
-	}
-}
 
 // user animation
 .user-up,
@@ -137,19 +136,14 @@
 		background-image: url(img/animation/user-down.png);
 		background-size: 100%;
 
+		animation-name: moving;
+		animation-duration: $walking-animation-duration;
+		animation-iteration-count: infinite;
+		animation-timing-function: steps(6, end);
+
 		@include media-query(retina) {
 			width: 600%;
 			background-image: url(img/animation2x/user-down.png);
-		}
-	}
-
-	&.moving {
-		&:before {
-			animation: moving $timing-character steps(6, end) infinite;
-
-			@include media-query(retina) {
-				width: 600%;
-			}
 		}
 	}
 }
@@ -164,33 +158,21 @@
 
 .user-left {
 	&:before {
-		width: 800%;
 		background-image: url(img/animation/user-left.png);
 
 		@include media-query(retina) {
 			background-image: url(img/animation2x/user-left.png);
 		}
 	}
-
-	&.moving:before {
-		width: 800%;
-		animation: moving $timing-character steps(8, end) infinite;
-	}
 }
 
 .user-right {
 	&:before {
-		width: 800%;
 		background-image: url(img/animation/user-right.png);
 
 		@include media-query(retina) {
 			background-image: url(img/animation2x/user-right.png);
 		}
-	}
-
-	&.moving:before {
-		width: 800%;
-		animation: moving $timing-character steps(8, end) infinite;
 	}
 }
 

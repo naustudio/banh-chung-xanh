@@ -103,11 +103,15 @@ window.chungapp.render = window.chungapp.render || {};
 
 			var dataX = userPosition.x;
 			var dataY = userPosition.y;
+			var directionClass = 'user-' + direction;
 
-			$('.user').addClass('moving').css({
-				'left': ( dataX / 12 ) * 100 + '%',
-				'top': ( dataY / 12 ) * 100 + '%'
-			});
+			$('.user')
+				.removeClass('user-right user-left user-up user-down')
+				.addClass(directionClass)
+				.css({
+					'left': ( dataX / 12 ) * 100 + '%',
+					'top': ( dataY / 12 ) * 100 + '%'
+				});
 
 			var banhChungArray = $('.banh-chung');
 
@@ -123,9 +127,9 @@ window.chungapp.render = window.chungapp.render || {};
 				}
 			}
 			var el = document.getElementsByClassName('user')[0];
-			el.addEventListener("transitionend", function() {
-				$(this).removeClass('moving');
-			}, true);
+			// el.addEventListener('transitionend', function() {
+			// 	$(this).removeClass('moving');
+			// }, true);
 
 		},
 
