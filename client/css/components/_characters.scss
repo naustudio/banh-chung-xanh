@@ -130,12 +130,12 @@
 	// }
 	&:before {
 		content: '';
-		width: 595%;
+		width: 600%;
 		height: 100%;
 		position: absolute;
 		display: block;
 		background-image: url(img/animation/user-down.png);
-		background-size: auto 100%;
+		background-size: 100%;
 
 		@include media-query(retina) {
 			width: 600%;
@@ -164,6 +164,7 @@
 
 .user-left {
 	&:before {
+		width: 800%;
 		background-image: url(img/animation/user-left.png);
 
 		@include media-query(retina) {
@@ -179,6 +180,7 @@
 
 .user-right {
 	&:before {
+		width: 800%;
 		background-image: url(img/animation/user-right.png);
 
 		@include media-query(retina) {
