@@ -128,6 +128,7 @@
       var transitionEvent = this.whichTransitionEvent();
       var self = this;
 
+
      this.$element.one(transitionEvent,
                     function() {
           		  self.hideModal()

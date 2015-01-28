@@ -204,7 +204,7 @@ button.close {
 	width: 100%;
 	background: black;
 	position: absolute;
-	top: 60%;
+	top: 51%;
 }
 .description-login{
 	font-size: 14px;
@@ -227,13 +227,13 @@ button.close {
 	border: 1px solid $inuit-base-grey-2-color;
 	width: 100%;
 	padding-left: 30px;
-	margin-top: 5px;
+	margin-bottom: 25px;
 }
 .login-or{
 	position: relative;
 	padding-top: 27px;
-	padding-bottom: 15px;
-
+	padding-bottom: 27px;
+	text-align: center;
 	span{
 		z-index: 1;
 		position: relative;

@@ -28,6 +28,14 @@ Template.Login.events({
 				throw new Meteor.Error("Logout failed");
 			}
 		});
+	},
+
+	'click .modal-dialog': function(e) {
+		if (e.target === e.currentTarget) {
+			var error = $('#login').find('.error-block');
+			console.log(error);
+			error.remove();
+		}
 	}
 });
 
