@@ -25,6 +25,10 @@ Game.prototype = {
 	mapData: null,
 	mapRender: null,
 
+	mapId: null,
+
+	startTime: null,
+
 	originalMapData: null,		//store the old data for restart
 
 	initialize : function() {
@@ -33,15 +37,31 @@ Game.prototype = {
 		this.originalMapData = new chungapp.data.MapData();
 	},
 
-	setJSONMapData: function(mapJSONData) {
+	setJSONMapData: function(mapJSONData, mapId) {
 		this.originalMapData.setJSONData(mapJSONData);
 
+		this.mapId = mapId;
 	},
 
 	startGame: function() {
 		this.mapData = this.originalMapData.clone();
 		this.mapResolver.setMapData(this.mapData);
 		this.mapRenderedHTML = this.mapRender.renderStatic(this.mapData);
+
+		//store the start time
+		this.startTime = new Date();
+	},
+
+	endGame: function() {
+		var currentTime = new Date();
+		var timeElapsed = currentTime.getTime() - this.startTime.getTime();
+		var usedStep = this.getNumStep();
+
+		return {
+			'mapIndex' : this.mapId,
+			'elapsedTime' : timeElapsed.toString(),
+			'usedSteps' : usedStep
+		};
 	},
 
 	//public method
@@ -54,12 +74,13 @@ Game.prototype = {
 			}
 
 			if (this.mapResolver.isWin()) {
-				console.log('==win==');
-				$('.modal-congratulation').modal('show');
+				return this.endGame();
 			}
 		} else {
 			console.log('=can not go up');
 		}
+
+		return null;	//still not win or can not go up
 	},
 
 	goDown: function() {
@@ -70,12 +91,13 @@ Game.prototype = {
 			}
 
 			if (this.mapResolver.isWin()) {
-				console.log('==win');
-				$('.modal-congratulation').modal('show');
+				return this.endGame();
 			}
 		} else {
 			console.log('=can not go down');
 		}
+
+		return null;
 	},
 
 	goLeft: function() {
@@ -86,12 +108,13 @@ Game.prototype = {
 			}
 
 			if (this.mapResolver.isWin()) {
-				console.log('==win');
-				$('.modal-congratulation').modal('show');
+				return this.endGame();
 			}
 		} else {
 			console.log('=can not go left');
 		}
+
+		return null;
 	},
 
 	goRight: function() {
@@ -102,11 +125,13 @@ Game.prototype = {
 			}
 
 			if (this.mapResolver.isWin()) {
-				console.log('==win');
+				return this.endGame();
 			}
 		} else {
 			console.log('=can not go right');
 		}
+
+		return null;
 	},
 
 	restart: function() {

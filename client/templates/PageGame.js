@@ -3,12 +3,17 @@
  */
 var game = null;
 
+var completeGame = function(result) {
+	$('.modal-congratulation').modal('show');
+	console.log('win result ' + result);
+};
+
 Template.PageGame.rendered = function() {
 	var mapId = Router.current().params.mapId;
 	Meteor.call('map', mapId, function(error, result) {
 		//we parse the game and init the game
 		game = new window.chungapp.Game();
-		game.setJSONMapData(result);
+		game.setJSONMapData(result, mapId);
 		console.log('result', result);
 		game.startGame();
 
@@ -42,7 +47,10 @@ Template.PageGame.rendered = function() {
 				}
 
 				if (direction && game) {
-					game['go' + direction]();
+					var result = game['go' + direction]();
+					if (result !== null) {
+						completeGame(result);
+					}
 					event.preventDefault();
 				}
 			},
@@ -69,25 +77,37 @@ Template.PageGame.events({
 	'click .control-top' : function(/*event*/) {
 		console.log('==move top');
 		//var game = Session.get('game');
-		game.goUp();
+		var result = game.goUp();
+		if (result !== null) {
+			completeGame(result);
+		}
 	},
 
 	'click .control-left' : function(/*event*/) {
 		console.log('==move left');
 		//var game = Session.get('game');
-		game.goLeft();
+		var result = game.goLeft();
+		if (result !== null) {
+			completeGame(result);
+		}
 	},
 
 	'click .control-right' : function(/*event*/) {
 		console.log('==move right');
 		//var game = Session.get('game');
-		game.goRight();
+		var result = game.goRight();
+		if (result !== null) {
+			completeGame(result);
+		}
 	},
 
 	'click .control-bottom' : function(/*event*/) {
 		console.log('==move bottom');
 		//var game = Session.get('game');
-		game.goDown();
+		var result = game.goDown();
+		if (result !== null) {
+			completeGame(result);
+		}
 	},
 
 	'click .icon-arrow' : function(/*event*/) {
