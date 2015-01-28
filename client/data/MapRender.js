@@ -125,6 +125,7 @@ window.chungapp.render = window.chungapp.render || {};
 						'top': ( dataY / 12 ) * 100 + '%'
 					});
 				}
+
 			}
 			var el = document.getElementsByClassName('user')[0];
 			// el.addEventListener('transitionend', function() {
