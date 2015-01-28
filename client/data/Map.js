@@ -17,9 +17,12 @@ window.chungapp.data = window.chungapp.data || {};
 (function(data) {
 	'use strict';
 
+	// a special reactive handler to force update template on history change
+	var stepsDep = new Deps.Dependency();
+
 	//Map object
 	function Map() {
-
+		stepsDep.depend();
 	}
 
 	//define method, property here
@@ -51,7 +54,8 @@ window.chungapp.data = window.chungapp.data || {};
 
 		//private
 		_initData: function(mapData) {
-			this.mapData =mapData;
+			stepsDep.changed();
+			this.mapData = mapData;
 
 			this.mapRectangleData = this.mapData.getStaticObjData();
 
@@ -391,6 +395,7 @@ window.chungapp.data = window.chungapp.data || {};
 		},
 
 		_addToHistory: function(direction, action) {
+			stepsDep.changed();
 			var historyItem = this._createTheHistoryData(direction, action);
 			this.histories.push(historyItem);
 		},
@@ -402,6 +407,8 @@ window.chungapp.data = window.chungapp.data || {};
 		//undo return action/ direction
 		undo: function() {
 			if (this.canUndo()) {
+				stepsDep.changed();
+
 				var historyItem = this.histories.pop();
 
 				//restore the userPosition and disklist position
@@ -425,6 +432,7 @@ window.chungapp.data = window.chungapp.data || {};
 		},
 
 		getHistoryNum : function() {
+			stepsDep.depend();
 			return this.histories.length;
 		},
 

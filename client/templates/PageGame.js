@@ -9,21 +9,22 @@ Template.PageGame.rendered = function() {
 		//we parse the game and init the game
 		game = new window.chungapp.Game();
 		game.setJSONMapData(result);
-		console.log("result", result);
+		console.log('result', result);
 		game.startGame();
 
 		Session.set('game', game);
+		Session.set('steps', 0);
+
+		// game.getNumStep() -> mapResolver.getHistoryNum() is a reactive getter
+		Tracker.autorun(function() {
+			var steps = game ? game.getNumStep() : 0;
+			Session.set('steps', steps);
+		});
 	});
 };
 
 Template.PageGame.helpers({
-	userStep: function() {
-		return game ? game.getNumStep() : 0;
-	},
 
-	mapId: function() {
-		return Router.current().params.mapId;
-	}
 });
 
 Template.PageGame.events({

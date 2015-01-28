@@ -3,7 +3,11 @@
  */
 
 Template.IntroBlockControl.helpers({
-	'mapNumber': function() {
+	mapNumber: function() {
 		return Router.current().params.mapId;
+	},
+
+	userSteps: function() {
+		return Session.get('steps');
 	}
 });

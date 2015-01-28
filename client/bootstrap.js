@@ -11,9 +11,11 @@ i18n.setDefaultLanguage('vi');
 i18n.showMissing(true);
 
 // default language
-Session.set('language', 'vi');
-Session.set('map', '');
+Session.setDefault('language', 'vi');
+Session.setDefault('map', '');
 
+// start of steps tracker
+Session.setDefault('steps', 0);
 
 // any start up logic here
 Meteor.startup(function() {
