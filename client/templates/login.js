@@ -33,9 +33,15 @@ Template.Login.events({
 	'click .modal-dialog': function(e) {
 		if (e.target === e.currentTarget) {
 			var error = $('#login').find('.error-block');
-			console.log(error);
 			error.remove();
 		}
+	},
+
+	'click button.close': function() {
+
+		var error = $('#login').find('.error-block');
+		error.remove();
+
 	}
 });
 
