@@ -37,6 +37,26 @@
 
 	.user {
 		position: absolute;
+		overflow: hidden;
+
+		&:before {
+			content: '';
+			width: 2400%;
+			height: 100%;
+			position: absolute;
+			display: block;
+			background-image: url(img/animation/user-sprite.png);
+			background-size: 100%;
+
+			animation-duration: $walking-animation-duration;
+			animation-iteration-count: infinite;
+			animation-timing-function: steps(6, end);
+
+			@include media-query(retina) {
+				// width: 600%;
+				background-image: url(img/animation2x/user-sprite.png);
+			}
+		}
 	}
 
 	.goal {
@@ -69,7 +89,7 @@
 			opacity: 1;
 			background-image: url(img/characters/banh-chung.png);
 			background-size: 100%;
-			transition: opacity 0.3s;
+			transition: opacity $banh-chung-highlight-duration $character-movement-duration ease-in;
 
 			@include media-query(retina) {
 				background-image: url(img/characters2x/banh-chung.png);
@@ -118,61 +138,20 @@
 	}
 }
 
-// user animation
-.user-up,
-.user-left,
-.user-right,
-.user-down {
-	overflow: hidden;
-	position: relative;
-
-	&:before {
-		content: '';
-		width: 600%;
-		height: 100%;
-		position: absolute;
-		display: block;
-		background-image: url(img/animation/user-down.png);
-		background-size: 100%;
-
-		animation-name: moving;
-		animation-duration: $walking-animation-duration;
-		animation-iteration-count: infinite;
-		animation-timing-function: steps(6, end);
-
-		@include media-query(retina) {
-			width: 600%;
-			background-image: url(img/animation2x/user-down.png);
-		}
-	}
+.user-down:before {
+	animation-name: moving-down;
 }
 
 .user-up:before {
-	background-image: url(img/animation/user-up.png);
-
-	@include media-query(retina) {
-		background-image: url(img/animation2x/user-up.png);
-	}
+	animation-name: moving-up;
 }
 
-.user-left {
-	&:before {
-		background-image: url(img/animation/user-left.png);
-
-		@include media-query(retina) {
-			background-image: url(img/animation2x/user-left.png);
-		}
-	}
+.user-left:before {
+	animation-name: moving-left;
 }
 
-.user-right {
-	&:before {
-		background-image: url(img/animation/user-right.png);
-
-		@include media-query(retina) {
-			background-image: url(img/animation2x/user-right.png);
-		}
-	}
+.user-right:before {
+	animation-name: moving-right;
 }
 
 
