@@ -9,6 +9,9 @@ var completeGame = function(result) {
 };
 
 Template.PageGame.rendered = function() {
+	//
+	Session.set('showGame', true);
+	//
 	var mapId = Router.current().params.mapId;
 	Meteor.call('map', mapId, function(error, result) {
 		//we parse the game and init the game

@@ -179,15 +179,6 @@
 	.map-grid {
 		.decorator {
 			opacity: 0;
-			width: 0;
-		}
-		.square {
-			width: 8.33333%;
-			padding-bottom: 8.33333%;
-
-			&.space {
-				width: 0;
-			}
 		}
 	}
 }

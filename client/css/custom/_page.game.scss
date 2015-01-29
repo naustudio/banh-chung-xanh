@@ -17,15 +17,34 @@
 	.action,
 	.social {
 		position: absolute;
-		right: 8.33333%;
-		bottom: 9.33333%;
+		right: 8%; //.33333%;
+		top: 15px;
+		bottom: auto;
 		width: 25%;
-
+	}
+	.social {
 		.icon {
+			margin-left: -4px;
 			width: 30%;
 			max-width: 30px;
-			height: 30%;
-			margin-left: -4px;
+			&:after {
+				content: '';
+				width: 113%;
+				height: 4px;
+				background-image: url(img/icon-button-shadow.png);
+				background-repeat: no-repeat;
+				background-size: 100%;
+				// background: #c5c4c3;
+				position: absolute;
+				left: 0;
+				bottom: -4px;
+
+				@include media-query(retina) {
+					background-image: url(img/icon-button-shadow-2x.png);
+				}
+				// transform: skewX(30deg);
+			}
+
 		}
 	}
 
@@ -46,3 +65,51 @@
 		}
 	}
 }
+
+.action {
+	position: absolute;
+	bottom: 0;
+	left: -35%;
+
+	.icon {
+		margin-left: -4px;
+		border-radius: 50%;
+		background: rgb(246, 246, 246);
+		border-radius: 50%;
+		width: 36px;
+		height: 36px;
+		line-height: 1.4;
+	}
+
+	.circle-icon {
+		display: inline-block;
+		position: absolute;
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		border: 1px solid $bg-active-state;
+		top: 2px;
+		left: 2px;
+		&:hover {
+			border: 1px solid $color-button;
+		}
+	}
+}
+
+@include media-query (portable) {
+
+	.map-grid {
+		width: 136%;
+		margin-left: -18%;
+		.social {
+			right: 15%;
+		}
+
+	}
+	.action {
+		bottom: 60px;
+		left: -95%;
+	}
+
+}
+

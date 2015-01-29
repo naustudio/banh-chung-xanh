@@ -235,24 +235,34 @@
 	.game-play {
 		width: 100%;
 	}
+
 	.intro-donate-pc{
 		display: none;
 	}
+
 	.game-intro {
 		//position: absolute;
 		bottom: 0;
 		right: 0;
+		width: 100%;
+		float: none;
+		clear: both;
 	}
+
 	.game-intro-wrap {
-		width: 0;
+		width: 100%;
+		height: 10px;
 	}
+
 	.button-controler {
-		//position: absolute;
-		bottom: 20px;
-		right: -80px;
+		position: absolute;
 		width: 150px;
 		height: 140px;
+		top: -128px;
+		display: inline-block;
+		right: 0;
 	}
+
 	.control-top, .control-left, .control-bottom, .control-right {
 		width: 56px;
 		height: 56px;
@@ -260,33 +270,42 @@
 			font-size: 56px;
 		}
 	}
+
 	.control-top, .control-bottom {
 		left: 46px;
 	}
+
 	.control-left, .control-right {
 		top: 43px;
 	}
+
 	.block-control {
-		position: absolute;
-		left: 0;
+		position: fixed;
+		left: 17%;
 		top: 0;
-		width: 100%;
+		width: 66%;
+		z-index: 1;
 	}
+
 	.button-contron-top{
 		display: inline-block;
 		vertical-align: top;
 		margin-top: 7px;
 	}
+
 	.round {
-		margin-left: 70px;
+		//margin-left: 65px;
 		font-size: 14px;
 	}
+
 	.back{
-		margin-right: 20px;
+		//margin-right: 10px;
 	}
+
 	.round .current-round {
 		font-size: 34px;
 	}
+
 	.intro-block-smartphone{
 		display: block;
 	}

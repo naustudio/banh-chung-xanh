@@ -11,6 +11,20 @@ Template.Header.helpers({
 		}
 
 		return isActive;
+	},
+	'inPageGame': function() {
+		var isHidden = 'hidden-smartphone';
+		if (Session.get('showGame')) {
+			isHidden= '';
+		}
+		return isHidden;
+	},
+	'inMapMaster': function() {
+		var isHidden = '';
+		if (Session.get('showGame')) {
+			isHidden= 'hidden-smartphone';
+		}
+		return isHidden;
 	}
 });
 

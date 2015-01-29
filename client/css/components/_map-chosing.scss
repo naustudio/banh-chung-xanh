@@ -124,10 +124,26 @@
 		width: 14%;
 		background-position: top;
 	}
+
+	.unlock-1, .unlock-2, .unlock-3 {
+		background-position: center;
+	}
+}
+
+@media (max-height: 480px) {
 	.map-list-bg {
 		margin-top: 40px;
 	}
-	.unlock-1, .unlock-2, .unlock-3 {
-		background-position: center;
+}
+
+@media (min-height: 481px) and (max-height: 568px) and (max-width: 1023px){
+	.map-list-bg {
+		margin-top: 60px;
+	}
+}
+
+@media (min-height: 569px) and (max-height: 736px) and (max-width: 1023px){
+	.map-list-bg {
+		margin-top: 60px;
 	}
 }

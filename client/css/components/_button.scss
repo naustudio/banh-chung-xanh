@@ -109,23 +109,7 @@
 		width: 30px;
 		height: 30px;
 
-		&:after {
-			content: '';
-			width: 113%;
-			height: 4px;
-			background-image: url(img/icon-button-shadow.png);
-			background-repeat: no-repeat;
-			background-size: 100%;
-			// background: #c5c4c3;
-			position: absolute;
-			left: 0;
-			bottom: -4px;
 
-			@include media-query(retina) {
-				background-image: url(img/icon-button-shadow-2x.png);
-			}
-			// transform: skewX(30deg);
-		}
 	}
 
 	.icon-google {

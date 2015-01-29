@@ -21,5 +21,17 @@ Template.Challenge.events ({
 				console.log('Post was not published.');
 			}
 		});
+	},
+
+
+});
+
+Template.Challenge.helpers ({
+	'inMapMaster': function() {
+		var isHidden = '';
+		if (Session.get('showGame')) {
+			isHidden= 'hidden-smartphone';
+		}
+		return isHidden;
 	}
 });
