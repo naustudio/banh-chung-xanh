@@ -152,6 +152,26 @@ window.chungapp.data = window.chungapp.data || {};
 			return null;	//default is null
 		},
 
+		_getReverveDirection: function(direction) {
+			var result = window.chungapp.data.MapData.DIRECTION_LEFT;
+			switch (direction) {
+				case window.chungapp.data.MapData.DIRECTION_UP:
+					result = window.chungapp.data.MapData.DIRECTION_DOWN;
+					break;
+				case window.chungapp.data.MapData.DIRECTION_DOWN:
+					result = window.chungapp.data.MapData.DIRECTION_UP;
+					break;
+				case window.chungapp.data.MapData.DIRECTION_LEFT:
+					result = window.chungapp.data.MapData.DIRECTION_RIGHT;
+					break;
+				case window.chungapp.data.MapData.DIRECTION_RIGHT:
+					result = window.chungapp.data.MapData.DIRECTION_LEFT;
+					break;
+			}
+
+			return result;
+		},
+
 		//public data
 		getMapData: function() {
 			return this.mapRectangleData;
@@ -419,9 +439,11 @@ window.chungapp.data = window.chungapp.data || {};
 				this.chungItems = historyItem.chungPosition;
 				this.mapData.setChungList(this.chungItems);
 
+				var reverseDirection = this._getReverveDirection(historyItem.direction);
+
 				return {
 					'action' : historyItem.action,
-					'direction' : historyItem.direction
+					'direction' : reverseDirection
 				};
 			}
 

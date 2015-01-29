@@ -110,7 +110,7 @@ Template.PageGame.events({
 		}
 	},
 
-	'click .icon-arrow' : function(/*event*/) {
+	'click .icon-reset' : function(/*event*/) {
 		console.log('==restart');
 		//var game = Session.get('game');
 		game.restart();
