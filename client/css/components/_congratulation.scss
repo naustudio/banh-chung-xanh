@@ -23,3 +23,10 @@
 		background-color: $inuit-base-grey-2-color;
 	}
 }
+
+@include media-query (portable) {
+	.congratulation-container {
+		width: 80%;
+		height: 85%;
+	}
+}

@@ -205,12 +205,7 @@
 	right: 0;
 }
 
-@media (max-width: 1000px) {
-	.button__challenge {
-		font-size: 8.5px;
-		min-width: 105px;
-		padding: 0;
-	}
+@include media-query (portable) {
 	.challenge {
 		height: 36px;
 		line-height: 36px;
@@ -236,3 +231,22 @@
 		bottom: 0;
 	}
 }
+
+@media (max-width: 320px) {
+	.button__challenge {
+		font-size: 8.5px;
+		min-width: 105px;
+		padding: 0;
+		line-height: 38px;
+	}
+}
+
+@media (min-width: 321px) and (max-width: 1000px) {
+	.button__challenge {
+		padding: 0 7px;
+		font-size: 12px;
+		min-width: 155px;
+		line-height: 43px;
+	}
+}
+
