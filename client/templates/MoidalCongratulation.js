@@ -3,3 +3,9 @@ Template.Congratulation.events ({
 		$('.modal-congratulation').modal('hide');
 	}
 });
+
+Template.Congratulation.helpers ({
+	'nextMapId': function () {
+		return Session.get('nextMapId');
+	}
+});

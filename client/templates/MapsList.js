@@ -39,6 +39,7 @@ Template.MapList.helpers({
 			}
 
 		}
+		return '';
 	}
 });
 
