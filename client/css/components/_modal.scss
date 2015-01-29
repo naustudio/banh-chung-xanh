@@ -146,15 +146,18 @@ button.close {
 .button-modal{
 	padding: 12px 23px;
 	font-size: 14px;
-	background: $inuit-base-green-2-color;
+	background: $bg-button-green;
 	border: 0;
 	margin-right: 10px;
 	color: $inuit-base-background-color;
 	margin-bottom: 45px;
 	position: relative;
+	&:hover {
+		background: $bg-button-green-hover;
+	}
 	&:active{
 
-		background: $inuit-base-grey-color;
+		background: $bg-button-green-active;
 	}
 	&:before {
 		content: '';
