@@ -98,14 +98,6 @@
 
 @include media-query (portable) {
 
-	.map-grid {
-		width: 136%;
-		margin-left: -18%;
-		.social {
-			right: 15%;
-		}
-
-	}
 	.action {
 		bottom: 60px;
 		left: -95%;
@@ -115,4 +107,18 @@
 	}
 
 }
+
+@include media-query (palm) {
+
+	.map-grid {
+		width: 136%;
+		margin-left: -18%;
+		.social {
+			right: 15%;
+		}
+
+	}
+}
+
+
 
