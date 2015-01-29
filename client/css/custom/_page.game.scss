@@ -109,6 +109,9 @@
 	.action {
 		bottom: 60px;
 		left: -95%;
+		.icon {
+			box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+		}
 	}
 
 }

@@ -266,6 +266,7 @@
 	.control-top, .control-left, .control-bottom, .control-right {
 		width: 56px;
 		height: 56px;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 		i{
 			font-size: 56px;
 		}
@@ -285,6 +286,7 @@
 		top: 0;
 		width: 66%;
 		z-index: 1;
+		text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 	}
 
 	.button-contron-top{

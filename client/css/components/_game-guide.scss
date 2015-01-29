@@ -104,4 +104,10 @@ a.control_next {
 	a.control_prev, a.control_next {
 		font-size: 13px;
 	}
+
+	.modal-game-guide {
+		.modal-content {
+			max-width: 100%;
+		}
+	}
 }
