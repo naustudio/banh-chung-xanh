@@ -89,7 +89,11 @@
 			opacity: 1;
 			background-image: url(img/characters/banh-chung.png);
 			background-size: 100%;
-			transition: opacity $banh-chung-highlight-duration $character-movement-duration ease-in;
+			// transition: opacity $banh-chung-highlight-duration $character-movement-duration ease-in;
+			transition-property: opacity;
+			transition-duration: $banh-chung-highlight-duration;
+			transition-delay: 0;
+			transition-timing-function: ease-in;
 
 			@include media-query(retina) {
 				background-image: url(img/characters2x/banh-chung.png);
@@ -135,6 +139,7 @@
 .banh-chung.highlight {
 	&:before {
 		opacity: 0;
+		transition-delay: $character-movement-duration;
 	}
 }
 
