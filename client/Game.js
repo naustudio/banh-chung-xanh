@@ -142,13 +142,13 @@ Game.prototype = {
 
 	undo: function() {
 		if (this.mapResolver.canUndo()) {
-			var action = this.mapResolver.undo().action;
-			if (action !== chungapp.data.MapData.ACTION_NOTHING) {
+			var result = this.mapResolver.undo();
+			if (result.action !== chungapp.data.MapData.ACTION_NOTHING) {
 				console.log('==== userPosition = ' + this.mapData.getUserPosition());
 				window.userPos = this.mapData.getUserPosition();
 				console.log('==== chungList = ' + this.mapData.getChungList());
 				window.chungList = this.mapData.getChungList();
-				this.mapRender.renderSteps(chungapp.data.MapData.DIRECTION_LEFT, this.mapData);
+				this.mapRender.renderSteps(result.direction, this.mapData);
 			} else {
 				console.log('can not find direction');
 			}

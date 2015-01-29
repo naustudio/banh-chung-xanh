@@ -43,6 +43,14 @@
 
 	&.orange {
 		background-color: $bg-button-orange;
+
+		&:hover {
+			background-color: $bg-button-orange-hover;
+		}
+
+		&:active {
+			background-color: $bg-button-orange-active;
+		}
 	}
 
 	&.gray {
