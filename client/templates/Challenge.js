@@ -1,4 +1,4 @@
-/*global FB*/
+/*global FB, i18n*/
 Template.Challenge.events ({
 	'click .button__challenge': function() {
 		var currentUrl = Router.current().url;
@@ -7,17 +7,15 @@ Template.Challenge.events ({
 		}
 
 		console.log('FB URL to share:', currentUrl);
-		var description = [
-			'Bạn khâm phục thành tích chơi của mình? Vậy hãy thử thách bạn bè của mình để quyên được nhiều tiền hơn cho các em nhỏ.',
-			'Bạn nghĩ chẳng ai có thể chơi giỏi hơn mình? Hãy thách bạn bè cùng chơi để chứng tỏ nào!',
-			'Đây có phải thành tích tốt nhất chưa? Mời bạn bè cùng chơi để xem nhé.',
-			'Không ai có thể giải nhanh hơn bạn? Thách bạn bè nào!'
-		];
+
+		var description = [i18n('challenge1'), i18n('challenge2'), i18n('challenge3'), i18n('challenge4')];
 
 		var index = Math.floor((Math.random() * 4));
 
 		var mapId = Router.current().params.mapId;
 		var caption ='Thử thách '+mapId+' - Bánh Chưng Xanh';
+
+		console.log(description[index], caption);
 
 		FB.ui({
 			method: 'feed',

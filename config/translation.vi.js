@@ -38,5 +38,10 @@ i18n.map('vi', {
 	'project_guide': 'Hướng dẫn',
 	'emailError': 'Vui lòng nhập email',
 	'requiredError': 'Thông tin này bắt buộc nhập',
-	'privacyRequiredError': 'Vui lòng chọn đồng ý điều khoản sử dụng'
+	'privacyRequiredError': 'Vui lòng chọn đồng ý điều khoản sử dụng',
+	'challenge1': 'Bạn khâm phục thành tích chơi của mình? Vậy hãy thử thách bạn bè của mình để quyên được nhiều tiền hơn cho các em nhỏ.',
+	'challenge2': 'Bạn nghĩ chẳng ai có thể chơi giỏi hơn mình? Hãy thách bạn bè cùng chơi để chứng tỏ nào!',
+	'challenge3': 'Đây có phải thành tích tốt nhất chưa? Mời bạn bè cùng chơi để xem nhé.',
+	'challenge4': 'Không ai có thể giải nhanh hơn bạn? Thách bạn bè nào!'
+
 });
