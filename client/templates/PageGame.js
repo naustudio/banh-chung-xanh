@@ -4,14 +4,44 @@
 var game = null;
 
 var completeGame = function(result) {
-	// delay 300 milisecond when show congratulation pop up
+	var mapLevel = Session.get('mapLevel');
 	setTimeout(function() {
-		$('.modal-congratulation-level3').modal('show');
-		console.log('win result ' + result);
+		$('.modal-congratulation-level' +mapLevel).modal('show');
 	}, 400);
+	console.log('win result ' + result);
+	var mapId = result.mapIndex;
+	//user already loggin
+	/*
+	var user = Meteor.user();
+	if (user) {
+		var gameScoresOfUser = user.gameScores;
+		if (!gameScoresOfUser) {	//create new property for user
+			gameScoresOfUser = user.gameScores = [];
+		}
+
+		var foundScoreItem = getTheScoreItemByMapId(gameScoresOfUser, mapId);
+		if (foundScoreItem) {
+			foundScoreItem.elapsedTime = result.elapsedTime;
+			foundScoreItem.usedSteps = result.usedSteps;
+			foundScoreItem.count = foundScoreItem.count + 1;
+			foundScoreItem.updatedAt = Date.now();
+		} else {//add new score item
+			result.updatedAt = Date.now();
+			result.count = 1;
+			gameScoresOfUser.push(result);
+		}
+	}
+	*/
 };
 
-Template.PageGame.rendered = function() {
+var getTheScoreItemByMapId = function(gameScoresOfUser, mapId) {
+	for (var i = 0; i < gameScoresOfUser.length; i++) {
+		var scoreItem = gameScoresOfUser[i];
+		if (scoreItem.mapIndex === mapId) {
+			return scoreItem;
+		}
+	}
+	return null;
 };
 
 Template.PageGame.helpers({
@@ -26,7 +56,10 @@ Template.PageGame.helpers({
 		Meteor.call('map', mapId, function(error, result) {
 			//we parse the game and init the game
 			game = new window.chungapp.Game();
-			game.setJSONMapData(result, mapId);
+			game.setJSONMapData(result.map, mapId);
+			var mapLevel = result.mapLevel;
+			Session.set('mapLevel', mapLevel);
+
 			console.log('result', result);
 			game.startGame();
 
@@ -87,7 +120,6 @@ Template.PageGame.helpers({
 Template.PageGame.events({
 	'click .control-top' : function(/*event*/) {
 		console.log('==move top');
-		//var game = Session.get('game');
 		var result = game.goUp();
 		if (result !== null) {
 			completeGame(result);
@@ -96,7 +128,6 @@ Template.PageGame.events({
 
 	'click .control-left' : function(/*event*/) {
 		console.log('==move left');
-		//var game = Session.get('game');
 		var result = game.goLeft();
 		if (result !== null) {
 			completeGame(result);
@@ -105,7 +136,6 @@ Template.PageGame.events({
 
 	'click .control-right' : function(/*event*/) {
 		console.log('==move right');
-		//var game = Session.get('game');
 		var result = game.goRight();
 		if (result !== null) {
 			completeGame(result);
@@ -114,7 +144,6 @@ Template.PageGame.events({
 
 	'click .control-bottom' : function(/*event*/) {
 		console.log('==move bottom');
-		//var game = Session.get('game');
 		var result = game.goDown();
 		if (result !== null) {
 			completeGame(result);
@@ -123,13 +152,11 @@ Template.PageGame.events({
 
 	'click .icon-reset' : function(/*event*/) {
 		console.log('==restart');
-		//var game = Session.get('game');
 		game.restart();
 	},
 
 	'click .icon-back' : function(/*event*/) {
 		console.log('==undo');
-		//var game = Session.get('game');
 		game.undo();
 	}
 });

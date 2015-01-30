@@ -463,6 +463,16 @@ window.chungapp.data = window.chungapp.data || {};
 
 		},
 
+		getHistoriesStep: function() {
+			var historiesStep = [];
+			for (var i = 0; i < this.histories.length; i++) {
+				var historyItem = this.histories[i];
+				historiesStep.push(historyItem['direction']);
+			}
+
+			return historiesStep;
+		},
+
 		setMapData: function(mapData) {
 			this._initData(mapData);
 		},

@@ -117,8 +117,12 @@
 }
 @include media-query (portable) {
 	.map-wrap {
-		width: 100%;
-		margin-top: 0;
+		width: 70%;
+
+		margin: auto;
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
 	}
 	.chose-round {
 		width: 14%;

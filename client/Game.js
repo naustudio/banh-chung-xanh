@@ -52,10 +52,15 @@ Game.prototype = {
 		this.startTime = new Date();
 	},
 
-	endGame: function() {
+	endGame: function(lastDirection) {
 		var currentTime = new Date();
 		var timeElapsed = currentTime.getTime() - this.startTime.getTime();
 		var usedStep = this.getNumStep();
+
+		//log the step
+		var historiesStep = this.mapResolver.getHistoriesStep();
+		historiesStep.push(lastDirection);
+		console.log('historiesStep >>> ' + historiesStep);
 
 		return {
 			'mapIndex' : this.mapId,
@@ -74,7 +79,7 @@ Game.prototype = {
 			}
 
 			if (this.mapResolver.isWin()) {
-				return this.endGame();
+				return this.endGame(chungapp.data.MapData.DIRECTION_UP);
 			}
 		} else {
 			console.log('=can not go up');
@@ -91,7 +96,7 @@ Game.prototype = {
 			}
 
 			if (this.mapResolver.isWin()) {
-				return this.endGame();
+				return this.endGame(chungapp.data.MapData.DIRECTION_DOWN);
 			}
 		} else {
 			console.log('=can not go down');
@@ -108,7 +113,7 @@ Game.prototype = {
 			}
 
 			if (this.mapResolver.isWin()) {
-				return this.endGame();
+				return this.endGame(chungapp.data.MapData.DIRECTION_LEFT);
 			}
 		} else {
 			console.log('=can not go left');
@@ -125,7 +130,7 @@ Game.prototype = {
 			}
 
 			if (this.mapResolver.isWin()) {
-				return this.endGame();
+				return this.endGame(chungapp.data.MapData.DIRECTION_RIGHT);
 			}
 		} else {
 			console.log('=can not go right');

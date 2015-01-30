@@ -106,13 +106,24 @@
 		}
 	}
 
+	.map-grid {
+		width: 100%;
+		margin: auto;
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+	}
+
 }
 
 @include media-query (palm) {
 
 	.map-grid {
-		width: 136%;
-		margin-left: -18%;
+		width: 100%;
+		margin: auto;
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
 		.social {
 			right: 15%;
 		}
