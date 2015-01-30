@@ -15,7 +15,7 @@ Template.Challenge.events ({
 		var mapId = Router.current().params.mapId;
 		var caption ='Thử thách '+mapId+' - Bánh Chưng Xanh';
 
-		console.log(description[index], caption);
+		//console.log(description[index], caption);
 
 		FB.ui({
 			method: 'feed',
