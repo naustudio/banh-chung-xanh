@@ -4,10 +4,9 @@
 		{{#if currentUser}}
 			<span class="button-login logout" >{{t "logout"}}</span>
 		{{else}}
-			<span class="button-login {{inMapMaster}}" data-target=".modal-login" >{{t "login"}}</span>
+			<span class="button-login" data-target=".modal-login" >{{t "login"}}</span>
 		{{/if}}
-		<span class="button-status {{inMapMaster}}" data-target=".modal-status" >{{t "status"}}</span>
-		<h1 class="header__page-title">Bánh Chưng Xanh</h1>
-		<div class="intro-block-smartphone {{inPageGame}}"> {{> IntroBlockControl}}</div>
+		<span class="button-status" data-target=".modal-status" >{{t "status"}}</span>
+		<h1 class="header__page-title"><a href="/{{lc}}/">Bánh Chưng Xanh</a></h1>
 	</header>
 </template>

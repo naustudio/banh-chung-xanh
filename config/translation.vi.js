@@ -3,7 +3,8 @@
  */
 /*global i18n*/
 i18n.map('vi', {
-	'nav_home': 'Giới thiệu campaign',
+	'nav_home': 'Trang chủ',
+	'nav_intro': 'Giới thiệu campaign',
 	'nav_instructions': 'Hướng dẫn cách chơi',
 	'nav_sponsors': 'Danh sách nhà hảo tâm',
 	'nav_donate': 'Hướng dẫn cách đóng góp',

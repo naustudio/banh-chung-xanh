@@ -39,6 +39,24 @@
     return this[!this.isShown ? 'show' : 'hide'](_relatedTarget)
   }
 
+  Modal.prototype.whichTransitionEvent= function() {
+    var t,
+        el = document.createElement("fakeelement");
+
+    var transitions = {
+      "transition"      : "transitionend",
+      "OTransition"     : "oTransitionEnd",
+      "MozTransition"   : "transitionend",
+      "WebkitTransition": "webkitTransitionEnd"
+    }
+
+    for (t in transitions){
+      if (el.style[t] !== undefined){
+        return transitions[t];
+      }
+    }
+  }
+
   Modal.prototype.show = function (_relatedTarget) {
     var that = this
     var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
@@ -60,9 +78,21 @@
         that.$element.appendTo(document.body) // don't move modals dom position
       }
 
+
+
       that.$element
-        .show()
-        .scrollTop(0)
+       .show()
+      .scrollTop(0)
+
+         /*var transitionEvent = that.whichTransitionEvent();
+         //var self = this;
+
+
+        that.$element.one(transitionEvent,
+                       function() {
+             		 that.show()
+             		 .scrollTop(0)
+           });*/
 
       if (transition) {
         that.$element[0].offsetWidth // force reflow
@@ -87,23 +117,7 @@
   }
 
 
-  Modal.prototype.whichTransitionEvent= function() {
-    var t,
-        el = document.createElement("fakeelement");
 
-    var transitions = {
-      "transition"      : "transitionend",
-      "OTransition"     : "oTransitionEnd",
-      "MozTransition"   : "transitionend",
-      "WebkitTransition": "webkitTransitionEnd"
-    }
-
-    for (t in transitions){
-      if (el.style[t] !== undefined){
-        return transitions[t];
-      }
-    }
-  }
 
   Modal.prototype.hide = function (e) {
     if (e) e.preventDefault()

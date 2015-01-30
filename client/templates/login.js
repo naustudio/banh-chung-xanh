@@ -42,6 +42,12 @@ Template.Login.events({
 		var error = $('#login').find('.error-block');
 		error.remove();
 
+	},
+
+	'click .button-cancel': function() {
+		var error = $('#login').find('.error-block');
+		error.remove();
+		$('.modal-login').modal('hide');
 	}
 });
 

@@ -4,6 +4,7 @@
 /*global i18n*/
 i18n.map('en', {
 	'nav_home': 'Home',
+	'nav_intro': 'Introduction',
 	'nav_instructions': 'Instructions',
 	'nav_sponsors': 'Sponsors',
 	'nav_donate': 'Donate',

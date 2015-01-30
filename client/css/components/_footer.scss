@@ -9,9 +9,15 @@
 	clear: both;
 	text-align: right;
 	position: relative;
+	color: $inuit-base-grey-4-color;
+
+	&:hover {
+		color: inherit;
+	}
+
 	.icon-nau {
 		font-size: 50px;
-		position: absolute;
+		position: relative;
 		top: -25px;
 		right: 10px;
 		color: #808080;
@@ -19,15 +25,35 @@
 	}
 }
 
-@include media-query (portable) {
+@media (max-width: 320px) and (max-height: 480px) {
 	.footer {
-		position: absolute;
+		position: relative;
 		bottom: 0;
-		padding-bottom: 20px;
+		padding-top: 10px;
+		padding-bottom: 0;
 		right: 0;
 		.icon-nau {
 			font-size: 35px;
 			top: -16px;
+		}
+
+
+	}
+	.footer-copy {
+		font-size: 8px;
+		margin-right: 55px;
+	}
+}
+
+@media (max-width: 1023px) and (min-height: 481px){
+	.footer {
+		position: absolute;
+		bottom: 0;
+		padding-bottom: 0;
+		right: 0;
+		.icon-nau {
+			font-size: 35px;
+			top: -28px;
 		}
 
 
