@@ -1,3 +1,4 @@
+/*global FastClick*/
 Template.ApplicationLayout.rendered = function() {
 	$(document).ready(function() {
 
@@ -10,5 +11,8 @@ Template.ApplicationLayout.rendered = function() {
 		$('#percentageSponsor').text(percentageSponsor);
 		var progressCurrent = percentageSponsor/100 * parseInt($('.progress').width(),10);
 		$('.progress-current').width(progressCurrent);
+
+		// add FastClick
+		FastClick.attach(document.body);
 	});
 };
