@@ -9,11 +9,11 @@ Template.Challenge.events ({
 		console.log('FB URL to share:', currentUrl);
 
 		FB.ui({
-			method: 'share',
-			href: currentUrl, //share from current URL of the app
-			// link: 'https://developers.facebook.com/docs/dialogs/',
-			// caption: 'Reference Documentation',
-			// description: 'Lorem ipsum dolor sit amet, consectetur arum aliquam reprehenderit laudantium disti. Dicta.'
+			method: 'feed',
+			//href: currentUrl, //share from current URL of the app
+			link: currentUrl,
+			caption: 'Reference Documentation',
+			description: 'Lorem ipsum dolor sit amet, consectetur arum aliquam reprehenderit laudantium disti. Dicta.'
 		}, function(response) {
 			if (response && response.post_id) {
 				console.log('Post was published.');
