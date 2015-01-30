@@ -246,9 +246,9 @@ button.close {
 }
 .button-login {
 	position: absolute;
-	top: 30px;
-	left: 60px;
+	left: 50px;
 	cursor: pointer;
+	padding: 10px;
 }
 .icon-cross {
 	font-size: 20px;
@@ -262,10 +262,10 @@ button.close {
 
 .button-status {
 	position: absolute;
-	top: 30px;
-	left: 140px;
+	left: 120px;
 	display: none;
 	cursor: pointer;
+	padding: 10px;
 }
 
 .error-block {
