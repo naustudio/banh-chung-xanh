@@ -40,6 +40,7 @@
 }
 
 .menu-list__item {
+	cursor: pointer;
 	display: block;
 	text-decoration: none;
 	color: $color-menu-list;

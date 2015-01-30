@@ -50,5 +50,8 @@ Template.Menu.events({
 
 	'click .button-modal-guide': function() {
 		$('.modal-game-guide').modal('show');
+	},
+	'click .intro-popup': function() {
+		$('.modal-introduction').modal('show');
 	}
 });
