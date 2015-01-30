@@ -5,7 +5,9 @@ var game = null;
 
 var completeGame = function(result) {
 	var mapLevel = Session.get('mapLevel');
-	$('.modal-congratulation-level' +mapLevel).modal('show');
+	setTimeout(function() {
+		$('.modal-congratulation-level' +mapLevel).modal('show');
+	}, 400);
 	console.log('win result ' + result);
 	var mapId = result.mapIndex;
 	//user already loggin

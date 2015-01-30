@@ -61,10 +61,15 @@ window.chungapp.render = window.chungapp.render || {};
 	//define method, property here
 	MapRender.prototype = {
 		constructor: MapRender,
+		transformHTML: function(position, className) {
+			if (position && className) {
+				return '<div style="-webkit-transform:translate(' + position.x * 100 + '%, ' + position.y * 100 + '%); -moz-transform:translate(' + position.x * 100 + '%, ' + position.y * 100 + '%); -ms-transform:translate(' + position.x * 100 + '%, ' + position.y * 100 + '%); -o-transform:translate(' + position.x * 100 + '%, ' + position.y * 100 + '%); transform:translate(' + position.x * 100 + '%, ' + position.y * 100 + '%);" data-x="' + position.x + '" data-y="' + position.y + '" class="square ' + className + '"></div>';
+			} else {
+				return '';
+			}
+		},
 		renderStatic: function(mapDataObj) {
 			var mapData = mapDataObj.getStaticObjData();
-			var userPosition = mapDataObj.getUserPosition();
-			var chungPositions = mapDataObj.getChungList();
 			var diskPositions = mapDataObj.getDiskList();
 			var staticHTML = '';
 
@@ -75,7 +80,7 @@ window.chungapp.render = window.chungapp.render || {};
 				}
 			}
 			for (var i = 0; i < diskPositions.length; i++) {
-				staticHTML += '<div style="left:' + ( diskPositions[i].x / mapDataObj.getMapWidth() ) * 100 + '%; top: ' + ( diskPositions[i].y / mapDataObj.getMapHeight() ) * 100 + '%;" data-x="' + x + '" data-y="' + y + '" class="square goal"></div>';
+				staticHTML += this.transformHTML(diskPositions[i],'goal');//'<div style="-webkit-transform:translate(' + diskPositions[i].x * 100 + '%, ' + diskPositions[i].y * 100 + '%);-ms-transform:translate(' + diskPositions[i].x * 100 + '%, ' + diskPositions[i].y * 100 + '%);transform:translate(' + diskPositions[i].x * 100 + '%, ' + diskPositions[i].y * 100 + '%);" data-x="' + diskPositions[i].x + '" data-y="' + diskPositions[i].y + '" class="square goal"></div>';
 			}
 			var dynamicHTML = this.renderDynamic(window.chungapp.data.MapData.DIRECTION_DEFAULT, mapDataObj);
 			staticHTML += dynamicHTML;
@@ -88,9 +93,9 @@ window.chungapp.render = window.chungapp.render || {};
 			var userPosition = mapDataObj.getUserPosition();
 			var chungPositions = mapDataObj.getChungList();
 
-			dynamicHTML += '<div style="left:' + ( userPosition.x / mapDataObj.getMapWidth() ) * 100 + '%; top: ' + ( userPosition.y / mapDataObj.getMapHeight() ) * 100 + '%;" data-x="' + userPosition.x + '" data-y="' + userPosition.y + '" class="square user user-' + direction + '"></div>';
+			dynamicHTML += this.transformHTML(userPosition, 'user user-' + direction);//'<div style="-webkit-transform:translate(' + userPosition.x * 100 + '%, ' + userPosition.y * 100 + '%);-ms-transform:translate(' + userPosition.x * 100 + '%, ' + userPosition.y * 100 + '%);transform:translate(' + userPosition.x * 100 + '%, ' + userPosition.y * 100 + '%);" data-x="' + userPosition.x + '" data-y="' + userPosition.y + '" class="square user user-' + direction + '"></div>';
 			for (var i = 0; i < chungPositions.length; i++) {
-				dynamicHTML += '<div style="left:' + ( chungPositions[i].x / mapDataObj.getMapWidth() ) * 100 + '%; top: ' + ( chungPositions[i].y / mapDataObj.getMapHeight() ) * 100 + '%;" data-x="' + chungPositions[i].x + '" data-y="' + chungPositions[i].y + '" class="square banh-chung"></div>';
+				dynamicHTML += this.transformHTML(chungPositions[i], 'banh-chung');//'<div style="-webkit-transform:translate(' + chungPositions[i].x * 100 + '%, ' + chungPositions[i].y * 100 + '%);-ms-transform:translate(' + chungPositions[i].x * 100 + '%, ' + chungPositions[i].y * 100 + '%);transform:translate(' + chungPositions[i].x * 100 + '%, ' + chungPositions[i].y * 100 + '%);" data-x="' + chungPositions[i].x + '" data-y="' + chungPositions[i].y + '" class="square banh-chung"></div>';
 			}
 			return dynamicHTML;
 		},
@@ -110,8 +115,11 @@ window.chungapp.render = window.chungapp.render || {};
 				.removeClass('user-right user-left user-up user-down')
 				.addClass(directionClass)
 				.css({
-					'left': ( dataX / 12 ) * 100 + '%',
-					'top': ( dataY / 12 ) * 100 + '%'
+					'-webkit-transform':'translate(' + dataX  * 100 + '%'+ ',' + dataY  * 100 + '%)',
+					'-moz-transform':'translate(' + dataX  * 100 + '%'+ ',' + dataY  * 100 + '%)',
+					'-o-transform':'translate(' + dataX  * 100 + '%'+ ',' + dataY  * 100 + '%)',
+					'-ms-transform':'translate(' + dataX  * 100 + '%'+ ',' + dataY  * 100 + '%)',
+					'transform':'translate(' + dataX  * 100 + '%'+ ',' + dataY  * 100 + '%)'
 				});
 
 			var banhChungArray = $('.banh-chung');
@@ -122,8 +130,11 @@ window.chungapp.render = window.chungapp.render || {};
 					dataY = chungPositions[i].y;
 
 					$(banhChungArray[i]).css({
-						'left': ( dataX / 12 ) * 100 + '%',
-						'top': ( dataY / 12 ) * 100 + '%'
+						'-webkit-transform':'translate(' + dataX  * 100 + '%'+ ',' + dataY  * 100 + '%)',
+						'-moz-transform':'translate(' + dataX  * 100 + '%'+ ',' + dataY  * 100 + '%)',
+						'-o-transform':'translate(' + dataX  * 100 + '%'+ ',' + dataY  * 100 + '%)',
+						'-ms-transform':'translate(' + dataX  * 100 + '%'+ ',' + dataY  * 100 + '%)',
+						'transform':'translate(' + dataX  * 100 + '%'+ ',' + dataY  * 100 + '%)'
 					});
 				}
 
