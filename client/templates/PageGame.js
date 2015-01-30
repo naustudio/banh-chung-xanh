@@ -4,8 +4,11 @@
 var game = null;
 
 var completeGame = function(result) {
-	$('.modal-congratulation-level3').modal('show');
-	console.log('win result ' + result);
+	// delay 300 milisecond when show congratulation pop up
+	setTimeout(function() {
+		$('.modal-congratulation-level3').modal('show');
+		console.log('win result ' + result);
+	}, 400);
 };
 
 Template.PageGame.rendered = function() {
