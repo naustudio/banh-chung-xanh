@@ -4,8 +4,9 @@
 var game = null;
 
 var completeGame = function(result) {
-	$('.modal-congratulation-level3').modal('show');
-	console.log('win result ' + result);
+	var mapLevel = Session.get('mapLevel');
+	$('.modal-congratulation-level'+mapLevel).modal('show');
+	console.log('win result ' + result, Session.get('mapLevel'));
 };
 
 Template.PageGame.rendered = function() {
@@ -23,7 +24,10 @@ Template.PageGame.helpers({
 		Meteor.call('map', mapId, function(error, result) {
 			//we parse the game and init the game
 			game = new window.chungapp.Game();
-			game.setJSONMapData(result, mapId);
+			game.setJSONMapData(result.map, mapId);
+			var mapLevel = result.mapLevel;
+			Session.set('mapLevel', mapLevel);
+
 			console.log('result', result);
 			game.startGame();
 

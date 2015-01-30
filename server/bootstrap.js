@@ -18,8 +18,13 @@ Meteor.startup(function() {
 			}
 			var myJSON = JSON.parse(Assets.getText('maps/maps-config.json'));
 			if (myJSON && myJSON.maps && myJSON.maps[mapNumber].src) {
+				var mapLevel = myJSON.maps[mapNumber].mapLevel;
 				map = JSON.parse(Assets.getText(myJSON.maps[mapNumber].src));
-				return map;
+
+				return {
+					'map' : map,
+					'mapLevel' : mapLevel
+				};
 			}
 		}
 	});
