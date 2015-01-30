@@ -30,5 +30,8 @@ Template.gridMap.events({
 		window.open(url, ref + Math.random(), opts);
 
 		return false;
+	},
+	'click .icon-round': function() {
+		Session.set('showGame',false);
 	}
 });

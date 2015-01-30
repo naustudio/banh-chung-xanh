@@ -43,6 +43,14 @@
 
 	&.orange {
 		background-color: $bg-button-orange;
+
+		&:hover {
+			background-color: $bg-button-orange-hover;
+		}
+
+		&:active {
+			background-color: $bg-button-orange-active;
+		}
 	}
 
 	&.gray {
@@ -101,23 +109,7 @@
 		width: 30px;
 		height: 30px;
 
-		&:after {
-			content: '';
-			width: 113%;
-			height: 4px;
-			background-image: url(img/icon-button-shadow.png);
-			background-repeat: no-repeat;
-			background-size: 100%;
-			// background: #c5c4c3;
-			position: absolute;
-			left: 0;
-			bottom: -4px;
 
-			@include media-query(retina) {
-				background-image: url(img/icon-button-shadow-2x.png);
-			}
-			// transform: skewX(30deg);
-		}
 	}
 
 	.icon-google {
@@ -152,7 +144,7 @@
 		}
 	}
 
-	.icon-undo {
+	.icon-reset {
 		&:active,
 		&:hover {
 			background-color: $bg-active-state;
@@ -205,12 +197,7 @@
 	right: 0;
 }
 
-@media (max-width: 1000px) {
-	.button__challenge {
-		font-size: 8.5px;
-		min-width: 105px;
-		padding: 0;
-	}
+@include media-query (portable) {
 	.challenge {
 		height: 36px;
 		line-height: 36px;
@@ -236,3 +223,22 @@
 		bottom: 0;
 	}
 }
+
+@media (max-width: 320px) {
+	.button__challenge {
+		font-size: 8.5px;
+		min-width: 105px;
+		padding: 0;
+		line-height: 38px;
+	}
+}
+
+@media (min-width: 321px) and (max-width: 1000px) {
+	.button__challenge {
+		padding: 0 7px;
+		font-size: 12px;
+		min-width: 155px;
+		line-height: 43px;
+	}
+}
+

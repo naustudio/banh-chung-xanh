@@ -44,6 +44,11 @@ $bg-menu-item-border-fallback: rgb(255, 90, 128);
 $bg-menu-item-border         : rgba(255, 255, 255, 0.1);
 $bg-name-list--border        : rgba($color-theme, 0.1);
 $bg-button-orange            : #f58400;
+$bg-button-orange-hover	     : #d08007;
+$bg-button-orange-active	 : #c77700;
+$bg-button-green             : #5dd16d;
+$bg-button-green-hover	     : #43a651;
+$bg-button-green-active	     : #117b20;
 
 // font-size
 $fz-menu-list                : 30px;
@@ -73,3 +78,5 @@ $color-policy-highlight: #e24071;
 $walking-animation-duration: 0.5s;
 // duration of movement transition
 $character-movement-duration: 0.3s;
+// duration of highlight banh chung
+$banh-chung-highlight-duration: 0.1s;

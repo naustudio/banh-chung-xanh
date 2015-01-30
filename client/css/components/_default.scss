@@ -32,5 +32,16 @@ a {
 	-webkit-tap-highlight-color: transparent;
 }
 
+@include media-query (portable) {
+	body {
+		overflow-x: hidden;
+	}
+
+	.hidden-smartphone {
+		opacity: 0;
+		visibility: hidden;
+		display: none;
+	}
+}
 
 

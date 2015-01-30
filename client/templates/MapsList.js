@@ -39,13 +39,19 @@ Template.MapList.helpers({
 			}
 
 		}
+		return '';
 	}
 });
 
 Template.MapList.events({
+	'click .chose-round': function() {
+		Session.set('showGame',true);
+	}
 });
 
 Template.MapList.rendered = function() {
+
+	Session.set('showGame', false);
 
 	var user = Meteor.user();
 	var gameScores = (user && user.gameScores &&  user.gameScores.length) ? user.gameScores : gameScoresTmp;

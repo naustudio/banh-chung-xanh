@@ -97,6 +97,7 @@ window.chungapp.render = window.chungapp.render || {};
 		renderSteps: function(direction, mapData) {
 			var userPosition = mapData.getUserPosition();
 			var chungPositions = mapData.getChungList();
+			var diskPositions = mapData.getDiskList();
 
 			console.log('==renderSteps');
 			console.log(direction, userPosition, chungPositions);
@@ -127,11 +128,17 @@ window.chungapp.render = window.chungapp.render || {};
 				}
 
 			}
-			var el = document.getElementsByClassName('user')[0];
-			// el.addEventListener('transitionend', function() {
-			// 	$(this).removeClass('moving');
-			// }, true);
 
+			// check position of banh chung and disk
+			for (var j = 0; j < chungPositions.length; j++) {
+				banhChungArray[j].classList.remove('highlight');
+				for (var d = 0; d < diskPositions.length; d++) {
+					if (chungPositions[j].x === diskPositions[d].x && chungPositions[j].y === diskPositions[d].y) {
+						// highlight this banh chung
+						banhChungArray[j].classList.add('highlight');
+					}
+				}
+			}
 		},
 
 		renderMapFromDoms: function() {
