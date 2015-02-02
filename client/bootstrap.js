@@ -3,7 +3,7 @@
  *
  * Bootstrap the app when client start here
  */
-/*global i18n, Settings*/
+/*global i18n*/
 
 // default fallback language
 i18n.setDefaultLanguage('vi');
@@ -23,14 +23,5 @@ Meteor.startup(function() {
 	Meteor.call('map', function(error, result) {
 		Session.set('map', result);
 	});
-	Meteor.call('getRemainingDate', function(error, result) {
-		if (error) {
-			console.log('Remaining date can not be calculated');
-		} else {
-			// Session.set('remainingDate', result);
-			Settings.setItem('remainingDate', result);
-		}
-	});
-
 	// Settings.setItem('remainingDate', getRemainingDate());
 });
