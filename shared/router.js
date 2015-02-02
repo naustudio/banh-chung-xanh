@@ -30,17 +30,6 @@ Router.route('/:lang', function() {
 	name: 'landing'
 });
 
-Router.route('/:lang/intro', function() {
-	applyLanguage(this);
-	this.render('PageLanding');
-	checkIntro.call(this);
-}, {
-	name: 'intro',
-	data: function() {
-		return {lang: Session.get('languge') };
-	}
-});
-
 Router.route('/:lang/game/:mapId', function() {
 	applyLanguage(this);
 	this.render('PageGame');
