@@ -2,16 +2,27 @@
  * @author Thanh Tran, Trang Pham
  * Introduction modal
  */
+/* global Modernizr */
 
 Template.Introduction.rendered = function() {
 	console.log('Introduction rendered');
-	$('.modal-introduction').modal('show');
+	if (Modernizr.localstorage) {
+		var introShowed = localStorage['introShowed'];
+		if (introShowed === undefined ) {
+			introShowed = false;
+		}
+		if (!introShowed) {
+			$('.modal-introduction').modal('show');
+			localStorage['introShowed'] = true;
+		}
+	} else {
+		$('.modal-introduction').modal('show');
+	}
 };
 
 Template.Introduction.events({
 	'hidden.bs.modal': function() {
 		console.log('Intro modal closed');
-		Router.current().redirect('/' + Session.get('language'));
 	},
 
 	'click #intro-play-btn': function() {

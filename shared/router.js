@@ -8,8 +8,14 @@ Router.configure({
 	layoutTemplate: 'ApplicationLayout'
 });
 
+var checkIntro = function() {
+	this.render('Introduction', {
+		to: 'intro'
+	});
+};
+
 Router.route('/', function() {
-	this.redirect('/' + getPreferredLanguage() + '/intro');
+	this.redirect('/' + getPreferredLanguage() ); //+ '/intro');
 });
 
 Router.route('/:lang', function() {
@@ -19,27 +25,20 @@ Router.route('/:lang', function() {
 	}
 	applyLanguage(this);
 	this.render('PageLanding');
-	this.render(null, {to: 'intro'});
+	checkIntro.call(this);
 }, {
 	name: 'landing'
-});
-
-Router.route('/:lang/intro', function() {
-	applyLanguage(this);
-	this.render('PageLanding');
-	this.render('Introduction', {to: 'intro'});
-}, {
-	name: 'intro',
-	data: function() {
-		return {lang: Session.get('languge') };
-	}
 });
 
 Router.route('/:lang/game/:mapId', function() {
 	applyLanguage(this);
 	this.render('PageGame');
+	checkIntro.call(this);
 }, {
-	name: 'game'
+	name: 'game',
+	data: function() {
+		return {lang: Session.get('languge') };
+	}
 });
 
 Router.route('/:lang/sponsors', function() {
