@@ -5,11 +5,21 @@
 	background-position: center;
 	text-align: center;
 	padding: 30px;
+	background: $inuit-base-background-color;
 }
 
 .congratulation-img-text {
 	margin-top: 20px;
 	margin-bottom: 5px;
+}
+
+.congratulation-text {
+	font-family: UTMAlterGothic;
+	font-size: 42px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: $color-congratulation-text;
+	text-shadow: 1px 1px 0px $inuit-base-grey-2-color;
 }
 
 .congratulation-button {
@@ -42,11 +52,26 @@
 	}
 
 	.congratulation-img {
+		max-height: 275px;
+		max-width: 269px;
 		width: 65%;
 	}
 
 	.congratulation-button {
 		margin: 7px;
 		min-width: 80px;
+	}
+
+}
+
+@include media-query (palm) {
+	.congratulation-text {
+		font-size: 27px;
+	}
+}
+
+@include media-query (lap) {
+	.congratulation-text {
+		font-size: 38px;
 	}
 }
