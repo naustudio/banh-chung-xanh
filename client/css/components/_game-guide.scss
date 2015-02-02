@@ -9,7 +9,7 @@
 	overflow: hidden;
 	margin: 0 auto;
 	border-radius: 4px;
-	height: 400px;
+	//height: 400px;
 	width: 70%;
 }
 
@@ -87,18 +87,9 @@ a.control_next {
 }
 
 @include media-query (portable) {
-	#slider {
-		height: 250px;
-		width: 100%;
-	}
 
 	.hello {
 		font-size: 18px;
-	}
-
-	#slider ul li img{
-		width: 100% !important;
-		height: auto !important;
 	}
 
 	a.control_prev, a.control_next {
@@ -109,5 +100,12 @@ a.control_next {
 		.modal-content {
 			max-width: 100%;
 		}
+	}
+}
+
+@include media-query (palm) {
+	#slider {
+		height: 250px !important;
+		width: 100%;
 	}
 }

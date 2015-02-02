@@ -2,5 +2,13 @@
 	<section>
 		<h2>Trang quản lý app. <small>Cần login</small></h2>
 		{{> Admin__Sponsors }}
+
+		<form action="javascript:;" class="add-player-form" id="add-player-form">
+			<label for="">Add players</label>
+			<input type="text" class="name" placeholder="Tên">
+			<input type="text" class="duration" placeholder="Số bước">
+			<input type="text" class="max-round" placeholder="Số vòng">
+			<button class="button gray" id="submit">Submit</button>
+		</form>
 	</section>
 </template>

@@ -11,6 +11,10 @@ Template.GameGuide.events({
 		$('#slider ul li:last-child').prependTo('#slider ul');
 			$('#slider ul').css('left', '');
 		});
+		console.log($('#slider ul li:last-child').height());
+		var newHeight = $('#slider ul li:last-child').height();
+		$('#slider').height(newHeight);
+
 	},
 
 	'click a.control_next': function () {
@@ -20,6 +24,17 @@ Template.GameGuide.events({
 		$('#slider ul li:first-child').appendTo('#slider ul');
 			$('#slider ul').css('left', '');
 		});
+		var newHeight = $('#slider ul li:first-child').height();
+		$('#slider').height(newHeight);
 	}
 
+});
+
+Template.GameGuide.helpers({
+
+	heightSlider: function() {
+		var newHeight = $('#slider ul li:first-child').height();
+		$('#slider').height(newHeight);
+		return newHeight?newHeight:'500px';
+	}
 });

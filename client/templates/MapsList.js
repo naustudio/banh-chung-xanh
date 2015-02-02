@@ -24,7 +24,7 @@ Template.MapList.helpers({
 
 	'rerenderMapMaster': function() {
 		var user = Meteor.user();
-		var gameScores = (user && user.gameScores &&  user.gameScores.length) ? user.gameScores : gameScoresTmp;
+		var gameScores = (user && user.gameScores &&  user.gameScores.length) ? user.gameScores : [];//gameScoresTmp;
 
 		for (var i= 0; i<gameScores.length; i++) {
 			var index = gameScores[i].mapIndex;
@@ -37,7 +37,6 @@ Template.MapList.helpers({
 			else {
 				$('.round-' + index).addClass('unlock-3');
 			}
-
 		}
 		return '';
 	}
