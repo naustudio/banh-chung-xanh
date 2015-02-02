@@ -1,5 +1,14 @@
 // Bootstrap the app when server start here
 /*global Assets, Settings, InitialSettings*/
+var _calculateRemainingDate = function () {
+	var endDate = Settings.getItem('endDate');
+	var currentServerDate = new Date();
+	var remainingDate = (endDate.valueOf() - currentServerDate.valueOf())/(1000*60*60*24);
+	remainingDate = Math.ceil(remainingDate);
+	remainingDate = Math.max(remainingDate, 0);
+	return remainingDate;
+};
+
 Meteor.startup(function() {
 
 	InitialSettings.forEach(function(item) {
@@ -26,7 +35,18 @@ Meteor.startup(function() {
 					'mapLevel' : mapLevel
 				};
 			}
+		},
+
+		getRemainingDate: function () {
+			return _calculateRemainingDate();
+		},
+
+		getDonatedAmount: function () {
+			var amount = Settings.getItem('donatedAmount');
+			amount = amount ? amount : 0;
+			return amount;
 		}
+
 	});
 
 	// Users collection
@@ -44,5 +64,10 @@ Meteor.startup(function() {
 			return true;
 		}
 	});
+
+	Meteor.setInterval(function () {
+		var remainingDate = _calculateRemainingDate();
+		Settings.setItem('remainingDate', remainingDate);
+	}, 10000);
 
 });

@@ -41,7 +41,14 @@ if (Meteor.server) {
 		{
 			// amount we'll pledge to donate, after calculating the maps solved by our players
 			// keeping here for caching purpose
-			key: 'donateAmount',
+			key: 'donatedAmount',
+			// VND
+			value: 0
+		},
+		{
+			// amount we'll pledge to donate, after calculating the maps solved by our players
+			// keeping here for caching purpose
+			key: 'remainingDate',
 			// VND
 			value: 0
 		}
