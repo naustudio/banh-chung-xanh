@@ -10,28 +10,49 @@ var completeGame = function(result) {
 	}, 400);
 	console.log('win result ' + result);
 	var mapId = result.mapIndex;
+
 	//user already loggin
-	/*
 	var user = Meteor.user();
 	if (user) {
 		var gameScoresOfUser = user.gameScores;
 		if (!gameScoresOfUser) {	//create new property for user
-			gameScoresOfUser = user.gameScores = [];
+			Meteor.users.update({
+				_id:Meteor.user()._id
+			}, {
+				$set:{
+					'gameScores':[]
+				}
+			});
+			gameScoresOfUser = [];
 		}
 
 		var foundScoreItem = getTheScoreItemByMapId(gameScoresOfUser, mapId);
 		if (foundScoreItem) {
-			foundScoreItem.elapsedTime = result.elapsedTime;
-			foundScoreItem.usedSteps = result.usedSteps;
-			foundScoreItem.count = foundScoreItem.count + 1;
-			foundScoreItem.updatedAt = Date.now();
-		} else {//add new score item
+			Meteor.users.update({
+				_id:Meteor.user()._id,
+				'gameScores.mapIndex':foundScoreItem.mapIndex
+			}, {
+				$set:{
+					'gameScores.elapsedTime':result.elapsedTime,
+					'gameScores.usedSteps':result.usedSteps,
+					'gameScores.count':foundScoreItem.count + 1,
+					'gameScores.updatedAt':Date.now()
+				}
+			});
+		} else {
+			//add new score item
 			result.updatedAt = Date.now();
 			result.count = 1;
-			gameScoresOfUser.push(result);
+			Meteor.users.update({
+				_id:Meteor.user()._id
+			}, {
+				$push:{
+					'gameScores':result
+				}
+			});
 		}
 	}
-	*/
+
 };
 
 var getTheScoreItemByMapId = function(gameScoresOfUser, mapId) {
