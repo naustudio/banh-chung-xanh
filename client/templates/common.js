@@ -15,4 +15,6 @@ Template.ApplicationLayout.rendered = function() {
 		// add FastClick
 		FastClick.attach(document.body);
 	});
+
+
 };

@@ -36,6 +36,7 @@
 		}
 	}
 
+
 	.user {
 		position: absolute;
 		overflow: hidden;
@@ -167,6 +168,16 @@
 		}
 	}
 }
+
+@-moz-document url-prefix() {
+	.map-grid {
+		.square {
+			display: block;
+		}
+	}
+
+}
+
 
 
 
