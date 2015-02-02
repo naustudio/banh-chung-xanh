@@ -9,7 +9,7 @@
 
 .tooltip:hover:after{
 	background: #333;
-	background: rgba(0,0,0,.8);
+	background: $bg-active-state;
 	border-radius: 3px;
 	bottom: 42px;
 	color: #fff;
@@ -18,7 +18,7 @@
 	padding: 3px 10px 6px;
 	position: absolute;
 	z-index: 1;
-	min-width: 80px;
+	min-width: 85px;
 	width: auto;
 	line-height: 1;
 	text-align: left;
@@ -27,7 +27,7 @@
 
 .tooltip:hover:before{
 	border: solid;
-	border-color: #333 transparent;
+	border-color: $bg-active-state transparent;
 	border-width: 6px 6px 0 6px;
 	bottom: 37px;
 	content: "";
