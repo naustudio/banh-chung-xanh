@@ -233,7 +233,7 @@
 	display: none;
 }
 
-@media(max-width: 1000px) {
+@include media-query (portable) {
 	.logo-banhchungxanh {
 		display: none;
 	}

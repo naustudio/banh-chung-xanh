@@ -45,6 +45,10 @@ i18n.map('vi', {
 	'challenge4': 'Không ai có thể giải nhanh hơn bạn? Thách bạn bè nào!',
 	'tooltip_map': 'Chọn thử thách',
 	'tooltip_reset': 'Chơi lại',
-	'tooltip_back': 'Lùi lại'
+	'tooltip_back': 'Lùi lại',
+	'congratulation': 'Xin chúc mừng',
+	'master-map': 'Chọn thử thách',
+	'next': 'Chơi tiếp',
+	'congratulation-description': 'Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng'
 
 });

@@ -45,6 +45,10 @@ i18n.map('en', {
 	'challenge4': 'Không ai có thể giải nhanh hơn bạn? Thách bạn bè nào!',
 	'tooltip_map': 'Master map',
 	'tooltip_reset': 'Reset',
-	'tooltip_back': 'Back'
+	'tooltip_back': 'Back',
+	'congratulation': 'Congratulation',
+	'master-map': 'Master map',
+	'next': 'Next',
+	'congratulation-description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
 
 });
