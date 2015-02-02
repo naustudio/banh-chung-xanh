@@ -1,12 +1,12 @@
 /*global FB, i18n*/
 Template.Challenge.events ({
 	'click .button__challenge': function() {
-		var currentUrl = Router.current().url;
+		/*var currentUrl = Router.current().url;
 		if (currentUrl.indexOf('http') === -1) {
 			currentUrl = Meteor.absoluteUrl(currentUrl.substring(1)); //substring to remove the initial /
-		}
+		}*/
 
-		//var currentUrl = document.location.origin;
+		var currentUrl = document.location.origin;
 
 		console.log('FB URL to share:', currentUrl);
 
