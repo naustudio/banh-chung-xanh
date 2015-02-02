@@ -8,6 +8,7 @@
 	width: 100%;
 	max-width: 520px;
 	margin: 20px auto;
+	margin-top: 45px;
 	position: relative;
 
 	@include media-query(retina) {
@@ -72,28 +73,19 @@
 	left: -35%;
 
 	.icon {
-		margin-left: -4px;
+		/* margin-left: -4px; */
 		border-radius: 50%;
-		background: rgb(246, 246, 246);
+		background: $inuit-base-grey-6-color;
 		border-radius: 50%;
-		width: 36px;
-		height: 36px;
-		line-height: 1.4;
+		width: 32px;
+		height: 31px;
+		line-height: 0.8;
+		border: 1.7px solid $inuit-base-white-color;
+		z-index: 1;
+		top: 2px;
+
 	}
 
-	.circle-icon {
-		display: inline-block;
-		position: absolute;
-		width: 32px;
-		height: 32px;
-		border-radius: 50%;
-		border: 1px solid $bg-active-state;
-		top: 2px;
-		left: 2px;
-		&:hover {
-			border: 1px solid $color-button;
-		}
-	}
 }
 
 @include media-query (portable) {
@@ -102,7 +94,7 @@
 		bottom: 60px;
 		left: -95%;
 		.icon {
-			box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+			//box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 		}
 	}
 

@@ -1,0 +1,37 @@
+.tooltip{
+	//display: inline;
+	position: relative;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+
+.tooltip:hover:after{
+	background: #333;
+	background: $bg-active-state;
+	border-radius: 3px;
+	bottom: 42px;
+	color: #fff;
+	content: attr(title);
+	left: 0;
+	padding: 3px 10px 6px;
+	position: absolute;
+	z-index: 1;
+	min-width: 85px;
+	width: auto;
+	line-height: 1;
+	text-align: left;
+
+}
+
+.tooltip:hover:before{
+	border: solid;
+	border-color: $bg-active-state transparent;
+	border-width: 6px 6px 0 6px;
+	bottom: 37px;
+	content: "";
+	left: 5px;
+	position: absolute;
+	z-index: 2;
+}

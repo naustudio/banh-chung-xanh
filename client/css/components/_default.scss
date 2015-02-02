@@ -44,4 +44,13 @@ a {
 	}
 }
 
+@font-face {
+	font-family: 'UTMAlterGothic';
+	src: url('fonts/UTMAlterGothic.eot'); /* IE9 Compat Modes */
+	src: url('fonts/UTMAlterGothic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		url('fonts/UTMAlterGothic.woff') format('woff'), /* Pretty Modern Browsers */
+		url('fonts/UTMAlterGothic.ttf')  format('truetype'), /* Safari, Android, iOS */
+		url('fonts/UTMAlterGothic.svg#UTMAlterGothic') format('svg'); /* Legacy iOS */
+	}
+
 

@@ -42,6 +42,9 @@ i18n.map('vi', {
 	'challenge1': 'Bạn khâm phục thành tích chơi của mình? Vậy hãy thử thách bạn bè của mình để quyên được nhiều tiền hơn cho các em nhỏ.',
 	'challenge2': 'Bạn nghĩ chẳng ai có thể chơi giỏi hơn mình? Hãy thách bạn bè cùng chơi để chứng tỏ nào!',
 	'challenge3': 'Đây có phải thành tích tốt nhất chưa? Mời bạn bè cùng chơi để xem nhé.',
-	'challenge4': 'Không ai có thể giải nhanh hơn bạn? Thách bạn bè nào!'
+	'challenge4': 'Không ai có thể giải nhanh hơn bạn? Thách bạn bè nào!',
+	'tooltip_map': 'Chọn thử thách',
+	'tooltip_reset': 'Chơi lại',
+	'tooltip_back': 'Lùi lại'
 
 });
