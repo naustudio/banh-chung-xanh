@@ -28,4 +28,21 @@ Meteor.startup(function() {
 			}
 		}
 	});
+
+	// Users collection
+	Meteor.users.allow({
+		insert: function(userID/*, document*/) {
+			console.log('=== inserted' + userID);
+			return true;
+		},
+		update: function(userID/*, document*/) {
+			console.log('=== updated' + userID);
+			return true;
+		},
+		remove: function(userID/*, document*/) {
+			console.log('=== removed' + userID);
+			return true;
+		}
+	});
+
 });
