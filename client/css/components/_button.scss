@@ -79,6 +79,17 @@
 // --------
 // Style of icon button
 // --------
+//
+.background-transition {
+	position: absolute;
+	display: inline-block;
+	height: 0;
+	width: 30px;
+	bottom: 0;
+	left: 0;
+	transition:all 0.2s ease-out;
+	z-index: -1;
+}
 
 .icon-button {
 	text-align: center;
@@ -92,6 +103,8 @@
 		background-image: url(img/button-border-gray.png);
 		background-repeat: repeat-x;
 		background-size: auto 100%;
+
+		z-index: 1;
 
 		@include media-query(retina) {
 			background-image: url(img/button-border-gray-2x.png);
@@ -113,26 +126,38 @@
 	}
 
 	.icon-google {
+		z-index: 1;
 		&:active,
 		&:hover {
-			background-color: $googleplus;
 			color: #fff;
+			.background-transition {
+				background-color: $googleplus;
+				height: 30px;
+			}
 		}
 	}
 
 	.icon-facebook {
+		z-index: 1;
 		&:active,
 		&:hover {
-			background-color: $facebook;
 			color: #fff;
+			.background-transition {
+				background-color: $facebook;
+				height: 30px;
+			}
 		}
 	}
 
 	.icon-twitter {
+		z-index: 1;
 		&:active,
 		&:hover {
-			background-color: $twitter;
 			color: #fff;
+			.background-transition {
+				background-color: $twitter;
+				height: 30px;
+			}
 		}
 	}
 
