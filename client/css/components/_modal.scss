@@ -305,7 +305,7 @@ button.close {
 	}
 }
 
-@include media-query (portable) {
+@media(max-width: 1000px) {
 	.modal {
 		height: 100%;
 	}
