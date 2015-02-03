@@ -17,9 +17,11 @@ Session.setDefault('map', '');
 // start of steps tracker
 Session.setDefault('steps', 0);
 
+
 // any start up logic here
 Meteor.startup(function() {
 	Meteor.call('map', function(error, result) {
 		Session.set('map', result);
 	});
+	// Settings.setItem('remainingDate', getRemainingDate());
 });
