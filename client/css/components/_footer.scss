@@ -12,12 +12,15 @@
 	position: absolute;
 	bottom: -10px;
 	width: 1000px;
-	color: $inuit-base-grey-2-color;
+	color: $color-policy-footer-text;
 
-
-	&:hover {
-		color: inherit;
+	.policy-footer {
+		color: $color-policy-footer-text;
+		&:hover {
+			color: $inuit-base-text-color;
+		}
 	}
+
 
 	.icon-nau {
 		font-size: 50px;
