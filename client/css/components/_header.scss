@@ -17,6 +17,7 @@
 	border: 0;
 	background: transparent;
 	outline: none;
+	z-index: 4;
 
 	&:before {
 		content: '';
