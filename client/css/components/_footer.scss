@@ -41,7 +41,7 @@
 	color: $color-button-bottom;
 }
 
-@media (max-width: 320px) and (max-height: 590px) {
+@media (max-width: 640px) and (max-height: 649px) {
 	.footer {
 		position: relative;
 		bottom: 0;
@@ -68,7 +68,7 @@
 	}
 }
 
-@media (max-width: 1023px) and (min-height: 600px){
+@media (max-width: 1023px) and (min-height: 650px){
 	.footer {
 		position: absolute;
 		bottom: 0;
