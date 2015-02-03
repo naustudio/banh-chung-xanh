@@ -144,6 +144,9 @@ Template.PageGame.events({
 		var result = game.goUp();
 		if (result !== null) {
 			completeGame(result);
+
+			///_------------------trackEvent winGame -------------------
+			_gaq.push(['_trackEvent', 'winGame', 'Render', 'win Game']);
 		}
 	},
 
