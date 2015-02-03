@@ -49,6 +49,7 @@ i18n.map('vi', {
 	'congratulation': 'Xin chúc mừng',
 	'master-map': 'Chọn thử thách',
 	'next': 'Chơi tiếp',
-	'congratulation-description': 'Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng'
+	'congratulation-description': 'Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng',
+	'translate': 'English'
 
 });
