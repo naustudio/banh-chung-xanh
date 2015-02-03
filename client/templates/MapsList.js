@@ -48,7 +48,7 @@ Template.MapList.events({
 	},
 	'click .map-wrap': function() {
 		var user = Meteor.user();
-		console.log(user, user.gameScores);
+		console.log(user);
 	}
 });
 

@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 <template name="Footer">
 	<footer class="footer">
 		<span  class="translate">
@@ -25,3 +27,4 @@
 
 	</footer>
 </template>
+>>>>>>> feature/google_analytics

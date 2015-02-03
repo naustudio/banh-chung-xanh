@@ -6,7 +6,7 @@
  * It provides:
  * 		+ the way user integrate with map: move next, undo, store state of game
  */
-/*global chungapp:true, data:true, render:true, _gaq*/
+/*global chungapp:true, data:true, render:true, _gaq:true*/
 chungapp = chungapp || {};
 data = chungapp.data || {};
 render = chungapp.render || {};
@@ -15,11 +15,6 @@ function Game() {
 	this.initialize();
 }
 
-
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 
 //define method, property here
