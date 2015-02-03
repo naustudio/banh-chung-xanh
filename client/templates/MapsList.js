@@ -45,6 +45,10 @@ Template.MapList.helpers({
 Template.MapList.events({
 	'click .chose-round': function() {
 		Session.set('showGame',true);
+	},
+	'click .map-wrap': function() {
+		var user = Meteor.user();
+		console.log(user, user.gameScores);
 	}
 });
 
