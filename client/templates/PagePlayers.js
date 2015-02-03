@@ -4,14 +4,36 @@
 /*global User*/
 Template.PagePlayers.helpers({
 	players: function() {
-		var players = Meteor.users.find({});
-		var playersObj = players.fetch();
+		var players = [];
+		var player = {} ; /*{
+			index: '',
+			name: '',
+			duration: '',
+			maxRound: '',
+			lastAccess: ''
+		};*/
+
+		var playersList = Meteor.users.find({});
+		var playersObj = playersList.fetch();
 
 		for (var i = 0; i < playersObj.length; i++) {
-			playersObj[i].index = i + 1;
+			player = {};
+			player.index = i + 1;
+
+			// get infomation from Meteor users list
+			// if user login from facebook
+			if (playersObj[i].services.facebook === undefined) {
+				// user login via email
+				player.name = playersObj[i].username;
+			} else {
+				// user login via facebook
+				player.name = playersObj[i].username;
+			}
+
+			players.push(player);
 		}
 
-		return playersObj;
+		return players;
 	}
 });
 
