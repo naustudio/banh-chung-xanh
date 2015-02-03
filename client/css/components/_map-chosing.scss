@@ -36,7 +36,7 @@
 
 .chose-round{
 	position: absolute;
-	height: 80px;
+	height: 16%;
 	width: 16%;
 	background-position: center;
 	background-size: contain;
@@ -54,7 +54,7 @@
 }
 .round-2 {
 	left: 40%;
-	top: 12%;
+	top: 7%;
 	@include map-list-item(round1);
 }
 .round-3 {
