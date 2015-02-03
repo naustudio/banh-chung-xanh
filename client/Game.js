@@ -6,7 +6,7 @@
  * It provides:
  * 		+ the way user integrate with map: move next, undo, store state of game
  */
-/*global chungapp:true, data:true, render:true*/
+/*global chungapp:true, data:true, render:true, _gaq*/
 chungapp = chungapp || {};
 data = chungapp.data || {};
 render = chungapp.render || {};
@@ -14,6 +14,13 @@ render = chungapp.render || {};
 function Game() {
 	this.initialize();
 }
+
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
 
 //define method, property here
 Game.prototype = {
@@ -50,6 +57,9 @@ Game.prototype = {
 
 		//store the start time
 		this.startTime = new Date();
+
+		///_------------------trackEvent startGame -------------------
+		_gaq.push(['_trackEvent', 'startGame', 'Render', 'Start Game']);
 	},
 
 	endGame: function(lastDirection) {
@@ -61,6 +71,9 @@ Game.prototype = {
 		var historiesStep = this.mapResolver.getHistoriesStep();
 		historiesStep.push(lastDirection);
 		console.log('historiesStep >>> ' + historiesStep);
+
+		///_------------------trackEvent endGame -------------------
+		_gaq.push(['_trackEvent', 'endGame', 'Render', 'End Game']);
 
 		return {
 			'mapIndex' : this.mapId,
