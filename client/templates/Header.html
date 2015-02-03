@@ -1,6 +1,14 @@
 <template name="Header">
 	<header class="header">
 		<button class="header__menu-btn"><span class="header__menu-icon {{isActive}}"></span></button>
+
+		{{#if isEnglishLanguage}}
+			<a class="color-vi translate" href="/vi/{{newPath}}"><span class="flag-vi"></span>{{t "translate"}}</a>
+		{{else}}
+			<a class="translate" href="/en/{{newPath}}"><span class="flag-en"></span>{{t "translate"}}</a>
+		{{/if}}
+
+
 		{{#if currentUser}}
 			<span class="button-login logout" >{{t "logout"}}</span>
 		{{else}}

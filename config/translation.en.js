@@ -53,6 +53,6 @@ i18n.map('en', {
 	'translate': 'Tiếng Việt',
 	'date-left': 'Date left',
 	'sponsor-description': 'Total of funds',
-	'number-step': 'Number of steps'
+	'number-step': 'Steps'
 
 });
