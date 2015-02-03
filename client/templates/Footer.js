@@ -1,6 +1,6 @@
 
 Template.Footer.helpers({
-	currentPath: function() {
+	newPath: function() {
 		var currentURL = Router.current().url;
 		// removing http://example.com/en part
 		var emptyLangPath = currentURL.replace(/.*\/(en|vi).*?\/?/, '');
@@ -10,4 +10,7 @@ Template.Footer.helpers({
 	isEnglishLanguage: function() {
 		return (Session.get('language') === 'en');
 	}
+});
+
+Template.Footer.events({
 });
