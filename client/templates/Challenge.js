@@ -6,7 +6,7 @@ Template.Challenge.events ({
 			currentUrl = Meteor.absoluteUrl(currentUrl.substring(1)); //substring to remove the initial /
 		}*/
 
-		var currentUrl = document.location.origin;
+		var currentUrl = document.location.href;
 
 		console.log('FB URL to share:', currentUrl);
 
