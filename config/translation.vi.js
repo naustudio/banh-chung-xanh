@@ -48,7 +48,7 @@ i18n.map('vi', {
 	'congratulation': 'Xin chúc mừng',
 	'master-map': 'Chọn thử thách',
 	'next': 'Chơi tiếp',
-	'congratulation-description': 'Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng',
+	'congratulation-description': 'Chúc mừng bạn đã chiến thắng, chúng tôi sẽ quyên góp số tiền là {$1} vào quỹ từ thiện',
 	'translate': 'English',
 	'date-left': 'Ngày còn lại',
 	'sponsor-description': 'Được đóng góp trên tổng',

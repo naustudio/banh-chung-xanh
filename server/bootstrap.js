@@ -37,14 +37,59 @@ Meteor.startup(function() {
 			}
 		},
 
-		getRemainingDate: function () {
+		getRemainingDate: function() {
 			return _calculateRemainingDate();
 		},
 
-		getDonatedAmount: function () {
+		getDonatedAmount: function() {
 			var amount = Settings.getItem('donatedAmount');
 			amount = amount ? amount : 0;
 			return amount;
+		},
+		updateDonationTotal: function() {
+			var mapConfig = JSON.parse(Assets.getText('maps/maps-config.json'));
+			var sumOfDonation = 0;
+			//console.log(Settings.find({}).fetch());
+			Meteor.users.find({}).forEach( function(user) {
+				var gameScores = user.gameScores ? user.gameScores : [];
+				var level = 0;
+				var value = 0;
+				var valueObj = null;
+				var i = 0;
+				var j = 0;
+				for (i = 0; i < gameScores.length; i++) {
+					for (j = 1; j < mapConfig.maps.length; j++) {
+						if ( mapConfig.maps[j].index.toString() === gameScores[i].mapIndex.toString() ) {
+							level = mapConfig.maps[j].mapLevel;
+							if (level) {
+								valueObj = Settings.findOne({key: mapConfig.mapsDonation[level.toString()]});
+								value = parseInt(valueObj.value,10);
+								sumOfDonation += ( parseInt(gameScores[i].count,10) * value );
+								//console.log(gameScores[i].count,Settings.findOne({key: mapConfig.mapsDonation[level.toString()]}));
+							}
+						}
+					}
+				}
+				Settings.setItem('donatedAmount', sumOfDonation);
+			});
+			return sumOfDonation;
+		},
+		userDonates : function(mapId) {
+			var mapConfig = JSON.parse(Assets.getText('maps/maps-config.json'));
+			var i = 0;
+			var level = 0;
+			var value = 0;
+			var valueObj = null;
+			var updateStatus = false;
+			for (i = 1; i < mapConfig.maps.length; i++) {
+				if ( parseInt(mapId, 10) === mapConfig.maps[i].index ) {
+					updateStatus = true;
+					level = mapConfig.maps[i].mapLevel;
+					valueObj = Settings.findOne({key: mapConfig.mapsDonation[level.toString()]});
+					value = parseInt(valueObj.value,10);
+				}
+			}
+			return value;
 		}
 
 	});
@@ -68,7 +113,7 @@ Meteor.startup(function() {
 		}
 	});
 
-	Meteor.setInterval(function () {
+	Meteor.setInterval(function() {
 		var remainingDate = _calculateRemainingDate();
 		Settings.setItem('remainingDate', remainingDate);
 	}, 10000);
