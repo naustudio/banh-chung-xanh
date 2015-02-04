@@ -35,6 +35,6 @@ Template.GameGuide.helpers({
 	heightSlider: function() {
 		var newHeight = $('#slider ul li:first-child').height();
 		$('#slider').height(newHeight);
-		return newHeight?newHeight:'400px';
+		return '400px';
 	}
 });
