@@ -6,7 +6,7 @@
  * It provides:
  * 		+ the way user integrate with map: move next, undo, store state of game
  */
-/*global chungapp:true, data:true, render:true*/
+/*global chungapp:true, data:true, render:true, ga:true*/
 chungapp = chungapp || {};
 data = chungapp.data || {};
 render = chungapp.render || {};
@@ -14,6 +14,8 @@ render = chungapp.render || {};
 function Game() {
 	this.initialize();
 }
+
+
 
 //define method, property here
 Game.prototype = {
@@ -50,6 +52,9 @@ Game.prototype = {
 
 		//store the start time
 		this.startTime = new Date();
+
+		///_------------------trackEvent startGame -------------------
+		ga('send', 'event', 'gamePlay', 'startGame');
 	},
 
 	endGame: function(lastDirection) {
@@ -61,6 +66,9 @@ Game.prototype = {
 		var historiesStep = this.mapResolver.getHistoriesStep();
 		historiesStep.push(lastDirection);
 		console.log('historiesStep >>> ' + historiesStep);
+
+		///_------------------trackEvent endGame -------------------
+		ga('send', 'event', 'gamePlay', 'endWinGame');
 
 		return {
 			'mapIndex' : this.mapId,

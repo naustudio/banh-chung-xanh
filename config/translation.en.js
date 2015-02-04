@@ -49,6 +49,10 @@ i18n.map('en', {
 	'congratulation': 'Congratulation',
 	'master-map': 'Master map',
 	'next': 'Next',
-	'congratulation-description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+	'congratulation-description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+	'translate': 'Tiếng Việt',
+	'date-left': 'Date left',
+	'sponsor-description': 'Total of funds',
+	'number-step': 'Steps'
 
 });

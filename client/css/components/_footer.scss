@@ -1,40 +1,46 @@
 .footer-copy {
 	font-size: 10px;
 	position: relative;
-	margin-right: 70px;
+	margin-right: 20px;
+	float: right;
 }
 
 .footer {
 	//padding-bottom: 35px;
 	clear: both;
-	text-align: right;
+	//text-align: right;
 	position: absolute;
 	bottom: -10px;
 	width: 1000px;
-	color: $inuit-base-grey-2-color;
+	color: $color-policy-footer-text;
 
-	&:hover {
-		color: inherit;
+	.policy-footer {
+		color: $color-policy-footer-text;
+		&:hover {
+			color: $inuit-base-text-color;
+		}
 	}
+
 
 	.icon-nau {
 		font-size: 50px;
 		position: relative;
-		top: -40px;
+		top: -25px;
 		right: 10px;
 		color: #808080;
 		color: $inuit-base-grey-2-color;
+		float: right;
 	}
 }
 
-@media (max-width: 320px) and (max-height: 590px) {
+@include media-query (portable) {
 	.footer {
 		position: relative;
 		bottom: 0;
 		padding-top: 10px;
 		padding-bottom: 0;
 		right: 0;
-		width: auto;
+		width: 100%;
 		.icon-nau {
 			font-size: 35px;
 			top: -16px;
@@ -42,28 +48,30 @@
 
 
 	}
+}
+
+@media (max-width: 640px) and (max-height: 649px) {
+
 	.footer-copy {
 		font-size: 8px;
-		margin-right: 55px;
 	}
 }
 
-@media (max-width: 1023px) and (min-height: 600px){
-	.footer {
+@media (max-width: 1023px) and (min-height: 650px){
+	/*.footer {
 		position: absolute;
 		bottom: 0;
 		padding-bottom: 0;
 		right: 0;
-		width: auto;
+		width: 100%;
 		.icon-nau {
 			font-size: 35px;
-			top: -28px;
+			top: -15px;
 		}
 
 
-	}
+	}*/
 	.footer-copy {
 		font-size: 8px;
-		margin-right: 55px;
 	}
 }

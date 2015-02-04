@@ -66,8 +66,13 @@ a.control_next {
 }
 
 .modal-game-guide {
+
 	.modal-content {
 		max-width: 90%;
+	}
+
+	.modal-dialog {
+		margin-top: 15px;
 	}
 }
 
@@ -97,8 +102,13 @@ a.control_next {
 	}
 
 	.modal-game-guide {
+
 		.modal-content {
 			max-width: 100%;
+		}
+
+		.modal-dialog {
+			margin-top: 0;
 		}
 	}
 }
@@ -107,5 +117,12 @@ a.control_next {
 	#slider {
 		height: 250px !important;
 		width: 100%;
+	}
+
+	.modal-game-guide {
+
+		.modal-dialog {
+			margin-top: 0;
+		}
 	}
 }

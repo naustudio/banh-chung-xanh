@@ -33,7 +33,7 @@
 	font-size: 32px;
 	color: $inuit-base-green-color;
 	font-weight: bold;
-	margin-top: 25px;
+	margin-top: 20px;
 
 }
 .total-sponsor {
@@ -86,6 +86,7 @@
 	height: 190px;
 	position: relative;
 	margin: auto;
+	margin-right: 0;
 	/*
 	-webkit-transform: rotate(45deg);
 	   -moz-transform: rotate(45deg);
@@ -185,7 +186,7 @@
 }
 
 .block-control {
-	margin-bottom: 50px;
+	//margin-bottom: 20px;
 	padding-top: 15px;
 }
 

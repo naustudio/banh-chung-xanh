@@ -6,7 +6,7 @@ var gameScoresTmp = [{
 			'count': 0
 		},
 		{
-			'mapIndex': 5,
+			'mapIndex': 2,
 			'elapsedTime': 60,
 			'usedSteps': 10,
 			'updatedAt': 1422328924902,
@@ -45,6 +45,10 @@ Template.MapList.helpers({
 Template.MapList.events({
 	'click .chose-round': function() {
 		Session.set('showGame',true);
+	},
+	'click .map-wrap': function() {
+		var user = Meteor.user();
+		console.log(user);
 	}
 });
 
@@ -53,7 +57,7 @@ Template.MapList.rendered = function() {
 	Session.set('showGame', false);
 
 	var user = Meteor.user();
-	var gameScores = (user && user.gameScores &&  user.gameScores.length) ? user.gameScores : gameScoresTmp;
+	var gameScores = (user && user.gameScores &&  user.gameScores.length) ? user.gameScores : [];
 
 	for (var i= 0; i<gameScores.length; i++) {
 		var index = gameScores[i].mapIndex;

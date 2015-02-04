@@ -1,3 +1,4 @@
+/*global ga:true*/
 Template.gridMap.rendered = function() {
 
 };
@@ -28,6 +29,8 @@ Template.gridMap.events({
 			',top='    + top    +
 			',left='   + left;
 		window.open(url, ref + Math.random(), opts);
+
+		ga('send', 'event', 'button', 'click', 'Sharing ' + ref);
 
 		return false;
 	},
