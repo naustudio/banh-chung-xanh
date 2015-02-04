@@ -44,6 +44,7 @@ Router.route('/:lang/game/:mapId', function() {
 Router.route('/:lang/sponsors', function() {
 	applyLanguage(this);
 	this.render('PageSponsors');
+	checkIntro.call(this);
 }, {
 	name: 'sponsor'
 });
@@ -51,6 +52,7 @@ Router.route('/:lang/sponsors', function() {
 Router.route('/:lang/players', function() {
 	applyLanguage(this);
 	this.render('PagePlayers');
+	checkIntro.call(this);
 }, {
 	name: 'players'
 });
