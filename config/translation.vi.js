@@ -56,6 +56,6 @@ i18n.map('vi', {
 	'privacy-policy': 'Điều khoản sử dụng',
 	'agree': 'Tôi đồng ý với',
 	'of-website': 'của trang web',
-	'copyright': 'Nau Studio giữ bản quyền nội dung trên website này'
+	'copyright': 'Giữ toàn quyền'
 
 });

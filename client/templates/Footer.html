@@ -1,14 +1,20 @@
 <template name="Footer">
 	<footer class="footer">
 		{{#if isEnglishLanguage}}
-			<a class="color-vi translate" href="/vi/{{newPath}}"><span class="flag-vi"></span>{{t "translate"}}</a>
+			<a class="color-vi translate" href="/vi/{{newPath}}">
+				<span class="flag-vi"></span>
+				<span class="flag-text"> {{t "translate"}} </span>
+			</a>
 		{{else}}
-			<a class="translate" href="/en/{{newPath}}"><span class="flag-en"></span>{{t "translate"}}</a>
+			<a class="translate" href="/en/{{newPath}}">
+				<span class="flag-en"></span>
+				<span class="flag-text"> {{t "translate"}} </span>
+			</a>
 		{{/if}}
 
-		<i class="icon-nau"></i>
+		<a href="http://naustud.io/" ><i class="icon-nau"></i></a>
 		<span class="footer-copy">
-			{{t "copyright"}}.  /  <a class="policy-footer" href="#">{{t "privacy-policy"}}</a>
+			© 2015 Nâu Studio. {{t "copyright"}}.  /  <a class="policy-footer" href="#">{{t "privacy-policy"}}</a>
 		</span>
 	</footer>
 </template>

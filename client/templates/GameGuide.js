@@ -31,7 +31,6 @@ Template.GameGuide.events({
 });
 
 Template.GameGuide.helpers({
-
 	heightSlider: function() {
 		var newHeight = $('#slider ul li:first-child').height();
 		$('#slider').height(newHeight);

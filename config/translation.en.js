@@ -56,6 +56,6 @@ i18n.map('en', {
 	'privacy-policy': 'Privacy Policy',
 	'agree': 'I agree',
 	'of-website': '',
-	'copyright': 'Copyright 2015. All Rights Reserved'
+	'copyright': 'All Rights Reserved'
 
 });
