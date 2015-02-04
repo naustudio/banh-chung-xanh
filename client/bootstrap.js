@@ -23,5 +23,6 @@ Meteor.startup(function() {
 	Meteor.call('map', function(error, result) {
 		Session.set('map', result);
 	});
-	// Settings.setItem('remainingDate', getRemainingDate());
+	Meteor.subscribe("userData");
+
 });
