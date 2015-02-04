@@ -12,10 +12,9 @@ var completeGame = function(result) {
 	console.log('win result ' + result);
 	var mapId = result.mapIndex;
 
-	Meteor.call('updateDonationTotal');
-
 	Meteor.call('userDonates', mapId, function(err, value) {
 		Session.set('userLastDonation', value);
+		Meteor.call('updateDonationTotal');
 	});
 
 	//user already loggin
