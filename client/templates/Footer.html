@@ -1,12 +1,10 @@
 <template name="Footer">
 	<footer class="footer">
-		<!--<span  class="translate">
-			{{#if isEnglishLanguage}}
-				<a class="color-vi" href="/vi/{{newPath}}">{{t "translate"}}</a>
-			{{else}}
-				<a href="/en/{{newPath}}">{{t "translate"}}</a>
-			{{/if}}
-		</span>-->
+		{{#if isEnglishLanguage}}
+			<a class="color-vi translate" href="/vi/{{newPath}}"><span class="flag-vi"></span>{{t "translate"}}</a>
+		{{else}}
+			<a class="translate" href="/en/{{newPath}}"><span class="flag-en"></span>{{t "translate"}}</a>
+		{{/if}}
 
 		<i class="icon-nau"></i>
 		<span class="footer-copy">

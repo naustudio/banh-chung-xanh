@@ -253,11 +253,11 @@ button.close {
 	}
 }
 .button-login {
-	position: absolute;
+	position: relative;
 	left: 50px;
 	cursor: pointer;
-	padding: 10px;
-	padding-top: 6.5px;
+	padding: 3px 10px;
+	line-height: 35px;
 }
 .icon-cross {
 	font-size: 20px;
@@ -270,12 +270,12 @@ button.close {
 
 
 .button-status {
-	position: absolute;
-	left: 120px;
+	position: relative;
+	left: 45px;
 	display: none;
 	cursor: pointer;
-	padding: 10px;
-	padding-top: 6.5px;
+	padding: 3px 10px;
+	padding-top: 8px;
 }
 
 .error-block {
@@ -305,7 +305,7 @@ button.close {
 	}
 }
 
-@media(max-width: 1000px) {
+@media(max-width: 1023px) {
 	.modal {
 		height: 100%;
 	}
@@ -353,6 +353,9 @@ button.close {
 	.button-login {
 		font-size: 13px;
 		z-index: 1;
+		top: 0;
+		padding: 3px 7px;
+		border-right: 1px solid $inuit-base-grey-color;
 	}
 	.modal-login .modal-content{
 		padding: 20px;
@@ -362,10 +365,10 @@ button.close {
 		}
 	}
 	.button-status {
-		display: block;
+		display: inline-block;
 		z-index: 1;
 		font-size: 13px;
-
+		padding: 3px 7px;
 	}
 
 }

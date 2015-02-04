@@ -5,7 +5,7 @@
 .header {
 	position: relative;
 	padding-top: 1.25em; /* 20/16 */
-	margin-bottom: 4em; /* 32/16 */
+	margin-bottom: 1em; /* 32/16 */
 }
 
 .header__menu-btn {
@@ -103,33 +103,6 @@
 	}
 }
 
-.translate {
-	text-align: left;
-	cursor: pointer;
-	padding-left: 1.25em;
-	position: absolute;
-	top: 4.3em;
-	z-index: 1;
-}
-
-.color-vi {
-	color: $color-button-bottom;
-}
-
-.flag-vi, .flag-en {
-	@include map-list-item(flag-vi);
-	width: 30px;
-	height: 30px;
-	display: inline-block;
-	vertical-align: middle;
-	margin-right: 12px;
-	background-position: center;
-	background-size: contain;
-}
-
-.flag-en {
-	@include map-list-item(flag-en);
-}
 
 @include media-query (portable) {
 	.header__page-title {

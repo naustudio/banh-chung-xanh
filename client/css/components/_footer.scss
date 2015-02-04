@@ -33,6 +33,35 @@
 	}
 }
 
+.translate {
+	text-align: left;
+	cursor: pointer;
+	padding-left: 1.25em;
+	position: absolute;
+	top: -10px;
+	z-index: 1;
+	font-size: 13px;
+}
+
+.color-vi {
+	color: $color-button-bottom;
+}
+
+.flag-vi, .flag-en {
+	@include map-list-item(flag-vi);
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 12px;
+	background-position: center;
+	background-size: contain;
+}
+
+.flag-en {
+	@include map-list-item(flag-en);
+}
+
 @include media-query (portable) {
 	.footer {
 		position: relative;
@@ -55,23 +84,20 @@
 	.footer-copy {
 		font-size: 8px;
 	}
+
+	.translate {
+		top: 2px;
+		font-size: 11px;
+	}
 }
 
 @media (max-width: 1023px) and (min-height: 650px){
-	/*.footer {
-		position: absolute;
-		bottom: 0;
-		padding-bottom: 0;
-		right: 0;
-		width: 100%;
-		.icon-nau {
-			font-size: 35px;
-			top: -15px;
-		}
-
-
-	}*/
 	.footer-copy {
 		font-size: 8px;
+	}
+
+	.translate {
+		top: 2px;
+		font-size: 11px;
 	}
 }

@@ -24,3 +24,15 @@
 		margin-left: -12px;
 	}
 }
+
+@media (max-width: 320px) {
+	.challenge {
+		top: 18px;
+	}
+}
+
+@media (min-width: 321px) and (max-width: 1000px) {
+	.challenge {
+		top: 14px;
+	}
+}

@@ -47,6 +47,7 @@
 	color: $color-names-list--title;
 	font-size: 32px;
 	font-weight: normal;
+	margin-top: 10px;
 }
 
 .names-list__empty {
@@ -97,5 +98,18 @@
 		&:active {
 			background: #ababab;
 		}
+	}
+}
+
+@media (max-width: 640px) and (max-height: 649px) {
+
+	.names-list__title {
+		font-size: 15px;
+	}
+}
+
+@media (max-width: 1023px) and (min-height: 650px){
+	.names-list__title {
+		font-size: 25px;
 	}
 }
