@@ -19,14 +19,9 @@ Template.PagePlayers.helpers({
 
 			// get infomation from Meteor users list
 			// if user login from facebook
-			if (currPlayer.services.facebook === undefined) {
-				// user login via email
-				player.name = currPlayer.username;
 
-			} else {
-				// user login via facebook
-				player.name = currPlayer.username;
-			}
+			player.name = currPlayer.profile ? currPlayer.profile.name : '';
+			player.lastAccess = currPlayer.lastAccess ? new Date(currPlayer.lastAccess).toDateString() : '';
 
 			// get levels
 			levels = '';

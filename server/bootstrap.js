@@ -1,5 +1,5 @@
 // Bootstrap the app when server start here
-/*global Assets, Settings, InitialSettings*/
+/*global Assets, Settings, InitialSettings, Accounts */
 var _calculateRemainingDate = function () {
 	var endDate = Settings.getItem('endDate');
 	var currentServerDate = new Date();
@@ -51,17 +51,20 @@ Meteor.startup(function() {
 
 	// Users collection
 	Meteor.users.allow({
-		insert: function(userID/*, document*/) {
-			console.log('=== inserted' + userID);
-			return true;
+		insert: function(/*userID, document*/) {
+			//TODO we need to check if permitted to perform this operation.
+			return false;
 		},
 		update: function(userID/*, document*/) {
-			console.log('=== updated' + userID);
-			return true;
+			//TODO we need to check if permitted to perform this operation.
+			console.log('=== removed' + userID);
+
+			return Meteor.userId() && Meteor.userId() === userID;
 		},
 		remove: function(userID/*, document*/) {
+			//TODO we need to check if permitted to perform this operation.
 			console.log('=== removed' + userID);
-			return true;
+			return false;
 		}
 	});
 
@@ -70,4 +73,27 @@ Meteor.startup(function() {
 		Settings.setItem('remainingDate', remainingDate);
 	}, 10000);
 
+	//Capture account events
+	Accounts.onCreateUser(function(options, user) {
+		var profile = options.profile = user.profile || {};
+
+		profile.name = user.username || profile.name;
+		user.lastAccess = new Date().valueOf();
+
+		if (options.profile) {
+			user.profile = options.profile;
+		}
+
+		return user;
+	});
+
+	Accounts.onLogin(function(options) {
+		Meteor.users.update({
+			_id: options.user._id
+		}, {
+			$set: {
+				lastAccess: new Date().valueOf()
+			}
+		});
+	});
 });

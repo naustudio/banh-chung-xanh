@@ -20,7 +20,7 @@
 
 Meteor.publish("userData", function() {
 	// if (this.userId) {
-	return Meteor.users.find({}, {fields: {'gameScores': 1}});
+	return Meteor.users.find({}, {fields: {'gameScores': 1, 'lastAccess': 1}});
 	// } else {
 	// 	this.ready();
 	// }
