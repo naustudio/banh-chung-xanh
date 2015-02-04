@@ -1,66 +1,51 @@
 /**
  * Players list
  */
-/*global User*/
 Template.PagePlayers.helpers({
 	players: function() {
 		var players = [];
-		var player = {} ; /*{
-			index: '',
-			name: '',
-			duration: '',
-			maxRound: '',
-			lastAccess: ''
-		};*/
+		var player = {} ;
+		var currPlayer = {};	// current player
+		var levels = '';		// level list
+		var gameScores = [];	// game score list
 
 		var playersList = Meteor.users.find({});
 		var playersObj = playersList.fetch();
 
 		for (var i = 0; i < playersObj.length; i++) {
+			currPlayer = playersObj[i];
 			player = {};
 			player.index = i + 1;
 
 			// get infomation from Meteor users list
 			// if user login from facebook
-			if (playersObj[i].services.facebook === undefined) {
+			if (currPlayer.services.facebook === undefined) {
 				// user login via email
-				player.name = playersObj[i].username;
+				player.name = currPlayer.username;
+
 			} else {
 				// user login via facebook
-				player.name = playersObj[i].username;
+				player.name = currPlayer.username;
 			}
 
+			// get levels
+			levels = '';
+			gameScores = [];
+			gameScores = currPlayer.gameScores;
+			if (gameScores !== undefined) {
+				for (var j = 0; j < currPlayer.gameScores.length; j++) {
+					if (j === currPlayer.gameScores.length - 1) {
+						levels += currPlayer.gameScores[j].mapIndex;
+					} else {
+						levels += currPlayer.gameScores[j].mapIndex + ', ';
+					}
+				}
+			}
+
+			player.levels = levels;
 			players.push(player);
 		}
 
 		return players;
-	}
-});
-
-Template.PagePlayers.events({
-	'submit #add-player-form': function(event, el) {
-		// get value
-		var $name = el.$('.name');
-		var $maxRound = el.$('.max-round');
-		var $duration = el.$('.duration');
-
-		var name = $name.val();
-		var maxRound = $maxRound.val();
-		var duration = $duration.val();
-
-		var player = new User({
-			name: name,
-			avatar: '',
-			duration: parseInt(duration, 10),
-			maxRound: parseInt(maxRound, 10),
-			lastAccess: new Date()
-		});
-
-		Meteor.users.insert(player);
-
-		// reset value
-		$name.val('');
-		$maxRound.val('');
-		$duration.val('');
 	}
 });

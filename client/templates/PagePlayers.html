@@ -8,8 +8,7 @@
 			<thead>
 				<tr class="names-list__header">
 					<th class="item col-one">{{t "players_name" }}</th>
-					<th class="item col-two">{{t "players_max_roud" }}</th>
-					<th class="item col-three">{{t "players_duration" }}</th>
+					<th class="item col-two">{{t "players_levels" }}</th>
 					<th class="item col-four">{{t "players_last_login" }}</th>
 				</tr>
 			</thead>
@@ -17,8 +16,7 @@
 				{{#each players}}
 				<tr class="names-list__record">
 					<td class="item">{{ index }}. {{ name }}</td>
-					<td class="item">{{ duration }}</td>
-					<td class="item">{{ maxRound }}</td>
+					<td class="item">{{ levels }}</td>
 					<td class="item">{{ lastAccess }}</td>
 				</tr>
 				{{else}}
