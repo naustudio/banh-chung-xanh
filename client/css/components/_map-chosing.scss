@@ -100,17 +100,23 @@
 }
 
 .unlock-1 {
+	height: 10%;
 	background-position: bottom;
 	@include map-list-item(unlock1);
+	margin-top: 30px;
 }
 
 .unlock-2 {
+	height: 10%;
 	background-position: bottom;
 	@include map-list-item(unlock2);
+	margin-top: 30px;
 }
 .unlock-3 {
+	height: 10%;
 	background-position: bottom;
 	@include map-list-item(unlock3);
+	margin-top: 30px;
 }
 
 .no-margin-right {
@@ -147,7 +153,9 @@
 	}
 
 	.unlock-1, .unlock-2, .unlock-3 {
-		background-position: center;
+		background-position: bottom;
+		width: 16%;
+		margin-top: 15px;
 	}
 }
 

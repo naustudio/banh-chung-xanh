@@ -52,6 +52,10 @@ i18n.map('en', {
 	'translate': 'Tiếng Việt',
 	'date-left': 'Date left',
 	'sponsor-description': 'Total of funds',
-	'number-step': 'Steps'
+	'number-step': 'Steps',
+	'privacy-policy': 'Privacy Policy',
+	'agree': 'I agree',
+	'of-website': '',
+	'copyright': 'Copyright 2015. All Rights Reserved'
 
 });
