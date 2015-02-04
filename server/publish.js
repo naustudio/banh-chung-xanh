@@ -19,15 +19,9 @@
 // });
 
 Meteor.publish("userData", function() {
-	if (this.userId) {
-		return Meteor.users.find({
-			_id: this.userId
-		}, {
-			fields: {
-				'gameScores': 1
-			}
-		});
-	} else {
-		this.ready();
-	}
+	// if (this.userId) {
+	return Meteor.users.find({}, {fields: {'gameScores': 1}});
+	// } else {
+	// 	this.ready();
+	// }
 });

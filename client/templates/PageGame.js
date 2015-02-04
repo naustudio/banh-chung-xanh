@@ -95,8 +95,7 @@ Template.PageGame.helpers({
 
 			// bind keyboard events, will move to an input controller
 			$('body').off('keyup keydown').on({
-				'keyup': function(event) {
-					console.log('keyup', event);
+				'keydown': function(event) {
 					var direction = '';
 
 					switch (event.keyCode) {
@@ -118,17 +117,6 @@ Template.PageGame.helpers({
 						if (result !== null) {
 							completeGame(result);
 						}
-						event.preventDefault();
-					}
-				},
-
-				'keydown': function(event) {
-					if (event.keyCode === 37 ||
-						event.keyCode === 38 ||
-						event.keyCode === 39 ||
-						event.keyCode === 40)
-					{
-						// prevent overflow body to be scrolled by directional key event
 						event.preventDefault();
 					}
 				}
