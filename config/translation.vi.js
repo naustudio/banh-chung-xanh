@@ -53,6 +53,10 @@ i18n.map('vi', {
 	'translate': 'English',
 	'date-left': 'Ngày còn lại',
 	'sponsor-description': 'Được đóng góp trên tổng',
-	'number-step': 'Số bước'
+	'number-step': 'Số bước',
+	'privacy-policy': 'Điều khoản sử dụng',
+	'agree': 'Tôi đồng ý với',
+	'of-website': 'của trang web',
+	'copyright': 'Nau Studio giữ bản quyền nội dung trên website này'
 
 });
