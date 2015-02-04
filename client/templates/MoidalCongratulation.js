@@ -1,8 +1,8 @@
 Template.Congratulation.events ({
-	'click .congratulation-button': function () {
+	'click .congratulation-button': function() {
 		$('.modal-congratulation').modal('hide');
 	},
-	'click .modal-congratulation-dialog': function(e) {
+	'click .modal-congratulation-dialog': function(/*e*/) {
 		if ($(event.target).hasClass('modal-congratulation-dialog')) {
 			document.location='/'+Session.get('language');
 
@@ -12,9 +12,11 @@ Template.Congratulation.events ({
 });
 
 Template.Congratulation.helpers ({
+	userLastDonation: function() {
+		return Session.get('userLastDonation');
+	},
 
-
-	'nextMapId': function () {
+	'nextMapId': function() {
 		return Session.get('nextMapId');
 	}
 });

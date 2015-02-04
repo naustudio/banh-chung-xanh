@@ -1,6 +1,7 @@
 /* © 2014 nau.com
  * @author Phuong Vo
  */
+/**/
 var game = null;
 
 var completeGame = function(result) {
@@ -10,6 +11,12 @@ var completeGame = function(result) {
 	}, 400);
 	console.log('win result ' + result);
 	var mapId = result.mapIndex;
+
+	Meteor.call('updateDonationTotal');
+
+	Meteor.call('userDonates', mapId, function(err, value) {
+		Session.set('userLastDonation', value);
+	});
 
 	//user already loggin
 	var user = Meteor.user();

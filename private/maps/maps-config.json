@@ -62,5 +62,10 @@
 			"mapLevel": 3,
 			"src":"maps/map10.json"
 		}
-	]
+	],
+	"mapsDonation":{
+		"1":"levelEasyAmount",
+		"2":"levelMediumAmount",
+		"3":"levelHardAmount"
+	}
 }
