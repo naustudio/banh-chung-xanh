@@ -52,9 +52,10 @@ Game.prototype = {
 
 		//store the start time
 		this.startTime = new Date();
+		console.log(this.startTime);
 
 		///_------------------trackEvent startGame -------------------
-		ga('send', 'event', 'gamePlay', 'startGame', this.mapId, this.startTime);
+		ga('send', 'event', 'startGame - Map: ' + this.mapId, this.startTime);
 	},
 
 	endGame: function(lastDirection) {
@@ -68,9 +69,9 @@ Game.prototype = {
 		console.log('historiesStep >>> ' + historiesStep);
 
 		///_------------------trackEvent endGame -------------------
-		ga('send', 'event', 'gamePlay', 'endWinGame', this.mapId, currentTime);
-		ga('send', 'event', 'gameTime', this.mapId, timeElapsed);
-		ga('send', 'event', 'gameAttempt', this.mapId, usedStep);
+		ga('send', 'event', 'endWinGame - Map: ' + this.mapId, currentTime);
+		ga('send', 'event', 'timeElapsed - Map: ' + this.mapId,  timeElapsed + ' Minutes');
+		ga('send', 'event', 'gameAttempt - Map: ' + this.mapId,  usedStep + ' Steps');
 
 		return {
 			'mapIndex' : this.mapId,
