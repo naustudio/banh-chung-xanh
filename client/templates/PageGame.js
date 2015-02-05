@@ -4,9 +4,9 @@
 var game = null;
 
 var completeGame = function(result) {
-	var mapLevel = Session.get('mapLevel');
+	//var mapLevel = Session.get('mapLevel');
 	setTimeout(function() {
-		$('.modal-congratulation-level' +mapLevel).modal('show');
+		$('.modal-congratulation').modal('show');
 	}, 400);
 	console.log('win result ' + result);
 	var mapId = result.mapIndex;
@@ -72,7 +72,13 @@ Template.PageGame.helpers({
 		//
 		var mapId = Router.current().params.mapId;
 		//
-		Session.set('nextMapId', parseInt(mapId,10) + 1);
+
+		if (parseInt(mapId,10) >= 10) {
+			Session.set('nextMapId', 1);
+		}
+		else {
+			Session.set('nextMapId', parseInt(mapId,10) + 1);
+		}
 		//
 		Meteor.call('map', mapId, function(error, result) {
 			//we parse the game and init the game

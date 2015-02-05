@@ -49,6 +49,7 @@ i18n.map('vi', {
 	'master-map': 'Chọn thử thách',
 	'next': 'Chơi tiếp',
 	'congratulation-description': 'Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng Xin chúc mừng',
+	'congratulation-description-no-login': 'Xin chúc mừng Xin chúc mừng Xin chúc mừng. Hãy đăng nhập để pla pla...',
 	'translate': 'English',
 	'date-left': 'Ngày còn lại',
 	'sponsor-description': 'Được đóng góp trên tổng',

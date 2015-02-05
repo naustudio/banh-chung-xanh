@@ -199,6 +199,9 @@ button.close {
 	.modal-header, .modal-body{
 		padding: 0;
 	}
+	&:hover {
+		text-decoration: none;
+	}
 }
 .title-login {
 	position: relative;
