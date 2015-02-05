@@ -26,7 +26,7 @@ i18n.map('vi', {
 	'cancel': 'Hủy',
 	'register': 'Đăng ký',
 	'or': 'Hoặc',
-	'shareAndSavePoints' :'Vui lòng đăng nhập để chúng tôi lưu lại kết quả quyên góp.',
+	'shareAndSavePoints' :'Vui lòng đăng nhập để chúng tôi quyên góp dựa vào thành tích chơi của bạn.',
 	'fillEmail': 'Điền email',
 	'fillName': 'Điền tên',
 	'hello': 'Xin chào',

@@ -26,7 +26,7 @@ i18n.map('en', {
 	'cancel': 'Cancel',
 	'register': 'Register',
 	'or': 'Or',
-	'shareAndSavePoints' :'Please log in to record the donation progress.',
+	'shareAndSavePoints' :'Please log in in order for us to donate based on your game results.',
 	'fillEmail': 'Fill in email',
 	'fillName': 'Fill in name',
 	'hello': 'Hello',
@@ -55,14 +55,14 @@ i18n.map('en', {
 	'challenge5': 'Show me you can play!',
 	'challenge6': 'You say you can play. Try it!',
 
-	'description-step-1': 'Trên đây là bản đồ 10 vòng chơi của Bánh Chưng Xanh, bao gồm 3 cấp độ dễ, bình thường, và khó được xếp ngẫu nhiên. \
-				Mỗi cấp độ sẽ tương ứng với một số tiền quyên góp. Bạn có thể chọn chơi bất kì vòng nào bạn thích.',
-	'description-step-2': 'Mục tiêu của trò chơi này là bạn phải giúp nhân vật anh Nâu đẩy hết bánh chưng vào từng chiếc đĩa có cắm cờ. Anh Nâu chỉ có thể đi lên, đi xuống, đi sang trái và đi sang phải. \
-				Bạn có thể dùng bàn phím, chuột hay tay nhấn vào 4 mũi tên chỉ phương hướng của nhân vật.',
-	'description-step-3': 'Bạn có thể đi lại bước vừa đi bằng cách bấm vào nút mũi tên đậm phía trên bản đồ. Hoặc là đi lại từ đầu bằng cách nhấn nút vòng tròn mũi tên.',
-	'description-step-4': 'Bạn sẽ nhìn thấy bảng thông tin số tiền đã được đóng góp cho đến lúc này, thứ tự vòng bạn đang chơi và số bước đi của bạn trong vòng chơi này.',
-	'description-step-5': 'Khi chiếc bánh chưng được đẩy vào chiếc đĩa, nó sẽ đổi màu. Và khi bạn đẩy hết bánh chưng vào đĩa, bảng thông báo Chúc mừng sẽ được hiện lên. \
-				Chúc mừng bạn đã hoàn thành vòng chơi! Bạn có thể nhấn nút chơi tiếp để đến vòng tiếp theo, hoặc nhấn vào nút bản đồ để quay lại bản đồ của trò chơi.',
+	'description-step-1': 'Above is the 10-round map of Banh Chung Xanh, including 3 levels of difficulty from Easy, Average, to Advanced which are randomized. \
+				Each level corresponds to certain amount of donation. You can choose to play any round of your interest.',
+	'description-step-2': 'The target of the game is to help Mr. NAU push each Vietnamese traditional glutinous rice cake to all the plates with flags. Mr. NAU can only go up,down,  right and left. \
+				You can use either your keyboard or mouse, or touch the 4 arrows indicating the directions of the character.',
+	'description-step-3': 'You can undo the last moves by clicking on the bold arrow on the top, or refesh the game by clicking on the circle arrow nearby.',
+	'description-step-4': 'You can also see information of the amounts contributed, the order of current round and the number of moves you made.',
+	'description-step-5': 'When a cake is pushed into a plate, its color will be changed. \
+				And when you push all the cakes into the plates, a bulletin board will display: Congratulations, you have finished this round! You can jump to the next round by clicking Next button, or go back to the map by clicking Map button.',
 
 
 	'tooltip_map': 'Master map',
