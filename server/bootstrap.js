@@ -141,14 +141,17 @@ Meteor.startup(function() {
 
 	//Capture account events
 	Accounts.onCreateUser(function(options, user) {
-		var profile = options.profile = user.profile || {};
+		var profile = options.profile || {};
 
-		profile.name = user.username || profile.name;
+		var usedPasswordService = !!(options.password);
+
+		if (usedPasswordService) {
+			profile.name = options.username || profile.name;
+		}
+
 		user.lastAccess = new Date().valueOf();
 
-		if (options.profile) {
-			user.profile = options.profile;
-		}
+		user.profile = profile;
 
 		return user;
 	});
