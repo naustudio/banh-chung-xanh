@@ -7,6 +7,7 @@
 	width: 100%;
 	padding: 1px 20px;
 	margin: auto;
+	min-height: 500px;
 }
 
 .challenge {
@@ -29,10 +30,17 @@
 	.challenge {
 		top: 18px;
 	}
+	.page {
+		min-height: 300px;
+	}
 }
 
 @media (min-width: 321px) and (max-width: 1000px) {
 	.challenge {
 		top: 14px;
+	}
+
+	.page {
+		min-height: 70%;
 	}
 }

@@ -1,4 +1,12 @@
 /*global Accounts, i18n*/
+
+Template.Login.helpers({
+	'congratulationLogin': function() {
+
+	}
+
+});
+
 Template.Login.events({
 	'submit form': function (e) {
 		e.stopPropagation();
@@ -111,6 +119,10 @@ Template.Login.rendered = function () {
 					$('.modal-login').modal('hide');
 				}
 			});
+
+			if (Session.get('congratulationLogin')) {
+				Router.go('/' + Session.get('language') + '/game/' + Session.get('nextMapId'));
+			}
 		}
 	});
 };
