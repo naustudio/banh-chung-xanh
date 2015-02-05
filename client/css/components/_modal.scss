@@ -130,27 +130,39 @@ button.close {
 ////modal custom----------modal introduction--------------
 
 .hello{
-	display: inline-block;
-	font-size: 52px;
+	//display: inline-block;
+	font-size: 24px;
 	color: $inuit-base-green-color;
 	font-weight: normal;
 }
+
 .title-paragraph{
 	font-size: 18px;
 	color: $inuit-base-green-color;
 }
+
+.project-purpose-sologan {
+	font-size: 24px;
+	color: $inuit-base-green-color;
+}
+
 .paragraph{
 	font-size: 14px;
-	margin-top: 7px;
-	margin-bottom: 7px;
+	margin-top: 40px;
+	margin-bottom: 40px;
 	text-align: justify;
 }
+
 .logo-modal{
 	height: 60px;
 	width: 90px;
 	display: block;
-	margin-bottom: 30px;
 }
+
+.project-purpose-call {
+	font-size: 24px;
+}
+
 .button-modal{
 	padding: 12px 23px;
 	font-size: 14px;
@@ -344,14 +356,11 @@ button.close {
 		}
 	}
 	.hello {
-		font-size: 36px;
+		font-size: 25px;
 	}
 	.button-modal {
 		padding: 12px 5px;
 		min-width: 100px;
-	}
-	.logo-modal {
-		margin-top: 40px;
 	}
 	.button-login {
 		font-size: 13px;
@@ -372,6 +381,19 @@ button.close {
 		z-index: 1;
 		font-size: 13px;
 		padding: 3px 7px;
+	}
+
+	.project-purpose-sologan {
+		font-size: 20px;
+	}
+
+	.paragraph {
+		margin-top: 25px;
+		margin-bottom: 25px;
+	}
+
+	.project-purpose-call {
+		font-size: 17px;
 	}
 
 }

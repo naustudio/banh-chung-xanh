@@ -9,10 +9,10 @@
 					<div class="congratulation-description">
 
 						{{#if currentUser}}
-							{{t "congratulation-description" userLastDonation}}
+							{{t "congratulation-description-start"}} {{userLastDonation}} {{t "congratulation-description-end"}}
 
 						{{else}}
-							{{t "congratulation-description-no-login" userLastDonation}}
+							{{t "congratulation-description-no-login"}} {{userLastDonation}}
 						{{/if}}
 
 					</div>

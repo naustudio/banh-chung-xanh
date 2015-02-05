@@ -50,6 +50,11 @@ a.control_prev, a.control_next {
 	cursor: pointer;
 }
 
+#slider ul li img {
+	height: 100%;
+	//border: 1px solid $inuit-base-grey-4-color;
+}
+
 a.control_prev:hover, a.control_next:hover {
 	opacity: 1;
 	-webkit-transition: all 0.2s ease;
@@ -84,17 +89,18 @@ a.control_next {
 	padding-right: 10%;
 	display: inline-block;
 	left: 0;
-	text-align: center;
+	text-align: left;
 	line-height: 1.5;
 	font-size: 14px;
 	color: white;
 	background: rgba(42,42,42, 0.3);
+	min-height: 100px;
 }
 
 @include media-query (portable) {
 
 	.hello {
-		font-size: 18px;
+		font-size: 25px;
 	}
 
 	a.control_prev, a.control_next {
@@ -111,11 +117,12 @@ a.control_next {
 			margin-top: 0;
 		}
 	}
+
 }
 
 @include media-query (palm) {
 	#slider {
-		height: 250px !important;
+		height: 370px!important;
 		width: 100%;
 	}
 
@@ -124,5 +131,14 @@ a.control_next {
 		.modal-dialog {
 			margin-top: 0;
 		}
+	}
+
+	#slider ul li img {
+		height: auto;
+		width: 100%;
+	}
+
+	.description-step {
+		min-height: 160px;
 	}
 }

@@ -271,7 +271,7 @@
 		width: 150px;
 		height: 140px;
 		display: inline-block;
-		right: 0;
+		right: 5px;
 		bottom: 0;
 	}
 
@@ -329,6 +329,14 @@
 		display: block;
 		width: 100%;
 	}
+
+	.button-controler {
+		position: absolute;
+		width: 150px;
+		height: 140px;
+		display: inline-block;
+		bottom: 0;
+	}
 }
 
 @include media-query (palm) {
@@ -355,5 +363,25 @@
 		display: block;
 		width: 87%;
 		margin-top: 25px;
+	}
+
+
+}
+
+@media (max-width: 320px) {
+	.button-controler {
+		right: 15px;
+	}
+}
+
+@media (min-width: 321px) and (max-width: 413px) {
+	.button-controler {
+		right: 21px;
+	}
+}
+
+@media (min-width: 414px) and (max-width: 640px) {
+	.button-controler {
+		right: 34px;
 	}
 }
