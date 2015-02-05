@@ -1,6 +1,6 @@
 // Bootstrap the app when server start here
 /*global Assets, Settings, InitialSettings, Accounts */
-var _calculateRemainingDate = function () {
+var _calculateRemainingDate = function() {
 	var endDate = Settings.getItem('endDate');
 	var currentServerDate = new Date();
 	var remainingDate = (endDate.valueOf() - currentServerDate.valueOf())/(1000*60*60*24);
@@ -90,6 +90,27 @@ Meteor.startup(function() {
 				}
 			}
 			return value;
+		},
+		arrayMappingDonation: function() {
+			//var arrayDonation = [];
+			var mapConfig = JSON.parse(Assets.getText('maps/maps-config.json'));
+			var i = 0;
+			var level = 0;
+			var value = 0;
+			var valueObj = null;
+			var tempItemDonation = {};
+			for (i = 1; i < mapConfig.maps.length; i++) {
+				level = mapConfig.maps[i].mapLevel;
+				valueObj = Settings.findOne({key: mapConfig.mapsDonation[level.toString()]});
+				value = parseInt(valueObj.value,10);
+				tempItemDonation[mapConfig.maps[i].index.toString()] = value;
+				//arrayDonation.push(tempItemDonation);
+			}
+			return tempItemDonation;
+		},
+		userDonatesAmount : function(money) {
+			var donatedAmount = Settings.getItem('donatedAmount');
+			Settings.setItem('donatedAmount', donatedAmount + money);
 		}
 
 	});
