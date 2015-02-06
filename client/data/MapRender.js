@@ -73,27 +73,37 @@ window.chungapp.render = window.chungapp.render || {};
 			var diskPositions = mapDataObj.getDiskList();
 			var staticHTML = '';
 
+			var squareIE = '';
+
+			var ua = window.navigator.userAgent;
+			var msie = ua.indexOf('MSIE ');
+
+			if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer, return version number
+			{
+				var squareIE = 'square-ie';
+			}
+
 			this.mapGenerated = new Grid().reMap(mapData);
 			for (var y = 0; y < this.mapGenerated.length; y++) {
 				for (var x = 0; x < this.mapGenerated[y].length; x++) {
-					staticHTML += '<div data-x="' + x + '" data-y="' + y + '" class="square '+ this.mapGenerated[y][x].shapeClass() + '"></div>';
+					staticHTML += '<div data-x="' + x + '" data-y="' + y + '" class="square ' + squareIE + ' ' + this.mapGenerated[y][x].shapeClass() + '"></div>';
 				}
 			}
 			for (var i = 0; i < diskPositions.length; i++) {
 				staticHTML += this.transformHTML(diskPositions[i],'goal');//'<div style="-webkit-transform:translate(' + diskPositions[i].x * 100 + '%, ' + diskPositions[i].y * 100 + '%);-ms-transform:translate(' + diskPositions[i].x * 100 + '%, ' + diskPositions[i].y * 100 + '%);transform:translate(' + diskPositions[i].x * 100 + '%, ' + diskPositions[i].y * 100 + '%);" data-x="' + diskPositions[i].x + '" data-y="' + diskPositions[i].y + '" class="square goal"></div>';
 			}
-			var dynamicHTML = this.renderDynamic(window.chungapp.data.MapData.DIRECTION_DEFAULT, mapDataObj);
+			var dynamicHTML = this.renderDynamic(window.chungapp.data.MapData.DIRECTION_DEFAULT, mapDataObj, squareIE);
 			staticHTML += dynamicHTML;
 			// TODO : Render HTML to append to grid the user, disks and chung
 			return staticHTML;
 		},
-		renderDynamic: function(direction, mapDataObj) {
+		renderDynamic: function(direction, mapDataObj, squareIE) {
 			var dynamicHTML = '';
 
 			var userPosition = mapDataObj.getUserPosition();
 			var chungPositions = mapDataObj.getChungList();
 
-			dynamicHTML += this.transformHTML(userPosition, 'user user-' + direction);//'<div style="-webkit-transform:translate(' + userPosition.x * 100 + '%, ' + userPosition.y * 100 + '%);-ms-transform:translate(' + userPosition.x * 100 + '%, ' + userPosition.y * 100 + '%);transform:translate(' + userPosition.x * 100 + '%, ' + userPosition.y * 100 + '%);" data-x="' + userPosition.x + '" data-y="' + userPosition.y + '" class="square user user-' + direction + '"></div>';
+			dynamicHTML += this.transformHTML(userPosition, squareIE + ' user user-' + direction);//'<div style="-webkit-transform:translate(' + userPosition.x * 100 + '%, ' + userPosition.y * 100 + '%);-ms-transform:translate(' + userPosition.x * 100 + '%, ' + userPosition.y * 100 + '%);transform:translate(' + userPosition.x * 100 + '%, ' + userPosition.y * 100 + '%);" data-x="' + userPosition.x + '" data-y="' + userPosition.y + '" class="square user user-' + direction + '"></div>';
 			for (var i = 0; i < chungPositions.length; i++) {
 				dynamicHTML += this.transformHTML(chungPositions[i], 'banh-chung');//'<div style="-webkit-transform:translate(' + chungPositions[i].x * 100 + '%, ' + chungPositions[i].y * 100 + '%);-ms-transform:translate(' + chungPositions[i].x * 100 + '%, ' + chungPositions[i].y * 100 + '%);transform:translate(' + chungPositions[i].x * 100 + '%, ' + chungPositions[i].y * 100 + '%);" data-x="' + chungPositions[i].x + '" data-y="' + chungPositions[i].y + '" class="square banh-chung"></div>';
 			}
