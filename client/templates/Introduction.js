@@ -27,5 +27,9 @@ Template.Introduction.events({
 
 	'click #intro-play-btn': function() {
 		$('.modal-introduction').modal('hide');
+	},
+
+	'click .play-now': function() {
+		$('.modal-introduction').modal('hide');
 	}
 });

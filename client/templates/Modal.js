@@ -204,6 +204,7 @@
       this.$element.on('click', '.modal-dialog',  $.proxy(function (e) {
           if (e.target !== e.currentTarget) return
           this.hide.call(this);
+          //alert(e.srcElement, e.target, e.currentTarget)
       }, this))
 
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
@@ -253,6 +254,12 @@
   $.fn.modal.Constructor = Modal
 
 }(jQuery);
+
+
+/*$('.close').on('click', function() {
+	$('.modal').hide();
+	$('.modal-backdrop').remove();
+}*/
 
 
 

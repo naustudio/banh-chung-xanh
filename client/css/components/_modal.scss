@@ -320,6 +320,13 @@ button.close {
 	}
 }
 
+.play-now {
+	margin: 40px auto;
+	margin-top: 10px;
+	display: block;
+	min-width: 100px;
+}
+
 @media(max-width: 1023px) {
 	.modal {
 		height: 100%;

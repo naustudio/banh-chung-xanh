@@ -31,7 +31,7 @@ i18n.map('vi', {
 	'fillName': 'Điền tên',
 	'hello': 'Xin chào',
 	'project_purpose': 'Mục đích dự án',
-	'project_purpose_description': 'Xin chào, Bánh Chưng Xanh là một dự án game từ thiện của NÂU Studio nhằm lan tỏa tinh thần thiện nguyện của các bạn.\
+	'project_purpose_description': 'Xin chào, Bánh Chưng Xanh là một dự án game từ thiện của NÂU Studio nhằm lan tỏa tinh thần thiện nguyện của các bạn. \
 						Khi tham gia chơi game, các bạn đã "lập lệnh chuyển" một số tiền từ quỹ từ thiện có sẵn do các đơn vị tài trợ đến trẻ em khuyết tật, mồ côi ở mái ấm Thiên Phúc,\
 						huyện Củ Chi mà không cần quyên góp bằng tiền của mình. Càng nhiều người chơi, càng vượt được nhiều vòng, số tiền được gửi đến các em càng lớn.',
 	'project_purpose_call': 'Hãy tham gia chơi và chia sẻ ngay!',
@@ -84,6 +84,7 @@ i18n.map('vi', {
 	'agree': 'Tôi đồng ý với',
 	'of-website': 'của trang web',
 	'copyright': 'Giữ toàn quyền',
-	'policy-link': '/policy.vi.html'
+	'policy-link': '/policy.vi.html',
+	'play-now': 'Chơi ngay'
 
 });
