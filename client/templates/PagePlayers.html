@@ -2,27 +2,28 @@
 	<section class="page">
 		<h2 class="names-list__title">{{t "players_title"}}</h2>
 
-
-
-		<table class="names-list players">
-			<thead>
-				<tr class="names-list__header">
-					<th class="item col-one">{{t "players_name" }}</th>
-					<th class="item col-two">{{t "players_levels" }}</th>
-					<th class="item col-four">{{t "players_last_login" }}</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{#each players}}
-				<tr class="names-list__record">
-					<td class="item">{{ index }}. {{ name }}</td>
-					<td class="item">{{ levels }}</td>
-					<td class="item">{{ lastAccess }}</td>
-				</tr>
-				{{else}}
-					<td colspan="4" class="names-list__empty">{{t "players_empty" }}</td>
-				{{/each}}
-			</tbody>
-		</table>
+		<div class="names-list players">
+			<div class="names-list__header">
+				<div class="item col-one">{{t "players_name" }}</div>
+				<div class="item col-two">{{t "players_levels" }}</div>
+				<div class="item col-three">{{t "players_last_login" }}</div>
+			</div>
+			{{#each players}}
+			<div class="names-list__record">
+				<div class="item col-one">
+					<span class="name-list__record-item">{{ index }}.</span>
+					{{ #if isFacebook }}
+						<span  class="name-list__record-item facebook"><img src="{{ url }}" alt="{{ name }}" /></span>
+					{{ else }}
+						<span class="name-list__record-item avatar"></span>
+					{{ /if }}
+					<span class="name-list__record-item">{{ name }}</span></div>
+				<div class="item col-two">{{ levels }}</div>
+				<div class="item col-three">{{ lastAccess }}</div>
+			</div>
+			{{else}}
+				<div class="names-list__empty">{{t "players_empty" }}</div>
+			{{/each}}
+		</div>
 	</section>
 </template>

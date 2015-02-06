@@ -1,6 +1,7 @@
 /**
  * Players list
  */
+/*global Modernizr*/
 Template.PagePlayers.helpers({
 	players: function() {
 		var players = [];
@@ -8,41 +9,22 @@ Template.PagePlayers.helpers({
 		var currPlayer = {};	// current player
 		var levels = '';		// level list
 		var gameScores = [];	// game score list
-		var lastAccess = null;
 
 		var playersList = Meteor.users.find({});
 		var playersObj = playersList.fetch();
+		var index = 1;
 
 		for (var i = 0; i < playersObj.length; i++) {
 			currPlayer = playersObj[i];
-			player = {};
-			player.index = i + 1;
-
-			// get infomation from Meteor users list
-			// if user login from facebook
-
-			player.name = currPlayer.profile ? currPlayer.profile.name : '';
-			lastAccess = currPlayer.lastAccess ? new Date(currPlayer.lastAccess) : new Date();
-
-			lastAccess = formatDate(lastAccess);
-
-			player.lastAccess = lastAccess; // currPlayer.lastAccess ? new Date(currPlayer.lastAccess).toDateString() : '';
-
 			// get levels
 			levels = '';
 			gameScores = [];
 			gameScores = currPlayer.gameScores;
 
 			if (gameScores !== undefined) {
-				for (var j = 0; j < currPlayer.gameScores.length; j++) {
-					if (j === currPlayer.gameScores.length - 1) {
-						levels += currPlayer.gameScores[j].mapIndex;
-					} else {
-						levels += currPlayer.gameScores[j].mapIndex + ', ';
-					}
-				}
+				player = getPlayerInfo(currPlayer);
+				player.index = index++;
 
-				player.levels = levels;
 				players.push(player);
 			}
 		}
@@ -63,4 +45,57 @@ function formatDate(date) {
 	var yyyy = date.getFullYear();
 
 	return [dd, mm, yyyy].join('/');
+}
+
+/**
+ * get information of player
+ * @param  {[type]} currPlayer [description]
+ * @return {[type]}            [description]
+ */
+function getPlayerInfo(currPlayer) {
+	var player = {};
+	var lastAccess = null;
+	var levels = '';
+
+	// get extra information of user
+	if (currPlayer.services.facebook) {
+		player = getPlayerInfoFacebook(currPlayer);
+	}
+
+	player.name = currPlayer.profile ? currPlayer.profile.name : '';
+	lastAccess = currPlayer.lastAccess ? new Date(currPlayer.lastAccess) : new Date();
+
+	lastAccess = formatDate(lastAccess);
+
+
+	for (var j = 0; j < currPlayer.gameScores.length; j++) {
+		if (j === currPlayer.gameScores.length - 1) {
+			levels += currPlayer.gameScores[j].mapIndex;
+		} else {
+			levels += currPlayer.gameScores[j].mapIndex + ', ';
+		}
+	}
+
+	player.lastAccess = lastAccess;	player.facebook = true;
+	player.levels = levels;
+
+	return player;
+}
+
+/**
+ * get url for avatar
+ */
+function getPlayerInfoFacebook(currPlayer) {
+	var player = {};
+	var type = 'square';
+
+	// check for retina
+	if (Modernizr.mq('(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)')) {
+		type = 'large';
+	}
+
+	player.isFacebook = true;
+	player.url = 'https://graph.facebook.com/' + currPlayer.services.facebook.id + '/picture?type=' + type;
+
+	return player;
 }
