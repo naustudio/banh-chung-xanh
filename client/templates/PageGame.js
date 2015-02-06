@@ -4,6 +4,11 @@
 /**/
 var game = null;
 
+var mappingGameDonation = null;
+Meteor.call('arrayMappingDonation', function( err , mapping ) {
+	mappingGameDonation = mapping;
+});
+
 var completeGame = function(result) {
 	//var mapLevel = Session.get('mapLevel');
 	setTimeout(function() {
@@ -49,6 +54,10 @@ var completeGame = function(result) {
 				Session.set('userLastDonation', value);
 				// Meteor.call('updateDonationTotal');
 			});
+		}
+	} else {
+		if (mappingGameDonation) {
+			Session.set('userLastDonation', mappingGameDonation[mapId.toString()]);
 		}
 	}
 

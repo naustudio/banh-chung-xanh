@@ -72,7 +72,10 @@ i18n.map('en', {
 	//'congratulation-description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
 	'congratulation-description-start': 'Congratulations!',
 	'congratulation-description-end': 'was contributed to NAU\'s charity fund.',
-	'congratulation-description-no-login': 'Congratulations! You have fi\'s charity fund. Thank you.',
+	'congratulation-description-no-login-start': 'Congratulations! You have finished this round. You need to log in to record the result and contribute',
+	'congratulation-description-no-login-end': 'dong to NAU\'s charity fund. Thank you.',
+	'congratulation-description-won': 'Congratulations! You have donated for this round. Please choose another round or share to let your friend donate too.',
+
 
 	'translate': 'Tiếng Việt',
 	'date-left': 'Day(s) left',

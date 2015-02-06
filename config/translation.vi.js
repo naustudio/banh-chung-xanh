@@ -72,9 +72,11 @@ i18n.map('vi', {
 
 	'congratulation-description': 'Chúc mừng bạn đã chiến thắng, chúng tôi sẽ quyên góp số tiền là {$1} vào quỹ từ thiện',
 	'congratulation-description-start': 'Chúc mừng bạn đã hoàn thành vòng chơi này. Bạn đã đóng góp',
-	'congratulation-description-end': 'vào quỹ từ thiện của NÂU.',
-	'congratulation-description-no-login': 'Chúc mừng bạn đã hoàn thành vòng chơi này. \
-				Tuy nhiên, bạn cần đăng nhập để chúng tôi ghi nhận lại kết quả chơi và đóng góp vào quỹ từ thiện của NÂU. Cám ơn bạn.',
+	'congratulation-description-end': 'đồng vào quỹ từ thiện của NÂU.',
+	'congratulation-description-no-login-start': 'Chúc mừng bạn đã hoàn thành vòng chơi này. \
+				Tuy nhiên, bạn cần đăng nhập để chúng tôi ghi nhận lại kết quả chơi và đóng góp',
+	'congratulation-description-no-login-end': 'đồng vào quỹ từ thiện của NÂU. Cám ơn bạn.',
+	'congratulation-description-won': 'Chúc mừng, bạn đã đóng góp cho vòng chơi này. Vui lòng chọn vòng chơi khác hoặc chia sẻ trò chơi để bạn bè cùng đóng góp.',
 
 	'translate': 'English',
 	'date-left': 'Ngày còn lại',

@@ -9,11 +9,16 @@
 					<div class="congratulation-description">
 
 						{{#if currentUser}}
-							{{t "congratulation-description-start"}} {{userLastDonation}} {{t "congratulation-description-end"}}
-
+							{{#if mapUnlock}}
+								{{t "congratulation-description-won"}}
+							{{else}}
+								{{t "congratulation-description-start"}} {{userLastDonation}} {{t "congratulation-description-end"}}
+							{{/if}}
 						{{else}}
-							{{t "congratulation-description-no-login"}} {{userLastDonation}}
+							{{t "congratulation-description-no-login-start"}} {{userLastDonation}} {{t "congratulation-description-no-login-end"}}
 						{{/if}}
+
+
 
 					</div>
 					<a href="/{{ lc }}/" class="congratulation-button button second-btn">{{t "master-map"}}</a>

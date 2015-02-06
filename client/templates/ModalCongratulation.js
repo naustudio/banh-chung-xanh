@@ -26,7 +26,25 @@ Template.Congratulation.helpers ({
 	'nextMapId': function() {
 		return Session.get('nextMapId');
 	},
+
 	'mapLevel': function() {
 		return Session.get('mapLevel');
+	},
+
+	'mapUnlock': function() {
+		var mapUnlock = false;
+		var user = Meteor.user();
+		var gameScores = (user && user.gameScores &&  user.gameScores.length) ? user.gameScores : [];//gameScoresTmp;
+
+		for (var i= 0; i<gameScores.length; i++) {
+			var index = gameScores[i].mapIndex;
+			console.log(parseInt(Session.get('mapLevel'),10),index);
+			if (parseInt(Session.get('mapLevel'),10) === parseInt(index,10)) {
+				mapUnlock = true;
+			}
+		}
+
+		return mapUnlock;
 	}
+
 });
