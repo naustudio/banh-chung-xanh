@@ -3,9 +3,14 @@
  *
  * Implement router here
  */
-/*global i18n*/
+/*global i18n, ga*/
 Router.configure({
-	layoutTemplate: 'ApplicationLayout'
+	layoutTemplate: 'ApplicationLayout',
+	onAfterAction: function() {
+		// use this hook to track page view,
+		// must use timeout since the browser location change is not immediately
+		ga('send', 'pageview', this.url);
+	}
 });
 
 var checkIntro = function() {
@@ -71,7 +76,7 @@ Router.route('/admin', function() {
 
 
 function applyLanguage(route) {
-	console.log('Route', route);
+	// console.log('Route', route);
 	var url = route.url;
 	var langParam = route.params.lang || '';
 	var lang = langParam.toLowerCase();
