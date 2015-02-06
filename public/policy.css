@@ -977,7 +977,7 @@ body:after {
     line-height: 38px; } }
 @media (min-width: 321px) and (max-width: 1000px) {
   .button__challenge {
-    padding: 0 7px;
+    padding: 0 3px;
     font-size: 12px;
     min-width: 155px;
     line-height: 43px; } }
@@ -1764,7 +1764,7 @@ button.close {
     width: 150px;
     height: 140px;
     display: inline-block;
-    right: 0;
+    right: 5px;
     bottom: 0; }
 
   .control-top, .control-left, .control-bottom, .control-right {
@@ -1805,7 +1805,14 @@ button.close {
   .button-controler-smartphone {
     position: relative;
     display: block;
-    width: 100%; } }
+    width: 100%; }
+
+  .button-controler {
+    position: absolute;
+    width: 150px;
+    height: 140px;
+    display: inline-block;
+    bottom: 0; } }
 @media screen and (max-width: 719px) {
   .game-play-mobile {
     width: 136%;
@@ -1826,6 +1833,15 @@ button.close {
     display: block;
     width: 87%;
     margin-top: 25px; } }
+@media (max-width: 320px) {
+  .button-controler {
+    right: 15px; } }
+@media (min-width: 321px) and (max-width: 413px) {
+  .button-controler {
+    right: 21px; } }
+@media (min-width: 414px) and (max-width: 640px) {
+  .button-controler {
+    right: 34px; } }
 .map-grid .square {
   width: 8.33333%;
   padding-bottom: 8.33333%;
@@ -2317,7 +2333,7 @@ a.control_next {
   .description-step {
     min-height: 160px; } }
 .policy-content {
-  margin: 1.25em; }
+  padding: 1.25em; }
 
 .policy-content {
   width: 70%;
@@ -2335,16 +2351,48 @@ a.control_next {
 .policy-img {
   position: fixed;
   bottom: 80px;
-  right: 15%; }
+  right: 15%;
+  width: 149px;
+  height: 296px;
+  z-index: -1;
+  background-image: url(img/policy.jpg);
+  background-repeat: no-repeat; }
 
 .policy-header-title {
   margin: 30px;
   font-family: Helvetica;
   color: #e24071;
-  text-align: center;
+  text-align: right;
   font-size: 38px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  width: 70%;
+  padding-right: 40px; }
 
+.policy-title-p {
+  font-weight: bold;
+  font-size: 18px; }
+
+@media screen and (max-width: 719px) {
+  .policy-content {
+    background: rgba(255, 255, 255, 0.6); }
+
+  .policy-content {
+    width: 100%; }
+
+  .policy-title {
+    font-size: 24px; }
+
+  .policy-img {
+    bottom: 25px;
+    right: 20px; }
+
+  .policy-header-title {
+    width: 100%;
+    padding-right: 50px;
+    font-size: 24px;
+    text-align: center; } }
 .footer-copy {
   font-size: 10px;
   position: relative;
@@ -2353,7 +2401,7 @@ a.control_next {
 
 .footer {
   clear: both;
-  position: absolute;
+  position: relative;
   bottom: -10px;
   width: 1000px;
   color: #888; }
@@ -2411,7 +2459,7 @@ a.control_next {
     width: 100%; } }
 @media screen and (max-width: 719px) {
   .translate {
-    top: -5px;
+    top: -10px;
     width: 10px;
     height: 10px; }
 
@@ -2425,9 +2473,11 @@ a.control_next {
   .footer-copy {
     font-size: 8px; }
 
-  .footer .icon-nau {
-    font-size: 35px;
-    top: -16px; } }
+  .footer {
+    padding-right: 10px; }
+    .footer .icon-nau {
+      font-size: 35px;
+      top: -16px; } }
 @media (max-width: 1023px) and (min-height: 650px) {
   .footer-copy {
     font-size: 9px; }
@@ -2435,6 +2485,15 @@ a.control_next {
   .footer .icon-nau {
     font-size: 35px;
     top: -16px; } }
+@media (max-width: 320px) {
+  .footer {
+    padding-right: 10px; } }
+@media (min-width: 321px) and (max-width: 413px) {
+  .footer {
+    padding-right: 15px; } }
+@media (min-width: 414px) and (max-width: 640px) {
+  .footer {
+    padding-right: 30px; } }
 .congratulation-container {
   width: 480px;
   background-image: url("img/congratulation_bg.png");
@@ -2525,7 +2584,8 @@ a.control_next {
   max-width: 964px;
   width: 100%;
   padding: 1px 20px;
-  margin: auto; }
+  margin: auto;
+  min-height: 500px; }
 
 .challenge {
   position: absolute;
@@ -2542,10 +2602,16 @@ a.control_next {
 
 @media (max-width: 320px) {
   .challenge {
-    top: 18px; } }
+    top: 18px; }
+
+  .page {
+    min-height: 300px; } }
 @media (min-width: 321px) and (max-width: 1000px) {
   .challenge {
-    top: 14px; } }
+    top: 14px; }
+
+  .page {
+    min-height: 70%; } }
 .map-grid {
   background-image: url(img/map-bg.png);
   background-repeat: no-repeat;
@@ -2627,12 +2693,29 @@ a.control_next {
     position: relative; }
     .map-grid .social {
       right: 15%; } }
+@media (max-width: 320px) {
+  .map-grid .social {
+    right: 15.4%; } }
+@media (min-width: 321px) and (max-width: 359px) {
+  .map-grid .social {
+    right: 14%; } }
+@media (min-width: 360px) and (max-width: 383px) {
+  .map-grid .social {
+    right: 15.4%; } }
+@media (min-width: 384px) and (max-width: 640px) {
+  .map-grid .social {
+    right: 13.8%; } }
+html {
+  height: 100%; }
+
 body {
   font-family: 'Open Sans';
   font-weight: normal;
   font-size: 14px;
   max-width: 1000px;
-  margin: auto; }
+  margin: auto;
+  height: 100%;
+  position: relative; }
 
 button {
   outline: 0; }
@@ -2782,163 +2865,5 @@ a {
 
 .icon-undo:before {
   content: "\e610"; }
-
-.policy-content {
-  margin: 1.25em; }
-
-.policy-content {
-  width: 70%;
-  text-align: justify; }
-
-.policy-title {
-  font-size: 32px;
-  text-transform: uppercase;
-  color: #aba000;
-  margin-bottom: 0.5em; }
-
-.policy-highlight {
-  color: #e24071; }
-
-.policy-img {
-  position: fixed;
-  bottom: 80px;
-  right: 15%; }
-
-.policy-header-title {
-  margin: 30px;
-  font-family: Helvetica;
-  color: #e24071;
-  text-align: center;
-  font-size: 38px;
-  text-transform: uppercase; }
-
-body {
-  font-family: 'Open Sans';
-  font-weight: normal;
-  font-size: 14px;
-  max-width: 1000px;
-  margin: auto; }
-
-button {
-  outline: 0; }
-
-a {
-  text-decoration: none;
-  color: #069; }
-  a:hover {
-    text-decoration: underline; }
-
-.hidden {
-  opacity: 0;
-  visibility: hidden;
-  display: none; }
-
-* {
-  -webkit-tap-highlight-color: transparent; }
-
-@media screen and (max-width: 1023px) {
-  body {
-    overflow-x: hidden; }
-
-  .hidden-smartphone {
-    opacity: 0;
-    visibility: hidden;
-    display: none; } }
-@font-face {
-  font-family: 'UTMAlterGothic';
-  src: url("fonts/UTMAlterGothic.eot");
-  /* IE9 Compat Modes */
-  src: url("fonts/UTMAlterGothic.eot?#iefix") format("embedded-opentype"), url("fonts/UTMAlterGothic.woff") format("woff"), url("fonts/UTMAlterGothic.ttf") format("truetype"), url("fonts/UTMAlterGothic.svg#UTMAlterGothic") format("svg");
-  /* Legacy iOS */ }
-.footer-copy {
-  font-size: 10px;
-  position: relative;
-  margin-right: 20px;
-  float: right; }
-
-.footer {
-  clear: both;
-  position: absolute;
-  bottom: -10px;
-  width: 1000px;
-  color: #888; }
-  .footer .policy-footer {
-    color: #888; }
-    .footer .policy-footer:hover {
-      color: #333; }
-  .footer .icon-nau {
-    font-size: 50px;
-    position: relative;
-    top: -25px;
-    right: 10px;
-    color: #808080;
-    color: #959595;
-    float: right; }
-
-.translate {
-  text-align: left;
-  cursor: pointer;
-  padding-left: 1.25em;
-  position: absolute;
-  top: -10px;
-  z-index: 1;
-  font-size: 13px; }
-
-.color-vi {
-  color: #e23833; }
-
-.flag-vi, .flag-en {
-  background-image: url(img/flag-vi.png);
-  width: 30px;
-  height: 30px;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 12px;
-  background-position: center;
-  background-size: contain; }
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .flag-vi, .flag-en {
-      background-image: url(img/flag-vi-2x.png); } }
-
-.flag-en {
-  background-image: url(img/flag-en.png); }
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .flag-en {
-      background-image: url(img/flag-en-2x.png); } }
-
-@media (max-width: 1024px) {
-  .footer {
-    position: relative;
-    bottom: 0;
-    padding-top: 10px;
-    padding-bottom: 0;
-    right: 0;
-    width: 100%; } }
-@media screen and (max-width: 719px) {
-  .translate {
-    top: -5px;
-    width: 10px;
-    height: 10px; }
-
-  .flag-text {
-    display: none; } }
-@media screen and (min-width: 720px) and (max-width: 1023px) {
-  .translate {
-    top: 2px;
-    font-size: 11px; } }
-@media (max-width: 640px) and (max-height: 649px) {
-  .footer-copy {
-    font-size: 8px; }
-
-  .footer .icon-nau {
-    font-size: 35px;
-    top: -16px; } }
-@media (max-width: 1023px) and (min-height: 650px) {
-  .footer-copy {
-    font-size: 9px; }
-
-  .footer .icon-nau {
-    font-size: 35px;
-    top: -16px; } }
 
 /*# sourceMappingURL=policy.css.map */
