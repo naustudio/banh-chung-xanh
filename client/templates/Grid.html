@@ -3,22 +3,18 @@
 		{{{squares}}}
 
 		<div class="social icon-button">
-			<a href="https://plus.google.com/share?url=http://banhchungxanh.naustud.io/" class="icon icon-google social-icon" data-ref="google">
+			<a href="https://plus.google.com/share?url={{ currentURL }}" class="icon icon-google social-icon" data-ref="google">
 				<i class="top-row"></i>
-				<span href="https://plus.google.com/share?url=http://banhchungxanh.naustud.io/"
-				 	class="background-transition social-icon" data-ref="google">
+				<span class="background-transition social-icon" data-ref="google">
 				</span>
 			</a>
-			<a href="https://www.facebook.com/sharer/sharer.php?u=http://banhchungxanh.naustud.io/" class="icon icon-facebook social-icon" data-ref="facebook">
+			<a href="https://www.facebook.com/sharer/sharer.php?u={{ currentURL }}" class="icon icon-facebook social-icon" data-ref="facebook">
 				<i class="top-row" data-ref="facebook"></i>
-				<span href="https://www.facebook.com/sharer/sharer.php?u=http://banhchungxanh.naustud.io/"
-					 class="background-transition social-icon">
-				</span>
+				<span class="background-transition social-icon"></span>
 			</a>
-			<a class="social-icon icon icon-twitter" href="http://twitter.com/share?text=GameGameGameNAU" data-ref="twitter">
+			<a class="social-icon icon icon-twitter" href="https://twitter.com/intent/tweet?url={{ currentURL }}&via=NauStudio&text={{ twitterText }}" data-ref="twitter">
 				<i class="top-row"></i>
-				<span href="http://twitter.com/share?text=GameGameGameNAU"
-					class="background-transition social-icon" data-ref="twitter">
+				<span class="background-transition social-icon" data-ref="twitter">
 				</span>
 			</a>
 		</div>
@@ -27,36 +23,4 @@
 
 	</div>
 
-	<!-- <div class="map-grid sample-character">
-		<div class="item">
-			<div class="square decorator decorator-1"></div>
-			<div class="square decorator decorator-2"></div>
-			<div class="square decorator decorator-3"></div>
-			<div class="square decorator decorator-4"></div>
-			<div class="square decorator decorator-5"></div>
-			<div class="square decorator decorator-6"></div>
-			<div class="square decorator decorator-7"></div>
-			<div class="square decorator decorator-8"></div>
-		</div>
-
-		<div class="item">
-			<div class="square wall"></div>
-			<div class="square rock"></div>
-			<div class="square goal"></div>
-			<div class="square banh-chung"></div>
-			<div class="square ground"></div>
-		</div>
-
-		<div class="item">
-			<div class="square user-up"></div>
-			<div class="square user-up moving"></div>
-			<div class="square user-left"></div>
-			<div class="square user-left moving"></div>
-			<div class="square user-right"></div>
-			<div class="square user-right moving"></div>
-			<div class="square user-down"></div>
-			<div class="square user-down moving"></div>
-		</div>
-	</div> -->
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
 </template>

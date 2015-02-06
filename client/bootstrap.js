@@ -23,6 +23,27 @@ Meteor.startup(function() {
 	Meteor.call('map', function(error, result) {
 		Session.set('map', result);
 	});
-	Meteor.subscribe("userData");
+	Meteor.subscribe('userData');
+
+	// SEO
+	SEO.config({
+		title: 'Bánh Chưng Xanh - Nâu Studio',
+		meta: {
+			'description': i18n('project_purpose_description')
+		},
+		og: {
+			'image': [
+				'http://banhchungxanh.naustud.io/img/logo.png',
+				'http://banhchungxanh.naustud.io/img/characters2x/main-character.png',
+				'http://banhchungxanh.naustud.io/img/characters2x/banh-chung.png',
+				'http://banhchungxanh.naustud.io/img/characters2x/decorator-1.png'
+			]
+		},
+		twitter: {
+			'site': '@naustudio',
+			'image': 'http://banhchungxanh.naustud.io/img/logo.png'
+		},
+		rel_author: 'https://plus.google.com/+NauStudio'
+	});
 
 });
