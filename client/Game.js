@@ -54,8 +54,8 @@ Game.prototype = {
 		this.startTime = new Date();
 
 		///_------------------trackEvent startGame -------------------
-		var startTimeString = this.startTime.toString();
-		ga('send', 'event', 'startGame - Map: ' + this.mapId, startTimeString);
+		// var startTimeString = this.startTime.toString();
+		ga('send', 'event', 'game ' + this.mapId, 'startGame', {'page': Router.current().url});
 	},
 
 	endGame: function(lastDirection) {
@@ -70,11 +70,10 @@ Game.prototype = {
 
 		///_------------------trackEvent endGame -------------------
 
-		var endTimeString = currentTime.toString();
+		// var endTimeString = currentTime.toString();
 
-		ga('send', 'event', 'endWinGame - Map: ' + this.mapId, endTimeString);
-		ga('send', 'event', 'timeElapsed - Map: ' + this.mapId,  timeElapsed);
-		ga('send', 'event', 'gameAttempt - Map: ' + this.mapId,  usedStep + ' Steps');
+		ga('send', 'event', 'game ' + this.mapId, 'endGame', 'winGame', usedStep, {'page': Router.current().url});
+		ga('send', 'timing', 'game', 'playDuration', timeElapsed, 'Map ' + this.mapId, {'page': Router.current().url});
 
 		return {
 			'mapIndex' : this.mapId,

@@ -87,7 +87,7 @@ Template.PageGame.helpers({
 			var mapLevel = result.mapLevel;
 			Session.set('mapLevel', mapLevel);
 
-			console.log('result', result);
+			// console.log('result', result);
 			game.startGame();
 
 			Session.set('game', game);

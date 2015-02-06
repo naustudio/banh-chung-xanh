@@ -104,8 +104,8 @@ window.chungapp.render = window.chungapp.render || {};
 			var chungPositions = mapData.getChungList();
 			var diskPositions = mapData.getDiskList();
 
-			console.log('==renderSteps');
-			console.log(direction, userPosition, chungPositions);
+			// console.log('==renderSteps');
+			// console.log(direction, userPosition, chungPositions);
 
 			var dataX = userPosition.x;
 			var dataY = userPosition.y;
