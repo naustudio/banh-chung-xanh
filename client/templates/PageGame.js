@@ -12,11 +12,6 @@ var completeGame = function(result) {
 	console.log('win result ' + result);
 	var mapId = result.mapIndex;
 
-	Meteor.call('userDonates', mapId, function(err, value) {
-		Session.set('userLastDonation', value);
-		Meteor.call('updateDonationTotal');
-	});
-
 	//user already loggin
 	var user = Meteor.user();
 	if (user) {
@@ -34,17 +29,10 @@ var completeGame = function(result) {
 
 		var foundScoreItem = getTheScoreItemByMapId(gameScoresOfUser, mapId);
 		if (foundScoreItem) {
-			Meteor.users.update({
-				_id:Meteor.user()._id,
-				'gameScores.mapIndex':foundScoreItem.mapIndex
-			}, {
-				$set:{
-					'gameScores.elapsedTime':result.elapsedTime,
-					'gameScores.usedSteps':result.usedSteps,
-					'gameScores.count':foundScoreItem.count + 1,
-					'gameScores.updatedAt':Date.now()
-				}
-			});
+			result.updatedAt = Date.now();
+			result.count = foundScoreItem.count + 1;
+
+			Meteor.call('updateUserScore', mapId, result);
 		} else {
 			//add new score item
 			result.updatedAt = Date.now();
@@ -55,6 +43,11 @@ var completeGame = function(result) {
 				$push:{
 					'gameScores':result
 				}
+			});
+
+			Meteor.call('userDonates', mapId, function(err, value) {
+				Session.set('userLastDonation', value);
+				// Meteor.call('updateDonationTotal');
 			});
 		}
 	}
