@@ -38,7 +38,6 @@ Template.Congratulation.helpers ({
 
 		for (var i= 0; i<gameScores.length; i++) {
 			var index = gameScores[i].mapIndex;
-			console.log(parseInt(Session.get('mapLevel'),10),index);
 			if (parseInt(Session.get('mapLevel'),10) === parseInt(index,10)) {
 				mapUnlock = true;
 			}
