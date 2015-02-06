@@ -10,13 +10,13 @@ Template.Challenge.events ({
 
 		console.log('FB URL to share:', currentUrl);
 
-		var description = [i18n('challenge1'), i18n('challenge2'), i18n('challenge3'), i18n('challenge4')];
+		var description = [i18n('challenge1'), i18n('challenge2'), i18n('challenge3'), i18n('challenge4'), i18n('challenge5'), i18n('challenge6')];
 
-		var index = Math.floor((Math.random() * 4));
+		var index = Math.floor((Math.random() * 6));
 
 		var mapId = Router.current().params.mapId;
 
-		var caption ='Thử thách '+mapId+' - Bánh Chưng Xanh';
+		var caption ='Thử thách '+ mapId +' - Bánh Chưng Xanh';
 
 		if (typeof(mapId) === 'undefined') {
 			caption = 'Bánh Chưng Xanh by Nau Studio';

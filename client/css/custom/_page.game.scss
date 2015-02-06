@@ -124,5 +124,37 @@
 	}
 }
 
+@media (max-width: 320px) {
+	.map-grid {
+		.social {
+			right: 15.4%;
+		}
+	}
+}
+
+@media (min-width: 321px) and (max-width: 359px) {
+	.map-grid {
+		.social {
+			right: 14%;
+		}
+	}
+}
+
+@media (min-width: 360px) and (max-width: 383px) {
+	.map-grid {
+		.social {
+			right: 15.4%;
+		}
+	}
+}
+
+@media (min-width: 384px) and (max-width: 640px) {
+	.map-grid {
+		.social {
+			right: 13.8%;
+		}
+	}
+}
+
 
 

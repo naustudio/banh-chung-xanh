@@ -3,7 +3,7 @@
  */
 /*global Settings*/
 Template.IntroDonate.rendered = function() {
-	Meteor.call('updateDonationTotal');
+	// Meteor.call('updateDonationTotal');
 	/*setInterval(function() {
 
 	},1000);*/

@@ -10,7 +10,7 @@ var _calculateRemainingDate = function() {
 };
 
 Meteor.startup(function() {
-
+	Meteor.mapConfig = JSON.parse(Assets.getText('maps/maps-config.json'));
 	InitialSettings.forEach(function(item) {
 		if (Settings.findOne({key: item.key}) === undefined) {
 			// insert settings that are not available in the collection yet
@@ -25,7 +25,7 @@ Meteor.startup(function() {
 			if (mapNumber === undefined) {
 				mapNumber = 0;
 			}
-			var myJSON = JSON.parse(Assets.getText('maps/maps-config.json'));
+			var myJSON = Meteor.mapConfig;
 			if (myJSON && myJSON.maps && myJSON.maps[mapNumber].src) {
 				var mapLevel = myJSON.maps[mapNumber].mapLevel;
 				map = JSON.parse(Assets.getText(myJSON.maps[mapNumber].src));
@@ -46,8 +46,9 @@ Meteor.startup(function() {
 			amount = amount ? amount : 0;
 			return amount;
 		},
+
 		updateDonationTotal: function() {
-			var mapConfig = JSON.parse(Assets.getText('maps/maps-config.json'));
+			var mapConfig = Meteor.mapConfig;
 			var sumOfDonation = 0;
 			//console.log(Settings.find({}).fetch());
 			Meteor.users.find({}).forEach( function(user) {
@@ -64,18 +65,19 @@ Meteor.startup(function() {
 							if (level) {
 								valueObj = Settings.findOne({key: mapConfig.mapsDonation[level.toString()]});
 								value = parseInt(valueObj.value,10);
-								sumOfDonation += ( parseInt(gameScores[i].count,10) * value );
+								sumOfDonation += value;
 								//console.log(gameScores[i].count,Settings.findOne({key: mapConfig.mapsDonation[level.toString()]}));
 							}
 						}
 					}
 				}
-				Settings.setItem('donatedAmount', sumOfDonation);
 			});
+			Settings.setItem('donatedAmount', sumOfDonation);
 			return sumOfDonation;
 		},
+
 		userDonates : function(mapId) {
-			var mapConfig = JSON.parse(Assets.getText('maps/maps-config.json'));
+			var mapConfig = Meteor.mapConfig;
 			var i = 0;
 			var level = 0;
 			var value = 0;
@@ -89,11 +91,13 @@ Meteor.startup(function() {
 					value = parseInt(valueObj.value,10);
 				}
 			}
+			Meteor.call('increaseDonatesAmount', value);
 			return value;
 		},
+
 		arrayMappingDonation: function() {
 			//var arrayDonation = [];
-			var mapConfig = JSON.parse(Assets.getText('maps/maps-config.json'));
+			var mapConfig = Meteor.mapConfig;
 			var i = 0;
 			var level = 0;
 			var value = 0;
@@ -108,11 +112,34 @@ Meteor.startup(function() {
 			}
 			return tempItemDonation;
 		},
-		userDonatesAmount : function(money) {
+
+		increaseDonatesAmount : function(money) {
 			var donatedAmount = Settings.getItem('donatedAmount');
 			Settings.setItem('donatedAmount', donatedAmount + money);
-		}
+		},
 
+		updateUserScore: function(mapId, result) {
+			if (!Meteor.user()) {
+				return false;
+			}
+			Meteor.users.update({
+				_id: Meteor.userId(),
+				'gameScores': {
+					$elemMatch: {
+						mapIndex: mapId
+					}
+				}
+			}, {
+				$set: {
+					'gameScores.$.elapsedTime': result.elapsedTime,
+					'gameScores.$.usedSteps': result.usedSteps,
+					'gameScores.$.count': result.count,
+					'gameScores.$.updatedAt': result.updatedAt
+				}
+			});
+
+			return result;
+		}
 	});
 
 	// Users collection
@@ -125,7 +152,7 @@ Meteor.startup(function() {
 			//TODO we need to check if permitted to perform this operation.
 			console.log('=== removed' + userID);
 
-			return Meteor.userId() && Meteor.userId() === userID;
+			return !!Meteor.user();
 		},
 		remove: function(userID/*, document*/) {
 			//TODO we need to check if permitted to perform this operation.
@@ -141,14 +168,17 @@ Meteor.startup(function() {
 
 	//Capture account events
 	Accounts.onCreateUser(function(options, user) {
-		var profile = options.profile = user.profile || {};
+		var profile = options.profile || {};
 
-		profile.name = user.username || profile.name;
+		var usedPasswordService = !!(options.password);
+
+		if (usedPasswordService) {
+			profile.name = options.username || profile.name;
+		}
+
 		user.lastAccess = new Date().valueOf();
 
-		if (options.profile) {
-			user.profile = options.profile;
-		}
+		user.profile = profile;
 
 		return user;
 	});
@@ -162,4 +192,6 @@ Meteor.startup(function() {
 			}
 		});
 	});
+
+	Meteor.call('updateDonationTotal');
 });
