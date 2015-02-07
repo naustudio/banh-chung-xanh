@@ -4,11 +4,34 @@
  * Implement router here
  */
 /*global i18n, ga*/
+var currentLang;
+if (Meteor.isClient) {
+	currentLang = Session.get('language');
+}
+
 Router.configure({
 	layoutTemplate: 'ApplicationLayout',
 	onAfterAction: function() {
-		// use this hook to track page view,
-		// must use timeout since the browser location change is not immediately
+
+		// meta data
+		var mapId = this.params.mapId;
+		var title = i18n('bcx') + ' - Nau Studio';
+		if (mapId) {
+			title = i18n('round') + ' ' + mapId + ' - ' + title;
+		}
+		var seoData = { title: title };
+
+		if (currentLang !== Session.get('language')) {
+			currentLang = Session.get('language');
+			seoData.meta = {
+				'description': i18n('meta-description')
+			};
+		}
+		console.log('onAfterAction:', seoData);
+
+		SEO.set(seoData);
+
+		// use this hook to track page view
 		ga('send', 'pageview', this.url);
 	}
 });
