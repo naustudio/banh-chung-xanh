@@ -4,6 +4,7 @@
 /*global i18n*/
 i18n.map('en', {
 
+	'bcx': 'Banh Chung Xanh',
 	'nav_home': 'Home',
 	'nav_intro': 'Project Introduction',
 	'nav_instructions': 'Game Play',
@@ -81,11 +82,13 @@ i18n.map('en', {
 	'date-left': 'Day(s) left',
 	'sponsor-description': 'Contributed to the total of',
 	'number-step': 'Steps',
-	'privacy-policy': 'Privacy Policy',
+	'privacy-policy': 'Terms & Privacy',
 	'agree': 'I agree with',
 	'of-website': ' ',
 	'copyright': 'All Rights Reserved',
 	'policy-link': '/policy.en.html',
-	'play-now': 'Play'
+	'play-now': 'Play',
+
+	'meta-description': 'Banh Chung Xanh is a charity game project by Nau Studio to spread kindness and compassion for the needy. As you win any round of the game, on your behalf, our sponsors will raise an amount to the charity fund for disable children and orphans at Thien Phuc Sanctuary, Cu Chi Dist., Ho Chi Minh City.'
 
 });

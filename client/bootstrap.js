@@ -7,6 +7,7 @@
 
 // default fallback language
 i18n.setDefaultLanguage('vi');
+i18n.setLanguage('vi');
 // debug
 i18n.showMissing(true);
 
@@ -29,7 +30,7 @@ Meteor.startup(function() {
 	SEO.config({
 		title: 'Bánh Chưng Xanh - Nâu Studio',
 		meta: {
-			'description': i18n('project_purpose_description')
+			'description': i18n('meta-description')
 		},
 		og: {
 			'image': [
