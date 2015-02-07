@@ -28,7 +28,6 @@
 		"Router",
 		"_",
 		"$",
-		"SEO",
-		"SeoCollection"
+		"Inject"
 	]
 }
