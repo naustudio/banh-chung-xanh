@@ -145,15 +145,15 @@ if (Meteor.isServer) {
 		Inject.rawHead('title',
 			'<title>' + title + '</title>\
 			<meta property="og:title" content="' + title + '" />\
-			<meta name="twitter:title" content="' + title + '">'
+			<meta name="twitter:title" content="' + title + '" />'
 		);
 
 		var metaDescription = i18n('meta-description');
 
 		Inject.rawHead('metaDesc',
-			'<meta name="description" content="' + metaDescription + '>\
+			'<meta name="description" content="' + metaDescription + '" />\
 			<meta property="og:description" content="' + metaDescription + '" />\
-			<meta name="twitter:description" content="' + metaDescription + '">'
+			<meta name="twitter:description" content="' + metaDescription + '" />'
 		);
 
 
