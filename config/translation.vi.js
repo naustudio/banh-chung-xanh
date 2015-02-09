@@ -73,10 +73,10 @@ i18n.map('vi', {
 
 	'congratulation-description': 'Chúc mừng bạn đã chiến thắng, chúng tôi sẽ quyên góp số tiền là {$1} vào quỹ từ thiện',
 	'congratulation-description-start': 'Chúc mừng bạn đã hoàn thành vòng chơi này. Bạn đã đóng góp',
-	'congratulation-description-end': 'đồng vào quỹ từ thiện của NÂU.',
+	'congratulation-description-end': 'đồng vào quỹ từ thiện của Bánh Chưng Xanh.',
 	'congratulation-description-no-login-start': 'Chúc mừng bạn đã hoàn thành vòng chơi này. \
 				Tuy nhiên, bạn cần đăng nhập để chúng tôi ghi nhận lại kết quả chơi và đóng góp',
-	'congratulation-description-no-login-end': 'đồng vào quỹ từ thiện của NÂU. Cám ơn bạn.',
+	'congratulation-description-no-login-end': 'đồng vào quỹ từ thiện của Bánh Chưng Xanh. Cám ơn bạn.',
 	'congratulation-description-won': 'Chúc mừng, bạn đã đóng góp cho vòng chơi này. Vui lòng chọn vòng chơi khác hoặc chia sẻ trò chơi để bạn bè cùng đóng góp.',
 
 	'translate': 'English',
@@ -89,7 +89,7 @@ i18n.map('vi', {
 	'copyright': 'Giữ toàn quyền',
 	'policy-link': '/policy.vi.html',
 	'play-now': 'Chơi ngay',
-	'meta-description': 'Bánh Chưng Xanh là chương trình từ thiện của Nâu Studio nhằm lan tỏa tinh thần thiện nguyện của các bạn. Khi tham gia chơi và chiến thắng những vòng game, các đơn vị tài trợ sẽ thay các bạn đóng góp một khoản tiền vào quỹ từ thiện dành cho trẻ em khuyết tật, mồ côi ở mái ấm Thiên Phúc, huyện Củ Chi.',
+	'meta-description': 'Bánh Chưng Xanh là chương trình từ thiện nhằm lan tỏa tinh thần thiện nguyện của các bạn. Khi tham gia chơi và chiến thắng những vòng game, các đơn vị tài trợ sẽ thay các bạn đóng góp một khoản tiền vào quỹ từ thiện dành cho trẻ em khuyết tật, mồ côi ở mái ấm Thiên Phúc, huyện Củ Chi.',
 	'next-guide': 'Kế tiếp',
 	'back-guide': 'Lùi lại'
 

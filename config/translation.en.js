@@ -56,8 +56,8 @@ i18n.map('en', {
 
 	'description-step-1': 'Above is the 10-round map of Banh Chung Xanh, including 3 levels of difficulty from Easy, \
 				Average, to Advanced which are randomized. Each level corresponds to certain amount of donation. You can choose to play any round of your interest.',
-	'description-step-2': 'The target of the game is to help Mr. NAU push each Vietnamese traditional glutinous rice cake to all the plates with flags. \
-				Mr. NAU can only go up,down,  right and left. You can use either your keyboard or mouse, or touch the 4 arrows indicating the directions of the character.',
+	'description-step-2': 'The target of the game is to help Mr. Nau push each Vietnamese traditional glutinous rice cake to all the plates with flags. \
+				Mr. Nau can only go up, down, right and left. You can use either your keyboard or mouse, or touch the 4 arrows indicating the directions of the character.',
 	'description-step-3': 'You can undo the last moves by clicking on the bold arrow on the top, or refesh the game by clicking on the circle arrow nearby.',
 	'description-step-4': 'You can also see information of the amounts contributed, the order of current round and the number of moves you made.',
 	'description-step-5': 'When a cake is pushed into a plate, its color will be changed. And when you push all the cakes into the plates, a Congratulations bulletin board will display. \
@@ -72,9 +72,9 @@ i18n.map('en', {
 
 	//'congratulation-description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
 	'congratulation-description-start': 'Congratulations!',
-	'congratulation-description-end': 'was contributed to NAU\'s charity fund.',
+	'congratulation-description-end': 'was contributed to Banh Chung Xanh\'s charity fund.',
 	'congratulation-description-no-login-start': 'Congratulations! You have finished this round. You need to log in to record the result and contribute',
-	'congratulation-description-no-login-end': 'dong to NAU\'s charity fund. Thank you.',
+	'congratulation-description-no-login-end': 'dong to Banh Chung Xanh\'s charity fund. Thank you.',
 	'congratulation-description-won': 'Congratulations! You have donated for this round. Please choose another round or share to let your friend donate too.',
 
 
@@ -89,7 +89,7 @@ i18n.map('en', {
 	'policy-link': '/policy.en.html',
 	'play-now': 'Play',
 
-	'meta-description': 'Banh Chung Xanh is a charity game project by Nau Studio to spread kindness and compassion for the needy. As you win any round of the game, on your behalf, our sponsors will raise an amount to the charity fund for disable children and orphans at Thien Phuc Sanctuary, Cu Chi Dist., Ho Chi Minh City.',
+	'meta-description': 'Banh Chung Xanh is a charity game project to spread kindness and compassion for the needy. As you win any round of the game, on your behalf, our sponsors will raise an amount to the charity fund for disable children and orphans at Thien Phuc Sanctuary, Cu Chi Dist., Ho Chi Minh City.',
 	'next-guide': 'Next',
 	'back-guide': 'Back'
 

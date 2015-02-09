@@ -138,7 +138,7 @@ if (Meteor.isServer) {
 		lang = lang || 'vi';
 		i18n.setLanguage(lang);
 
-		var title = i18n('bcx') + ' - Nau Studio';
+		var title = i18n('bcx');
 		if (mapId) {
 			title = i18n('round') + ' ' + mapId + ' - ' + title;
 		}
