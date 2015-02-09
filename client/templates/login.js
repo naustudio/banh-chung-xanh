@@ -7,6 +7,15 @@ Template.Login.helpers({
 
 });
 
+Template.Login.updateUserAfterLoggingIn = function() {
+	var temporaryUserData = Session.get('temporaryUserData');
+	var mapId = Session.get('mapLevel');
+	if (temporaryUserData && Meteor.userId() !== null ) {
+		Meteor.users.updateUserData( Meteor.userId(), temporaryUserData, mapId);
+		Session.set('temporaryUserData',null)
+	}
+};
+
 Template.Login.events({
 	'submit form': function (e) {
 		e.stopPropagation();
@@ -23,6 +32,7 @@ Template.Login.events({
 				throw new Meteor.Error("Facebook login failed");
 			} else {
 				$('.modal-login').modal('hide');
+				Template.Login.updateUserAfterLoggingIn();
 			}
 		});
 	},
@@ -66,6 +76,7 @@ Template.Login.rendered = function () {
 		} else {
 			console.log('User creation is successful');
 			$('.modal-login').modal('hide');
+			Template.Login.updateUserAfterLoggingIn();
 		}
 	};
 	$('#login').validate({
@@ -117,6 +128,7 @@ Template.Login.rendered = function () {
 					Accounts.createUser(user, onCreateUserHandler);
 				} else {
 					$('.modal-login').modal('hide');
+					Template.Login.updateUserAfterLoggingIn();
 				}
 			});
 

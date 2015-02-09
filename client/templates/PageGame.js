@@ -9,6 +9,7 @@ Meteor.call('arrayMappingDonation', function( err , mapping ) {
 	mappingGameDonation = mapping;
 });
 
+
 var completeGame = function(result) {
 	//var mapLevel = Session.get('mapLevel');
 	setTimeout(function() {
@@ -20,57 +21,14 @@ var completeGame = function(result) {
 	//user already loggin
 	var user = Meteor.user();
 	if (user) {
-		var gameScoresOfUser = user.gameScores;
-		if (!gameScoresOfUser) {	//create new property for user
-			Meteor.users.update({
-				_id:Meteor.user()._id
-			}, {
-				$set:{
-					'gameScores':[]
-				}
-			});
-			gameScoresOfUser = [];
-		}
-
-		var foundScoreItem = getTheScoreItemByMapId(gameScoresOfUser, mapId);
-		if (foundScoreItem) {
-			result.updatedAt = Date.now();
-			result.count = foundScoreItem.count + 1;
-
-			Meteor.call('updateUserScore', mapId, result);
-		} else {
-			//add new score item
-			result.updatedAt = Date.now();
-			result.count = 1;
-			Meteor.users.update({
-				_id:Meteor.user()._id
-			}, {
-				$push:{
-					'gameScores':result
-				}
-			});
-
-			Meteor.call('userDonates', mapId, function(err, value) {
-				Session.set('userLastDonation', value);
-				// Meteor.call('updateDonationTotal');
-			});
-		}
+		Meteor.users.updateUserData(user._id, result, mapId);
 	} else {
+		Session.set('temporaryUserData',result);
 		if (mappingGameDonation) {
 			Session.set('userLastDonation', mappingGameDonation[mapId.toString()]);
 		}
 	}
 
-};
-
-var getTheScoreItemByMapId = function(gameScoresOfUser, mapId) {
-	for (var i = 0; i < gameScoresOfUser.length; i++) {
-		var scoreItem = gameScoresOfUser[i];
-		if (scoreItem.mapIndex === mapId) {
-			return scoreItem;
-		}
-	}
-	return null;
 };
 
 Template.PageGame.helpers({
