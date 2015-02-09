@@ -1,6 +1,6 @@
 /*global ga:true*/
 Template.gridMap.rendered = function() {
-
+	Session.set('mapRendered', false);
 };
 
 Template.gridMap.helpers({
@@ -20,6 +20,9 @@ Template.gridMap.helpers({
 	twitterText: function() {
 		//TODO: use random translated text
 		return 'Enjoy fun, do charity in 1 step via…';
+	},
+	rendered: function() {
+		return Session.get('mapRendered');
 	}
 });
 

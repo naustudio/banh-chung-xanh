@@ -41,8 +41,7 @@ Template.PageGame.helpers({
 
 		if (parseInt(mapId,10) >= 10) {
 			Session.set('nextMapId', 1);
-		}
-		else {
+		} else {
 			Session.set('nextMapId', parseInt(mapId,10) + 1);
 		}
 		//
@@ -52,6 +51,9 @@ Template.PageGame.helpers({
 			game.setJSONMapData(result.map, mapId);
 			var mapLevel = result.mapLevel;
 			Session.set('mapLevel', mapLevel);
+			setTimeout(function() {
+				Session.set('mapRendered',true);
+			},1000);
 
 			// console.log('result', result);
 			game.startGame();
