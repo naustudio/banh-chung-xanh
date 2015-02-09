@@ -86,6 +86,8 @@ i18n.map('en', {
 	'of-website': ' ',
 	'copyright': 'All Rights Reserved',
 	'policy-link': '/policy.en.html',
-	'play-now': 'Play'
+	'play-now': 'Play',
+	'next-guide': 'Next',
+	'back-guide': 'Back'
 
 });

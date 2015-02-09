@@ -87,6 +87,8 @@ i18n.map('vi', {
 	'of-website': 'của trang web',
 	'copyright': 'Giữ toàn quyền',
 	'policy-link': '/policy.vi.html',
-	'play-now': 'Chơi ngay'
+	'play-now': 'Chơi ngay',
+	'next-guide': 'Kế tiếp',
+	'back-guide': 'Quay lại'
 
 });
