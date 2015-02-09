@@ -6,7 +6,7 @@ Template.Challenge.events ({
 			currentUrl = Meteor.absoluteUrl(currentUrl.substring(1)); //substring to remove the initial /
 		}*/
 
-		var currentUrl = document.location.href;
+		var currentUrl = document.location.href+'?utm_source=facebook&utm_medium=challenge&utm_campaign=bcx2015';
 
 		console.log('FB URL to share:', currentUrl);
 
