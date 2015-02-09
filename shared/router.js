@@ -8,6 +8,7 @@
 
 Router.configure({
 	layoutTemplate: 'ApplicationLayout',
+	notFoundTemplate: 'NotFound',
 	onAfterAction: function() {
 		if (Meteor.isClient) {
 			// use this hook to track page view
