@@ -16,5 +16,18 @@
 	"trailing": true,
 	"undef": true,
 	"unused": true,
-	"predef": ["Blaze", "Deps", "Template", "Session", "Tracker", "Meteor", "HTTP", "Npm", "Router", "_", "$"]
+	"predef": [
+		"Blaze",
+		"Deps",
+		"Template",
+		"Session",
+		"Tracker",
+		"Meteor",
+		"HTTP",
+		"Npm",
+		"Router",
+		"_",
+		"$",
+		"Inject"
+	]
 }

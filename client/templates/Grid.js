@@ -11,6 +11,15 @@ Template.gridMap.helpers({
 	isHidden: function() {
 		var isHidden = 'hidden';
 		return isHidden;
+	},
+
+	currentURL: function() {
+		return window.location.href;
+	},
+
+	twitterText: function() {
+		//TODO: use random translated text
+		return 'Enjoy fun, do charity in 1 step via…';
 	}
 });
 

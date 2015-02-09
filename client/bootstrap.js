@@ -7,6 +7,7 @@
 
 // default fallback language
 i18n.setDefaultLanguage('vi');
+i18n.setLanguage('vi');
 // debug
 i18n.showMissing(true);
 
@@ -23,6 +24,6 @@ Meteor.startup(function() {
 	Meteor.call('map', function(error, result) {
 		Session.set('map', result);
 	});
-	Meteor.subscribe("userData");
+	Meteor.subscribe('userData');
 
 });

@@ -16,3 +16,5 @@ accounts-facebook
 themeteorchef:jquery-validation
 accounts-password
 mrt:modernizr-meteor
+spiderable
+meteorhacks:inject-initial
