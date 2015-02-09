@@ -21,21 +21,28 @@ var gameScoresTmp = [{
 		}];
 
 Template.MapList.helpers({
-
 	'rerenderMapMaster': function() {
 		var user = Meteor.user();
 		var gameScores = (user && user.gameScores &&  user.gameScores.length) ? user.gameScores : [];//gameScoresTmp;
-
-		for (var i= 0; i<gameScores.length; i++) {
-			var index = gameScores[i].mapIndex;
-			if (index <= 4) {
-				$('.round-' + index).addClass('unlock-1');
+		if (user) {
+			for (var i= 0; i<gameScores.length; i++) {
+				var index = gameScores[i].mapIndex;
+				if (index <= 4) {
+					$('.round-' + index).addClass('unlock-1');
+				}
+				else if (index <= 7) {
+					$('.round-' + index).addClass('unlock-2');
+				}
+				else {
+					$('.round-' + index).addClass('unlock-3');
+				}
 			}
-			else if (index <= 7) {
-				$('.round-' + index).addClass('unlock-2');
-			}
-			else {
-				$('.round-' + index).addClass('unlock-3');
+		}
+		else {
+			for (var i=1; i<=10; i++) {
+				$('.round-' + i).removeClass('unlock-1');
+				$('.round-' + i).removeClass('unlock-2');
+				$('.round-' + i).removeClass('unlock-3');
 			}
 		}
 		return '';
@@ -59,18 +66,26 @@ Template.MapList.rendered = function() {
 	var user = Meteor.user();
 	var gameScores = (user && user.gameScores &&  user.gameScores.length) ? user.gameScores : [];
 
-	for (var i= 0; i<gameScores.length; i++) {
-		var index = gameScores[i].mapIndex;
-		if (index <= 4) {
-			$('.round-' + index).addClass('unlock-1');
+	if (user) {
+		for (var i= 0; i<gameScores.length; i++) {
+			var index = gameScores[i].mapIndex;
+			if (index <= 4) {
+				$('.round-' + index).addClass('unlock-1');
+			}
+			else if (index <= 7) {
+				$('.round-' + index).addClass('unlock-2');
+			}
+			else {
+				$('.round-' + index).addClass('unlock-3');
+			}
 		}
-		else if (index <= 7) {
-			$('.round-' + index).addClass('unlock-2');
+	}
+	else {
+		for (var i=1; i<=10; i++) {
+			$('.round-' + i).removeClass('unlock-1');
+			$('.round-' + i).removeClass('unlock-2');
+			$('.round-' + i).removeClass('unlock-3');
 		}
-		else {
-			$('.round-' + index).addClass('unlock-3');
-		}
-
 	}
 
 };
