@@ -27,12 +27,16 @@ Template.Login.events({
 		e.stopPropagation();
 		e.preventDefault();
 
-		Meteor.loginWithFacebook({}, function(err) {
+		Meteor.loginWithFacebook({
+			requestPermissions: ['public_profile', 'email', 'user_friends']
+		}, function(err) {
 			if (err) {
 				throw new Meteor.Error("Facebook login failed");
 			} else {
 				$('.modal-login').modal('hide');
 				Template.Login.updateUserAfterLoggingIn();
+				// get friends list of user
+				Meteor.users.getUserFriendsList();
 			}
 		});
 	},

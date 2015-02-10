@@ -1,40 +1,65 @@
 /**
  * Players list
  */
-/*global Modernizr, FB*/
+/*global Modernizr*/
 Template.PagePlayers.helpers({
 	players: function() {
 		var players = [];
 		var player = {} ;
 		var currPlayer = {};	// current player
-		var levels = '';		// level list
-		var gameScores = [];	// game score list
 
 		var playersList = Meteor.users.find({});
 		var playersObj = playersList.fetch();
 		var index = 1;
+		var userlist = [];
+		var fl = null;
+		var currF = null;
 
-		for (var i = 0; i < playersObj.length; i++) {
-			currPlayer = playersObj[i];
-			// get levels
-			levels = '';
-			gameScores = [];
-			gameScores = currPlayer.gameScores;
+		userlist = playersObj;
+		// check facebook friends
+		if (Session.get('friendsList')) {
+			fl = Session.get('friendsList');
 
-			if (gameScores !== undefined) {
-				player = getPlayerInfo(currPlayer);
-				player.index = index++;
+			if (fl && fl.length > 0) {
+				for (var j = 0; j < fl.length; j++) {
+					// get user in friends list in users collection
+					currF = playersObj.filter(function(item, index) {
+						var userId = item.services.facebook ? item.services.facebook.id.toString() : '';
+						var FBUserId = fl[j].id.toString();
 
+						if (userId.toLowerCase() === FBUserId.toLowerCase()) {
+							var a = userlist.splice(index, 1);
+
+							return a;
+						}
+					});
+
+					if (currF[0]) {
+						player = setPlayerIndex(currF[0], index++, true);
+						if (player) {
+							players.push(player);
+						}
+					}
+				}
+			}
+		}
+
+		for (var i = 0; i < userlist.length; i++) {
+			currPlayer = userlist[i];
+
+			player = setPlayerIndex(currPlayer, index++);
+			if (player) {
 				players.push(player);
 			}
 		}
 
-		// get friend list
-		getFriendsList();
-
 		return players;
 	}
 });
+
+Template.PagePlayers.rendered = function() {
+	Meteor.users.getUserFriendsList();
+};
 
 /**
  * format date to ''dd/mm/yyy'
@@ -49,20 +74,36 @@ function formatDate(date) {
 }
 
 /**
+ *
+ */
+function setPlayerIndex(currPlayer, index, getProfilePic) {
+	// get levels
+	var gameScores = [];
+	var player = {};
+
+	gameScores = currPlayer.gameScores;
+
+	if (gameScores !== undefined) {
+		player = getPlayerInfo(currPlayer, getProfilePic);
+		player.index = index;
+
+		return player;
+	}
+}
+
+/**
  * get information of player
  * @param  {[type]} currPlayer [description]
  * @return {[type]}            [description]
  */
-function getPlayerInfo(currPlayer) {
+function getPlayerInfo(currPlayer, getProfilePic) {
 	var player = {};
 	var lastAccess = null;
 	var levels = '';
-	var fl = null;
 
 	// get extra information of user
-	if (currPlayer.services.facebook) {
+	if (currPlayer.services.facebook && getProfilePic) {
 		player = getPlayerInfoFacebook(currPlayer);
-		fl = getFriendsList();
 	}
 
 	player.name = currPlayer.profile ? currPlayer.profile.name : '';
@@ -79,7 +120,7 @@ function getPlayerInfo(currPlayer) {
 		}
 	}
 
-	player.lastAccess = lastAccess;	player.facebook = true;
+	player.lastAccess = lastAccess; //	player.facebook = true;
 	player.levels = levels;
 
 	return player;
@@ -101,18 +142,4 @@ function getPlayerInfoFacebook(currPlayer) {
 	player.url = 'https://graph.facebook.com/' + currPlayer.services.facebook.id + '/picture?type=' + type;
 
 	return player;
-}
-
-function getFriendsList() {
-	FB.getLoginStatus(function(res) {
-		if (res && res.status === 'connected') {
-			FB.api(
-				'me/friends',
-				function(res) {
-					if (res && !res.error) {
-						return res;
-					}
-				});
-		}
-	});
 }

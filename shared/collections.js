@@ -1,7 +1,7 @@
 /* © 2014 NauStud.io
  * @author
  */
-/* global Sponsors: true, Settings:true */
+/* global Sponsors: true, Settings:true, FB */
 // make collections here
 
 // Players collection is now Meteor.users
@@ -69,4 +69,23 @@ Meteor.users.getTheScoreItemByMapId = function(gameScoresOfUser, mapId) {
 		}
 	}
 	return null;
+};
+
+Meteor.users.getUserFriendsList = function() {
+	// call service to get friends list of user
+	if (FB) {
+		FB.getLoginStatus(function(res) {
+			if (res && res.status === 'connected') {
+				FB.api(
+					'me/friends',
+					function(res) {
+						if (res && !res.error) {
+							var data = res.data || [];
+
+							Session.set('friendsList', data);
+						}
+					});
+			}
+		});
+	}
 };
