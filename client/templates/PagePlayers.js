@@ -10,16 +10,25 @@ Template.PagePlayers.helpers({
 
 		var playersList = Meteor.users.find({});
 		var playersObj = playersList.fetch();
-		var index = 1;
 		var userlist = [];
 		var fl = null;
 		var currF = null;
+		var currUser = Meteor.user();
 
 		userlist = playersObj;
 
 		// add this user to first of players list
-		var loginUser = setPlayerIndex(Meteor.user(), index++, true);
+		var loginUser = setPlayerIndex(currUser, true);
 		if (loginUser) {
+			playersObj.filter(function(item, index) {
+				var userId = item.services.facebook ? item.services.facebook.id.toString() : '';
+				var FBUserId = currUser.services.facebook ? currUser.services.facebook.id.toString() : '';
+
+				if (userId.toLowerCase() === FBUserId.toLowerCase()) {
+					// remove this user in userlist
+					userlist.splice(index, 1);
+				}
+			});
 			players.push(loginUser);
 		}
 
@@ -42,7 +51,7 @@ Template.PagePlayers.helpers({
 					});
 
 					if (currF[0]) {
-						player = setPlayerIndex(currF[0], index++, true);
+						player = setPlayerIndex(currF[0], true);
 						if (player) {
 							players.push(player);
 						}
@@ -54,7 +63,7 @@ Template.PagePlayers.helpers({
 		for (var i = 0; i < userlist.length; i++) {
 			currPlayer = userlist[i];
 
-			player = setPlayerIndex(currPlayer, index++);
+			player = setPlayerIndex(currPlayer);
 			if (player) {
 				players.push(player);
 			}
@@ -83,7 +92,7 @@ function formatDate(date) {
 /**
  *
  */
-function setPlayerIndex(currPlayer, index, getProfilePic) {
+function setPlayerIndex(currPlayer, getProfilePic) {
 	// get levels
 	var gameScores = [];
 	var player = {};
@@ -92,7 +101,6 @@ function setPlayerIndex(currPlayer, index, getProfilePic) {
 
 	if (gameScores !== undefined) {
 		player = getPlayerInfo(currPlayer, getProfilePic);
-		player.index = index;
 
 		return player;
 	}
