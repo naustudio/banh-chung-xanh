@@ -1,7 +1,7 @@
 /**
  * Players list
  */
-/*global Modernizr*/
+/*global Modernizr, FB*/
 Template.PagePlayers.helpers({
 	players: function() {
 		var players = [];
@@ -29,7 +29,8 @@ Template.PagePlayers.helpers({
 			}
 		}
 
-		// sort players list
+		// get friend list
+		getFriendsList();
 
 		return players;
 	}
@@ -56,10 +57,12 @@ function getPlayerInfo(currPlayer) {
 	var player = {};
 	var lastAccess = null;
 	var levels = '';
+	var fl = null;
 
 	// get extra information of user
 	if (currPlayer.services.facebook) {
 		player = getPlayerInfoFacebook(currPlayer);
+		fl = getFriendsList();
 	}
 
 	player.name = currPlayer.profile ? currPlayer.profile.name : '';
@@ -98,4 +101,18 @@ function getPlayerInfoFacebook(currPlayer) {
 	player.url = 'https://graph.facebook.com/' + currPlayer.services.facebook.id + '/picture?type=' + type;
 
 	return player;
+}
+
+function getFriendsList() {
+	FB.getLoginStatus(function(res) {
+		if (res && res.status === 'connected') {
+			FB.api(
+				'me/friends',
+				function(res) {
+					if (res && !res.error) {
+						return res;
+					}
+				});
+		}
+	});
 }
