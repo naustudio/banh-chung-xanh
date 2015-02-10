@@ -16,6 +16,13 @@ Template.PagePlayers.helpers({
 		var currF = null;
 
 		userlist = playersObj;
+
+		// add this user to first of players list
+		var loginUser = setPlayerIndex(Meteor.user(), index++, true);
+		if (loginUser) {
+			players.push(loginUser);
+		}
+
 		// check facebook friends
 		if (Session.get('friendsList')) {
 			fl = Session.get('friendsList');
