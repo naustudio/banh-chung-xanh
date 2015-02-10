@@ -56,7 +56,9 @@ Template.PageGame.helpers({
 			},1000);
 
 			// console.log('result', result);
+			Meteor.call('startGame', mapId);
 			game.startGame();
+
 
 			Session.set('game', game);
 			Session.set('steps', 0);
