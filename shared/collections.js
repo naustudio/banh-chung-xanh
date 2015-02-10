@@ -22,7 +22,6 @@ Settings.setItem = function(key, value) {
 	return this.update(settingItem._id, {key: key, value: value});
 };
 
-
 Meteor.users.updateUserData = function(userID, temporaryUserData, mapId) {
 	var user = Meteor.users.findOne({_id:userID});
 	console.log(user);

@@ -1,5 +1,5 @@
 // Bootstrap the app when server start here
-/*global Assets, Settings, InitialSettings, Accounts */
+/*global Assets, Settings, InitialSettings, Accounts, Sponsors */
 var _calculateRemainingDate = function() {
 	var endDate = Settings.getItem('endDate');
 	var currentServerDate = new Date();
@@ -11,6 +11,18 @@ var _calculateRemainingDate = function() {
 
 Meteor.startup(function() {
 	Meteor.mapConfig = JSON.parse(Assets.getText('maps/maps-config.json'));
+
+	Meteor.isAdmin = function (userId) {
+		var adminUser = Meteor.adminUser;
+
+		if (!adminUser) {
+			adminUser = Meteor.users.findOne({"emails": {$elemMatch: {address:"adminbcx@naustud.io"}}});
+		}
+		Meteor.adminUser = adminUser;
+
+		return Meteor.adminUser && Meteor.adminUser._id === userId;
+	};
+
 	InitialSettings.forEach(function(item) {
 		if (Settings.findOne({key: item.key}) === undefined) {
 			// insert settings that are not available in the collection yet
@@ -77,12 +89,16 @@ Meteor.startup(function() {
 		},
 
 		userDonates : function(mapId) {
+			if (!Meteor.userId()) {
+				return 0;
+			}
 			var mapConfig = Meteor.mapConfig;
 			var i = 0;
 			var level = 0;
 			var value = 0;
 			var valueObj = null;
 			var updateStatus = false;
+
 			for (i = 1; i < mapConfig.maps.length; i++) {
 				if ( parseInt(mapId, 10) === mapConfig.maps[i].index ) {
 					updateStatus = true;
@@ -142,6 +158,9 @@ Meteor.startup(function() {
 		}
 	});
 
+	/*
+		Set up security for all of collection that we need to protect from anonymous access
+	*/
 	// Users collection
 	Meteor.users.allow({
 		insert: function(/*userID, document*/) {
@@ -150,7 +169,7 @@ Meteor.startup(function() {
 		},
 		update: function(userID/*, document*/) {
 			//TODO we need to check if permitted to perform this operation.
-			console.log('=== removed' + userID);
+			console.log('=== update' + userID);
 
 			return !!Meteor.user();
 		},
@@ -158,6 +177,53 @@ Meteor.startup(function() {
 			//TODO we need to check if permitted to perform this operation.
 			console.log('=== removed' + userID);
 			return false;
+		}
+	});
+
+	Settings.allow({
+		insert: function (userId) {
+			//TODO we need to check if permitted to perform this operation.
+			return Meteor.adminId && userId === Meteor.adminId;
+		},
+		update: function(userId) {
+			//TODO we need to check if permitted to perform this operation.
+			return Meteor.adminId && userId === Meteor.adminId;
+		},
+		remove: function (userId) {
+			//TODO we need to check if permitted to perform this operation.
+			return Meteor.adminId && userId === Meteor.adminId;
+		}
+	});
+
+	Settings.allow({
+		insert: function (userId) {
+			//TODO we need to check if permitted to perform this operation.
+			// console.log('=== insert' + userID);
+			return Meteor.isAdmin(userId);
+		},
+		update: function(userId) {
+			//TODO we need to check if permitted to perform this operation.
+			return Meteor.isAdmin(userId);
+		},
+		remove: function (userId) {
+			//TODO we need to check if permitted to perform this operation.
+			// console.log('=== removed' + userID);
+			return Meteor.isAdmin(userId);
+		}
+	});
+
+	Sponsors.allow({
+		insert: function (userId) {
+			//TODO we need to check if permitted to perform this operation.
+			return Meteor.isAdmin(userId);
+		},
+		update: function(userId) {
+			//TODO we need to check if permitted to perform this operation.
+			return Meteor.isAdmin(userId);
+		},
+		remove: function (userId) {
+			//TODO we need to check if permitted to perform this operation.
+			return Meteor.isAdmin(userId);
 		}
 	});
 
