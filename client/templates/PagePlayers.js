@@ -97,12 +97,14 @@ function setPlayerIndex(currPlayer, getProfilePic) {
 	var gameScores = [];
 	var player = {};
 
-	gameScores = currPlayer.gameScores;
+	if (currPlayer) {
+		gameScores = currPlayer.gameScores;
 
-	if (gameScores !== undefined) {
-		player = getPlayerInfo(currPlayer, getProfilePic);
+		if (gameScores !== undefined) {
+			player = getPlayerInfo(currPlayer, getProfilePic);
 
-		return player;
+			return player;
+		}
 	}
 }
 
@@ -116,29 +118,33 @@ function getPlayerInfo(currPlayer, getProfilePic) {
 	var lastAccess = null;
 	var levels = '';
 
-	// get extra information of user
-	if (currPlayer.services.facebook && getProfilePic) {
-		player = getPlayerInfoFacebook(currPlayer);
-	}
-
-	player.name = currPlayer.profile ? currPlayer.profile.name : '';
-	lastAccess = currPlayer.lastAccess ? new Date(currPlayer.lastAccess) : new Date();
-
-	lastAccess = formatDate(lastAccess);
-
-
-	for (var j = 0; j < currPlayer.gameScores.length; j++) {
-		if (j === currPlayer.gameScores.length - 1) {
-			levels += currPlayer.gameScores[j].mapIndex;
-		} else {
-			levels += currPlayer.gameScores[j].mapIndex + ', ';
+	if (currPlayer) {
+		// get extra information of user
+		if (currPlayer.services.facebook && getProfilePic) {
+			player = getPlayerInfoFacebook(currPlayer);
 		}
+
+		player.name = currPlayer.profile ? currPlayer.profile.name : '';
+		lastAccess = currPlayer.lastAccess ? new Date(currPlayer.lastAccess) : new Date();
+
+		lastAccess = formatDate(lastAccess);
+
+
+		for (var j = 0; j < currPlayer.gameScores.length; j++) {
+			if (j === currPlayer.gameScores.length - 1) {
+				levels += currPlayer.gameScores[j].mapIndex;
+			} else {
+				levels += currPlayer.gameScores[j].mapIndex + ', ';
+			}
+		}
+
+		player.lastAccess = lastAccess; //	player.facebook = true;
+		player.levels = levels;
+
+		return player;
 	}
 
-	player.lastAccess = lastAccess; //	player.facebook = true;
-	player.levels = levels;
-
-	return player;
+	return false;
 }
 
 /**
