@@ -38,7 +38,8 @@ Template.Congratulation.helpers ({
 
 		for (var i= 0; i<gameScores.length; i++) {
 			var index = gameScores[i].mapIndex;
-			if (parseInt(Session.get('mapLevel'),10) === parseInt(index,10)) {
+			var mapId = Router.current().params.mapId;
+			if (parseInt(mapId,10) === parseInt(index,10) && gameScores[i].count>1) {
 				mapUnlock = true;
 			}
 		}
