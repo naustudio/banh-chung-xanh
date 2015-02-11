@@ -12,12 +12,12 @@
 			<tbody>
 				{{#each sponsors}}
 				<tr class="names-list__record">
-					<td class="item">{{ index }}. {{ name }}</td>
-					<td class="item">{{ amount }}</td>
-					<td class="item">{{ date }}</td>
+					<td class="item col-one">{{ index }}. {{ name }}</td>
+					<td class="item col-two">{{ amount }}</td>
+					<td class="item col-three">{{ date }}</td>
 				</tr>
 				{{else}}
-					<td colspan="3" class="empty">Chưa có nhà tài trợ.</td>
+					<td colspan="3" class="empty">{{t "sponsors_empty"}}</td>
 				{{/each}}
 			</tbody>
 		</table>

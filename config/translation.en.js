@@ -21,6 +21,7 @@ i18n.map('en', {
 	'sponsors_name': 'Name',
 	'sponsors_amount': 'Amount',
 	'sponsors_date': 'Date',
+	'sponsors_empty': 'Become first sponsor of this campain',
 	'challenge_friend': 'Challenge your friend',
 	'login': 'Log in',
 	'logout': 'Log out',
