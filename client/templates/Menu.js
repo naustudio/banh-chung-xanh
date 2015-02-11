@@ -41,6 +41,9 @@ Template.Menu.helpers({
 
 Template.Menu.events({
 	'click .menu-list__close-btn': function() {
+		event.preventDefault();
+		event.stopPropagation();
+
 		Session.set('show-menu', false);
 	},
 

@@ -29,7 +29,10 @@ Template.Header.helpers({
 });
 
 Template.Header.events({
-	'click .header__menu-btn': function() {
+	'click .header__menu-btn': function(event) {
+		event.preventDefault();
+		event.stopPropagation();
+
 		Session.set('show-menu', !Session.get('show-menu'));
 	},
 
