@@ -16,3 +16,4 @@ themeteorchef:jquery-validation
 accounts-password
 mrt:modernizr-meteor
 meteorhacks:inject-initial
+matteodem:server-session
