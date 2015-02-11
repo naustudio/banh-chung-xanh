@@ -2,7 +2,7 @@ Template.Congratulation.events ({
 	'click .congratulation-button': function() {
 		$('.modal-congratulation').modal('hide');
 	},
-	'click .modal-congratulation-dialog': function(/*e*/) {
+	'click .modal-congratulation-dialog': function(event) {
 		if ($(event.target).hasClass('modal-congratulation-dialog')) {
 			Router.go('/'+Session.get('language'));
 			//document.location='/'+Session.get('language');
