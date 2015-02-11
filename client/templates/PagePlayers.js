@@ -152,15 +152,15 @@ function getPlayerInfo(currPlayer, getProfilePic) {
  */
 function getPlayerInfoFacebook(currPlayer) {
 	var player = {};
-	var type = 'square';
+	var specSize = '';
 
 	// check for retina
 	if (Modernizr.mq('(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)')) {
-		type = 'large';
+		specSize = '&width=100&height=100';
 	}
 
 	player.isFacebook = true;
-	player.url = 'https://graph.facebook.com/' + currPlayer.services.facebook.id + '/picture?type=' + type;
+	player.url = 'https://graph.facebook.com/' + currPlayer.services.facebook.id + '/picture?type=square' + specSize;
 
 	return player;
 }
