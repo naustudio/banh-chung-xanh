@@ -21,7 +21,7 @@ i18n.map('vi', {
 	'sponsors_name': 'Quý danh',
 	'sponsors_amount': 'Số tiền',
 	'sponsors_date': 'Ngày đóng góp',
-	'sponsors_empty': 'Chưa có nhà tài trợ',
+	'sponsors_empty': 'Danh sách nhà tài trợ đang được cập nhật',
 	'challenge_friend': 'Thách thức bạn bè',
 	'login': 'Đăng nhập',
 	'logout': 'Đăng xuất',
