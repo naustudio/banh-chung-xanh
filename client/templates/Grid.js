@@ -14,12 +14,23 @@ Template.gridMap.helpers({
 	},
 
 	currentURL: function() {
-		return window.location.href;
+		return encodeURIComponent(window.location.href);
+	},
+
+	facebookShareURL: function() {
+		return encodeURIComponent(window.location.href + '?utm_source=facebook&utm_medium=website&utm_campaign=bcx2015');
+	},
+
+	twitterShareURL: function() {
+		return encodeURIComponent(window.location.href + '?utm_source=twitter&utm_medium=website&utm_campaign=bcx2015');
+	},
+
+	gplusShareURL: function() {
+		return encodeURIComponent(window.location.href + '?utm_source=googleplus&utm_medium=website&utm_campaign=bcx2015');
 	},
 
 	twitterText: function() {
-		//TODO: use random translated text
-		return 'Enjoy fun, do charity in 1 step via…';
+		return encodeURIComponent('Enjoy fun, do charity in 1 step via…');
 	},
 	rendered: function() {
 		return Session.get('mapRendered');
