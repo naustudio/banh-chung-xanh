@@ -72,7 +72,12 @@ window.chungapp.render = window.chungapp.render || {};
 
 			if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer, return version number
 			{
-				checkIE = versionIE;
+				if (versionIE) {
+					checkIE = versionIE;
+				}
+				else {
+					checkIE = true;
+				}
 			}
 
 			return checkIE;
@@ -90,14 +95,12 @@ window.chungapp.render = window.chungapp.render || {};
 			var diskPositions = mapDataObj.getDiskList();
 			var staticHTML = '';
 
-			var squareIE = 'n';
+			var squareIE = ' ';
 
 			if (this.checkIE()) {
 				squareIE = 'square-ie';
+				//alert(this.checkIE());
 			}
-
-			//alert(this.checkIE());
-
 
 			this.mapGenerated = new Grid().reMap(mapData);
 			for (var y = 0; y < this.mapGenerated.length; y++) {
@@ -106,13 +109,10 @@ window.chungapp.render = window.chungapp.render || {};
 				}
 			}
 
-			if (this.checkIE()) {
-				if (this.checkIE()===8 || this.checkIE() ===9) {
+			if (this.checkIE()===8) {
 					for (var i = 0; i < diskPositions.length; i++) {
 						staticHTML += '<div style="left:' + ( diskPositions[i].x / mapDataObj.getMapWidth() ) * 100 + '%; top: ' + ( diskPositions[i].y / mapDataObj.getMapHeight() ) * 100 + '%;" data-x="' + x + '" data-y="' + y + '" class="square goal"></div>';
 					}
-
-				}
 			}
 			else {
 				for (var i = 0; i < diskPositions.length; i++) {
@@ -133,15 +133,14 @@ window.chungapp.render = window.chungapp.render || {};
 			var chungPositions = mapDataObj.getChungList();
 
 			var IE = this.checkIE();
-			if (IE) {
-				if (IE===8) {
+			if (IE===8) {
 
-					dynamicHTML += '<div style="left:' + ( userPosition.x / mapDataObj.getMapWidth() ) * 100 + '%; top: ' + ( userPosition.y / mapDataObj.getMapHeight() ) * 100 + '%;" data-x="' + userPosition.x + '" data-y="' + userPosition.y + '" class="square user user-' + direction + '  ' + squareIE  + '"></div>';
-					for (var i = 0; i < chungPositions.length; i++) {
-						dynamicHTML += '<div style="left:' + ( chungPositions[i].x / mapDataObj.getMapWidth() ) * 100 + '%; top: ' + ( chungPositions[i].y / mapDataObj.getMapHeight() ) * 100 + '%;" data-x="' + chungPositions[i].x + '" data-y="' + chungPositions[i].y + '" class="square banh-chung"></div>';
-					}
+				dynamicHTML += '<div style="left:' + ( userPosition.x / mapDataObj.getMapWidth() ) * 100 + '%; top: ' + ( userPosition.y / mapDataObj.getMapHeight() ) * 100 + '%;" data-x="' + userPosition.x + '" data-y="' + userPosition.y + '" class="square user user-' + direction + '  ' + squareIE  + '"></div>';
+				for (var i = 0; i < chungPositions.length; i++) {
+					dynamicHTML += '<div style="left:' + ( chungPositions[i].x / mapDataObj.getMapWidth() ) * 100 + '%; top: ' + ( chungPositions[i].y / mapDataObj.getMapHeight() ) * 100 + '%;" data-x="' + chungPositions[i].x + '" data-y="' + chungPositions[i].y + '" class="square banh-chung"></div>';
 				}
 			}
+
 			else {
 				dynamicHTML += this.transformHTML(userPosition, squareIE + ' user user-' + direction);//'<div style="-webkit-transform:translate(' + userPosition.x * 100 + '%, ' + userPosition.y * 100 + '%);-ms-transform:translate(' + userPosition.x * 100 + '%, ' + userPosition.y * 100 + '%);transform:translate(' + userPosition.x * 100 + '%, ' + userPosition.y * 100 + '%);" data-x="' + userPosition.x + '" data-y="' + userPosition.y + '" class="square user user-' + direction + '"></div>';
 				for (var i = 0; i < chungPositions.length; i++) {
@@ -180,16 +179,16 @@ window.chungapp.render = window.chungapp.render || {};
 			var IE = this.checkIE();
 
 
-			if (IE) {
-				if (IE===8) {
-					$('.user').removeClass('user-right user-left user-up user-down')
-						.addClass(directionClass)
-						.css({
-							'left': ( dataX / 12 ) * 100 + '%',
-							'top': ( dataY / 12 ) * 100 + '%'
-						});
-				}
+
+			if (IE===8) {
+				$('.user').removeClass('user-right user-left user-up user-down')
+					.addClass(directionClass)
+					.css({
+						'left': ( dataX / 12 ) * 100 + '%',
+						'top': ( dataY / 12 ) * 100 + '%'
+					});
 			}
+
 			else {
 				$('.user')
 					.removeClass('user-right user-left user-up user-down')
@@ -211,13 +210,11 @@ window.chungapp.render = window.chungapp.render || {};
 					dataX = chungPositions[i].x;
 					dataY = chungPositions[i].y;
 
-					if (IE) {
-						if (IE===8) {
-							$(banhChungArray[i]).css({
-								'left': ( dataX / 12 ) * 100 + '%',
-								'top': ( dataY / 12 ) * 100 + '%'
-							});
-						}
+					if (IE===8) {
+						$(banhChungArray[i]).css({
+							'left': ( dataX / 12 ) * 100 + '%',
+							'top': ( dataY / 12 ) * 100 + '%'
+						});
 					}
 					else {
 						$(banhChungArray[i]).css({
