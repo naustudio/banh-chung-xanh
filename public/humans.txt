@@ -1,0 +1,37 @@
+This minisite was hand-crafted in Ho Chi Minh city, Viet Nam, by a passionate team at NauStud.io
+
+# TEAM
+
+    Long Buitran -- Art Director / Illustrator -- long[AT]naustud.io
+    Phuong Vo -- Meteor Developer -- phuong.vo[AT]naustud.io
+    Quy Tran -- Meteor Developer -- quy.tran[AT]naustud.io
+    Thang Kieu -- Meteor Developer -- thang.kieu[AT]naustud.io
+    Thanh Tran -- Meteor Developer -- thanh[AT]naustud.io
+    Thao Nguyen -- Copy Editor -- thaog@naustud.io
+    Thinh Le -- Meteor Developer -- thinh.le[AT]naustud.io
+    Trang Pham -- Meteor Developer -- trang.pham[AT]naustud.io
+    Vu Nguyen -- Web Designer / Illustrator -- vu.nguyen[AT]naustud.io
+    Vy Hoang -- Copy Editor -- vy.hoang[AT]naustud.io
+
+# THANKS
+
+    MeteorJS http://meteor.com for your awesome fullstack platform
+
+# TECHNOLOGY COLOPHON
+
+    MeteorJS, NodeJS, MongoDB
+    HTML5, CSS3, InuitCSS, SASS
+    Tools: SublimeText, Photoshop, Illustrator
+    IE8++
+
+
+   _.._             _.._           .--┐
+ .`--.  '.        .'  .-`'.       |   |
+.   .-\   \  (`) .   /-.   \      |   |
+|   |  \   \     |   |  \   \     |   |
+|   |   \   \    |   |   \   \    |   |
+|   |    \   \   |   |    \   \   |   |
+|   |     \   \  |   |     \   \  |   |
+|   |      \   `-/   |      \   \-'   |
+|   |       \_.-`   ,'  (`)  \   `-._.'
+└--`         `-...-`          `-...-`

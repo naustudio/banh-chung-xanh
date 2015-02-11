@@ -84,8 +84,8 @@ KNOWLEDGE BASE:
 [TBC]
 
 ---
-Copyright 2015 Nau Studio. 
-Licensed under MIT license
+© 2015 Nau Studio. Game assets are property of Nau Studio and are copyrighted. Source code is licensed under MIT license.
+
 
 [anti:i18n]: https://github.com/anticoders/meteor-i18n
 [iron:router]: https://github.com/EventedMind/iron-router/blob/devel/Guide.md
