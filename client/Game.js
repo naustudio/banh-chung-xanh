@@ -78,7 +78,8 @@ Game.prototype = {
 		return {
 			'mapIndex' : this.mapId,
 			'elapsedTime' : timeElapsed.toString(),
-			'usedSteps' : usedStep
+			'usedSteps' : usedStep,
+			'historiesStep': (historiesStep || []).join(',')
 		};
 	},
 
