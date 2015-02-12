@@ -19,6 +19,9 @@ $inuit-base-grey-color: #ababab !default;
 $inuit-base-grey-2-color: #959595;
 $inuit-base-grey-3-color: #636363;
 $inuit-base-grey-4-color: #ebebeb;
+$inuit-base-grey-5-color: #808080;
+
+$inuit-base-grey-6-color: #f6f6f6;
 
 $inuit-base-purple-color: #9966ff !default;
 $inuit-base-purple-2-color: #8393ca;
@@ -26,7 +29,7 @@ $inuit-base-purple-2-color: #8393ca;
 $inuit-base-blue-color: #6dcff6;
 $inuit-base-red-color: #d32121;
 
-$color-blue: #006699;
+$color-blue: #069;
 
 // color variables
 $color-theme                 : #e24071;
@@ -43,6 +46,11 @@ $bg-menu-item-border-fallback: rgb(255, 90, 128);
 $bg-menu-item-border         : rgba(255, 255, 255, 0.1);
 $bg-name-list--border        : rgba($color-theme, 0.1);
 $bg-button-orange            : #f58400;
+$bg-button-orange-hover	     : #d08007;
+$bg-button-orange-active	 : #c77700;
+$bg-button-green             : #5dd16d;
+$bg-button-green-hover	     : #43a651;
+$bg-button-green-active	     : #117b20;
 
 // font-size
 $fz-menu-list                : 30px;
@@ -57,3 +65,25 @@ $color-border: #fcecf1;
 $color-text-login: #395733;
 $color-background-facebook: #3b5998;
 
+// social
+$twitter: #00aced;
+$facebook: #3b5998;
+$googleplus: #dd4b39;
+
+// active color
+$bg-active-state: #c5c4c3;
+
+$color-policy-title: #aba000;
+$color-policy-highlight: #e24071;
+
+// duration of animation frames
+$walking-animation-duration: 0.5s;
+// duration of movement transition
+$character-movement-duration: 0.3s;
+// duration of highlight banh chung
+$banh-chung-highlight-duration: 0.1s;
+
+$button-second-color: #cacaca;
+$color-congratulation-text: #efc144;
+
+$color-policy-footer-text: #888;

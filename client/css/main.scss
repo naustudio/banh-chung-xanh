@@ -24,8 +24,13 @@
 
 // components here
 
+@import 'inuitcss/trumps.clearfix';
 @import 'inuitcss/trumps.widths';
 @import 'inuitcss/trumps.spacing';
+
+// custom mixin
+@import 'components/mixins';
+@import 'components/keyframes';
 
 // custom components
 @import 'components/button';
@@ -34,14 +39,20 @@
 @import 'components/names-list';
 @import 'components/modal';
 @import 'components/page-game';
+@import 'components/characters';
 @import 'components/social';
 @import 'components/map-chosing';
+@import 'components/game-guide';
+@import 'components/policy';
+@import 'components/footer';
+@import 'components/congratulation';
+@import 'components/tooltip';
 
 // page here
 @import 'pages/base-page';
 
 // custom style here
-@import 'custom/page.game.scss';
+@import 'custom/page.game';
 ///////
 @import 'components/default';
 @import 'icons';

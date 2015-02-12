@@ -1,134 +1,173 @@
 /* © 2014 nau.com
  * @author Phuong Vo
- *
+ * It represent the Game object
+ * It contains:
+ * 		+MapData, Map Resolver, MapRender
+ * It provides:
+ * 		+ the way user integrate with map: move next, undo, store state of game
  */
-/*global chungapp:true, data:true, render:true*/
+/*global chungapp:true, data:true, render:true, ga:true*/
 chungapp = chungapp || {};
 data = chungapp.data || {};
 render = chungapp.render || {};
 
-function Game(map) {
-	this.initData(map);
+function Game() {
+	this.initialize();
 }
+
+
 
 //define method, property here
 Game.prototype = {
 	constructor: Game,
 
+	mapRenderedHTML: null,
+
+	mapResolver: null,
 	mapData: null,
 	mapRender: null,
-	mapRenderedHTML: null,
-	map: null,
 
-	initData: function(map) {
-		this.mapData = new chungapp.data.Map(map);
+	mapId: null,
+
+	startTime: null,
+
+	originalMapData: null,		//store the old data for restart
+
+	initialize : function() {
+		this.mapResolver = new chungapp.data.Map();
 		this.mapRender = new chungapp.render.MapRender();
-		if (map) {
-			this.map = this._cloneMap(map);
-
-			this.mapRenderedHTML = this.mapRender.renderStatic(this.mapData.getMapData(),
-				this.mapData.getUserPosition(), this.mapData.getChungList(), this.mapData.getDiskList());
-		}
+		this.originalMapData = new chungapp.data.MapData();
 	},
 
-	_cloneMap : function(map) {
-		var newMap = [];
-		for (var i = 0; i < map.length; i++) {
-			var row = map[i];
-			var newRow = [];
-			for (var j = 0; j < row.length; j++) {
-				newRow.push(row[j]);
-			}
+	setJSONMapData: function(mapJSONData, mapId) {
+		this.originalMapData.setJSONData(mapJSONData);
 
-			newMap.push(newRow);
-		}
-
-		return newMap;
+		this.mapId = mapId;
 	},
 
-	setMapData: function(map) {
-		this.map = this._cloneMap(map);
-		this.mapData.setMapData(map);
-		this.mapRenderedHTML = this.mapRender.renderStatic(this.mapData.getMapData(),
-				this.mapData.getUserPosition(), this.mapData.getChungList(), this.mapData.getDiskList());
+	startGame: function() {
+		this.mapData = this.originalMapData.clone();
+		this.mapResolver.setMapData(this.mapData);
+		this.mapRenderedHTML = this.mapRender.renderStatic(this.mapData);
+
+		//store the start time
+		this.startTime = new Date();
+
+		///_------------------trackEvent startGame -------------------
+		// var startTimeString = this.startTime.toString();
+		ga('send', 'event', 'game ' + this.mapId, 'startGame', {'page': Router.current().url});
+	},
+
+	endGame: function(lastDirection) {
+		var currentTime = new Date();
+		var timeElapsed = currentTime.getTime() - this.startTime.getTime();
+		var usedStep = this.getNumStep();
+
+		//log the step
+		var historiesStep = this.mapResolver.getHistoriesStep();
+		historiesStep.push(lastDirection);
+		console.log('historiesStep >>> ' + historiesStep);
+
+		///_------------------trackEvent endGame -------------------
+
+		// var endTimeString = currentTime.toString();
+
+		ga('send', 'event', 'game ' + this.mapId, 'endGame', 'winGame', usedStep, {'page': Router.current().url});
+		ga('send', 'timing', 'game', 'playDuration', timeElapsed, 'Map ' + this.mapId, {'page': Router.current().url});
+
+		return {
+			'mapIndex' : this.mapId,
+			'elapsedTime' : timeElapsed.toString(),
+			'usedSteps' : usedStep,
+			'historiesStep': (historiesStep || []).join(',')
+		};
 	},
 
 	//public method
 	goUp: function() {
-		console.log(this.mapData);
-		if (this.mapData.canGoUp()) {
-			var action = this.mapData.goUp();
-			if (action === chungapp.data.Map.ACTION_NOTHING) {
-				this.mapRender.renderSteps(Map.DIRECTION_UP, this.mapData.getUserPosition(),
-					this.mapData.getChungList());
+		console.log(this.mapResolver);
+		if (this.mapResolver.canGoUp()) {
+			var action = this.mapResolver.goUp();
+			if (action !== chungapp.data.MapData.ACTION_NOTHING) {
+				this.mapRender.renderSteps(chungapp.data.MapData.DIRECTION_UP, this.mapData);
 			}
 
-			if (this.mapData.isWin()) {
-				console.log('==win==');
+			if (this.mapResolver.isWin()) {
+				return this.endGame(chungapp.data.MapData.DIRECTION_UP);
 			}
 		} else {
 			console.log('=can not go up');
 		}
+
+		return null;	//still not win or can not go up
 	},
 
 	goDown: function() {
-		if (this.mapData.canGoDown()) {
-			var action = this.mapData.goDown();
-			if (action === chungapp.data.Map.ACTION_NOTHING) {
-				this.mapRender.renderSteps(Map.DIRECTION_DOWN, this.mapData.getUserPosition(),
-					this.mapData.getChungList());
+		if (this.mapResolver.canGoDown()) {
+			var action = this.mapResolver.goDown();
+			if (action !== chungapp.data.MapData.ACTION_NOTHING) {
+				this.mapRender.renderSteps(chungapp.data.MapData.DIRECTION_DOWN, this.mapData);
 			}
 
-			if (this.mapData.isWin()) {
-				console.log('==win');
+			if (this.mapResolver.isWin()) {
+				return this.endGame(chungapp.data.MapData.DIRECTION_DOWN);
 			}
 		} else {
 			console.log('=can not go down');
 		}
+
+		return null;
 	},
 
 	goLeft: function() {
-		if (this.mapData.canGoLeft()) {
-			var action = this.mapData.goLeft();
-			if (action === chungapp.data.Map.ACTION_NOTHING) {
-				this.mapRender.renderSteps(Map.DIRECTION_LEFT, this.mapData.getUserPosition(),
-					this.mapData.getChungList());
+		if (this.mapResolver.canGoLeft()) {
+			var action = this.mapResolver.goLeft();
+			if (action !== chungapp.data.MapData.ACTION_NOTHING) {
+				this.mapRender.renderSteps(chungapp.data.MapData.DIRECTION_LEFT, this.mapData);
 			}
 
-			if (this.mapData.isWin()) {
-				console.log('==win');
+			if (this.mapResolver.isWin()) {
+				return this.endGame(chungapp.data.MapData.DIRECTION_LEFT);
 			}
 		} else {
 			console.log('=can not go left');
 		}
+
+		return null;
 	},
 
 	goRight: function() {
-		if (this.mapData.canGoRight()) {
-			var action = this.mapData.goRight();
-			if (action === chungapp.data.Map.ACTION_NOTHING) {
-				this.mapRender.renderSteps(Map.DIRECTION_RIGHT, this.mapData.getUserPosition(),
-					this.mapData.getChungList());
+		if (this.mapResolver.canGoRight()) {
+			var action = this.mapResolver.goRight();
+			if (action !== chungapp.data.MapData.ACTION_NOTHING) {
+				this.mapRender.renderSteps(chungapp.data.MapData.DIRECTION_RIGHT, this.mapData);
 			}
 
-			if (this.mapData.isWin()) {
-				console.log('==win');
+			if (this.mapResolver.isWin()) {
+				return this.endGame(chungapp.data.MapData.DIRECTION_RIGHT);
 			}
 		} else {
 			console.log('=can not go right');
 		}
+
+		return null;
 	},
 
 	restart: function() {
-		this.setMapData(this.map);
+		this.mapData = this.originalMapData.clone();
+		this.mapResolver.setMapData(this.mapData);
+		this.mapRender.renderSteps(chungapp.data.MapData.DIRECTION_RIGHT, this.mapData);
 	},
 
 	undo: function() {
-		if (this.mapData.canUndo()) {
-			var direction = this.mapData.undo().direction;
-			if (direction) {
-				this.mapRender.renderSteps(Map.DIRECTION_LEFT, this.mapData.getUserPosition(),
-					this.mapData.getChungList());
+		if (this.mapResolver.canUndo()) {
+			var result = this.mapResolver.undo();
+			if (result.action !== chungapp.data.MapData.ACTION_NOTHING) {
+				console.log('==== userPosition = ' + this.mapData.getUserPosition());
+				window.userPos = this.mapData.getUserPosition();
+				console.log('==== chungList = ' + this.mapData.getChungList());
+				window.chungList = this.mapData.getChungList();
+				this.mapRender.renderSteps(result.direction, this.mapData);
 			} else {
 				console.log('can not find direction');
 			}
@@ -138,7 +177,7 @@ Game.prototype = {
 	},
 
 	getNumStep: function() {
-		return this.mapData.getHistoryNum();
+		return this.mapResolver.getHistoryNum();
 	}
 };
 

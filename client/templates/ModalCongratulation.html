@@ -1,0 +1,36 @@
+<template name="Congratulation">
+	<div class="modal modal-congratulation modal-congratulation fade">
+		<div class="modal-dialog modal-congratulation-dialog">
+			<div class="modal-content">
+				<div class="congratulation-container">
+					<img class="congratulation-img" src="/img/congratulation_level{{mapLevel}}.png" alt="">
+					<!--<img class="congratulation-img-text" src="/img/congratulation.png" alt="">-->
+					<div class="congratulation-text">{{t "congratulation"}} !</div>
+					<div class="congratulation-description">
+
+						{{#if currentUser}}
+							{{#if mapUnlock}}
+								{{t "congratulation-description-won"}}
+							{{else}}
+								{{t "congratulation-description-start"}} {{userLastDonation}} {{t "congratulation-description-end"}}
+							{{/if}}
+						{{else}}
+							{{t "congratulation-description-no-login-start"}} {{userLastDonation}} {{t "congratulation-description-no-login-end"}}
+						{{/if}}
+
+
+
+					</div>
+					<a href="/{{ lc }}/" class="congratulation-button button second-btn">{{t "master-map"}}</a>
+					{{#if currentUser}}
+						<a href="/{{ lc }}/game/{{nextMapId}}" class="button congratulation-button">{{t "next"}}</a>
+					{{else}}
+						<a href="/{{ lc }}/game/{{nextMapId}}" class="button congratulation-button second-btn">{{t "next"}}</a>
+						<a class="button congratulation-button congratulation-login" data-target=".modal-login">{{t "login"}}</a>
+					{{/if}}
+				</div>
+
+			</div>
+		</div>
+	</div>
+</template>

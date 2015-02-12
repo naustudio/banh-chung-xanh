@@ -1,0 +1,44 @@
+
+//----------
+// Keyframes
+// ---------
+
+@keyframes moving-down {
+	0% {
+		transform: translate(0, 0);
+	}
+
+	100% {
+		transform: translate(-25%, 0);
+	}
+}
+
+@keyframes moving-up {
+	0% {
+		transform: translate(-25%, 0);
+	}
+
+	100% {
+		transform: translate(-50%, 0);
+	}
+}
+
+@keyframes moving-left {
+	0% {
+		transform: translate(-50%, 0);
+	}
+
+	100% {
+		transform: translate(-75%, 0);
+	}
+}
+
+@keyframes moving-right {
+	0% {
+		transform: translate(-75%, 0);
+	}
+
+	100% {
+		transform: translate(-100%, 0);
+	}
+}

@@ -11,15 +11,37 @@ Template.Header.helpers({
 		}
 
 		return isActive;
+	},
+	'inPageGame': function() {
+		var isHidden = 'hidden-smartphone';
+		if (Session.get('showGame')) {
+			isHidden= '';
+		}
+		return isHidden;
+	},
+	'inMapMaster': function() {
+		var isHidden = '';
+		if (Session.get('showGame')) {
+			isHidden= 'hidden-smartphone';
+		}
+		return isHidden;
 	}
 });
 
 Template.Header.events({
-	'click .header__menu-btn': function() {
+	'click .header__menu-btn': function(event) {
+		event.preventDefault();
+		event.stopPropagation();
+
 		Session.set('show-menu', !Session.get('show-menu'));
 	},
 
 	'click .button-login': function(e) {
+		var target = $(e.target).attr('data-target');
+		$(target).modal('show');
+	},
+
+	'click .button-status': function(e) {
 		var target = $(e.target).attr('data-target');
 		$(target).modal('show');
 	},

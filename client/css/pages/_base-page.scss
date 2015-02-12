@@ -5,12 +5,14 @@
 .page {
 	max-width: 964px;
 	width: 100%;
-	padding: 0 20px;
+	padding: 1px 20px;
 	margin: auto;
+	min-height: 500px;
 }
 
 .challenge {
 	position: absolute;
+	top: 20px;
 	right: 20px;
 	z-index: 2;
 
@@ -21,5 +23,34 @@
 		font-size: 24px;
 		left: 50%;
 		margin-left: -12px;
+	}
+}
+
+.not-found {
+	text-align: center;
+	width: 100%;
+	padding-top: 5%;
+	img {
+		width: 100%;
+		max-width: 734px;
+	}
+}
+
+@media (max-width: 320px) {
+	.challenge {
+		top: 18px;
+	}
+	.page {
+		min-height: 300px;
+	}
+}
+
+@media (min-width: 321px) and (max-width: 1000px) {
+	.challenge {
+		top: 14px;
+	}
+
+	.page {
+		min-height: 70%;
 	}
 }

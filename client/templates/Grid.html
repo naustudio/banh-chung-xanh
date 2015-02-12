@@ -1,5 +1,34 @@
 <template name="gridMap">
 	<div class="map-grid">
-		{{{squares}}}
+
+		{{#if rendered}}
+			{{{squares}}}
+
+			<div class="social icon-button">
+				<a href="https://plus.google.com/share?url={{ facebookShareURL }}" class="icon icon-google social-icon" data-ref="google">
+					<i class="top-row"></i>
+					<span class="background-transition social-icon" data-ref="google">
+					</span>
+				</a>
+				<a href="https://www.facebook.com/sharer/sharer.php?u={{ gplusShareURL }}" class="icon icon-facebook social-icon" data-ref="facebook">
+					<i class="top-row" data-ref="facebook"></i>
+					<span class="background-transition social-icon"></span>
+				</a>
+				<a class="social-icon icon icon-twitter" href="https://twitter.com/intent/tweet?url={{ twitterShareURL }}&text={{ twitterText }}&hashtags=banhchungxanh" data-ref="twitter">
+					<i class="top-row"></i>
+					<span class="background-transition social-icon" data-ref="twitter">
+					</span>
+				</a>
+			</div>
+
+			<div class="intro-block-smartphone {{inPageGame}}"> {{> IntroBlockControl}}</div>
+
+		{{else}}
+			<div class="loading-game-board">
+				<img src="/img/preloader.gif" alt="LOADING....">
+			</div>
+		{{/if}}
+
 	</div>
+
 </template>

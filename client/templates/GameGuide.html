@@ -1,0 +1,57 @@
+<template name="GameGuide">
+	<div class="modal fade modal-game-guide">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="icon-cross" aria-hidden="true"></span></button>
+					<h4 class="modal-title" id="mySmallModalLabel">
+						<div class="hello">{{t "guide"}}</div>
+
+					</h4>
+				</div>
+				<div class="modal-body">
+
+					<div id="slider" style="height: 400px">
+						<a class="control_next">{{t "next-guide"}}</a>
+						<a class="control_prev">{{t "back-guide"}}</a>
+						<ul>
+							<li >
+								<img src="/img/step1.png" alt="">
+								<div class="description-step"> {{t "description-step-1"}}</div>
+							</li>
+							<li >
+								<img src="/img/step2.png" alt="">
+								<div class="description-step">
+									{{t "description-step-2"}}
+								</div>
+							</li>
+							<li >
+								<img src="/img/step3.png" alt="">
+								<div class="description-step">
+									{{t "description-step-3"}}
+								</div>
+							</li>
+
+							<li >
+								<img src="/img/step4.png" alt="">
+								<div class="description-step">
+									{{t "description-step-4"}}
+								</div>
+							</li>
+
+							<li >
+								<img src="/img/step5.png" alt="">
+								<div class="description-step">
+									{{t "description-step-5"}}
+								</div>
+							</li>
+						</ul>
+
+					</div>
+
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+</template>

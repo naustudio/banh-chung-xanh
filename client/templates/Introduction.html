@@ -4,22 +4,30 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="icon-cross" aria-hidden="true"></span></button>
-					<img class="logo-modal" src="img/nau-logo.svg" alt="">
-					<h4 class="modal-title" id="mySmallModalLabel">
-						<div class="hello">Xin chào,</div>
-
-					</h4>
+					<img class="logo-modal" src="/img/nau-logo.svg" alt="">
+					<!--<h4 class="modal-title" id="mySmallModalLabel">
+						<div class="hello">{{t "hello"}},</div>
+					</h4>-->
 				</div>
 				<div class="modal-body">
 
-					<div class="title-paragraph">Mục đích dự án</div>
-					<div class="paragraph">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla consectetur iste aut ullam, maiores deserunt aliquam sit porro debitis quidem, adipisci quod quibusdam ab nemo doloribus itaque. Placeat, culpa, quod!
+					<div class="project-purpose-sologan">
+						{{t "project_purpose_sologan_1" }}<br/>
+						{{t "project_purpose_sologan_2" }}
 					</div>
+
+					<div class="paragraph">
+						{{t "project_purpose_description" }}
+					</div>
+
+					<div class="project-purpose-call">
+						{{t "project_purpose_call" }}
+					</div>
+
+
 				</div>
 				<div class="modal-footer">
-					<button class="button-modal">Xem hướng dẫn</button>
-					<button class="button-modal">Không cần, chơi luôn!</button>
+					<button type="submit" class="button-modal play-now">{{t "play-now"}}</button>
 				</div>
 			</div>
 		</div>

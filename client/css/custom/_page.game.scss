@@ -1,15 +1,172 @@
-.map-grid{
-	background: transparent;
+
+.map-grid {
+	@extend %clearfix;
+
+	background-image: url(img/map-bg.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
 	width: 100%;
 	max-width: 520px;
 	margin: 20px auto;
-	.square{
-		background: #333;
-		width: 8.33333%;
-		padding-bottom: 8.33333%;
-		float: left;
-		&.wall{
-			background: green;
+	margin-top: 45px;
+	position: relative;
+
+	@include media-query(retina) {
+		background-image: url(img/map-bg-2x.png);
+	}
+
+	.action,
+	.social {
+		position: absolute;
+		right: 8%; //.33333%;
+		top: 15px;
+		bottom: auto;
+		width: 25%;
+	}
+	.social {
+		.icon {
+			margin-left: -4px;
+			width: 30%;
+			max-width: 30px;
+			&:after {
+				content: '';
+				width: 113%;
+				height: 4px;
+				background-image: url(img/icon-button-shadow.png);
+				background-repeat: no-repeat;
+				background-size: 100%;
+				// background: #c5c4c3;
+				position: absolute;
+				left: 0;
+				bottom: -4px;
+
+				@include media-query(retina) {
+					background-image: url(img/icon-button-shadow-2x.png);
+				}
+				// transform: skewX(30deg);
+			}
+
+		}
+	}
+
+	.action {
+		top: 15px;
+		bottom: auto;
+	}
+}
+
+// Temp
+.sample-character {
+	.item {
+		@extend %clearfix;
+		padding-top: 50px;
+
+		&:first-child {
+			padding: 0;
 		}
 	}
 }
+
+.action {
+	position: absolute;
+	bottom: 0;
+	left: -40%;
+
+	.icon {
+		/* margin-left: -4px; */
+		border-radius: 50%;
+		background: $inuit-base-grey-6-color;
+		border-radius: 50%;
+		width: 34px;
+		height: 33px;
+		//line-height: 0.8;
+		border: 1.7px solid #6d6e71;
+		z-index: 1;
+		top: 2px;
+
+	}
+
+}
+
+.loading-game-board {
+	padding-top: 100%;
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+	}
+}
+
+@include media-query (portable) {
+
+	.action {
+		bottom: 52px;
+		left: -95%;
+		.icon {
+			//box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+		}
+	}
+
+	.map-grid {
+		width: 100%;
+		margin: auto;
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+	}
+
+}
+
+@include media-query (palm) {
+
+	.map-grid {
+		width: 100%;
+		margin: auto;
+		margin-top: 20px;
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		.social {
+			right: 15%;
+		}
+
+	}
+}
+
+@media (max-width: 320px) {
+	.map-grid {
+		.social {
+			right: 15.4%;
+		}
+	}
+}
+
+@media (min-width: 321px) and (max-width: 359px) {
+	.map-grid {
+		.social {
+			right: 14%;
+		}
+	}
+}
+
+@media (min-width: 360px) and (max-width: 383px) {
+	.map-grid {
+		.social {
+			right: 15.4%;
+		}
+	}
+}
+
+@media (min-width: 384px) and (max-width: 640px) {
+	.map-grid {
+		.social {
+			right: 13.8%;
+		}
+	}
+}
+
+
+

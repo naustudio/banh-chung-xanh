@@ -18,10 +18,15 @@
 		background-image: url(img/button-border.png);
 		background-repeat: repeat-x;
 		background-position: left top;
+		background-size: auto 100%;
 		position: absolute;
 		left: 0;
 		width: 100%;
 		height: 11px;
+
+		@include media-query(retina) {
+			background-image: url(img/button-border-2x.png);
+		}
 	}
 
 	&:before {
@@ -38,19 +43,33 @@
 
 	&.orange {
 		background-color: $bg-button-orange;
+
+		&:hover {
+			background-color: $bg-button-orange-hover;
+		}
+
+		&:active {
+			background-color: $bg-button-orange-active;
+		}
 	}
 
 	&.gray {
+		background: $bg-active-state;
+
 		&:before,
 		&:after {
 			background-image: url(img/button-border-white.png);
+
+			@include media-query(retina) {
+				background-image: url(img/button-border-white-2x.png);
+			}
 		}
 	}
 }
 
 .button__challenge {
 	$line-height: 48px;
-
+	cursor: pointer;
 	padding: 0 10px;
 	font-size: 14px;
 	min-width: 191px;
@@ -60,47 +79,217 @@
 // --------
 // Style of icon button
 // --------
+//
+.background-transition {
+	position: absolute;
+	display: inline-block;
+	height: 0;
+	width: 30px;
+	bottom: 0;
+	left: 0;
+	transition:all 0.2s ease-out;
+	z-index: -1;
+}
 
 .icon-button {
 	text-align: center;
 
+	.top-row {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 9px;
+		background-image: url(img/button-border-gray.png);
+		background-repeat: repeat-x;
+		background-size: auto 100%;
+
+		z-index: 1;
+
+		@include media-query(retina) {
+			background-image: url(img/button-border-gray-2x.png);
+		}
+	}
+
 	.icon {
 		position: relative;
 		background: #fff;
-		padding: 10px 0 5px;
+		padding: 10px 0 7px;
 		display: inline-block;
 		color: #6d6e71;
 		text-align: center;
 		border-radius: 2px;
 		width: 30px;
 		height: 30px;
-		background-image: url(img/button-border-gray.png);
-		background-repeat: repeat-x;
 
-		@include media-query(retina) {
-			background-image: url(img/button-border-gray-2x.png);
-		}
 
+	}
+
+	.icon-google {
+		z-index: 1;
+		&:active,
 		&:hover {
-			text-decoration: none;
-		}
-
-		&:after {
-			content: '';
-			width: 33px;
-			height: 4px;
-			background-image: url(img/icon-button-shadow.png);
-			background-repeat: no-repeat;
-			background-size: 100%;
-			// background: #c5c4c3;
-			position: absolute;
-			left: 0;
-			bottom: -4px;
-
-			@include media-query(retina) {
-				background-image: url(img/icon-button-shadow-2x.png);
+			color: #fff;
+			.background-transition {
+				background-color: $googleplus;
+				height: 30px;
 			}
-			// transform: skewX(30deg);
+		}
+	}
+
+	.icon-facebook {
+		z-index: 1;
+		&:active,
+		&:hover {
+			color: #fff;
+			.background-transition {
+				background-color: $facebook;
+				height: 30px;
+			}
+		}
+	}
+
+	.icon-twitter {
+		z-index: 1;
+		&:active,
+		&:hover {
+			color: #fff;
+			.background-transition {
+				background-color: $twitter;
+				height: 30px;
+			}
+		}
+	}
+
+	.icon-round {
+		&:active,
+		&:hover {
+			background-color: $bg-active-state;
+			color: #fff;
+		}
+	}
+
+	.icon-reset {
+		&:active,
+		&:hover {
+			background-color: $bg-active-state;
+			color: #fff;
+		}
+	}
+
+	.icon-back {
+		&:active,
+		&:hover {
+			background-color: $bg-active-state;
+			color: #fff;
 		}
 	}
 }
+
+.icon {
+	&:active,
+	&:hover {
+		text-decoration: none;
+
+		.top-row {
+			background-image: url(img/button-border-gray-hover.png);
+
+			@include media-query(retina) {
+				background-image: url(img/button-border-gray-hover-2x.png);
+			}
+		}
+
+
+	}
+}
+
+.icon-button-container {
+	width: 467px;
+	height: 510px;
+	margin: auto;
+	position: relative;
+}
+
+.icon-button-top {
+	position: absolute;
+	top: 20px;
+	right: 0;
+}
+
+.icon-button-bottom {
+	position: absolute;
+	bottom: 20px;
+	right: 0;
+}
+
+.background-icon-button {
+	border-radius: 50%;
+	background: rgb(246, 246, 246);
+	border-radius: 50%;
+	width: 40px;
+	height: 39px;
+	line-height: 0.8;
+	border: 1px solid transparent;
+	display: inline-block;
+	z-index: 2;
+	margin-left: -4px;
+	&:hover {
+		background: $bg-active-state;
+		.icon {
+			background: $bg-active-state;
+			color: $inuit-base-white-color;
+			border: 1.7px solid $inuit-base-white-color;
+		}
+	}
+}
+
+@include media-query (portable) {
+	.challenge {
+		height: 36px;
+		line-height: 36px;
+		top: 12px;
+
+		.button__challenge {
+			margin-right: -15px;
+		}
+
+		&:before, &:after {
+			background-size: contain;
+			margin-left: 0;
+		}
+
+	}
+
+	.background-icon-button {
+		box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	}
+
+	.icon-button-top {
+		display: none;
+	}
+
+	.icon-button-bottom {
+		left: 20px;
+		right: inherit;
+		bottom: 0;
+	}
+}
+
+@media (max-width: 320px) {
+	.button__challenge {
+		font-size: 8.5px;
+		min-width: 105px;
+		padding: 0;
+		line-height: 38px;
+	}
+}
+
+@media (min-width: 321px) and (max-width: 1000px) {
+	.button__challenge {
+		padding: 0 3px;
+		font-size: 12px;
+		min-width: 155px;
+		line-height: 43px;
+	}
+}
+

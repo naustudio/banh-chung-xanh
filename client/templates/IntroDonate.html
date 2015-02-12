@@ -1,0 +1,10 @@
+<template name="IntroDonate">
+	<div id="currentSponsor" class="current-sponsor">{{donatedAmount}} VND</div>
+	<div class="total-sponsor">{{t "sponsor-description"}} <span id="totalSponsor">{{ totalAmount }} </span>VND</div>
+	<div class="progress"><div class="progress-current" style="width:{{percentageOfDonated}}%"></div></div>
+	<div class="description-progress">
+		<span id="percentageSponsor">{{percentageOfDonated}}</span>%
+		<span class="time-left"><i class="icon-lock"></i>{{remainingDate}} {{t "date-left"}}</span>
+	</div>
+
+</template>

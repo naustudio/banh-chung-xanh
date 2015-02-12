@@ -1,0 +1,25 @@
+
+@mixin character-icon($name, $width: 50px, $height: 77px) {
+	&.#{$name} {
+		&:before {
+			background-image: url(img/characters/#{$name}.png);
+			width: $width;
+			height: $height;
+			margin-left: - $width / 2;
+
+			@include media-query(retina) {
+				background-image: url(img/characters2x/#{$name}.png);
+			}
+		}
+	}
+}
+
+@mixin map-list-item($name) {
+
+	background-image: url(img/#{$name}.png);
+
+	@include media-query(retina) {
+		background-image: url(img/#{$name}-2x.png);
+	}
+
+}

@@ -1,40 +1,61 @@
 <template name="PageGame">
 	<article class="game-play">
-		{{> gridMap}}
-	</article>
+		<div class="game-play-mobile">
+			{{> gridMap}}
+			<div class="button-controler-smartphone">
+				<div class="button-controler">
+					<div class="action icon-button">
+						<a title={{t "tooltip_map"}} href="/{{ lc }}/" class="tooltip background-icon-button">
+							<i class="icon icon-round"></i>
+						</a>
+						<a title={{t "tooltip_reset"}} href="" class="tooltip background-icon-button">
+							<i class="icon icon-reset"></i>
+						</a>
+						<a title={{t "tooltip_back"}} href="" class="tooltip background-icon-button">
+							<i class="icon icon-back"></i>
+						</a>
+					</div>
 
-	<article class="game-intro">
-		<div class="game-intro-wrap">
-			<div class="current-sponsor">10,100,000</div>
-			<div class="total-sponsor">Được đóng góp trên tổng <span>50,000,000 </span>VND</div>
-			<div class="progress"><div class="progress-current"></div></div>
-			<div class="description-progress">
-				2%
-				<span class="time-left"><i class="icon-lock"></i>15 ngày còn lại</span>
-			</div>
-
-			<div class="block-control">
-				<div class="round">
-					Round <br/>
-					<span class="current-round">3<span class="total-round">/10</span></span>
+					<button class="control-top "><i class="icon-top"></i></button>
+					<button class="control-right "><i class="icon-right"></i></button>
+					<button class="control-left"><i class=" icon-left"></i></button>
+					<button class="control-bottom"><i class="icon-bottom"></i></button>
 				</div>
-				<div class="round back">
-					Số bước <br/>
-					<span class="current-round number-foot">222</span>
-				</div>
-
-			</div>
-
-			<div class="button-controler">
-				<button class="control-top "><i class="icon-top path1 path2 path3 path4"></i></button>
-				<button class="control-right "><i class="icon-right"></i></button>
-				<button class="control-left"><i class=" icon-left"></i></button>
-				<button class="control-bottom"><i class="icon-bottom"></i></button>
-
-
 			</div>
 		</div>
 
 	</article>
-	{{> yield 'intro'}}
+
+	<aside class="game-intro">
+		<div class="game-intro-wrap">
+			<div class="logo-banhchungxanh"><img src="/img/logo.png" alt=""></div>
+			<div class="intro-donate-pc">
+				{{> IntroDonate}}
+				{{> IntroBlockControl}}
+				{{rendered}}
+
+				<div class="button-controler">
+					<div class="action icon-button">
+						<a title={{t "tooltip_map"}} href="/{{ lc }}/" class="tooltip background-icon-button">
+							<i class="icon icon-round"></i>
+						</a>
+						<a title={{t "tooltip_reset"}} href="" class="tooltip background-icon-button">
+							<i class="icon icon-reset"></i>
+						</a>
+						<a title={{t "tooltip_back"}} href="" class="tooltip background-icon-button">
+							<i class="icon icon-back"></i>
+						</a>
+					</div>
+
+					<button  class="control-top "><i class="icon-top"></i></button>
+					<button class="control-right "><i class="icon-right"></i></button>
+					<button class="control-left"><i class=" icon-left"></i></button>
+					<button class="control-bottom"><i class="icon-bottom"></i></button>
+				</div>
+
+
+			</div>
+		</div>
+	</aside>
+
 </template>
