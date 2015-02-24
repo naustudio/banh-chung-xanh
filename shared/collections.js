@@ -1,11 +1,11 @@
 /* © 2014 NauStud.io
  * @author
  */
-/* global Sponsors: true, Settings:true */
+/* global Sponsors: true, Settings:true, FB: true, CheatingLogs: true  */
 // make collections here
 
 // Players collection is now Meteor.users
-
+CheatingLogs = new Meteor.Collection('cheating_logs');
 // Sponsors collection
 Sponsors = new Meteor.Collection('sponsors');
 
@@ -19,9 +19,8 @@ Settings.getItem = function(key) {
 
 Settings.setItem = function(key, value) {
 	var settingItem = this.findOne({key: key});
-	return this.update(settingItem._id, {key: key, value: value});
+	return this.update(settingItem._id, {$set: {key: key, value: value}});
 };
-
 
 Meteor.users.updateUserData = function(userID, temporaryUserData, mapId) {
 	var user = Meteor.users.findOne({_id:userID});
@@ -48,14 +47,14 @@ Meteor.users.updateUserData = function(userID, temporaryUserData, mapId) {
 		//add new score item
 		temporaryUserData.updatedAt = Date.now();
 		temporaryUserData.count = 1;
-		this.update({
+		/*this.update({
 			_id:userID
 		}, {
 			$push:{
 				'gameScores':temporaryUserData
 			}
-		});
-
+		});*/
+		Meteor.call('updateUserScore', mapId, temporaryUserData);
 		Meteor.call('userDonates', mapId, function(err, value) {
 			Session.set('userLastDonation', value);
 		});
@@ -70,4 +69,23 @@ Meteor.users.getTheScoreItemByMapId = function(gameScoresOfUser, mapId) {
 		}
 	}
 	return null;
+};
+
+Meteor.users.getUserFriendsList = function() {
+	// call service to get friends list of user
+	if (FB) {
+		FB.getLoginStatus(function(res) {
+			if (res && res.status === 'connected') {
+				FB.api(
+					'me/friends',
+					function(res) {
+						if (res && !res.error) {
+							var data = res.data || [];
+
+							Session.set('friendsList', data);
+						}
+					});
+			}
+		});
+	}
 };

@@ -18,7 +18,7 @@ if (Meteor.server) {
 			// end of campaign date to show the count down
 			key: 'endDate',
 			// note: it's GMT time
-			value: new Date('2015-02-24T7:00:00.000Z')
+			value: new Date('2015-03-31T7:00:00.000Z')
 		},
 		{
 			// amount for solving easy map

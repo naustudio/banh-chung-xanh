@@ -25,5 +25,7 @@ Meteor.startup(function() {
 		Session.set('map', result);
 	});
 	Meteor.subscribe('userData');
+	Meteor.subscribe('sponsors');
+	Meteor.subscribe('settings');
 
 });

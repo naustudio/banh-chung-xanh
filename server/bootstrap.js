@@ -1,5 +1,5 @@
 // Bootstrap the app when server start here
-/*global Assets, Settings, InitialSettings, Accounts */
+/*global Assets, Settings, InitialSettings, Accounts, Sponsors, ServerSession:true, CheatingLogs */
 var _calculateRemainingDate = function() {
 	var endDate = Settings.getItem('endDate');
 	var currentServerDate = new Date();
@@ -11,6 +11,35 @@ var _calculateRemainingDate = function() {
 
 Meteor.startup(function() {
 	Meteor.mapConfig = JSON.parse(Assets.getText('maps/maps-config.json'));
+
+	Meteor.isAdmin = function (userId) {
+		var adminUser = Meteor.adminUser;
+
+		if (!adminUser) {
+			adminUser = Meteor.users.findOne({"emails": {$elemMatch: {address:"adminbcx@naustud.io"}}});
+		}
+		Meteor.adminUser = adminUser;
+		return Meteor.adminUser && Meteor.adminUser._id === userId;
+	};
+
+	Meteor.isCheating = function (userId, mapId) {
+		if (!userId) {
+			return false;
+		}
+		var session = ServerSession.get(userId);
+		var mapData = null;
+		var endDate = new Date();
+		var startDate;
+		var minimumSecond = 4000;
+		var isCheating = true;
+
+		session = session || {};
+		mapData = session[mapId];
+		startDate = mapData ? mapData.startDate : new Date();
+		isCheating = (endDate - startDate) <= minimumSecond;
+		return isCheating;
+	};
+
 	InitialSettings.forEach(function(item) {
 		if (Settings.findOne({key: item.key}) === undefined) {
 			// insert settings that are not available in the collection yet
@@ -35,6 +64,17 @@ Meteor.startup(function() {
 					'mapLevel' : mapLevel
 				};
 			}
+		},
+
+		startGame: function (mapId) {
+			if (!Meteor.userId()) {
+				return;
+			}
+			var session = {};
+			session[mapId] = {
+				startDate: new Date()
+			};
+			ServerSession.set(Meteor.userId(), session);
 		},
 
 		getRemainingDate: function() {
@@ -77,12 +117,16 @@ Meteor.startup(function() {
 		},
 
 		userDonates : function(mapId) {
+			if (!Meteor.userId()) {
+				return 0;
+			}
 			var mapConfig = Meteor.mapConfig;
 			var i = 0;
 			var level = 0;
 			var value = 0;
 			var valueObj = null;
 			var updateStatus = false;
+
 			for (i = 1; i < mapConfig.maps.length; i++) {
 				if ( parseInt(mapId, 10) === mapConfig.maps[i].index ) {
 					updateStatus = true;
@@ -119,29 +163,61 @@ Meteor.startup(function() {
 		},
 
 		updateUserScore: function(mapId, result) {
-			if (!Meteor.user()) {
+			var user = Meteor.user();
+			if (!user) {
 				return false;
 			}
-			Meteor.users.update({
-				_id: Meteor.userId(),
-				'gameScores': {
-					$elemMatch: {
-						mapIndex: mapId
+			var isCheating = Meteor.isCheating(user._id, mapId);
+			var loggedObject = {};
+			if (isCheating) {
+				loggedObject = JSON.parse(JSON.stringify(result));
+				loggedObject.userId = user._id;
+				CheatingLogs.upsert({userId: Meteor.userId(), mapIndex: mapId}, loggedObject);
+				console.log('This guy, ' + Meteor.userId() + ', is cheating');
+			}
+
+			var finding = Meteor.users.find({
+					_id: Meteor.userId(),
+					'gameScores': {
+						$elemMatch: {
+							mapIndex: mapId
+						}
 					}
-				}
-			}, {
-				$set: {
-					'gameScores.$.elapsedTime': result.elapsedTime,
-					'gameScores.$.usedSteps': result.usedSteps,
-					'gameScores.$.count': result.count,
-					'gameScores.$.updatedAt': result.updatedAt
-				}
-			});
+				});
+			if (finding.count()) {
+				Meteor.users.update({
+					_id: Meteor.userId(),
+					'gameScores': {
+						$elemMatch: {
+							mapIndex: mapId
+						}
+					}
+				}, {
+					$set: {
+						'gameScores.$.elapsedTime': result.elapsedTime,
+						'gameScores.$.usedSteps': result.usedSteps,
+						'gameScores.$.count': result.count,
+						'gameScores.$.updatedAt': result.updatedAt
+					}
+				});
+			} else {
+				Meteor.users.update({
+					_id: user._id
+				}, {
+					$push: {
+						'gameScores': result
+					}
+				});
+			}
 
 			return result;
+
 		}
 	});
 
+	/*
+		Set up security for all of collection that we need to protect from anonymous access
+	*/
 	// Users collection
 	Meteor.users.allow({
 		insert: function(/*userID, document*/) {
@@ -150,7 +226,7 @@ Meteor.startup(function() {
 		},
 		update: function(userID/*, document*/) {
 			//TODO we need to check if permitted to perform this operation.
-			console.log('=== removed' + userID);
+			console.log('=== update' + userID);
 
 			return !!Meteor.user();
 		},
@@ -158,6 +234,53 @@ Meteor.startup(function() {
 			//TODO we need to check if permitted to perform this operation.
 			console.log('=== removed' + userID);
 			return false;
+		}
+	});
+
+	Settings.allow({
+		insert: function (userId) {
+			//TODO we need to check if permitted to perform this operation.
+			return Meteor.adminId && userId === Meteor.adminId;
+		},
+		update: function(userId) {
+			//TODO we need to check if permitted to perform this operation.
+			return Meteor.isAdmin(userId);
+		},
+		remove: function (userId) {
+			//TODO we need to check if permitted to perform this operation.
+			return Meteor.isAdmin(userId);
+		}
+	});
+
+	Settings.allow({
+		insert: function (userId) {
+			//TODO we need to check if permitted to perform this operation.
+			// console.log('=== insert' + userID);
+			return Meteor.isAdmin(userId);
+		},
+		update: function(userId) {
+			//TODO we need to check if permitted to perform this operation.
+			return Meteor.isAdmin(userId);
+		},
+		remove: function (userId) {
+			//TODO we need to check if permitted to perform this operation.
+			// console.log('=== removed' + userID);
+			return Meteor.isAdmin(userId);
+		}
+	});
+
+	Sponsors.allow({
+		insert: function (userId) {
+			//TODO we need to check if permitted to perform this operation.
+			return Meteor.isAdmin(userId);
+		},
+		update: function(userId) {
+			//TODO we need to check if permitted to perform this operation.
+			return Meteor.isAdmin(userId);
+		},
+		remove: function (userId) {
+			//TODO we need to check if permitted to perform this operation.
+			return Meteor.isAdmin(userId);
 		}
 	});
 

@@ -73,10 +73,10 @@ Router.route('/:lang/login', function() {
 	name: 'login'
 });
 
-Router.route('/admin', function() {
-	// no localization for admin section
-	this.render('Admin');
-});
+// Router.route('/admin', function() {
+// 	// no localization for admin section
+// 	this.render('Admin');
+// });
 
 
 function applyLanguage(route) {

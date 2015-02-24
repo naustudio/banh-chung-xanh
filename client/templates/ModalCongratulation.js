@@ -2,7 +2,7 @@ Template.Congratulation.events ({
 	'click .congratulation-button': function() {
 		$('.modal-congratulation').modal('hide');
 	},
-	'click .modal-congratulation-dialog': function(/*e*/) {
+	'click .modal-congratulation-dialog': function(event) {
 		if ($(event.target).hasClass('modal-congratulation-dialog')) {
 			Router.go('/'+Session.get('language'));
 			//document.location='/'+Session.get('language');
@@ -38,7 +38,8 @@ Template.Congratulation.helpers ({
 
 		for (var i= 0; i<gameScores.length; i++) {
 			var index = gameScores[i].mapIndex;
-			if (parseInt(Session.get('mapLevel'),10) === parseInt(index,10)) {
+			var mapId = Router.current().params.mapId;
+			if (parseInt(mapId,10) === parseInt(index,10) && gameScores[i].count>1) {
 				mapUnlock = true;
 			}
 		}
