@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 # Update latest code
 git pull
