@@ -24,19 +24,19 @@ if (Meteor.server) {
 			// amount for solving easy map
 			key: 'levelEasyAmount',
 			// VND
-			value: 1000
+			value: 10000
 		},
 		{
 			// amount for solving medium map
 			key: 'levelMediumAmount',
 			// VND
-			value: 1500
+			value: 15000
 		},
 		{
 			// amount for solving hard map
 			key: 'levelHardAmount',
 			// VND
-			value: 2000
+			value: 20000
 		},
 		{
 			// amount we'll pledge to donate, after calculating the maps solved by our players
