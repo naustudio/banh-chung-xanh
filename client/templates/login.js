@@ -12,7 +12,7 @@ Template.Login.updateUserAfterLoggingIn = function() {
 	var mapId = Session.get('mapLevel');
 	if (temporaryUserData && Meteor.userId() !== null ) {
 		Meteor.users.updateUserData( Meteor.userId(), temporaryUserData, mapId);
-		Session.set('temporaryUserData',null)
+		Session.set('temporaryUserData',null);
 	}
 };
 

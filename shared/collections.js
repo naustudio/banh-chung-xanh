@@ -54,8 +54,8 @@ Meteor.users.updateUserData = function(userID, temporaryUserData, mapId) {
 				'gameScores':temporaryUserData
 			}
 		});*/
-		Meteor.call('updateUserScore', mapId, temporaryUserData);
-		Meteor.call('userDonates', mapId, function(err, value) {
+		Meteor.call('updateUserScore', mapId.toString(), temporaryUserData);
+		Meteor.call('userDonates', mapId.toString(), function(err, value) {
 			Session.set('userLastDonation', value);
 		});
 	}
@@ -64,7 +64,7 @@ Meteor.users.updateUserData = function(userID, temporaryUserData, mapId) {
 Meteor.users.getTheScoreItemByMapId = function(gameScoresOfUser, mapId) {
 	for (var i = 0; i < gameScoresOfUser.length; i++) {
 		var scoreItem = gameScoresOfUser[i];
-		if (scoreItem.mapIndex === mapId) {
+		if (parseInt(scoreItem.mapIndex, 10) === parseInt(mapId, 10)) {
 			return scoreItem;
 		}
 	}

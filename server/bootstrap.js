@@ -163,6 +163,7 @@ Meteor.startup(function() {
 		},
 
 		updateUserScore: function(mapId, result) {
+			mapId = mapId.toString();
 			var user = Meteor.user();
 			if (!user) {
 				return false;
@@ -184,6 +185,7 @@ Meteor.startup(function() {
 						}
 					}
 				});
+			console.log(finding.count(),mapId);
 			if (finding.count()) {
 				Meteor.users.update({
 					_id: Meteor.userId(),
