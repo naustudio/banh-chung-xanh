@@ -24,6 +24,10 @@
 			{{else}}
 				<div class="names-list__empty">{{t "players_empty" }}</div>
 			{{/each}}
+
+			{{#if iconLoading }}
+			<div class="loading-icon {{ iconLoading.cls }}" style="top: {{ iconLoading.top }}px"></div>
+			{{ /if }}
 		</div>
 	</section>
 </template>

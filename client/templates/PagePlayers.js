@@ -84,10 +84,26 @@ Template.PagePlayers.helpers({
 		if (pagesNo) {
 			pagesNo = parseInt(pagesNo, 10);
 		}
-
 		Session.set('pagesNo', pagesNo);
 
 		return list;
+	},
+
+	iconLoading: function() {
+		var item = {};
+		var iconInfo = Session.get('iconLoading');
+
+		if (iconInfo) {
+			if (iconInfo.isShow) {
+				item.cls = 'show';
+			} else {
+				item.cls = '';
+			}
+
+			item.top = iconInfo.top;
+		}
+
+		return item;
 	}
 });
 
@@ -220,18 +236,20 @@ function getPlayersList(list) {
  * to last player in current list
  */
 function showPlayers() {
-	var isPlayersList    = checkPlayersList();
-	var scrollTop        = null; 	// scrollTop value
-	var playersList      = null; 	// players list
-	var lastPlayer       = null; 	// last player in players list
-	var lastPlayerInfo = null; 	// last player offset
-	var currentPageNo    = 1;    	// current page number in session
-	var pagesNo = 0;
+	var isPlayersList     = checkPlayersList();
+	var scrollTop         = null; 	// scrollTop value
+	var playersList       = null; 	// players list
+	var playersTable      = null; 	// last player in players list
+	var lastPlayer        = null; 	// last player in players list
+	var lastPlayerInfo    = null; 	// last player offset
+	var currentPageNo     = 1;    	// current page number in session
+	var pagesNo           = 0;
 
 	// check is players list page
 	if (isPlayersList) {
 		scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 		playersList = document.getElementsByClassName('names-list__record');
+		playersTable = document.getElementsByClassName('names-list');
 		lastPlayer = playersList[playersList.length - 1];
 
 		if (lastPlayer) {
@@ -250,7 +268,14 @@ function showPlayers() {
 				pagesNo = parseInt(pagesNo, 10);
 
 				if (currentPageNo <= pagesNo) {
-					Session.set('pageNo', currentPageNo);
+					// position of icon loading
+					var top = playersTable[0].clientHeight + 10;
+					Session.set('iconLoading', {isShow: true, top: top});
+
+					setTimeout(function() {
+						Session.set('iconLoading', {isShow: false, top: top});
+						Session.set('pageNo', currentPageNo);
+					}, 2000);
 				}
 			}
 		}
