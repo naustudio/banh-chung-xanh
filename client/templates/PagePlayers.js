@@ -1,7 +1,10 @@
 /**
  * Players list
  */
-/*global Modernizr*/
+/*global Modernizr, itemsPerPages: true*/
+// number of players in each page
+var itemsPerPages = 10;
+
 Template.PagePlayers.helpers({
 	players: function() {
 		var players = [];
@@ -39,6 +42,7 @@ Template.PagePlayers.helpers({
 			if (fl && fl.length > 0) {
 				for (var j = 0; j < fl.length; j++) {
 					// get user in friends list in users collection
+					/* jshint ignore:start */
 					currF = playersObj.filter(function(item, index) {
 						var userId = item.services.facebook ? item.services.facebook.id.toString() : '';
 						var FBUserId = fl[j].id.toString();
@@ -49,6 +53,7 @@ Template.PagePlayers.helpers({
 							return a;
 						}
 					});
+					/* jshint ignore:end */
 
 					if (currF[0]) {
 						player = setPlayerIndex(currF[0], true);
@@ -69,12 +74,38 @@ Template.PagePlayers.helpers({
 			}
 		}
 
-		return players;
+		var list = getPlayersList(players);
+		var pagesNo = players.length / itemsPerPages;
+
+		if (players.length % itemsPerPages) {
+			pagesNo++;
+		}
+
+		if (pagesNo) {
+			pagesNo = parseInt(pagesNo, 10);
+		}
+
+		Session.set('pagesNo', pagesNo);
+
+		return list;
 	}
 });
 
 Template.PagePlayers.rendered = function() {
 	Meteor.users.getUserFriendsList();
+
+};
+
+Template.PagePlayers.destroyed = function() {
+	window.onscroll = null;
+};
+
+Template.PagePlayers.created = function() {
+	Session.set('pageNo', 0);
+
+	window.onscroll = function() {
+		showPlayers();
+	};
 };
 
 /**
@@ -163,4 +194,85 @@ function getPlayerInfoFacebook(currPlayer) {
 	player.url = 'https://graph.facebook.com/' + currPlayer.services.facebook.id + '/picture?type=square' + specSize;
 
 	return player;
+}
+
+/**
+ * get players list
+ */
+function getPlayersList(list) {
+	var pageNo = Session.get('pageNo') || 1;
+	var len = pageNo * itemsPerPages;
+	var result = [];
+
+	if (len >= list.length) {
+		len = list.length;
+	}
+
+	for (var i = 0; i < len; i++) {
+		result.push(list[i]);
+	}
+
+	return result;
+}
+
+/**
+ * show more players when user scroll up the page
+ * to last player in current list
+ */
+function showPlayers() {
+	var isPlayersList    = checkPlayersList();
+	var scrollTop        = null; 	// scrollTop value
+	var playersList      = null; 	// players list
+	var lastPlayer       = null; 	// last player in players list
+	var lastPlayerInfo = null; 	// last player offset
+	var currentPageNo    = 1;    	// current page number in session
+	var pagesNo = 0;
+
+	// check is players list page
+	if (isPlayersList) {
+		scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		playersList = document.getElementsByClassName('names-list__record');
+		lastPlayer = playersList[playersList.length - 1];
+
+		if (lastPlayer) {
+			// get offset and size of last player
+			lastPlayerInfo = {
+				y: lastPlayer.offsetTop,
+				height: lastPlayer.clientHeight
+			};
+
+			if (scrollTop + window.innerHeight >= lastPlayerInfo.y + lastPlayerInfo.height) {
+				currentPageNo = Session.get('pageNo') || 1;
+				currentPageNo = parseInt(currentPageNo, 10);
+				currentPageNo++;
+
+				pagesNo = Session.get('pagesNo') || 0;
+				pagesNo = parseInt(pagesNo, 10);
+
+				if (currentPageNo <= pagesNo) {
+					Session.set('pageNo', currentPageNo);
+				}
+			}
+		}
+	} else {
+		return;
+	}
+
+}
+
+/**
+ * check page
+ * checking last param in url
+ */
+function checkPlayersList() {
+	var currUrl = Router.current().url;
+	var params = currUrl.split('/');
+
+	var page = params[params.length - 1];
+
+	if (page === 'players') {
+		return true;
+	}
+
+	return false;
 }
