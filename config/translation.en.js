@@ -7,7 +7,7 @@ i18n.map('en', {
 	'bcx': 'Banh Chung Xanh',
 	'nav_home': 'Home',
 	'nav_intro': 'Project Introduction',
-	'nav_instructions': 'Game Play',
+	'nav_instructions': 'How To Play',
 	'nav_sponsors': 'Sponsor List',
 	//'nav_donate': 'Donate',
 	'nav_players': 'Player List',
