@@ -6,6 +6,7 @@
 .names-list {
 	width: 100%;
 	text-align: left;
+	position: relative;
 
 	.col-one {
 		width: 60%;
@@ -132,6 +133,24 @@
 .names-list__empty {
 	text-align: center;
 	padding: 20px 0;
+}
+
+.loading-icon {
+	opacity: 0;
+	position: absolute;
+	left: 50%;
+	margin-left: -15px;
+	background: url('img/ajax-loader.gif') left top no-repeat;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-size: 100%;
+	transition: opacity 0.5s ease;
+	z-index: 2;
+
+	&.show {
+		opacity: 1;
+	}
 }
 
 // temp style for ađ players
