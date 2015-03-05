@@ -16,10 +16,10 @@ Template.Challenge.events ({
 
 		var mapId = Router.current().params.mapId;
 
-		var caption ='Thử thách '+ mapId +' - Bánh Chưng Xanh';
+		var caption = i18n('round') + ' '  + mapId +' - ' + i18n('bcx') ;
 
 		if (typeof(mapId) === 'undefined') {
-			caption = 'Bánh Chưng Xanh by Nau Studio';
+			caption = i18n('bcx') + ' ' + i18n('byNauStudio');
 		}
 
 		//console.log(description[index], caption);
