@@ -92,6 +92,7 @@ i18n.map('en', {
 
 	'meta-description': 'Banh Chung Xanh is a charity game project to spread kindness and compassion for the needy. As you win any round of the game, on your behalf, our sponsors will raise an amount to the charity fund for disable children and orphans at Thien Phuc Sanctuary, Cu Chi Dist., Ho Chi Minh City.',
 	'next-guide': 'Next',
-	'back-guide': 'Back'
+	'back-guide': 'Back',
+	'byNauStudio': 'by Nau Studio'
 
 });

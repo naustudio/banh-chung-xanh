@@ -92,6 +92,7 @@ i18n.map('vi', {
 	'play-now': 'Chơi ngay',
 	'meta-description': 'Bánh Chưng Xanh là chương trình từ thiện nhằm lan tỏa tinh thần thiện nguyện của các bạn. Khi tham gia chơi và chiến thắng những vòng game, các đơn vị tài trợ sẽ thay các bạn đóng góp một khoản tiền vào quỹ từ thiện dành cho trẻ em khuyết tật, mồ côi ở mái ấm Thiên Phúc, huyện Củ Chi.',
 	'next-guide': 'Kế tiếp',
-	'back-guide': 'Lùi lại'
+	'back-guide': 'Lùi lại',
+	'byNauStudio': 'bởi Nâu Studio'
 
 });
