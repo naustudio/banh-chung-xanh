@@ -157,13 +157,23 @@ if (Meteor.isServer) {
 			<meta name="twitter:description" content="' + metaDescription + '" />'
 		);
 
+		if (mapId) {
+			Inject.rawHead('metaImgFB',
+				'<meta property="og:image" content="http://banhchungxanh.naustud.io/img/map/map' + mapId + '.png" />'
+			);
+
+		} else {
+			Inject.rawHead('metaImgFB',
+				'<meta property="og:image" content="http://banhchungxanh.naustud.io/app-thumbnail.jpg" />'
+			);
+		}
 
 	};
 
 	// per-resquest handler for inject-initial plugin
 	// https://github.com/meteorhacks/meteor-inject-initial
 	if (!Package.appcache) {
-		var rAppPath = /(\/vi|\/en)(?:\/map)?(\/\d+)?/;
+		var rAppPath = /(\/vi|\/en)(?:\/game)?(\/\d+)?/;
 		WebApp.connectHandlers.use(function(req, res, next) {
 			if (Inject.appUrl(req.url)) {
 				var url = req.url;
@@ -174,7 +184,6 @@ if (Meteor.isServer) {
 					var mapId = matches && matches[2] && matches[2].substr(1);
 					handleServeRoute(lang, mapId);
 				}
-
 			}
 			next();
 		});

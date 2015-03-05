@@ -11,7 +11,8 @@ body {
 
 	max-width: 1000px;
 	margin: auto;
-	height: 100%;
+	// TK: window cannot handler scroll function with property height: 100%
+	// height: 100%;
 
 	position: relative;
 }
@@ -59,5 +60,4 @@ a {
 		url('fonts/UTMAlterGothic.ttf')  format('truetype'), /* Safari, Android, iOS */
 		url('fonts/UTMAlterGothic.svg#UTMAlterGothic') format('svg'); /* Legacy iOS */
 	}
-
 

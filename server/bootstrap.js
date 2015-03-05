@@ -22,21 +22,65 @@ Meteor.startup(function() {
 		return Meteor.adminUser && Meteor.adminUser._id === userId;
 	};
 
-	Meteor.isCheating = function (userId, mapId) {
-		if (!userId) {
-			return false;
-		}
-		var session = ServerSession.get(userId);
-		var mapData = null;
-		var endDate = new Date();
-		var startDate;
-		var minimumSecond = 4000;
+	Meteor.isCheating = function(result) {
 		var isCheating = true;
+		var historySteps = result.historiesStep.split(',');
+		var mapIndex = result.mapIndex;
+		var myJSON = Meteor.mapConfig;
+		var map = JSON.parse(Assets.getText(myJSON.maps[mapIndex].src));
+		var dataChecking = map.dynamidObj;
+		var user = dataChecking.user;
+		var chungs = dataChecking.chung;
+		var disks = dataChecking.disk;
+		var checkingWon = 0;
+		var i = 0,
+			j = 0;
 
-		session = session || {};
-		mapData = session[mapId];
-		startDate = mapData ? mapData.startDate : new Date();
-		isCheating = (endDate - startDate) <= minimumSecond;
+		var isPropositionObjects = function(obj1, obj2) {
+			return (obj1.x === obj2.x && obj1.y === obj2.y);
+		};
+
+		for (i = 0; i < historySteps.length; i++) {
+			if ( historySteps[i] === 'left' ) {
+				user.x -- ;
+				for (j = 0; j < chungs.length; j++) {
+					if ( isPropositionObjects( chungs[j] , user ) ) {
+						chungs[j].x --;
+					}
+				}
+			}else if ( historySteps[i] === 'right' ) {
+				user.x ++ ;
+				for (j = 0; j < chungs.length; j++) {
+					if ( isPropositionObjects( chungs[j] , user ) ) {
+						chungs[j].x ++;
+					}
+				}
+			}else if ( historySteps[i] === 'up' ) {
+				user.y -- ;
+				for (j = 0; j < chungs.length; j++) {
+					if ( isPropositionObjects( chungs[j] , user ) ) {
+						chungs[j].y --;
+					}
+				}
+			}else if ( historySteps[i] === 'down' ) {
+				user.y ++ ;
+				for (j = 0; j < chungs.length; j++) {
+					if ( isPropositionObjects( chungs[j] , user ) ) {
+						chungs[j].y ++;
+					}
+				}
+			}
+		}
+		for (i = 0; i < disks.length; i++) {
+			for (j = 0; j < chungs.length; j++) {
+				if ( isPropositionObjects( chungs[i] , disks[i]) ) {
+					checkingWon ++;
+				}
+			}
+		}
+
+		isCheating = ( checkingWon === disks.length ) ? false : true;
+
 		return isCheating;
 	};
 
@@ -163,11 +207,12 @@ Meteor.startup(function() {
 		},
 
 		updateUserScore: function(mapId, result) {
+			mapId = mapId.toString();
 			var user = Meteor.user();
 			if (!user) {
 				return false;
 			}
-			var isCheating = Meteor.isCheating(user._id, mapId);
+			var isCheating = Meteor.isCheating(result);
 			var loggedObject = {};
 			if (isCheating) {
 				loggedObject = JSON.parse(JSON.stringify(result));
@@ -184,6 +229,7 @@ Meteor.startup(function() {
 						}
 					}
 				});
+			console.log(finding.count(),mapId);
 			if (finding.count()) {
 				Meteor.users.update({
 					_id: Meteor.userId(),
