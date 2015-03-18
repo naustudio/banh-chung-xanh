@@ -4,16 +4,22 @@
 /*global Sponsors*/
 Template.PageSponsors.helpers({
 	sponsors: function() {
-		var sponsors = Sponsors.find({});
+		//var sponsors = Sponsors.find();
 
 		// re-format date
-		var sponsorsObj = sponsors.fetch();
-		var date = null;
+		var sponsorsObj = Sponsors.find().fetch();
+		var date = new Date();
 
 		for (var i = 0; i < sponsorsObj.length; i++) {
-			date = sponsorsObj[i].date;
+			var ObjDate = sponsorsObj[i].date;
 
-			sponsorsObj[i].date = date.toLocaleDateString();
+			if (ObjDate) {
+				var newObjDate = new Date(ObjDate);
+				sponsorsObj[i].date = newObjDate.toLocaleDateString();
+			}
+			else {
+				sponsorsObj[i].date = date.toLocaleDateString();
+			}
 
 			// index
 			sponsorsObj[i].index = i + 1;
