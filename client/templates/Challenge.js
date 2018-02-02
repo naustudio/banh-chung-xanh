@@ -29,12 +29,10 @@ Template.Challenge.events({
 			caption = i18n('bcx') + ' ' + i18n('byNauStudio');
 		}
 
-		//console.log(description[index], caption);
-
 		FB.ui(
 			{
 				method: 'feed',
-				//href: currentUrl, //share from current URL of the app
+				// href: 'https://developers.facebook.com/docs/', //share from current URL of the app
 				link: currentUrl,
 				caption: caption,
 				description: description[index],

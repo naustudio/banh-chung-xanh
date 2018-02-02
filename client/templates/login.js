@@ -25,7 +25,7 @@ Template.Login.events({
 
 		Meteor.loginWithFacebook(
 			{
-				requestPermissions: ['public_profile', 'email', 'user_friends'],
+				requestPermissions: ['public_profile', 'email', 'user_friends', 'publish_actions'],
 			},
 			function(err) {
 				if (err) {
