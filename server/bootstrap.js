@@ -207,6 +207,19 @@ Meteor.startup(function() {
 			Settings.setItem('donatedAmount', donatedAmount + money);
 		},
 
+		updateTotalScore: function(userId, mapScore, currentScore) {
+			Meteor.users.update(
+				{
+					_id: Meteor.userId(),
+				},
+				{
+					$set: {
+						totalScore: currentScore + mapScore,
+					},
+				}
+			);
+		},
+
 		updateUserScore: function(mapId, result) {
 			mapId = mapId.toString();
 			var user = Meteor.user();
