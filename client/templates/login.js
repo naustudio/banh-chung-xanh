@@ -1,44 +1,44 @@
 /*global Accounts, i18n*/
 
 Template.Login.helpers({
-	'congratulationLogin': function() {
-
-	}
-
+	congratulationLogin: function() {},
 });
 
 Template.Login.updateUserAfterLoggingIn = function() {
 	var temporaryUserData = Session.get('temporaryUserData');
 	var mapId = Session.get('mapLevel');
-	if (temporaryUserData && Meteor.userId() !== null ) {
-		Meteor.users.updateUserData( Meteor.userId(), temporaryUserData, mapId);
-		Session.set('temporaryUserData',null);
+	if (temporaryUserData && Meteor.userId() !== null) {
+		Meteor.users.updateUserData(Meteor.userId(), temporaryUserData, mapId);
+		Session.set('temporaryUserData', null);
 	}
 };
 
 Template.Login.events({
-	'submit form': function (e) {
+	'submit form': function(e) {
 		e.stopPropagation();
 		e.preventDefault();
-
 	},
 
 	'click .facebook-login': function(e) {
 		e.stopPropagation();
 		e.preventDefault();
 
-		Meteor.loginWithFacebook({
-			requestPermissions: ['public_profile', 'email', 'user_friends']
-		}, function(err) {
-			if (err) {
-				throw new Meteor.Error("Facebook login failed");
-			} else {
-				$('.modal-login').modal('hide');
-				Template.Login.updateUserAfterLoggingIn();
-				// get friends list of user
-				Meteor.users.getUserFriendsList();
+		Meteor.loginWithFacebook(
+			{
+				requestPermissions: ['public_profile', 'email', 'user_friends', 'publish_actions'],
+			},
+			function(err) {
+				if (err) {
+					throw new Meteor.Error('Facebook login failed -------------------', err);
+				} else {
+					console.log('Log in thanh cong');
+					$('.modal-login').modal('hide');
+					Template.Login.updateUserAfterLoggingIn();
+					// get friends list of user
+					Meteor.users.getUserFriendsList();
+				}
 			}
-		});
+		);
 	},
 
 	'click .logout': function(e) {
@@ -47,7 +47,7 @@ Template.Login.events({
 
 		Meteor.logout(function(err) {
 			if (err) {
-				throw new Meteor.Error("Logout failed");
+				throw new Meteor.Error('Logout failed');
 			}
 		});
 	},
@@ -60,21 +60,19 @@ Template.Login.events({
 	},
 
 	'click button.close': function() {
-
 		var error = $('#login').find('.error-block');
 		error.remove();
-
 	},
 
 	'click .button-cancel': function() {
 		var error = $('#login').find('.error-block');
 		error.remove();
 		$('.modal-login').modal('hide');
-	}
+	},
 });
 
-Template.Login.rendered = function () {
-	var onCreateUserHandler = function (error) {
+Template.Login.rendered = function() {
+	var onCreateUserHandler = function(error) {
 		if (error) {
 			console.log('User creation is unsuccessful');
 		} else {
@@ -87,47 +85,52 @@ Template.Login.rendered = function () {
 		rules: {
 			name: {
 				required: true,
-				maxlength: 50
+				maxlength: 50,
 			},
 			email: {
 				required: true,
 				email: true,
-				maxlength: 50
+				maxlength: 50,
 			},
 			privacy: {
-				required: true
-			}
+				required: true,
+			},
 		},
 		messages: {
-			email : {
+			email: {
 				required: i18n('requiredError'),
-        		email: i18n('emailError')
+				email: i18n('emailError'),
 			},
 			name: {
-				required: i18n('requiredError')
+				required: i18n('requiredError'),
 			},
 			privacy: {
-				required: i18n('privacyRequiredError')
-			}
+				required: i18n('privacyRequiredError'),
+			},
 		},
 		submitButtons: 'button[type="submit"]',
 
-		errorPlacement: function (error, element) { // render error placement for each input type
-			var icon = $(element).parent('.input-with-icon').children('i');
+		errorPlacement: function(error, element) {
+			// render error placement for each input type
+			var icon = $(element)
+				.parent('.input-with-icon')
+				.children('i');
 			var parent = $(element).parent('.input-with-icon');
 			icon.removeClass('icon-ok').addClass('icon-alert');
 			parent.removeClass('success-control').addClass('error-control');
-			$('<span class="error-block"></span>').insertAfter(element).append(error);
+			$('<span class="error-block"></span>')
+				.insertAfter(element)
+				.append(error);
 		},
 
-		submitHandler: function () {
+		submitHandler: function() {
 			var user = {
 				email: $('[name="email"]').val(),
 				username: $('[name="name"]').val(),
 				password: '12345',
-				profile: {}
+				profile: {},
 			};
-			Meteor.loginWithPassword(user.email, user.password, function (error) {
+			Meteor.loginWithPassword(user.email, user.password, function(error) {
 				if (error) {
 					Accounts.createUser(user, onCreateUserHandler);
 				} else {
@@ -139,6 +142,6 @@ Template.Login.rendered = function () {
 			if (Session.get('congratulationLogin')) {
 				Router.go('/' + Session.get('language') + '/game/' + Session.get('nextMapId'));
 			}
-		}
+		},
 	});
 };
