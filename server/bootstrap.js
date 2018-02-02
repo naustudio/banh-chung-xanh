@@ -191,7 +191,6 @@ Meteor.startup(function() {
 			var value = 0;
 			var valueObj = null;
 			var tempItemDonation = {};
-			console.log('mapConfig', mapConfig.maps);
 			for (i = 1; i < mapConfig.maps.length; i++) {
 				level = mapConfig.maps[i].mapLevel;
 				valueObj = Settings.findOne({ key: mapConfig.mapsDonation[level.toString()] });
