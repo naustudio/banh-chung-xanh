@@ -12,13 +12,11 @@
 							{{#if mapUnlock}}
 								{{t "congratulation-description-won"}}
 							{{else}}
-								{{t "congratulation-description-start"}} {{userLastDonation}} {{t "congratulation-description-end"}}
+								{{t "congratulation-description-start" userLastPoint }}
 							{{/if}}
 						{{else}}
-							{{t "congratulation-description-no-login-start"}} {{userLastDonation}} {{t "congratulation-description-no-login-end"}}
+							{{t "congratulation-description-no-login-start"}}
 						{{/if}}
-
-
 
 					</div>
 					<a href="/{{ lc }}/" class="congratulation-button button second-btn">{{t "master-map"}}</a>

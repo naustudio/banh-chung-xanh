@@ -13,27 +13,31 @@ Sponsors = new Meteor.Collection('sponsors');
 Settings = new Meteor.Collection('settings');
 
 Settings.getItem = function(key) {
-	var item = this.findOne({key: key});
-	return (item ? item.value : null);
+	var item = this.findOne({ key: key });
+	return item ? item.value : null;
 };
 
 Settings.setItem = function(key, value) {
-	var settingItem = this.findOne({key: key});
-	return this.update(settingItem._id, {$set: {key: key, value: value}});
+	var settingItem = this.findOne({ key: key });
+	return this.update(settingItem._id, { $set: { key: key, value: value } });
 };
 
 Meteor.users.updateUserData = function(userID, temporaryUserData, mapId) {
-	var user = Meteor.users.findOne({_id:userID});
+	var user = Meteor.users.findOne({ _id: userID });
 	console.log(user);
 	var gameScoresOfUser = user.gameScores;
-	if (!gameScoresOfUser) {	//create new property for user
-		this.update({
-			_id:userID
-		}, {
-			$set:{
-				'gameScores':[]
+	if (!gameScoresOfUser) {
+		//create new property for user
+		this.update(
+			{
+				_id: userID,
+			},
+			{
+				$set: {
+					gameScores: [],
+				},
 			}
-		});
+		);
 		gameScoresOfUser = [];
 	}
 
@@ -56,7 +60,7 @@ Meteor.users.updateUserData = function(userID, temporaryUserData, mapId) {
 		});*/
 		Meteor.call('updateUserScore', mapId.toString(), temporaryUserData);
 		Meteor.call('userDonates', mapId.toString(), function(err, value) {
-			Session.set('userLastDonation', value);
+			Session.set('userLastPoint', value);
 		});
 	}
 };
@@ -76,15 +80,13 @@ Meteor.users.getUserFriendsList = function() {
 	if (FB) {
 		FB.getLoginStatus(function(res) {
 			if (res && res.status === 'connected') {
-				FB.api(
-					'me/friends',
-					function(res) {
-						if (res && !res.error) {
-							var data = res.data || [];
+				FB.api('me/friends', function(res) {
+					if (res && !res.error) {
+						var data = res.data || [];
 
-							Session.set('friendsList', data);
-						}
-					});
+						Session.set('friendsList', data);
+					}
+				});
 			}
 		});
 	}
