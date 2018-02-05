@@ -1,0 +1,19 @@
+[Unit]
+Description=Nau Banh Chung Xanh Meteor app
+Requires=mongod.service
+After=mongod.service
+
+[Service]
+ExecStart=/usr/bin/node /root/meteor/banh-chung-xanh/bundle/main.js
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=bcx
+User=root
+Group=root
+Environment=MONGO_URL=mongodb://localhost:27017/banh-chung-xanh
+Environment=ROOT_URL=https://bcx.naustud.io
+Environment=PORT=3000
+
+[Install]
+WantedBy=multi-user.target
