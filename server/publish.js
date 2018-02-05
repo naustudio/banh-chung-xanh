@@ -30,7 +30,6 @@ Meteor.publish('userData', function() {
 				username: 1,
 				services: 1,
 				profile: 1,
-				totalScore: 1,
 			},
 		}
 	);
@@ -48,19 +47,6 @@ Meteor.publish('sponsors', function() {
 				amount: 1,
 				date: 1,
 				entryDate: 1,
-			},
-		}
-	);
-});
-
-Meteor.publish('settings', function() {
-	var includingKeys = ['remainingDate', 'donatedAmount', 'totalAmount'];
-	return Settings.find(
-		{ key: { $in: includingKeys } },
-		{
-			fields: {
-				key: 1,
-				value: 1,
 			},
 		}
 	);

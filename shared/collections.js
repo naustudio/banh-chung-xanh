@@ -11,11 +11,19 @@ Sponsors = new Meteor.Collection('sponsors');
 
 // Settings collection
 Settings = new Meteor.Collection('settings');
-var mappingGameDonation = null;
 
-Meteor.call('arrayMappingDonation', function(err, mapping) {
-	mappingGameDonation = mapping;
-});
+var mappingGameDonation = {
+	'1': 10,
+	'2': 10,
+	'3': 10,
+	'4': 10,
+	'5': 20,
+	'6': 20,
+	'7': 20,
+	'8': 50,
+	'9': 50,
+	'10': 50,
+};
 
 Settings.getItem = function(key) {
 	var item = this.findOne({ key: key });
@@ -24,7 +32,10 @@ Settings.getItem = function(key) {
 
 Settings.setItem = function(key, value) {
 	var settingItem = this.findOne({ key: key });
-	return this.update(settingItem._id, { $set: { key: key, value: value } });
+
+	if (settingItem) {
+		return this.update(settingItem._id, { $set: { key: key, value: value } });
+	}
 };
 
 Meteor.users.setTotalScore = function(userId, mapId) {};
@@ -32,22 +43,6 @@ Meteor.users.setTotalScore = function(userId, mapId) {};
 Meteor.users.updateUserData = function(userID, temporaryUserData, mapId) {
 	var user = Meteor.users.findOne({ _id: userID });
 	var gameScoresOfUser = user.gameScores;
-	var totalScore = user.totalScore;
-
-	if (!totalScore) {
-		this.update(
-			{
-				_id: userID,
-			},
-			{
-				$set: {
-					totalScore: 0,
-				},
-			}
-		);
-
-		totalScore = 0;
-	}
 
 	if (!gameScoresOfUser) {
 		//create new property for user
@@ -73,8 +68,6 @@ Meteor.users.updateUserData = function(userID, temporaryUserData, mapId) {
 		Meteor.call('updateUserScore', mapId, temporaryUserData);
 	} else {
 		//add new score item
-		Meteor.call('updateTotalScore', userID, mappingGameDonation[mapId.toString()], totalScore);
-
 		temporaryUserData.updatedAt = Date.now();
 		temporaryUserData.count = 1;
 		/*this.update({
@@ -94,11 +87,16 @@ Meteor.users.updateUserData = function(userID, temporaryUserData, mapId) {
 Meteor.users.getTotalScore = function(userId) {
 	if (userId) {
 		var user = this.findOne({ _id: userId });
+		var gameScores = user ? user.gameScores : [];
 
-		if (user.totalScore) {
-			return user.totalScore;
-		} else {
-			return '0';
+		if (gameScores.length > 0) {
+			var totalScore = 0;
+
+			gameScores.forEach(item => {
+				totalScore += mappingGameDonation[item.mapIndex.toString()];
+			});
+
+			return totalScore;
 		}
 	} else {
 		return 0;

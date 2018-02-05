@@ -1,13 +1,5 @@
 // Bootstrap the app when server start here
 /*global Assets, Settings, InitialSettings, Accounts, Sponsors, ServerSession:true, CheatingLogs */
-var _calculateRemainingDate = function() {
-	var endDate = Settings.getItem('endDate');
-	var currentServerDate = new Date();
-	var remainingDate = (endDate.valueOf() - currentServerDate.valueOf()) / (1000 * 60 * 60 * 24);
-	remainingDate = Math.ceil(remainingDate);
-	remainingDate = Math.max(remainingDate, 0);
-	return remainingDate;
-};
 
 Meteor.startup(function() {
 	Meteor.mapConfig = JSON.parse(Assets.getText('maps/maps-config.json'));
@@ -85,11 +77,7 @@ Meteor.startup(function() {
 	};
 
 	InitialSettings.forEach(function(item) {
-		if (Settings.findOne({ key: item.key }) === undefined) {
-			// insert settings that are not available in the collection yet
-			console.log('Setting item', item.key, 'not set. Adding to DB');
-			Settings.insert(item);
-		}
+		Settings.upsert({ key: item.key }, item);
 	}, this);
 
 	Meteor.methods({
@@ -121,16 +109,6 @@ Meteor.startup(function() {
 			ServerSession.set(Meteor.userId(), session);
 		},
 
-		getRemainingDate: function() {
-			return _calculateRemainingDate();
-		},
-
-		getDonatedAmount: function() {
-			var amount = Settings.getItem('donatedAmount');
-			amount = amount ? amount : 0;
-			return amount;
-		},
-
 		updateDonationTotal: function() {
 			var mapConfig = Meteor.mapConfig;
 			var sumOfDonation = 0;
@@ -156,7 +134,6 @@ Meteor.startup(function() {
 					}
 				}
 			});
-			Settings.setItem('donatedAmount', sumOfDonation);
 			return sumOfDonation;
 		},
 
@@ -179,7 +156,7 @@ Meteor.startup(function() {
 					value = parseInt(valueObj.value, 10);
 				}
 			}
-			Meteor.call('increaseDonatesAmount', value);
+
 			return value;
 		},
 
@@ -200,24 +177,6 @@ Meteor.startup(function() {
 			}
 
 			return tempItemDonation;
-		},
-
-		increaseDonatesAmount: function(money) {
-			var donatedAmount = Settings.getItem('donatedAmount');
-			Settings.setItem('donatedAmount', donatedAmount + money);
-		},
-
-		updateTotalScore: function(userId, mapScore, currentScore) {
-			Meteor.users.update(
-				{
-					_id: Meteor.userId(),
-				},
-				{
-					$set: {
-						totalScore: currentScore + mapScore,
-					},
-				}
-			);
 		},
 
 		updateUserScore: function(mapId, result) {
@@ -348,11 +307,6 @@ Meteor.startup(function() {
 			return Meteor.isAdmin(userId);
 		},
 	});
-
-	Meteor.setInterval(function() {
-		var remainingDate = _calculateRemainingDate();
-		Settings.setItem('remainingDate', remainingDate);
-	}, 10000);
 
 	//Capture account events
 	Accounts.onCreateUser(function(options, user) {
