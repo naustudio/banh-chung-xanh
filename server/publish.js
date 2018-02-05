@@ -51,16 +51,3 @@ Meteor.publish('sponsors', function() {
 		}
 	);
 });
-
-Meteor.publish('settings', function() {
-	var includingKeys = ['remainingDate', 'donatedAmount', 'totalAmount'];
-	return Settings.find(
-		{ key: { $in: includingKeys } },
-		{
-			fields: {
-				key: 1,
-				value: 1,
-			},
-		}
-	);
-});
