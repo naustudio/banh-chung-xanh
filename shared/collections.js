@@ -12,32 +12,55 @@ Sponsors = new Meteor.Collection('sponsors');
 // Settings collection
 Settings = new Meteor.Collection('settings');
 
+var mappingGameDonation = {
+	'1': 10,
+	'2': 10,
+	'3': 10,
+	'4': 10,
+	'5': 20,
+	'6': 20,
+	'7': 20,
+	'8': 50,
+	'9': 50,
+	'10': 50,
+};
+
 Settings.getItem = function(key) {
-	var item = this.findOne({key: key});
-	return (item ? item.value : null);
+	var item = this.findOne({ key: key });
+	return item ? item.value : null;
 };
 
 Settings.setItem = function(key, value) {
-	var settingItem = this.findOne({key: key});
-	return this.update(settingItem._id, {$set: {key: key, value: value}});
+	var settingItem = this.findOne({ key: key });
+
+	if (settingItem) {
+		return this.update(settingItem._id, { $set: { key: key, value: value } });
+	}
 };
 
+Meteor.users.setTotalScore = function(userId, mapId) {};
+
 Meteor.users.updateUserData = function(userID, temporaryUserData, mapId) {
-	var user = Meteor.users.findOne({_id:userID});
-	console.log(user);
+	var user = Meteor.users.findOne({ _id: userID });
 	var gameScoresOfUser = user.gameScores;
-	if (!gameScoresOfUser) {	//create new property for user
-		this.update({
-			_id:userID
-		}, {
-			$set:{
-				'gameScores':[]
+
+	if (!gameScoresOfUser) {
+		//create new property for user
+		this.update(
+			{
+				_id: userID,
+			},
+			{
+				$set: {
+					gameScores: [],
+				},
 			}
-		});
+		);
 		gameScoresOfUser = [];
 	}
 
 	var foundScoreItem = this.getTheScoreItemByMapId(gameScoresOfUser, mapId);
+
 	if (foundScoreItem) {
 		temporaryUserData.updatedAt = Date.now();
 		temporaryUserData.count = foundScoreItem.count + 1;
@@ -56,8 +79,27 @@ Meteor.users.updateUserData = function(userID, temporaryUserData, mapId) {
 		});*/
 		Meteor.call('updateUserScore', mapId.toString(), temporaryUserData);
 		Meteor.call('userDonates', mapId.toString(), function(err, value) {
-			Session.set('userLastDonation', value);
+			Session.set('userLastPoint', value);
 		});
+	}
+};
+
+Meteor.users.getTotalScore = function(userId) {
+	if (userId) {
+		var user = this.findOne({ _id: userId });
+		var gameScores = user ? user.gameScores : [];
+
+		if (gameScores.length > 0) {
+			var totalScore = 0;
+
+			gameScores.forEach(item => {
+				totalScore += mappingGameDonation[item.mapIndex.toString()];
+			});
+
+			return totalScore;
+		}
+	} else {
+		return 0;
 	}
 };
 
@@ -76,15 +118,13 @@ Meteor.users.getUserFriendsList = function() {
 	if (FB) {
 		FB.getLoginStatus(function(res) {
 			if (res && res.status === 'connected') {
-				FB.api(
-					'me/friends',
-					function(res) {
-						if (res && !res.error) {
-							var data = res.data || [];
+				FB.api('me/friends', function(res) {
+					if (res && !res.error) {
+						var data = res.data || [];
 
-							Session.set('friendsList', data);
-						}
-					});
+						Session.set('friendsList', data);
+					}
+				});
 			}
 		});
 	}

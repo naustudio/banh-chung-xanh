@@ -5,6 +5,21 @@
 	float: right;
 }
 
+.footer-logo {
+	width: 55px;
+	height: 35px;
+	float: right;
+	position: relative;
+	top: -13px;
+	left: -10px;
+
+	&__github {
+		height: 22px;
+		top: -8px;
+		width: 40px;
+	}
+}
+
 .footer {
 	//padding-bottom: 35px;
 	clear: both;

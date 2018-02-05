@@ -1,0 +1,34 @@
+{
+  "name": "banh-chung-xanh",
+  "version": "1.0.0",
+  "description": "Sokoban-like game with Tet theme",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.39",
+    "bcrypt": "^1.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naustudio/banh-chung-xanh.git"
+  },
+  "keywords": [
+    "sokoban",
+    "game",
+    "banhchungxanh",
+    "tet",
+    "nau"
+  ],
+  "author": "Nau Studio <dev@naustud.io> (https://naustud.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/naustudio/banh-chung-xanh/issues"
+  },
+  "homepage": "https://github.com/naustudio/banh-chung-xanh#readme"
+}
