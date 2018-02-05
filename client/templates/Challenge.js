@@ -7,32 +7,32 @@ Template.Challenge.events({
 		}*/
 
 		var currentUrl = document.location.href + '?utm_source=facebook&utm_medium=challenge&utm_campaign=bcx2015';
+		// var currentUrl = 'https://developers.facebook.com/apps/1604534863095419/review-status/';
 
 		console.log('FB URL to share:', currentUrl);
 
 		// var description = [i18n('challenge1'), i18n('challenge2'), i18n('challenge3'), i18n('challenge4'), i18n('challenge5'), i18n('challenge6')];
-		var description = i18n('challenge');
+		var quote = i18n('challenge');
 
 		var index = Math.floor(Math.random() * 6);
 
-		var mapId = Router.current().params.mapId;
+		// var mapId = Router.current().params.mapId;
 
-		var caption = i18n('round') + ' ' + mapId + ' - ' + i18n('bcx');
+		// var caption = i18n('round') + ' ' + mapId + ' - ' + i18n('bcx');
 
-		if (typeof mapId === 'undefined') {
-			caption = i18n('bcx') + ' ' + i18n('byNauStudio');
-		}
+		// if (typeof mapId === 'undefined') {
+		// 	caption = i18n('bcx') + ' ' + i18n('byNauStudio');
+		// }
 
 		//console.log(description[index], caption);
 
 		FB.ui(
 			{
-				method: 'feed',
-				//href: currentUrl, //share from current URL of the app
-				link: currentUrl,
-				caption: caption,
-				description: description,
-				// description: description[index],
+				method: 'share',
+				href: currentUrl, //share from current URL of the app
+				quote,
+				hashtag: '#banhchungxanh',
+				mobile_iframe: true,
 			},
 			function(response) {
 				if (response && response.post_id) {

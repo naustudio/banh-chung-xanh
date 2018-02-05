@@ -14,70 +14,89 @@ Router.configure({
 			// use this hook to track page view
 			ga('send', 'pageview', this.url);
 		}
-	}
+	},
 });
 
 var checkIntro = function() {
 	this.render('Introduction', {
-		to: 'intro'
+		to: 'intro',
 	});
 };
 
 Router.route('/', function() {
-	this.redirect('/' + getPreferredLanguage() ); //+ '/intro');
+	this.redirect('/' + getPreferredLanguage()); //+ '/intro');
 });
 
-Router.route('/:lang', function() {
-	if (this.params.lang === 'admin') {
-		this.next();
-		return;
+Router.route(
+	'/:lang',
+	function() {
+		if (this.params.lang === 'admin') {
+			this.next();
+			return;
+		}
+		applyLanguage(this);
+		this.render('PageLanding');
+		checkIntro.call(this);
+	},
+	{
+		name: 'landing',
 	}
-	applyLanguage(this);
-	this.render('PageLanding');
-	checkIntro.call(this);
-}, {
-	name: 'landing'
-});
+);
 
-Router.route('/:lang/game/:mapId', function() {
-	applyLanguage(this);
-	this.render('PageGame');
-	checkIntro.call(this);
-}, {
-	name: 'game',
-	data: function() {
-		return {lang: Session.get('languge') };
+Router.route(
+	'/:lang/game/:mapId',
+	function() {
+		applyLanguage(this);
+		this.render('PageGame');
+		checkIntro.call(this);
+	},
+	{
+		name: 'game',
+		data: function() {
+			return { lang: Session.get('languge') };
+		},
 	}
-});
+);
 
-Router.route('/:lang/sponsors', function() {
-	applyLanguage(this);
-	this.render('PageSponsors');
-	checkIntro.call(this);
-}, {
-	name: 'sponsor'
-});
+Router.route(
+	'/:lang/sponsors',
+	function() {
+		applyLanguage(this);
+		this.render('PageSponsors');
+		checkIntro.call(this);
+	},
+	{
+		name: 'sponsor',
+	}
+);
 
-Router.route('/:lang/players', function() {
-	applyLanguage(this);
-	this.render('PagePlayers');
-	checkIntro.call(this);
-}, {
-	name: 'players'
-});
+Router.route(
+	'/:lang/players',
+	function() {
+		applyLanguage(this);
+		this.render('PagePlayers');
+		checkIntro.call(this);
+	},
+	{
+		name: 'players',
+	}
+);
 
-Router.route('/:lang/login', function() {
-	applyLanguage(this);
-	this.render('FBLogin');
-}, {
-	name: 'login'
-});
+Router.route(
+	'/:lang/login',
+	function() {
+		applyLanguage(this);
+		this.render('FBLogin');
+	},
+	{
+		name: 'login',
+	}
+);
 
 // Router.route('/admin', function() {
 // 	// no localization for admin section
 // 	this.render('Admin');
 // });
-
 
 function applyLanguage(route) {
 	// console.log('Route', route);
@@ -143,31 +162,45 @@ if (Meteor.isServer) {
 			title = i18n('round') + ' ' + mapId + ' - ' + title;
 		}
 
-		Inject.rawHead('title',
-			'<title>' + title + '</title>\
-			<meta property="og:title" content="' + title + '" />\
-			<meta name="twitter:title" content="' + title + '" />'
+		Inject.rawHead(
+			'title',
+			'<title>' +
+				title +
+				'</title>\
+			<meta property="og:title" content="' +
+				title +
+				'" />\
+			<meta name="twitter:title" content="' +
+				title +
+				'" />'
 		);
 
 		var metaDescription = i18n('meta-description');
 
-		Inject.rawHead('metaDesc',
-			'<meta name="description" content="' + metaDescription + '" />\
-			<meta property="og:description" content="' + metaDescription + '" />\
-			<meta name="twitter:description" content="' + metaDescription + '" />'
+		Inject.rawHead(
+			'metaDesc',
+			'<meta name="description" content="' +
+				metaDescription +
+				'" />\
+			<meta property="og:description" content="' +
+				metaDescription +
+				'" />\
+			<meta name="twitter:description" content="' +
+				metaDescription +
+				'" />'
 		);
 
 		if (mapId) {
-			Inject.rawHead('metaImgFB',
-				'<meta property="og:image" content="http://banhchungxanh.naustud.io/img/map/map' + mapId + '.png" />'
+			Inject.rawHead(
+				'metaImgFB',
+				'<meta property="og:image" content="http://bcx.naustud.io/img/map/map' + mapId + '.png" />'
 			);
-
 		} else {
-			Inject.rawHead('metaImgFB',
-				'<meta property="og:image" content="http://banhchungxanh.naustud.io/app-thumbnail.jpg" />'
+			Inject.rawHead(
+				'metaImgFB',
+				'<meta property="og:image" content="http://bcx.naustud.io/app-thumbnail.jpg" />'
 			);
 		}
-
 	};
 
 	// per-resquest handler for inject-initial plugin
@@ -188,6 +221,4 @@ if (Meteor.isServer) {
 			next();
 		});
 	}
-
 }
-
