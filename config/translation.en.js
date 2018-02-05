@@ -72,7 +72,7 @@ i18n.map('en', {
 	next: 'Next',
 
 	//'congratulation-description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-	'congratulation-description-start': 'Congratulations! You have earned ${0} points',
+	'congratulation-description-start': 'Congratulations! You have earned {$1} points',
 	'congratulation-description-end': "was contributed to Banh Chung Xanh's charity fund.",
 	'congratulation-description-no-login-start':
 		'Congratulations! You have finished this round. You need to log in to record the result. Thank you.',
