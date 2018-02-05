@@ -30,7 +30,6 @@ Meteor.publish('userData', function() {
 				username: 1,
 				services: 1,
 				profile: 1,
-				totalScore: 1,
 			},
 		}
 	);

@@ -33,8 +33,7 @@ i18n.map('en', {
 	hello: 'Hello',
 	project_purpose: 'The purpose of Project',
 	project_purpose_description:
-		'Hello, Banh Chung Xanh is a charity game project of NAU Studio to spread kindness and compassion for the needy. \
-				As you finish any round of the game, you have made a "transaction" from an available charity fund raised by other sponsors to disable children and orphans at Thien Phuc Sanctuary, Cu Chi District in the outskirt of Ho Chi Minh City. You just play and need not donate anything. The more players and the more rounds finished, the more money will be sent to them. How cool! Join and share Banh Chung Xanh for a good cause!',
+		'Banh Chung Xanh is a charity game and campaign of NAU Studio which was carried out in 2015. <br><br>In Feb 2018, we have modified the game slightly to make it a pure entertaining game. If receiving good perception, we will expand more playable maps and enhance the game UI.',
 	project_purpose_call: 'Join and share Banh Chung Xanh!',
 	project_purpose_sologan_1: "Kindness is contagious, so is fun. Let's spread!",
 	project_purpose_sologan_2: ' ',

@@ -18,7 +18,12 @@ Template.IntroDonate.helpers({
 	},
 
 	currentScore: function() {
-		var amount = Meteor.users.getTotalScore(Meteor.userId());
+		let amount = 0;
+
+		if (Meteor.userId()) {
+			amount = Meteor.users.getTotalScore(Meteor.userId());
+		}
+
 		return amount;
 	},
 

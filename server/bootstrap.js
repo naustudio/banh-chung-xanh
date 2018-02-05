@@ -85,11 +85,7 @@ Meteor.startup(function() {
 	};
 
 	InitialSettings.forEach(function(item) {
-		if (Settings.findOne({ key: item.key }) === undefined) {
-			// insert settings that are not available in the collection yet
-			console.log('Setting item', item.key, 'not set. Adding to DB');
-			Settings.insert(item);
-		}
+		Settings.upsert({ key: item.key }, item);
 	}, this);
 
 	Meteor.methods({
@@ -206,20 +202,6 @@ Meteor.startup(function() {
 			var donatedAmount = Settings.getItem('donatedAmount');
 			Settings.setItem('donatedAmount', donatedAmount + money);
 		},
-
-		updateTotalScore: function(userId, mapScore, currentScore) {
-			Meteor.users.update(
-				{
-					_id: Meteor.userId(),
-				},
-				{
-					$set: {
-						totalScore: currentScore + mapScore,
-					},
-				}
-			);
-		},
-
 		updateUserScore: function(mapId, result) {
 			mapId = mapId.toString();
 			var user = Meteor.user();

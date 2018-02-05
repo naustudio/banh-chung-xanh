@@ -11,7 +11,7 @@ i18n.map('vi', {
 	//'nav_donate': 'Hướng dẫn cách đóng góp',
 	nav_players: 'Danh sách người tham gia',
 
-	// players_title: 'Danh sách người chơi',
+	players_title: 'Danh sách người chơi',
 	players_name: 'Quý danh',
 	players_levels: 'Số vòng',
 	players_last_login: 'Ngày đăng nhập',
@@ -33,9 +33,7 @@ i18n.map('vi', {
 	hello: 'Xin chào',
 	project_purpose: 'Mục đích dự án',
 	project_purpose_description:
-		'Xin chào, Bánh Chưng Xanh là một dự án game từ thiện của Nâu Studio nhằm lan tỏa tinh thần thiện nguyện của các bạn. \
-						Khi tham gia chơi game, các bạn đã "lập lệnh chuyển" một số tiền từ quỹ từ thiện có sẵn do các đơn vị tài trợ đến trẻ em khuyết tật, mồ côi ở mái ấm Thiên Phúc, \
-						huyện Củ Chi mà không cần quyên góp bằng tiền của mình. Càng nhiều người chơi, càng vượt được nhiều vòng, số tiền được gửi đến các em càng lớn.',
+		'Bánh Chưng Xanh là một dự án game từ thiện của NÂU Studio được thực hiện vào Tết năm 2015. Khi tham gia chơi game, các bạn đã "lập lệnh chuyển" một số tiền từ quỹ từ thiện có sẵn do các đơn vị tài trợ đến trẻ em khuyết tật, mồ côi ở mái ấm Thiên Phúc, huyện Củ Chi, TPHCM mà không cần quyên góp bằng tiền của mình. <br><br>Trong bản cập nhật vào 2/2018, chúng tôi đã chỉnh sửa nhẹ để BCX trở thành một trò chơi thuần túy. Nếu nhận được sự ủng hộ nhiệt tình của các bạn, chúng tôi sẽ thêm nhiều màn chơi và thêm nhiều hiệu ứng cho game hơn nữa.',
 	project_purpose_call: 'Hãy tham gia chơi và chia sẻ ngay!',
 	project_purpose_sologan_1: 'Chơi Game - Thêm việc thiện',
 	project_purpose_sologan_2: 'Chia sẻ - Thêm niềm vui',
